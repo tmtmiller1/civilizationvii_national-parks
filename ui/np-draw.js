@@ -19,7 +19,7 @@
 //
 // Size levels: as a park reaches 8, 16 and 24 of its own tiles (np-core.js parkLevel), it draws richer. Each level
 // gives a park a number of level sites (levelSites): a National Park a campsite, a cabin village or a shelter on each,
-// and a lookout tower on another hill; a Wilderness Area a thicket on each, and thicker woods, meadow and undergrowth
+// and a lookout tower on another hill; a Wilderness Area a thicket on each, and more meadow and undergrowth
 // everywhere; both more animals (np-scene.js LEVEL_BOOST, herds in np-wildlife.js). Each level only adds to the one
 // below, on tiles taken in a fixed order by hash, so stepping down takes exactly that away and a park looks the same
 // after a reload.
@@ -48,7 +48,8 @@ const WOOD_GATES = [["PROP_Pasture_FenceDoor_Closed", 0.09, 0], ["PROP_Pasture_F
 const GATE_SHARE = 0.3;           // open-ground fenced edges with a gate somewhere along them
 const FENCED_EDGE_SHARE = 0.75;  // open-ground edges that are mostly fence; the rest are stone with a short fence now and then
 const WALL_SHARE = 0.96;          // share of eligible outer edges that get walling
-const INNER_WALL_SHARE = 0.25;    // share of edges between two of the park's own tiles that get walling
+const INNER_WALL_SHARE = 0.05;    // share of edges between two of the park's own tiles that get walling (0.25 read as
+                                  // walls across the middle of a park, 2026-10-04)
 const BUOY = "PROP_MOD_Harbor_Buoy";
 const BUOY_SHARE = 0.5;
 const DUST = "VFX_Dust_In_Place_SquadCom_Tan";
@@ -671,16 +672,6 @@ export function meadow(t, biome, extra = 0) {
 }
 
 /**
- * A Wilderness Area's extra woods on a wooded tile at a size level: the tile's lattice of trees (forestCover) again,
- * offset half a spacing, each kept on a share that grows with the level, so the woods thicken.
- */
-export function thickerWoods(t, kit, level) {
-  if (!level) return [];
-  return forestCover(t, kit).filter((_x, k) => hash01(t, 2400 + k) < 0.15 * level)
-    .map(([a, x, y, sc, ang]) => [a, x + FOREST_SPACING / 2, y, sc * 0.9, ang]).filter(([, x, y]) => inHex(x, y, FOREST_REACH));
-}
-
-/**
  * A tile's own vegetation, which the game stops drawing under a district: the game's feature model where it has one
  * (FEATURE_MODELS), its tree scatter where the model alone is sparse, the park's woods on wooded tiles with neither,
  * and reeds on wetland with no model. Empty on open ground.
@@ -770,14 +761,18 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
   // The tile's own vegetation, which its district hides (ownLook).
   const model = featureModel(t);
   out.push(...own);
-  // A Wilderness Area thickens with its level: more woods, a fuller stand, more meadow.
+  // A Wilderness Area thickens with its level through its undergrowth and meadow, never more trees: extra trees, a
+  // second lattice of woods and four-tree thickets crowded into each other (watched 2026-10-04, nshow-exp).
   const denser = buildings ? 0 : level;
-  if (wooded && denser && !MODEL_ALONE.has(model)) out.push(...thickerWoods(t, kit, denser));
   if (!wooded && !model) {
-    // A thicket (a Wilderness Area's level site) is a tight grove, twice the trees, with undergrowth.
+    // A thicket (a Wilderness Area's level site) is the tile's own stand with a thick understory under it.
     const thicket = site === "thicket";
-    out.push(...treeStand(t, kit, tower || village ? 2 : 3 + (hash01(t, 16) < 0.5 ? 1 : 0) + denser + (thicket ? 4 : 0),
-      tower ? 2 : clearing ? 1 : thicket ? 3 : slot.stand || 0, slot.grove || 0));
+    if (thicket) for (let k = 0; k < 3; k++) {
+      const p = along(hash01(t, 2700 + k) * 360, 0.12 + hash01(t, 2710 + k) * 0.14, 0);
+      if (kit.under) out.push([kit.under, p.x, p.y, 0.8 + hash01(t, 2720 + k) * 0.4, Math.floor(hash01(t, 2730 + k) * 360)]);
+    }
+    out.push(...treeStand(t, kit, tower || village ? 2 : 3 + (hash01(t, 16) < 0.5 ? 1 : 0),
+      tower ? 2 : clearing ? 1 : slot.stand || 0, slot.grove || 0));
     if ((slot.under != null || thicket || hash01(t, 2600) < 0.2 * denser) && !village && !camp) {
       // The understory, or in the desert its scatter of rocks, on some tiles only; on more of a Wilderness Area's as
       // it reaches each size level.

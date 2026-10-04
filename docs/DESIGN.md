@@ -295,21 +295,21 @@ to 0.46 along an arm is at the tile's edge.
   drew pale pink), and the first choice, a sand tone, came out near white on tundra and plains; ocher reads as ocher
   (watched 2026-09-30). The line shows only where the park's edge is not also the settlement's border, which draws
   over it.
-- **Walls.** On about 96% of the outer edges between passable land (80% until 1.2.0), and on a quarter of the edges
-  between two of the park's own tiles, so its fields are divided here and there; none on or facing water, a navigable
-  river or a natural wonder. Where the border meets a mountain, from either side, the wall is grey dry-stone runs end
-  to end on the flat just outside the mountain's tile edge (`mountainWallPieces`): the biome's kit and rubble vanished
-  against the rock, pieces at the tile edge sank into the mountain model, which spreads past its hex, and the engine
-  has no placement that follows the model's surface (crash soaks `nscreev`, `nscreew`, 2026-10-04: the runs read
-  clearly from the back and the front of a mountain). Each edge is composed, walking along it, from a biome kit:
-  mostly rubble (three to five loose rocks of the local stone, `Plains_Rough_Rock_Rounded_A`-`E` gray or `Desert_...`
-  red-brown), short dry-stone runs (`NAM_SWN_CityKit_RockFence`, laid either way round, some lean), larger stones set
-  into the line, shrubs growing through, and gaps, some with a fallen stone. Watched 2026-09-29. On open ground (flat
-  land, woods) about three edges in four are the pasture's split-rail fence, laid end to end with a stone or a short
-  gap now and then and on about a third of them one gate, shut or open; the rest are stone with a short stretch of
-  rail. On rough ground (a hill, a mountain, a natural wonder) an edge is dry stone only. The sections are
-  `PROP_GEN_FenceBit_A` (two rails, about 0.1 tile long), `_B` and `_C` (three rails, about 0.12), overlapping a
-  little at the posts; A and B lie across the tile at angle 0 and C along it; the gates are
+- **Walls.** On about 96% of the outer edges between passable land (80% until 1.2.0), and on one in twenty of the
+  edges between two of the park's own tiles (a quarter read as walls across the park's middle); none on or facing
+  water, a navigable river or a natural wonder. Where the border meets a mountain, from either side, the wall is grey
+  dry-stone runs end to end on the flat just outside the mountain's tile edge (`mountainWallPieces`): the biome's kit
+  and rubble vanished against the rock, pieces at the tile edge sank into the mountain model, which spreads past its
+  hex, and the engine has no placement that follows the model's surface (crash soaks `nscreev`, `nscreew`, 2026-10-04:
+  the runs read clearly from the back and the front of a mountain). Each edge is composed, walking along it, from a
+  biome kit: mostly rubble (three to five loose rocks of the local stone, `Plains_Rough_Rock_Rounded_A`-`E` gray or
+  `Desert_...` red-brown), short dry-stone runs (`NAM_SWN_CityKit_RockFence`, laid either way round, some lean),
+  larger stones set into the line, shrubs growing through, and gaps, some with a fallen stone. Watched 2026-09-29. On
+  open ground (flat land, woods) about three edges in four are the pasture's split-rail fence, laid end to end with a
+  stone or a short gap now and then and on about a third of them one gate, shut or open; the rest are stone with a
+  short stretch of rail. On rough ground (a hill, a mountain, a natural wonder) an edge is dry stone only. The
+  sections are `PROP_GEN_FenceBit_A` (two rails, about 0.1 tile long), `_B` and `_C` (three rails, about 0.12),
+  overlapping a little at the posts; A and B lie across the tile at angle 0 and C along it; the gates are
   `PROP_Pasture_FenceDoor_Closed` and `_Open` (measured and watched 2026-10-02, crash soak npr, nsh1, nsh2). The
   numbered `FenceBit` names are parts of the three, not models of their own, and the pasture's
   `IMP_Pasture_Fence_Spline_*` and `BIN_SPLN_*` sets draw nothing when placed. Until 1.2.0 the fence was
@@ -400,10 +400,11 @@ to 0.46 along an arm is at the tile's edge.
   signature (`drawSignature`), so crossing a threshold redraws the park.
   - Level sites (`levelSites`): one per level, two per level from 13 tiles, on open flat land the base drawing left
     bare, never two side by side. A National Park's carry a campsite, a cabin village and a lone shelter in turn; a
-    Wilderness Area's a thicket, a tight grove of twice the trees with undergrowth.
+    Wilderness Area's a thicket: the tile's own stand with a thick understory under it.
   - A National Park raises one more lookout tower per level on another hill, never beside a tower (`lookoutTiles`).
-  - A Wilderness Area's open tiles get a fuller stand and more grass tufts per level, more of them undergrowth, and its
-    wooded tiles a second, thinned lattice of trees (`thickerWoods`).
+  - A Wilderness Area's open tiles get more grass tufts per level and more of them undergrowth, but never more trees:
+    extra trees, a second lattice of woods on wooded tiles and four-tree thickets crowded into each other
+    (`nshow-exp`, 2026-10-04).
   - Both kinds carry more strays, climbing animals and waders (`LEVEL_BOOST` in `np-scene.js`; an accent kept off
     neighbouring tiles cannot pass about a third of the land), and herds grow by one at 16 tiles and one more at 24.
     Flocks overhead do not grow with the level, and a park carries at most two of any one kind (`perVariant`): a
