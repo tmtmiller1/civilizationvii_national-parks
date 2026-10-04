@@ -406,8 +406,8 @@ to 0.46 along an arm is at the tile's edge.
     bare, never two side by side. A National Park's carry a campsite, a cabin village and a lone shelter in turn; a
     Wilderness Area's a thicket: the tile's own stand with a thick understory under it.
   - A National Park raises one more lookout tower per level on another hill, never beside a tower (`lookoutTiles`).
-  - A Wilderness Area grows by swapping and by wildlife, never by more trees: from 8 tiles about a third of its grass tufts
-    become wildflower clumps (`wildflowers`, `FOL_Flowers_Small_*`); from 16 rarer species join where the land suits
+  - A Wilderness Area grows by swapping and by wildlife, never by more trees (wildflower clumps from 8 tiles were tried and
+    removed in 1.0.3: they read as loud yellow blots); from 16 rarer species join where the land suits
     them (the planner's `rare` accent, `rareFor`: goats on hills, giraffes on tropical and plains land, turtles on a
     shore); at 24 a third of its stands have one tree swapped for a giant (`oldGrowth`: a coast redwood, or a flowering
     tree in the tropics). Its open tiles also get more grass tufts per level and more of them undergrowth. Never more

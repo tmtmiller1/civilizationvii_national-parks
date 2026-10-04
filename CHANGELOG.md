@@ -9,6 +9,8 @@ semantic versioning.
   dirt trail, with a tree between each pair of cabins. They replace the ring of cabins round a clearing.
 - Nothing grows through a building: trees, shrubs and grass tufts keep clear of cabins, shelters, tents, lookout
   towers and monuments, and animals no longer stand inside them.
+- The wildflower clumps in Wilderness Areas are gone: they read as yellow blots on the map. A Wilderness Area still
+  gains rarer wildlife at 16 tiles and old-growth giants at 24.
 
 ## [1.0.2] - 2026-10-04
 

@@ -52,7 +52,7 @@ forests, lakes, rivers, the sea, natural wonders and open country.
   tiles edge to edge, stands of trees with a flowering accent, stones and cairns on hills, lily pads and reeds on a
   lake, reeds along a river, a rowboat now and then, a warden's station on the founding tile, and a lookout tower once
   the park has grown. As a park reaches 8, 16 and 24 tiles it is drawn richer, with more campsites, cabin villages and
-  lookouts in a National Park, wildflowers, rarer wildlife and old-growth giants in a Wilderness Area, more animals in
+  lookouts in a National Park, rarer wildlife and old-growth giants in a Wilderness Area, more animals in
   both, and monuments scattered over its land: stone cairns from 8 tiles, obelisks (dolmens in a Wilderness Area) from
   16. These are spread over the park so that neighboring tiles differ: no two tiles side by side carry the same flock,
   school of fish, herd, reeds or lily pads. Low dry-stone walls, with stretches of stone-and-timber fence, run along

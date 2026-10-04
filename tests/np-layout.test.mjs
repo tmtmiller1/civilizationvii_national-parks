@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { hash01, connectedSelection } from "../ui/np-core.js";
-import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle, cabinCluster, lookoutTiles, levelSites, sitesPerLevel, monumentSites, monumentCounts, wildflowers, oldGrowth, keepClear, solidSpots } from "../ui/np-draw.js";
+import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle, cabinCluster, lookoutTiles, levelSites, sitesPerLevel, monumentSites, monumentCounts, oldGrowth, keepClear, solidSpots } from "../ui/np-draw.js";
 import { baseNameOf, chooseName, rankCandidates } from "../ui/np-names.js";
 
 // A toy hex world: plot p's ring is six made-up neighbors.
@@ -263,12 +263,7 @@ test("scene: no more than two flocks of one kind overhead in a park, however lar
   }
 });
 
-test("wilderness growth swaps, never adds trees: wildflower clumps replace tufts, a giant replaces one tree", () => {
-  const tufts = Array.from({ length: 6 }, (_x, k) => ["BIN_FOL_Grassland_Groundcover_B", k * 0.05, 0, 1, 0]);
-  const out = wildflowers(77, tufts);
-  const kept = out.filter((p) => !/FOL_Flowers_Small/.test(p[0])).length, flowers = out.length - kept;
-  assert.ok(kept < 6 && flowers > 0 && flowers % 4 === 0, `${kept} tufts kept, ${flowers} flower cards`);
-  assert.deepEqual(wildflowers(77, tufts), out, "stable");
+test("wilderness old growth: a giant for the biomes that have one", () => {
   assert.equal(oldGrowth("BIOME_DESERT"), null);
   assert.ok(oldGrowth("BIOME_GRASSLAND") && oldGrowth("BIOME_TROPICAL"));
 });
