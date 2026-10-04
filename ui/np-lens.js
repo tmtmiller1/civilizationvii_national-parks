@@ -1,4 +1,4 @@
-// np-lens.js - National Park: the Parks and Wilderness lens.
+// np-lens.js - National Parks: the Parks and Wilderness lens.
 //
 // A lens in the game's lens menu that shades every revealed tile of every park: National Parks in green, Wilderness
 // Areas in ocher (the color of their border, and clear of the yellows the game's own lenses use). The founding tile

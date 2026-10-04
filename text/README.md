@@ -1,4 +1,4 @@
-# Translating National Park (`text/`)
+# Translating National Parks (`text/`)
 
 Every string a player sees in National Parks is a `LOC_*` tag defined here and looked up by the game at run time. The
 scripts set no display text of their own, so a translation needs no code change: add the language's files here and
@@ -51,7 +51,7 @@ Every other language uses a `LocalizedText` block with `Replace` and a `Language
 
 ## Registering a language in the modinfo
 
-Each file is listed once per action group that loads text, with a `locale` attribute. In `national-park.modinfo`,
+Each file is listed once per action group that loads text, with a `locale` attribute. In `national-parks.modinfo`,
 the shell group loads the game text (for the Additional Content list and Options in the main menu) and both age
 groups load the game text and the Civilopedia. For German:
 

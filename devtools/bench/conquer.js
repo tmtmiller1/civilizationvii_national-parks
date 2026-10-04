@@ -1,4 +1,4 @@
-// conquer.js - DEV ONLY. Bench eval: the local player captures the settlement holding park `id`'s founding tile
+// conquer.js - dev only. Bench eval: the local player captures the settlement holding park `id`'s founding tile
 // (recipe in engine-closed.md: war, damage, melee attacks), then reports the park. Usage: (conquer.js)(id)
 (async (id) => {
   const np = globalThis.__towerNationalPark; const c = np.core; const out = [];

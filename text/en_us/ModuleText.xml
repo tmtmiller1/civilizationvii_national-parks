@@ -89,7 +89,7 @@
         <Row Tag="LOC_NP_PARK_NAME_ORDINAL">
             <Text>{1_Name} {2_Ordinal}</Text>
         </Row>
-        <!-- Options: Mods, National Park -->
+        <!-- Options: Mods, National Parks -->
         <Row Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK">
             <Text>National Parks</Text>
         </Row>

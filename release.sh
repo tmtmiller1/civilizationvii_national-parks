@@ -2,8 +2,8 @@
 # release.sh: produce a clean zip + Steam Workshop manifest for National Parks.
 #
 # Usage:  ./release.sh
-# Output: dist/national-park-vX.Y.Z.zip   (X.Y.Z from the modinfo <Version>)
-#         dist/national-park/             (upload content folder for steamcmd)
+# Output: dist/national-parks-vX.Y.Z.zip   (X.Y.Z from the modinfo <Version>)
+#         dist/national-parks/             (upload content folder for steamcmd)
 #         dist/workshop_item.vdf          (steamcmd build manifest)
 #
 # Data, text and UI scripts ship as they are; there is no build step. Run `npm run verify` first (syntax check and
@@ -13,14 +13,14 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-MOD_SLUG="national-park"                    # source dir + zip root
-MODINFO="national-park.modinfo"             # modinfo filename
+MOD_SLUG="national-parks"                    # source dir + zip root
+MODINFO="national-parks.modinfo"             # modinfo filename
 TITLE="National Parks"                      # Workshop item title
 APPID="1295660"                            # Sid Meier's Civilization VII
 
 DIST_DIR="dist"
 
-# ── Locate the modinfo (support being run from here or a parent) ───────────
+# Locate the modinfo (support being run from here or a parent)
 if [ -f "$MODINFO" ]; then
     SRC_DIR="."
 elif [ -f "$MOD_SLUG/$MODINFO" ]; then
@@ -30,7 +30,7 @@ else
     exit 1
 fi
 
-# ── Version + author gates ─────────────────────────────────────────────────
+# Version + author gates
 VERSION="$(grep -oE '<Version>[^<]+</Version>' "$SRC_DIR/$MODINFO" \
     | head -1 | sed -E 's|</?Version>||g')"
 [ -n "$VERSION" ] || { echo "error: could not parse <Version> from $MODINFO"; exit 1; }
@@ -43,7 +43,7 @@ case "$AUTHORS" in
         exit 1 ;;
 esac
 
-# ── Workshop published file id (persisted outside dist/, survives rm -rf) ──
+# Workshop published file id (persisted outside dist/, survives rm -rf)
 WORKSHOP_ID_FILE="$SRC_DIR/steam_workshop_id.txt"
 PUBLISHED_FILE_ID="${WORKSHOP_PUBLISHED_FILE_ID:-}"
 SAVED_PUBLISHED_FILE_ID=""
@@ -60,7 +60,7 @@ if [ -z "$PUBLISHED_FILE_ID" ] && [ -n "$SAVED_PUBLISHED_FILE_ID" ]; then
     PUBLISHED_FILE_ID="$SAVED_PUBLISHED_FILE_ID"
 fi
 
-ZIP_NAME="national-park-v${VERSION}.zip"
+ZIP_NAME="national-parks-v${VERSION}.zip"
 TARGET_DIR="$DIST_DIR/$MOD_SLUG"
 ZIP_PATH="$DIST_DIR/$ZIP_NAME"
 
@@ -109,9 +109,9 @@ echo "==> Zip contents:"
 unzip -l "$ZIP_PATH" | sed -n '1,40p' || true
 SIZE="$(du -h "$ZIP_PATH" | cut -f1)"
 
-# ── Workshop preview card ─────────────────────────────────────────────────
+# Workshop preview card
 # Rendered from docs/workshop-preview.svg to a 1024x1024 PNG, uploaded separately
-# via the .vdf, so it lives OUTSIDE the zip and never trips the allow-list.
+# via the .vdf, so it lives outside the zip and never trips the allow-list.
 PREVIEW_SRC="$SRC_DIR/docs/workshop-preview.svg"
 PREVIEW_OUT="$DIST_DIR/preview.png"
 ABS_PREVIEW=""
@@ -129,12 +129,13 @@ if [ -f "$PREVIEW_SRC" ]; then
     fi
 fi
 
-# ── Steam Workshop manifest (.vdf) ────────────────────────────────────────
+# Steam Workshop manifest (.vdf)
 VDF_PATH="$DIST_DIR/workshop_item.vdf"
 ABS_CONTENT="$(cd "$TARGET_DIR" && pwd)"
 
 # Change note: "Initial release." until an item exists; then pull the current
-# version's bullets out of CHANGELOG.md and render them as a Steam BBCode list.
+# version's bullets out of CHANGELOG.md, one line each. No [list], straight quotes or
+# backslashes: Steam cuts the note at an escaped quote and a list breaks out of its box.
 CHANGELOG_FILE="$SRC_DIR/CHANGELOG.md"
 CHANGENOTE="Initial release."
 VERSION_RE="$(printf '%s' "$VERSION" | sed -E 's/[][(){}.^$*+?|\\]/\\&/g')"
@@ -149,10 +150,9 @@ if [ -n "$PUBLISHED_FILE_ID" ] && [ -f "$CHANGELOG_FILE" ]; then
         /^[[:space:]]*$/ { next }
         cur != "" { line=$0; sub(/^[[:space:]]+/,"",line); cur=cur " " line }
         END { flush() }
-    ' "$CHANGELOG_FILE" | sed -E 's/^/[*]/; s/\*\*//g; s/`//g' | tr '\n' ' ')"
+    ' "$CHANGELOG_FILE" | sed -E 's/^/• /; s/\*\*//g; s/`//g; s/"/”/g; s/\\//g')"
     if [ -n "$BULLETS" ]; then
-        CHANGENOTE="$(printf '[b]v%s[/b] [list]%s[/list]' "$VERSION" "$BULLETS" \
-            | sed -E 's/\\/\\\\/g; s/"/\\"/g')"
+        CHANGENOTE="$(printf '[b]Version %s[/b]\n%s' "$VERSION" "$BULLETS")"
     fi
 fi
 

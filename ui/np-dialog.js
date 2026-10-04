@@ -8,7 +8,7 @@
 // - showDecision: the game's own multi-option dialog (DialogBoxManager), the quote added by a screen-dialog-box
 //   decorator that acts only on this mod's dialog titles. Used outside the tile picker.
 // - askInPicker (np-picker.js) builds the same parts itself (decisionFrame here): the game's dialog switches the map
-//   out of the picker's interface mode and the selection is lost (watched 2026-09-29).
+//   out of the picker's interface mode and the selection is lost.
 "use strict";
 
 import { safe, log } from "./np-core.js";
@@ -170,7 +170,7 @@ export function buttonRow(buttons, stacked = false) {
   return row;
 }
 
-// --- the game's own dialog -----------------------------------------------------------------------------------
+// the game's own dialog
 
 const pendingQuotes = new Map();   // dialog title -> quote, taken when that dialog attaches
 let decoratorReady = false;

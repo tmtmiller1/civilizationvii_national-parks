@@ -1,7 +1,7 @@
-// np-settings.js - National Park: the player's options, kept across games.
+// np-settings.js - National Parks: the player's options, kept across games.
 //
 // One slice of the shared "modSettings" localStorage key, as Geographic Labels keeps its own. The game's
-// localStorage.getItem() can return another key's value (watched 2026-09-16: the first key in the store, whatever
+// localStorage.getItem() can return another key's value (the first key in the store, whatever
 // key is asked for), so a read that does not look like a settings root (every top-level value an object) is never
 // written back: the write is skipped and the value is kept in memory for this session. Loads in the main menu and
 // in a game, with no game globals.

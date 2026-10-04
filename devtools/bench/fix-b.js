@@ -1,4 +1,4 @@
-// fix-b.js - DEV ONLY. For every park, every building the game offers its settlement (unwrapped BUILD and PURCHASE):
+// fix-b.js - dev only. For every park, every building the game offers its settlement (unwrapped BUILD and PURCHASE):
 // how many offer the founding tile, and how many a marked tile. No writes.
 (() => {
   const np = globalThis.__towerNationalPark; const c = np.core; const nat = np.nativeCanStart();

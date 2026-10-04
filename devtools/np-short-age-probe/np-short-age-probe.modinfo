@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- DEV ONLY. Ends the Exploration Age after 12 age-progress points (about 12 turns) in a NEW game, so the transition to the
+<!-- Dev only. Ends the Exploration Age after 12 age-progress points (about 12 turns) in a new game, so the transition to the
      Modern Age can be watched with a park on the map. Age progress is fixed when a game starts. Remove it from Mods/
      afterward: it shortens every game it loads into. -->
 <Mod id="tower-national-park-short-age-probe" version="1" xmlns="ModInfo">

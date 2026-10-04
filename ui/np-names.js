@@ -1,4 +1,4 @@
-// np-names.js - National Park: park names, and the pairing with Geographic Labels.
+// np-names.js - National Parks: park names, and the pairing with Geographic Labels.
 //
 // A park is named once, when it is founded, after the natural wonder it stands beside, read from the map. Failing
 // that, after the most prominent named place within NAME_RADIUS of its founding tile: a mountain range, lake, river,
@@ -111,7 +111,7 @@ export function generateName(park) {
   return name;
 }
 
-// --- Geographic Labels provider ----------------------------------------------------------------------
+// Geographic Labels provider
 //
 // One provider of Geographic Labels' "park" type lists both kinds, National Parks and Wilderness Areas (their names
 // say which): the category's look, priority and Options toggle are built into Geographic Labels.

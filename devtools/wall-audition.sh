@@ -1,5 +1,5 @@
 #!/bin/zsh
-# wall-audition.sh - DEV ONLY. With a Modern lab game running on the Tower Bench (and the mod installed), draw the
+# wall-audition.sh - dev only. With a Modern lab game running on the Tower Bench (and the mod installed), draw the
 # new composed walls on a staged plains park and each wall candidate on its own tile, and capture the game window.
 # Frames land in $OUT (default: ./wall-audition-shots). Usage: devtools/wall-audition.sh [out-dir]
 set -e

@@ -1,4 +1,4 @@
-// fix-a.js - DEV ONLY. One read of the facts the 1.2.0 fixes rest on, in a loaded game with parks (no writes):
+// fix-a.js - dev only. One read of the facts the 1.2.0 fixes rest on, in a loaded game with parks (no writes):
 //   founding  the game's own (unwrapped) placement answer for an urban building on each park's founding tile and on
 //             one of its marked tiles
 //   growth    whether the game's own growth offers (EXPAND, unwrapped) include any park tile, for every settlement

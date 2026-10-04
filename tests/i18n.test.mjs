@@ -1,4 +1,4 @@
-// i18n.test.mjs - National Park: every string a player sees can be translated.
+// i18n.test.mjs - National Parks: every string a player sees can be translated.
 //
 // text/en_us is the source of truth (see text/README.md). This checks that every LOC_ key the code, data and
 // modinfo use has English text; that no tag is defined twice (a duplicate tag makes the game drop the whole file);
@@ -43,7 +43,7 @@ test("i18n: no English tag is defined twice", () => {
 });
 
 test("i18n: every key the code, data and modinfo use has English text", () => {
-  const sources = [...files("ui", ".js"), ...files("data", ".xml"), ...files("data", ".sql"), "national-park.modinfo"];
+  const sources = [...files("ui", ".js"), ...files("data", ".xml"), ...files("data", ".sql"), "national-parks.modinfo"];
   const missing = new Set();
   for (const p of sources) {
     // Comments name keys by pattern; only code and data count.
@@ -105,7 +105,7 @@ test("i18n: each translation has exactly the English tags, its Language, and the
 });
 
 test("i18n: each translation is registered in the modinfo for the menu and both ages", () => {
-  const modinfo = read("national-park.modinfo");
+  const modinfo = read("national-parks.modinfo");
   const folders = fs.readdirSync("text", { withFileTypes: true }).filter((d) => d.isDirectory() && d.name !== "en_us");
   for (const d of folders) {
     const lang = LANGUAGES[d.name];

@@ -1,4 +1,4 @@
-// np-options.js - National Park: its group in the game's Options screen, under Mods.
+// np-options.js - National Parks: its group in the game's Options screen, under Mods.
 //
 // Registered from the main menu and in a game. Each option writes through as it is changed and applies at once in a
 // game, through window.__towerNationalPark (set by np-main.js; absent in the main menu). Cancel Changes puts back the

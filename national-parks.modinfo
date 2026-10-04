@@ -82,16 +82,16 @@
 					<Item locale="zh_Hant_HK">text/zh_hk/PediaText.xml</Item>
 				</UpdateText>
 				<UpdateDatabase>
-					<Item>data/national-park-exploration.xml</Item>
-					<Item>data/national-park.xml</Item>
-					<Item>data/national-park-land.xml</Item>
-					<Item>data/national-park-gameeffects.xml</Item>
-					<Item>data/national-park-resources.sql</Item>
-					<Item>data/national-park-project.xml</Item>
+					<Item>data/national-parks-exploration.xml</Item>
+					<Item>data/national-parks.xml</Item>
+					<Item>data/national-parks-land.xml</Item>
+					<Item>data/national-parks-gameeffects.xml</Item>
+					<Item>data/national-parks-resources.sql</Item>
+					<Item>data/national-parks-project.xml</Item>
 					<Item>data/np-civilopedia.xml</Item>
 				</UpdateDatabase>
 				<UpdateIcons>
-					<Item>data/national-park-icons.xml</Item>
+					<Item>data/national-parks-icons.xml</Item>
 				</UpdateIcons>
 				<UIScripts>
 					<Item>ui/np-main.js</Item>
@@ -146,16 +146,16 @@
 					<Item locale="zh_Hant_HK">text/zh_hk/PediaText.xml</Item>
 				</UpdateText>
 				<UpdateDatabase>
-					<Item>data/national-park-modern.xml</Item>
-					<Item>data/national-park.xml</Item>
-					<Item>data/national-park-land.xml</Item>
-					<Item>data/national-park-gameeffects.xml</Item>
-					<Item>data/national-park-resources.sql</Item>
-					<Item>data/national-park-project.xml</Item>
+					<Item>data/national-parks-modern.xml</Item>
+					<Item>data/national-parks.xml</Item>
+					<Item>data/national-parks-land.xml</Item>
+					<Item>data/national-parks-gameeffects.xml</Item>
+					<Item>data/national-parks-resources.sql</Item>
+					<Item>data/national-parks-project.xml</Item>
 					<Item>data/np-civilopedia.xml</Item>
 				</UpdateDatabase>
 				<UpdateIcons>
-					<Item>data/national-park-icons.xml</Item>
+					<Item>data/national-parks-icons.xml</Item>
 				</UpdateIcons>
 				<UIScripts>
 					<Item>ui/np-main.js</Item>

@@ -1,4 +1,4 @@
-// np-core.js - National Park: map reads, the park registry, and the rules for which land a park may take.
+// np-core.js - National Parks: map reads, the park registry, and the rules for which land a park may take.
 //
 // A park is a founding tile (the IMPROVEMENT_NATIONAL_PARK constructible) plus the land added to it by the Expand
 // National Park project. The registry lives in the save through a GameConfiguration key, the same store Canals and
@@ -61,7 +61,7 @@ export const RING = ["DIRECTION_EAST", "DIRECTION_SOUTHEAST", "DIRECTION_SOUTHWE
 export function safe(fn, fb) { try { return fn(); } catch (_e) { return fb; } }
 export function log(m) { safe(() => console.error("[NationalPark] " + m)); }
 
-// --- map reads ---------------------------------------------------------------------------------------
+// map reads
 
 export function idx(loc) { return GameplayMap.getIndexFromLocation(loc); }
 export function locOf(i) { const l = GameplayMap.getLocationFromIndex(i); return { x: l.x, y: l.y }; }
@@ -116,7 +116,7 @@ function sameLoc(a, l) { return !!a && a.x === l.x && a.y === l.y; }
 
 /**
  * What stands on a plot: { items: [{ type, complete, owner, id }], stray }. After a plot changes hands its ids can
- * resolve against the new owner's own objects elsewhere (watched 2026-09-29: a park tile bought by an AI city read as
+ * resolve against the new owner's own objects elsewhere (a park tile bought by an AI city read as
  * a sawmill and an urban district 8 tiles away, and destroying "its" district destroyed that one). An entry whose
  * object is not on this plot is left out of `items` and counted in `stray`.
  */
@@ -187,13 +187,13 @@ export function foreignConstructiblesAt(i) { return constructiblesAt(i).filter((
 export function markersAt(i) { return constructiblesAt(i).filter((c) => isMarkerType(c.type)); }
 
 
-// --- appeal ------------------------------------------------------------------------------------------------
+// appeal
 //
 // A park is founded on Charming land, by the game's own appeal: the number its plot tooltip and appeal lens show. A
 // tile's appeal is the sum of its six neighbours' Terrains.Appeal and Features.Appeal (mountain, coast and navigable
 // river 1; forest, rainforest, taiga, savanna woodland and sagebrush steppe 1; a natural wonder 6), with a wonder tile
 // counting its own 6 too and open water reading 0; rivers, resources, improvements and districts add nothing
-// (measured 2026-10-03; engine-closed.md). Appeal sets nothing else: a park's yields do not depend on it, and no tile
+// (engine-closed.md). Appeal sets nothing else: a park's yields do not depend on it, and no tile
 // ever leaves a park, nor a founding tile moves, because its appeal fell.
 
 /** Pure: whether an appeal is Charming or better against the game's thresholds { charming }. */
@@ -221,7 +221,7 @@ export function isImpassableEdgeTile(i) {
   return i < 0 || isWater(i) || isNavRiver(i) || isMountain(i) || isWonder(i);
 }
 
-// --- registry ----------------------------------------------------------------------------------------
+// registry
 
 let cache = null;
 
@@ -265,14 +265,14 @@ export function createPark(anchor, owner, kind = "park") {
   return park;
 }
 
-// --- milestones ----------------------------------------------------------------------------------------------
+// milestones
 //
 // Each park reaches size levels at 8, 16 and 24 of its own tiles (its founding tile included), and every tile of that
-// park then pays more: its land marker is swapped for the level's (data/national-park-land.xml). Parks level apart:
+// park then pays more: its land marker is swapped for the level's (data/national-parks-land.xml). Parks level apart:
 // another park of the same owner, of either kind, does not count. The count is the land the park holds now, so land
 // lost, built over or let go counts against it, and the markers step back down. (Until 2026-10-04 a player's parks of
 // a kind counted together; changed to one park's own size.) The swap is in place: CREATE_ELEMENT of a marker on a plot replaces the one there (one improvement per
-// plot; watched 2026-10-03, crash soak npms1), and markers house no one, so no citizen moves.
+// plot), and markers house no one, so no citizen moves.
 export const MILESTONES = [8, 16, 24];
 /** Pure: the milestone level (0 to 3) of a number of park tiles. */
 export function milestoneLevel(tiles) { return MILESTONES.filter((n) => tiles >= n).length; }
@@ -286,11 +286,11 @@ export function landMarker(kind, level) { return level > 0 ? kind.landLevels[lev
 /** The land marker every tile of a park should carry now, for the park's own size level. */
 export function markerFor(park) { return landMarker(kindOf(park), parkLevel(park)); }
 
-// --- foundings: a park paid for, waiting for the tile it will stand on ----------------------------------------
+// foundings: a park paid for, waiting for the tile it will stand on
 //
 // Found National Park (a city's project, or a purchase in a city or town) does not place anything itself: the engine
 // places an improvement only on a tile that already carries a rural district, and never on a bare one, so a park
-// could only replace a farm (watched 2026-10-02). A completed or bought founding is recorded here and the park is
+// could only replace a farm. A completed or bought founding is recorded here and the park is
 // placed by script on the empty tile its owner chooses (np-picker.js), or an AI's best one.
 // Record: { id, kind, owner, city: ComponentID, made }
 
@@ -350,7 +350,7 @@ export function dissolvePark(id) {
   save();
 }
 
-// --- rules -------------------------------------------------------------------------------------------
+// rules
 
 /**
  * The rule for joining, on facts read from the map (pure). A park takes its owner's land that no other park holds:
@@ -367,7 +367,7 @@ export function joinable(f) {
 /**
  * Whether joining costs the player something to confirm: an improvement stripped. On a resource tile the improvement
  * is the resource's own harvester, and the park's marker takes over collecting the resource
- * (data/national-park-resources.sql), so that tile joins without a question.
+ * (data/national-parks-resources.sql), so that tile joins without a question.
  */
 export function needsConfirm(f) { return !!f.improvement && !f.resource; }
 
@@ -429,10 +429,10 @@ export function addTile(park, i) {
   return true;
 }
 
-// --- markers -----------------------------------------------------------------------------------------
+// markers
 //
 // A constructible needs a district under it and a parent city over it, or it belongs to no one and its modifiers
-// attach to nothing (watched 2026-09-27: markers sent without Parent landed but moved no yield; with Parent, on a
+// attach to nothing (markers sent without Parent landed but moved no yield; with Parent, on a
 // rural district the mod creates first, every marker's yield arrived). The district is the mod's own: it is
 // recorded on the park, and destroyed again when the park lets go of land its owner still holds, after which the
 // plot is bought back, since destroying a district releases it (as Canals found). Land that has passed to someone
@@ -459,7 +459,7 @@ function cityIdOf(park) {
 /**
  * The settlement that holds plot i, as a ComponentID, or null. A park tile's district and marker belong to it, as every
  * worked tile belongs to the settlement that owns it. In pre-release builds they took the park's founding settlement, so a tile
- * taken from a neighbouring settlement carried a district its own settlement did not list (watched 2026-10-01).
+ * taken from a neighbouring settlement carried a district its own settlement did not list.
  */
 function tileCityOf(i) {
   const l = locOf(i);
@@ -467,14 +467,14 @@ function tileCityOf(i) {
 }
 function sameCity(a, b) { return !!a && !!b && a.owner === b.owner && a.id === b.id; }
 
-// --- writes in flight ------------------------------------------------------------------------------------
+// writes in flight
 //
 // Every change to a tile is a short sequence of engine requests whose results land some time after the call: a district
 // in about a second, a terrain edit in Canals once more than 3 s late. Each step waits until its result reads back
 // before the next is sent (`until`), rather than for a fixed time, and a step that never lands ends the sequence with a
 // log line; the next sweep tries the tile again, at most MAX_TRIES times a session. Sequences on one tile run one after
 // another. While one runs, the tile is settling and the sweep does not judge it: creating a rural district on a
-// resource tile makes the engine put the resource's own improvement there at once (watched 2026-09-29: a quarry on
+// resource tile makes the engine put the resource's own improvement there at once (a quarry on
 // jade, until the marker replaced it), and a sweep in that window used to read it as the owner's build and let the tile
 // go, after which the late marker landed outside any park.
 
@@ -526,7 +526,7 @@ function populationOf(city) { return safe(() => Cities.get(city).population, -1)
  * Take rural improvements off plot i and give back the citizens they housed. Destroying a rural improvement takes one
  * population with it (engine-closed.md), so each point lost returns as pending population: the human places it on the
  * game's own Grow City screen, an AI places it itself (as Build Wonders Over Antiquated Buildings does). The loss is
- * measured, not assumed, since an improvement the engine placed with a district housed no one.
+ * read from the city's population, since an improvement the engine placed with a district housed no one.
  */
 async function stripImprovements(i, items, city) {
   const before = city ? populationOf(city) : -1;
@@ -575,14 +575,14 @@ async function markTile(park, i, city) {
   if (!stillParkLand(park, i)) return true;
   // A tile holding an Expedition Base or a worked mountain (KEPT_IMPROVEMENTS) keeps it and carries no marker, as
   // placeMarker already left it: a marker created there replaced the improvement in place (one improvement per plot)
-  // and the citizen who worked it was lost (watched 2026-10-04, crash soak nai10-trace: two AI cities lost a citizen
+  // and the citizen who worked it was lost (two AI cities lost a citizen
   // each when their park took a worked mountain, IMPROVEMENT_MOUNTAIN, through addTile).
   if (constructiblesAt(i).some((c) => KEPT_IMPROVEMENTS.has(c.type))) return true;
   const want = parkDistrictKind(i), have = districtKind(i);
   if ((have === "rural" || have === "wild") && have !== want) {
     // Park land sits on a wilderness district, not a rural one: the game offers a rural tile beside a city's urban core
-    // to its buildings, and an AI builds there past the placement hook; it does not offer a wilderness tile (watched
-    // 2026-10-01). A rural district left from the owner's improvement, or from a pre-release build, is replaced, marker first; so is
+    // to its buildings, and an AI builds there past the placement hook; it does not offer a wilderness tile.
+    // A rural district left from the owner's improvement, or from a pre-release build, is replaced, marker first; so is
     // a mountain's wilderness district from a pre-release build, which drew the mountain flat.
     if (!(await removeAll(i, markersAt(i)))) return failed(park, i, "marker removal");
     if (!(await removeDistrict(park, i, city, park.owner))) return false;
@@ -731,10 +731,10 @@ export function ensureMarkers(park) {
 /** Whether an AI's park takes a tile on its own: never one that would cost it an improvement. */
 export function aiTakes(i, owner) { return !needsConfirm(joinFacts(i, owner, new Set())); }
 
-// --- buying an expansion ------------------------------------------------------------------------------------
+// buying an expansion
 //
 // A town cannot build or buy Expand National Park: the engine refuses a project in a town by every route (build,
-// purchase, town focus; watched 2026-09-29), and making the project non-CityOnly refused it in cities too. So a
+// purchase, town focus), and making the project non-CityOnly refused it in cities too. So a
 // settlement with a park, town or city, may buy an expansion from this mod for Gold instead, at the game's usual
 // price of 4 Gold per point of production.
 
@@ -759,13 +759,13 @@ export function aiScore(i) {
   return 1;
 }
 
-// --- whether an AI buys an expansion ----------------------------------------------------------------------
+// whether an AI buys an expansion
 //
 // The game gives the AI no weighting for projects, so the mod decides for it, each turn, the way a player would: an
 // expansion is worth buying when what it adds pays the price back soon enough, at peace, with Gold coming in. What it
 // adds is the yield of the tiles it would take: the park's payout plus the tiles' own yields, which the settlement gets
 // with no citizen spent; points of yield are valued at AI_GOLD_PER_POINT Gold a turn. An AI spends its Gold as it comes
-// in (watched 2026-10-01: five AIs at 130 to 270 Gold a turn held 0 to 1,207 at the start of each turn), so it rarely
+// in (five AIs at 130 to 270 Gold a turn held 0 to 1,207 at the start of each turn), so it rarely
 // holds the price; a worthwhile expansion is saved for instead, AI_SAVE_SHARE of its income a turn set aside in the
 // park's fund, and bought when the fund covers the price. At war the fund goes back to the treasury.
 
@@ -815,7 +815,7 @@ export function aiSavingStep(f) {
   return { ...w, charge, buy: fund + charge >= f.price, refund: 0 };
 }
 
-/** A land marker's payout in yield points and its Happiness part at a size level (data/national-park-land.xml): a
+/** A land marker's payout in yield points and its Happiness part at a size level (data/national-parks-land.xml): a
  *  National Park's +1/+1, +2/+1, +2/+2, +3/+2 Culture/Happiness; a Wilderness Area's +3 to +6 Influence. */
 const PARK_LEVELS = [[1, 1], [2, 1], [2, 2], [3, 2]];
 export function landPayout(kindKey, level = 0) {
@@ -1040,7 +1040,7 @@ export function reconcile(park) {
 
 /**
  * An independent power's park is left to the game. A settlement that passes to one is taken apart a few districts a
- * turn until its land is released, park land and the rest alike (watched 2026-10-02); putting the park's pieces back
+ * turn until its land is released, park land and the rest alike; putting the park's pieces back
  * kept that settlement from ever going. So nothing is written: a tile whose district the game removed is forgotten,
  * and the park ends with its founding improvement. Returns "dissolved", "changed" or "".
  */

@@ -66,7 +66,7 @@ test("size levels: each park levels on its own tiles, whatever other parks its o
 
 test("size levels: each kind's land marker per level, its yields matching landPayout and rising level by level", async () => {
   const fs = await import("node:fs");
-  const xml = fs.readFileSync("data/national-park-land.xml", "utf8");
+  const xml = fs.readFileSync("data/national-parks-land.xml", "utf8");
   const sum = (type) => [...xml.matchAll(new RegExp(`ConstructibleType="${type}" YieldType="(\\w+)" YieldChange="(\\d+)"`, "g"))]
     .reduce((o, m) => ({ points: o.points + Number(m[2]), happiness: o.happiness + (m[1] === "YIELD_HAPPINESS" ? Number(m[2]) : 0) }),
       { points: 0, happiness: 0 });

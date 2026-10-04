@@ -2,7 +2,7 @@
 <!--
   MOD_NP_NO_NATURAL_YIELD: kept only so saves from pre-release builds load clean. In pre-release builds every land marker carried
   it as a -100% yield on its plot, and a saved game keeps that modifier on the plot even after the marker is gone
-  (watched 2026-10-01: a pre-release park tile read 0 Food and Production with the marker replaced and no such modifier in
+  (a pre-release park tile read 0 Food and Production with the marker replaced and no such modifier in
   the database). Defined again here as 0%, so the saved copies take nothing; no marker carries it any more.
 -->
 <GameEffects xmlns="GameEffects">

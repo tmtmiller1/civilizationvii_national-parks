@@ -51,7 +51,7 @@ const state = { originals: null, wrappers: null, listeners: [], multiplayer: fal
   markerKeys: new Set(),  // park land markers (raw id and hash), whose landing redraws a park at once
   on: false, sweepTimer: 0, sweepReason: null, offerTimer: 0, spending: 0, aiTurn: null, aiRuns: 0 };
 
-// --- placement -----------------------------------------------------------------------------------------
+// placement
 
 function isParkType(raw) { return raw != null && state.parkKeys.has(raw); }
 function plotOfArgs(args) {
@@ -70,7 +70,7 @@ function ruleFor(type, args) {
   return { keep: (p) => !land.has(p), reason: "LOC_NP_TILE_IS_PARKLAND" };
 }
 
-// --- founding ----------------------------------------------------------------------------------------------
+// founding
 
 /** The civic that unlocks a kind in this age (its ProgressionTreeNodeUnlocks row), and whether `owner` has it. */
 function civicDone(owner, kind) {
@@ -152,7 +152,7 @@ function offerFounding(id, tries = 0) {
 
 // The AI weighs founding once a turn with its own Gold, as it weighs expansions: at peace, with Gold coming in, it
 // founds a park where a settlement holds empty land beside a natural wonder (as the AIs did when they built the
-// improvement themselves, watched 2026-09-30), one founding a turn for each AI.
+// improvement themselves), one founding a turn for each AI.
 function foundAiParks() {
   for (const pid of safe(() => Players.getAliveMajorIds(), []) || []) {
     if (isHuman(pid) || atWarWithMajor(pid)) continue;
@@ -255,7 +255,7 @@ function wrapSendRequest(original) {
   };
 }
 
-// --- growth ----------------------------------------------------------------------------------------------
+// growth
 
 function isLocal(owner) { return owner === safe(() => GameContext.localPlayerID, -99); }
 /** A human's park waits for its owner to choose (in hotseat too, on that player's turn); an AI's is chosen for it. */
@@ -278,7 +278,7 @@ function autoPick(park) {
 }
 
 // The AI never builds Expand National Park: the game has no AI weighting for projects (no AiLists system for them),
-// and none queued it in 35 watched turns. So each turn an AI's park weighs buying one with the AI's own Gold, at the
+// and none queued it in 35 turns. So each turn an AI's park weighs buying one with the AI's own Gold, at the
 // price a player pays, saving for it when it is worth it (aiSavingStep in np-core.js).
 
 function atWarWithMajor(pid) {
@@ -382,7 +382,7 @@ function buyExpansion(park) {
   if (isFull(park)) return "LOC_NP_BUY_FULL";
   const price = expansionPrice(settlementOf(park), kindOf(park));
   const balance = () => safe(() => Players.get(owner).Treasury.goldBalance, 0);
-  // The Gold leaves the treasury a few seconds after the call (watched 2026-09-25), so a second purchase in that window
+  // The Gold leaves the treasury a few seconds after the call, so a second purchase in that window
   // counts what is still on its way out.
   const gold = balance();
   if (gold - state.spending < price) return "LOC_NP_BUY_GOLD";
@@ -406,7 +406,7 @@ function offerPicker(tries = 0) {
   if (tries < 120) state.offerTimer = setTimeout(() => offerPicker(tries + 1), 2500);
 }
 
-// --- sweep -----------------------------------------------------------------------------------------------
+// sweep
 
 /** Reconcile the registry with the map. Every park is drawn on load; after that a park is redrawn only when its
  *  record changed or its drawing is out of date (new tiles, a new owner, fog lifted over it). */
@@ -472,7 +472,7 @@ function scheduleSweep(reason, ms = SETTLE_MS) {
   state.sweepTimer = setTimeout(() => { const r = state.sweepReason; state.sweepReason = null; sweep(r); }, ms);
 }
 
-// --- install ---------------------------------------------------------------------------------------------
+// install
 
 function listen(name, fn) {
   if (safe(() => { engine.on(name, fn); return true; }, false)) state.listeners.push([name, fn]);

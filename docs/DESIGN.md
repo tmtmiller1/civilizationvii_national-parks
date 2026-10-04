@@ -28,7 +28,7 @@ Parks exist from the Exploration Age on and come into their own in the Modern Ag
 | Exploration | Society (mid-tree, cost 1300) | 1 |
 | Modern | Natural History (first tier, cost 1600) | 3 |
 
-Each age's database gets the shared data plus its own file (`data/national-park-exploration.xml`,
+Each age's database gets the shared data plus its own file (`data/national-parks-exploration.xml`,
 `-modern.xml`) carrying the `Types`, `Constructibles`, `Projects` and `ProgressionTreeNodeUnlocks` rows, because a
 civic node exists only in its age's database and the per-completion text differs. The per-age file loads first, so
 every row the shared files reference exists.
@@ -37,12 +37,12 @@ every row the shared files reference exists.
 
 | Piece | Mechanism | File |
 | --- | --- | --- |
-| Founding tile | `IMPROVEMENT_NATIONAL_PARK` or `IMPROVEMENT_WILDERNESS_AREA`, rural improvements, not buildable (`CityBuildable`/`TownBuildable` false), placed by script on a `DISTRICT_RURAL` | `data/national-park.xml`, `ui/np-core.js` `foundPark` |
-| Founding | `PROJECT_FOUND_NATIONAL_PARK` / `PROJECT_FOUND_WILDERNESS_AREA` (city project) or a Gold row in the purchase list (city or town); a completion records a founding, placed on the empty tile its owner picks; gated through the wrapped `.canStart` (civic, one of each kind, an empty tile) | `data/national-park-<age>.xml`, `ui/np-main.js`, `ui/np-purchase.js`, `ui/np-picker.js` |
-| Growth | `PROJECT_EXPAND_NATIONAL_PARK` / `PROJECT_EXPAND_WILDERNESS_AREA`, repeatable, `CityOnly`, `PrereqConstructible` = the founding improvement, `RequiresUnlock` false; or bought for Gold from the mod; an AI's park saves for and buys one when it pays back | `data/national-park-*.xml`, `ui/np-main.js` `buyExpansion`, `growAiParks`, `ui/np-core.js` `aiSavingStep` |
+| Founding tile | `IMPROVEMENT_NATIONAL_PARK` or `IMPROVEMENT_WILDERNESS_AREA`, rural improvements, not buildable (`CityBuildable`/`TownBuildable` false), placed by script on a `DISTRICT_RURAL` | `data/national-parks.xml`, `ui/np-core.js` `foundPark` |
+| Founding | `PROJECT_FOUND_NATIONAL_PARK` / `PROJECT_FOUND_WILDERNESS_AREA` (city project) or a Gold row in the purchase list (city or town); a completion records a founding, placed on the empty tile its owner picks; gated through the wrapped `.canStart` (civic, one of each kind, an empty tile) | `data/national-parks-<age>.xml`, `ui/np-main.js`, `ui/np-purchase.js`, `ui/np-picker.js` |
+| Growth | `PROJECT_EXPAND_NATIONAL_PARK` / `PROJECT_EXPAND_WILDERNESS_AREA`, repeatable, `CityOnly`, `PrereqConstructible` = the founding improvement, `RequiresUnlock` false; or bought for Gold from the mod; an AI's park saves for and buys one when it pays back | `data/national-parks-*.xml`, `ui/np-main.js` `buyExpansion`, `growAiParks`, `ui/np-core.js` `aiSavingStep` |
 | Appeal | the founding gate only: the game's `GameplayMap.getAppeal` against its Charming threshold from `GlobalParameters` | `ui/np-core.js` `charmingAt`, `foundable` |
-| Yield per tile | one land marker per kind, `IMPROVEMENT_NATIONAL_PARK_LAND` (+1 Culture +1 Happiness) and `IMPROVEMENT_WILDERNESS_AREA_LAND` (+3 Influence), placed by script on a `DISTRICT_RURAL` (the engine's own improvement on it taken off), the payout as the marker's own `Constructible_YieldChanges` on top of the tile's own yields; `_WILD` markers from 1.2.0 saves are swapped for `_LAND`; `MOD_NP_NO_NATURAL_YIELD` survives as a 0% no-op for 1.1.0 saves | `data/national-park-land.xml`, `-gameeffects.xml`, `ui/np-core.js` `remark` |
-| Size bonus | the land marker's level variants `IMPROVEMENT_NATIONAL_PARK_LAND_8` / `_16` / `_24` (and `IMPROVEMENT_WILDERNESS_AREA_LAND_`), swapped in place on every tile of a park as its own land crosses 8, 16 and 24 tiles | `data/national-park-land.xml`, `ui/np-core.js` `parkLevel`, `markerFor`, `remark` |
+| Yield per tile | one land marker per kind, `IMPROVEMENT_NATIONAL_PARK_LAND` (+1 Culture +1 Happiness) and `IMPROVEMENT_WILDERNESS_AREA_LAND` (+3 Influence), placed by script on a `DISTRICT_RURAL` (the engine's own improvement on it taken off), the payout as the marker's own `Constructible_YieldChanges` on top of the tile's own yields; `_WILD` markers from 1.2.0 saves are swapped for `_LAND`; `MOD_NP_NO_NATURAL_YIELD` survives as a 0% no-op for 1.1.0 saves | `data/national-parks-land.xml`, `-gameeffects.xml`, `ui/np-core.js` `remark` |
+| Size bonus | the land marker's level variants `IMPROVEMENT_NATIONAL_PARK_LAND_8` / `_16` / `_24` (and `IMPROVEMENT_WILDERNESS_AREA_LAND_`), swapped in place on every tile of a park as its own land crosses 8, 16 and 24 tiles | `data/national-parks-land.xml`, `ui/np-core.js` `parkLevel`, `markerFor`, `remark` |
 | Choosing land | `INTERFACEMODE_NP_ADD_TILES`, a `ChoosePlotInterfaceMode`: click to select, Confirm, Done or Later; the mod's own OK / Cancel box for a costly tile | `ui/np-picker.js` |
 | Buying an expansion | a row in the production panel's purchase list (`Controls.decorate` on `panel-production-chooser`), or a Gold pill on a pill-style replacement panel | `ui/np-purchase.js` |
 | Wildlife | rigged animals set to `IDLE`, bird, insect and fish effects, sea life | `ui/np-wildlife.js` |
@@ -148,7 +148,7 @@ every row the shared files reference exists.
   mountains, lakes, navigable rivers, open sea and natural wonders. The rule is `joinable()` in `ui/np-core.js`, pure
   and tested. Urban and other non-rural districts, buildings, another park's founding tile and plots that cannot be
   read are refused. **Resources come with the land.** Every marker is a valid improvement for every resource
-  (`data/national-park-resources.sql` adds a `Constructible_ValidResources` row per marker for each row of
+  (`data/national-parks-resources.sql` adds a `Constructible_ValidResources` row per marker for each row of
   `Resources`, so DLC and other mods' resources are covered), so a resource under a marker stays collected: the marker
   takes over from the plantation, camp or fishing boat it replaces, and a resource tile joins without a question.
   Watched 2026-09-30: Pearls set on an unimproved sea tile that then joined was collected by its city after a turn,
@@ -402,7 +402,12 @@ to 0.46 along an arm is at the tile's edge.
     bare, never two side by side. A National Park's carry a campsite, a cabin village and a lone shelter in turn; a
     Wilderness Area's a thicket: the tile's own stand with a thick understory under it.
   - A National Park raises one more lookout tower per level on another hill, never beside a tower (`lookoutTiles`).
-  - A Wilderness Area's open tiles get more grass tufts per level and more of them undergrowth, but never more trees:
+  - A Wilderness Area grows by swapping and by wildlife, never by more trees: from 8 tiles about a third of its grass tufts
+    become wildflower clumps (`wildflowers`, `FOL_Flowers_Small_*`); from 16 rarer species join where the land suits
+    them (the planner's `rare` accent, `rareFor`: goats on hills, giraffes on tropical and plains land, turtles on a
+    shore); at 24 a third of its stands have one tree swapped for a giant (`oldGrowth`: a coast redwood, or a flowering
+    tree in the tropics). Its open tiles also get more grass tufts per level and more of them undergrowth. Never more
+    trees:
     extra trees, a second lattice of woods on wooded tiles and four-tree thickets crowded into each other
     (`nshow-exp`, 2026-10-04).
   - Both kinds carry more strays, climbing animals and waders (`LEVEL_BOOST` in `np-scene.js`; an accent kept off

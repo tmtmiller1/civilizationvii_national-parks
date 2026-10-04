@@ -7,7 +7,7 @@
   Exploration, 3 in Modern) and so does their text. This file holds no rows.
 
   The yield comes from the land: every tile added carries a marker improvement that pays on its own tile
-  (data/national-park-land.xml), so a larger park is worth more.
+  (data/national-parks-land.xml), so a larger park is worth more.
 -->
 <Database>
 

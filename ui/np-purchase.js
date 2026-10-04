@@ -1,4 +1,4 @@
-// np-purchase.js - National Park: Found and Expand rows in the game's own purchase list.
+// np-purchase.js - National Parks: Found and Expand rows in the game's own purchase list.
 //
 // The game cannot sell a project for Gold: a project with CanPurchase is only queued as a build from the purchase
 // list (production-chooser-helpers.js Construct), and a town refuses a CityOnly project by every route. So the

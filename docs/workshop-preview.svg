@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Workshop / identity emblem for the National Parks mod. Matches the Tower-mods family look (dark ground, gold
+     frame, parchment art, serif wordmark), and shares the Canals and Dams hex geometry so the three sit together.
+     Motif: one tile of protected land, a snow-capped range under a rising sun, a river running out of it across a
+     meadow, pines on either bank. Everything is drawn inside the hex and mirrored about its centre line, bar the
+     river's meander. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#243042"/>
+      <stop offset="100%" stop-color="#121821"/>
+    </linearGradient>
+    <linearGradient id="parchment" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7eed1"/>
+      <stop offset="100%" stop-color="#e7d4a3"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2f5d7a"/>
+      <stop offset="100%" stop-color="#1b3a50"/>
+    </linearGradient>
+    <linearGradient id="snow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dfeaf2"/>
+      <stop offset="100%" stop-color="#f7eed1"/>
+    </linearGradient>
+    <linearGradient id="pine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3f6b52"/>
+      <stop offset="100%" stop-color="#234434"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e7d4a3" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#e7d4a3" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="hexclip">
+      <polygon points="812,430 662,689.8 362,689.8 212,430 362,170.2 662,170.2"/>
+    </clipPath>
+    <!-- One pine: three boughs on a short trunk, origin at the foot of the boughs -->
+    <g id="tree">
+      <rect x="-7" y="10" width="14" height="22" fill="#c9a24c"/>
+      <path d="M0,-122 L-30,-70 L-15,-70 L-41,-28 L-21,-28 L-50,12 L50,12 L21,-28 L41,-28 L15,-70 L30,-70 Z"
+            fill="url(#pine)" stroke="#c9a24c" stroke-width="4" stroke-linejoin="round"/>
+    </g>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <!-- Gold frame to echo the in-game parchment/gold palette -->
+  <rect x="26" y="26" width="972" height="972" rx="30" fill="none" stroke="#c9a24c" stroke-width="4" opacity="0.5"/>
+
+  <!-- Light over the tile -->
+  <circle cx="512" cy="430" r="340" fill="url(#glow)"/>
+
+  <!-- The tile -->
+  <polygon points="812,430 662,689.8 362,689.8 212,430 362,170.2 662,170.2" fill="url(#parchment)"/>
+
+  <g clip-path="url(#hexclip)">
+    <!-- The sky, filling the tile above the meadow -->
+    <rect x="200" y="150" width="624" height="400" fill="url(#water)"/>
+    <!-- The sun coming up behind the summit -->
+    <circle cx="512" cy="268" r="84" fill="#c9a24c" opacity="0.25"/>
+    <circle cx="512" cy="268" r="62" fill="url(#parchment)" stroke="#c9a24c" stroke-width="5"/>
+
+    <!-- The far peaks, left and right -->
+    <g fill="url(#parchment)" stroke="#c9a24c" stroke-width="6" stroke-linejoin="round">
+      <path d="M212,545 L372,340 L500,545 Z"/>
+      <path d="M812,545 L652,340 L524,545 Z"/>
+    </g>
+    <g fill="url(#snow)" stroke="#c9a24c" stroke-width="4" stroke-linejoin="round">
+      <path d="M372,340 L329,395 L350,381 L367,399 L386,383 L406,395 Z"/>
+      <path d="M652,340 L695,395 L674,381 L657,399 L638,383 L618,395 Z"/>
+    </g>
+    <!-- The summit -->
+    <path d="M332,545 L512,255 L692,545 Z" fill="url(#parchment)" stroke="#c9a24c" stroke-width="6"
+          stroke-linejoin="round"/>
+    <path d="M512,255 L458,342 L484,322 L499,345 L512,326 L525,345 L540,322 L566,342 Z"
+          fill="url(#snow)" stroke="#c9a24c" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Ridge lines down the faces -->
+    <g fill="none" stroke="#c9a24c" stroke-width="3" stroke-linecap="round" opacity="0.5">
+      <path d="M512,370 L490,430 L502,480"/>
+      <path d="M548,400 L572,470"/>
+      <path d="M362,430 L348,480"/>
+      <path d="M662,430 L676,480"/>
+    </g>
+
+    <!-- The meadow, rising a little toward the middle -->
+    <path d="M200,540 Q512,512 824,540 L824,700 L200,700 Z"
+          fill="url(#parchment)" stroke="#c9a24c" stroke-width="6" stroke-linejoin="round"/>
+    <!-- The river out of the range, widening toward the near edge -->
+    <path d="M506,526 C484,558 544,582 520,616 C502,644 484,668 470,700 L566,700 C572,668 548,646 560,616
+             C578,580 528,560 520,526 Z" fill="url(#water)"/>
+    <g fill="none" stroke="#e7d4a3" stroke-width="3" stroke-linecap="round" opacity="0.45">
+      <path d="M516,598 q9,-7 18,0 t18,0"/>
+      <path d="M490,662 q12,-9 24,0 t24,0"/>
+    </g>
+
+    <!-- Pines on either bank -->
+    <use xlink:href="#tree" href="#tree" transform="translate(362,596) scale(0.72)"/>
+    <use xlink:href="#tree" href="#tree" transform="translate(662,596) scale(0.72)"/>
+    <use xlink:href="#tree" href="#tree" transform="translate(418,640)"/>
+    <use xlink:href="#tree" href="#tree" transform="translate(606,640)"/>
+  </g>
+
+  <!-- The tile's edge, over the art -->
+  <polygon points="812,430 662,689.8 362,689.8 212,430 362,170.2 662,170.2"
+           fill="none" stroke="#c9a24c" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- Wordmark -->
+  <text x="512" y="832" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="80"
+        font-weight="bold" fill="#e7d4a3" letter-spacing="3">NATIONAL PARKS</text>
+  <!-- Tagline -->
+  <text x="512" y="902" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="38"
+        fill="#c9a24c" opacity="0.92">Set the wild land aside</text>
+</svg>

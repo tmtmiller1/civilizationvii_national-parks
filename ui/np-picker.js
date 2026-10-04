@@ -1,4 +1,4 @@
-// np-picker.js - National Park: choosing the land a park takes.
+// np-picker.js - National Parks: choosing the land a park takes.
 //
 // INTERFACEMODE_NP_ADD_TILES is a ChoosePlotInterfaceMode, the base class behind the game's own tile choosers
 // (acquire tile, place building). It shades the park in its kind's colour (green, or ocher for a Wilderness Area),
@@ -15,7 +15,7 @@
 // Choose land button, so the player can always get back in: the game may switch the picker off at the start of a
 // turn, and a picker that opened behind something else would otherwise be lost until the next turn.
 //
-// The mode's database row is in data/national-park.xml; without it switchTo refuses the mode. Two things every
+// The mode's database row is in data/national-parks.xml; without it switchTo refuses the mode. Two things every
 // mod-made plot mode needs: a reset() method, which transitionFrom calls and the base class does not define, and a
 // handleInput that returns the game's InputHandlerState values (see handleInput) and consumes Escape.
 "use strict";
@@ -70,7 +70,7 @@ function button(captionTag, tipTag, onPress, small = false) {
   btn.classList.add("mx-1", "my-1");
   if (small) btn.classList.add("fxs-button-small");
   btn.style.pointerEvents = "auto";
-  // A mouse press arrives as both "click" and "action-activate" (watched: Confirm ran twice); act on the first.
+  // A mouse press arrives as both "click" and "action-activate" (Confirm ran twice); act on the first.
   let last = 0;
   const run = () => {
     const now = Date.now();
@@ -310,7 +310,7 @@ class NpAddTilesMode extends ChoosePlotInterfaceMode {
     return InputHandlerState.Handled;
   }
 
-  // --- the banner: which park, what to do, Confirm / Later / Rename ------------------------------------
+  // the banner: which park, what to do, Confirm / Later / Rename
 
   showBanner() {
     this.removeBanner();
@@ -433,7 +433,7 @@ export function finishChoice() {
   return handler.finish();
 }
 
-// --- dialogs -----------------------------------------------------------------------------------------------
+// dialogs
 
 function typeName(table, type) {
   return safe(() => compose(GameInfo[table].lookup(type).Name), type);
@@ -454,7 +454,7 @@ function eyebrowOf(kindKey) {
 /**
  * A question over the picker, answered OK or Cancel, in the same form as the game's decision pop-ups (np-dialog.js).
  * The game's own dialog box is not used here: opening it switches the map out of the picker's interface mode and the
- * selection is lost (watched 2026-09-29). `view`: { title, eyebrow, eyebrowIcon, body, quote }.
+ * selection is lost. `view`: { title, eyebrow, eyebrowIcon, body, quote }.
  */
 function askInPicker(view, yes) {
   safe(() => { const old = document.getElementById(ASK_ID); if (old) old.remove(); });
@@ -507,7 +507,7 @@ export function noticeNoLand(park, founding = null) {
     body: compose("LOC_NP_PICKER_NONE"), quote: quoteFor("NOLAND", `noland|${park.id}|${park.tiles.length}`) });
 }
 
-// --- renaming without Geographic Labels -----------------------------------------------------------------
+// renaming without Geographic Labels
 
 const RENAME_ID = "np-rename";
 
@@ -548,7 +548,7 @@ export function openParkRename(park, done = () => {}) {
   return true;
 }
 
-// --- the Choose land prompt -----------------------------------------------------------------------------------
+// the Choose land prompt
 //
 // Shown at the top of the screen while a park of the local player has land waiting or a founding is waiting for its
 // tile, nothing else is on screen and the picker is closed; its button opens the picker.
@@ -610,7 +610,7 @@ function tickPrompt() {
   else if (promptPark !== null || safe(() => document.getElementById(PROMPT_ID), null)) hidePrompt();
 }
 
-// --- buying an expansion for Gold (the purchase itself is in the production panel's list, np-purchase.js) ---------
+// buying an expansion for Gold (the purchase itself is in the production panel's list, np-purchase.js)
 
 let buyHandler = null;
 

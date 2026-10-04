@@ -1,5 +1,5 @@
 #!/bin/zsh
-# shot.sh - DEV ONLY. Capture the Civilization VII window, and nothing else, into a PNG.
+# shot.sh - dev only. Capture the Civilization VII window, and nothing else, into a PNG.
 #
 #   devtools/shot.sh <out.png> [x y [zoom]]
 #

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- DEV ONLY. Can a park marker's payout show on its own tile, and survive MOD_NP_NO_NATURAL_YIELD (-100%)?
+<!-- Dev only. Can a park marker's payout show on its own tile, and survive MOD_NP_NO_NATURAL_YIELD (-100%)?
      Route A: Constructible_YieldChanges on IMPROVEMENT_NATIONAL_PARK_LAND (+1 Culture, +1 Happiness).
      Route B: an EFFECT_PLOT_ADJUST_YIELD Amount modifier on IMPROVEMENT_NATIONAL_PARK_WILD's own plot (+2 Culture).
      Read GameplayMap.getYield on a marked tile of each kind, the yields layer, and the city's totals. Remove from Mods/ after. -->
@@ -13,7 +13,7 @@
 		<AffectsSavedGames>1</AffectsSavedGames>
 	</Properties>
 	<Dependencies>
-		<Mod id="tower-national-park" title="National Park"/>
+		<Mod id="tower-national-park" title="National Parks"/>
 	</Dependencies>
 	<ActionCriteria>
 		<Criteria id="always"><AlwaysMet></AlwaysMet></Criteria>

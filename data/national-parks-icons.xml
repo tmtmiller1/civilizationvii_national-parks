@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Loaded through UpdateIcons, not UpdateDatabase (base: age-modern.modinfo). New textures cannot be authored
      yet, so the park's entries use the base City Park build icon and the Wilderness Area's the Wild Game resource icon. The land markers need one too: without it the city and
-     town view drew a lettered "N" badge on every park tile (watched 2026-09-29). -->
+     town view drew a lettered "N" badge on every park tile. -->
 <Database>
     <IconDefinitions>
         <Row>

@@ -2,9 +2,9 @@
 <!--
   IMPROVEMENT_NATIONAL_PARK: the park's founding tile. An improvement (not a building), so it keeps the natural ground
   under it. It is not built through the production list: the engine places an improvement only on a tile that already
-  carries a rural district (it would replace a farm) and never on a bare one, even with CanBuildOnNonDistrict (watched
-  2026-10-02). A settlement founds a park with Found National Park (a city's project, or a purchase in a city or town;
-  data/national-park-<age>.xml), and the mod places the improvement by script on the empty tile its owner chooses
+  carries a rural district (it would replace a farm) and never on a bare one, even with CanBuildOnNonDistrict. A
+  settlement founds a park with Found National Park (a city's project, or a purchase in a city or town;
+  data/national-parks-<age>.xml), and the mod places the improvement by script on the empty tile its owner chooses
   (ui/np-core.js foundPark). It then grows with Expand National Park, or an expansion bought for Gold.
 
   IMPROVEMENT_WILDERNESS_AREA is its twin: the same founding and growth, paid in Influence (+4, and +10 for each
@@ -15,7 +15,7 @@
 
   The Constructibles rows are in the per-age files with their civic unlocks (which show the park in the civics tree
   and gate the Found projects); everything else here is shared by both ages. The improvement has no art of its own
-  (watched 2026-09-27: a completed park drew nothing); the look is drawn by script from shipped meshes.
+  (a completed park drew nothing); the look is drawn by script from shipped meshes.
 -->
 <Database>
 

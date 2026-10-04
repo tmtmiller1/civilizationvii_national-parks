@@ -7,13 +7,13 @@ quotes are English originals and a translation would need a named published tran
 
 ## Rules
 
-- **Verified wording.** Every quote was located in a readable copy of its source, and the link below is where it was
-  read; each one was matched word for word against the full text. Quote-aggregator sites do not count. Cuts are marked
-  with an ellipsis, and a line is never extended past the point its note names.
-- **Public domain.** Every work was published before 1930.
-- **Sensitivity.** No line demeans a people or praises removing anyone from their land; a line whose next sentence
+- Every quote was located in a readable copy of its source and matched word for word against the full text; the link
+  below is where it was read. Quote-aggregator sites do not count. Cuts are marked with an ellipsis, and a line is
+  never extended past the point its note names.
+- Every work was published before 1930, so all are in the public domain.
+- No line demeans a people or praises removing anyone from their land; a line whose next sentence
   turns to people is checked in context.
-- **Dates.** The year is the first publication; where the copy read is a later edition, the note says so.
+- The year is the first publication; where the copy read is a later edition, the note says so.
 
 ## National Park founded or grown (`PARK`, 8)
 
@@ -23,7 +23,7 @@ quotes are English originals and a translation would need a named published tran
 | `PARK_2` | "…mountain parks and reservations are useful not only as fountains of timber and irrigating rivers, but as fountains of life." John Muir, Our National Parks (1901) | [Our National Parks](https://www.gutenberg.org/cache/epub/60929/pg60929.txt) | Chapter I, The Wild Parks and Forest Reservations of the West, opening paragraph. Leading cut drops the first half of the sentence ('Thousands of tired... that wildness is a necessity; and that'). |
 | `PARK_3` | "Climb the mountains and get their good tidings. Nature's peace will flow into you as sunshine flows into trees." John Muir, Our National Parks (1901) | [Our National Parks](https://www.gutenberg.org/cache/epub/60929/pg60929.txt) | Chapter II, The Yellowstone National Park. Two full sentences, no cuts. |
 | `PARK_4` | "…the wildest health and pleasure grounds accessible and available to tourists seeking escape from care and dust and early death are the parks and reservations of the West." John Muir, Our National Parks (1901) | [Our National Parks](https://www.gutenberg.org/cache/epub/60929/pg60929.txt) | Chapter I. Leading cut drops 'In the meantime,'. |
-| `PARK_5` | "…the enjoyment of scenery employs the mind without fatigue and yet exercises it; tranquilizes it and yet enlivens it…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865) | [Yosemite and the Mariposa Grove: A Preliminary Report](https://web.archive.org/web/20130115212928/http://www.nps.gov/history/history/online_books/anps/anps_1b.htm) | NPS Park History Program edition (America's National Park System: The Critical Documents, 1b), via Internet Archive snapshot; the live nps.gov URL https://www.nps.gov/parkhistory/online_books/anps/anps_1b.htm no longer serves the text. Leading cut drops 'It therefore results that'; trailing cut before 'and thus, through the influence of the mind over the body...'. Note: the yosemite.ca.us transcription prints a comma, not a semicolon, after 'exercises it'. |
+| `PARK_5` | "…the enjoyment of scenery employs the mind without fatigue and yet exercises it; tranquilizes it and yet enlivens it…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865) | [Yosemite and the Mariposa Grove: A Preliminary Report](https://web.archive.org/web/20130115212928/http://www.nps.gov/history/history/online_books/anps/anps_1b.htm) | NPS Park History Program edition (America's National Park System: The Critical Documents, 1b), via Internet Archive snapshot; the live nps.gov URL https://www.nps.gov/parkhistory/online_books/anps/anps_1b.htm no longer serves the text. Leading cut drops 'It therefore results that'; trailing cut before 'and thus, through the influence of the mind over the body...'. The yosemite.ca.us transcription prints a comma, not a semicolon, after 'exercises it'. |
 | `PARK_6` | "…the Yosemite should be held, guarded and managed for the free use of the whole body of the people forever…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865) | [Yosemite and the Mariposa Grove: A Preliminary Report](https://web.archive.org/web/20130115212928/http://www.nps.gov/history/history/online_books/anps/anps_1b.htm) | Same NPS edition. Paraphrasing the 1864 Act; leading cut drops 'It was in accordance with these views ... that Congress enacted that'; trailing cut. |
 | `PARK_7` | "This Park was created, and is now administered, for the benefit and enjoyment of the people." Theodore Roosevelt, Presidential Addresses and State Papers, vol. 1 (1904) | [Presidential Addresses and State Papers, vol. 1](https://www.gutenberg.org/cache/epub/74572/pg74572.txt) | Address at the laying of the cornerstone of the gateway to Yellowstone National Park, Gardiner, Montana, April 24, 1903. Full sentence. |
 | `PARK_8` | "No nation has ever fallen for having too much scenery." Enos A. Mills, Your National Parks (1917) | [Your National Parks](https://www.gutenberg.org/cache/epub/42248/pg42248.txt) | Introductory chapter. Full sentence; under 8 words. |

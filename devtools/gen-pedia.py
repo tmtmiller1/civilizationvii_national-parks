@@ -28,7 +28,7 @@ GROUPS = [
 
 # (section, page id, group, sidebar title, [(chapter id, chapter title or None, [paragraphs])], [search terms])
 PAGES = [
-    # ── The mod's own section ─────────────────────────────────────────────────────────────────────────────
+    # The mod's own section
     (SECTION, "NP_OVERVIEW", "NP_START", "National Parks", [
         ("CONTENT", None, [
             "Found a National Park on an empty, Charming tile a settlement owns, then expand it over the land around it: mountains, forests, lakes, rivers, the sea, natural wonders and open country. You choose which tiles it takes.",
@@ -224,7 +224,7 @@ PAGES = [
         ]),
     ], ["OPTIONS", "SETTINGS"]),
 
-    # ── Game Concepts: parks and wilderness in the real world ─────────────────────────────────────────────
+    # Game Concepts: parks and wilderness in the real world
     (CONCEPTS, "NP_REAL_PARKS", REAL_GROUP, "National Parks", [
         ("CONTENT", None, [
             "A national park is land a country sets aside to protect its scenery, wildlife and natural features, while letting the public visit. Most are owned and run by a national government.",
