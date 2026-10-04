@@ -11,6 +11,8 @@ semantic versioning.
   towers and monuments, and animals no longer stand inside them.
 - "End this expansion?" now has a Later button, as its text says: the tiles you selected are added and the rest of the
   expansion is kept for another turn.
+- Trees no longer pile into each other: a tile takes at most one yellow birch grove (the model is already a whole
+  grove), woods and cabin rows take none, and no tree stands in another's crown.
 - The wildflower clumps in Wilderness Areas are gone: they read as yellow blots on the map. A Wilderness Area still
   gains rarer wildlife at 16 tiles and old-growth giants at 24.
 

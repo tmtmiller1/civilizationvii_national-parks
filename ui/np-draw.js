@@ -522,7 +522,34 @@ function treeStand(t, kit, count, shape = 0, grove = 0) {
   }
   if (shape === 0) out.push([pick(19), jit(20, 0.1), jit(21, 0.1), 1.3 + hash01(t, 22) * 0.5, Math.floor(hash01(t, 23) * 360)]);
   if (kit.accent && hash01(t, 24) < 0.3) out.push([kit.accent, jit(25, 0.3), jit(26, 0.3), 1 + hash01(t, 27) * 0.4, Math.floor(hash01(t, 28) * 360)]);
-  return out;
+  return spaced(oneGrove(out, kit));
+}
+
+/**
+ * Tree kinds that are already a whole grove of trees in one model. Placed like single trees, three to six to a stand
+ * and all over a forest lattice, the yellow birch groves piled into each other in loud masses (watched 2026-10-04,
+ * cap57-exp). A tile takes one at most (oneGrove), at a modest size, and the lattice and cabin rows take none (singles).
+ */
+const GROVES = new Set(["FOL_Birch_Tall_Grove_A"]);
+export function singles(trees) { const s = trees.filter((a) => !GROVES.has(a)); return s.length ? s : trees; }
+export function oneGrove(list, kit) {
+  const single = singles(kit.trees)[0];
+  let seen = false;
+  return list.map((e) => {
+    if (!GROVES.has(e[0])) return e;
+    if (seen) return [single, e[1], e[2], e[3], e[4]];
+    seen = true;
+    return [e[0], e[1], e[2], Math.min(e[3], 1.2), e[4]];
+  });
+}
+/** Drops a tree that would stand in another's crown: within 0.09 of an earlier one, 0.15 where either is a grove. Pure. */
+export function spaced(list) {
+  const kept = [];
+  for (const e of list) {
+    const need = (o) => (GROVES.has(e[0]) || GROVES.has(o[0]) ? 0.15 : 0.09);
+    if (kept.every((o) => Math.hypot(e[1] - o[1], e[2] - o[2]) >= need(o))) kept.push(e);
+  }
+  return kept;
 }
 
 /** A loose rock of the local stone (the plains and desert sets draw in their own color; see WALL_KITS). */
@@ -647,7 +674,8 @@ export function forestCover(t, kit, spacing = FOREST_SPACING) {
       k++;
       const px = x + shift + jit0(t, 200 + k, spacing * 0.6), py = y + jit0(t, 400 + k, spacing * 0.6);
       if (!inHex(px, py, FOREST_REACH)) continue;
-      const pick = kit.trees[Math.floor(hash01(t, 600 + k) * kit.trees.length)];
+      const kinds = singles(kit.trees);
+      const pick = kinds[Math.floor(hash01(t, 600 + k) * kinds.length)];
       out.push([pick, px, py, 0.9 + hash01(t, 800 + k) * 0.6, Math.floor(hash01(t, 1000 + k) * 360)]);
       if (kit.under && hash01(t, 1200 + k) < 0.25) out.push([kit.under, px + jit0(t, 1400 + k, 0.08), py + jit0(t, 1600 + k, 0.08), 0.8 + hash01(t, 1800 + k) * 0.4, Math.floor(hash01(t, 2000 + k) * 360)]);
     }
@@ -802,7 +830,7 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
   if (open && (pick < CABIN_SHARE || site === "village")) {
     clearing = village = true;
     const c = along(away, 0.06, 0);
-    out.push(...cabinCluster(t, c.x, c.y, away + 180, kit.trees));
+    out.push(...cabinCluster(t, c.x, c.y, away + 180, singles(kit.trees)));
   } else if (open && (pick < CABIN_SHARE + CAMP_SHARE || site === "camp")) {
     clearing = camp = true;
     const c = along(away, 0.18, 0);

@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { hash01, connectedSelection } from "../ui/np-core.js";
-import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle, cabinCluster, lookoutTiles, levelSites, sitesPerLevel, monumentSites, monumentCounts, oldGrowth, keepClear, solidSpots } from "../ui/np-draw.js";
+import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle, cabinCluster, lookoutTiles, levelSites, sitesPerLevel, monumentSites, monumentCounts, oldGrowth, oneGrove, spaced, singles, keepClear, solidSpots } from "../ui/np-draw.js";
 import { baseNameOf, chooseName, rankCandidates } from "../ui/np-names.js";
 
 // A toy hex world: plot p's ring is six made-up neighbors.
@@ -261,6 +261,17 @@ test("scene: no more than two flocks of one kind overhead in a park, however lar
     for (const t of allTiles) if (p.get(t).air) n[p.get(t).air] = (n[p.get(t).air] || 0) + 1;
     assert.ok(Object.values(n).every((k) => k <= 2), `${biome} ${JSON.stringify(n)}`);
   }
+});
+
+test("trees: one birch grove a tile at most, none stacked in another's crown", () => {
+  const kit = { trees: ["BIN_FOL_Grassland_Trees_SM", "BIN_FOL_Grassland_Trees_LG", "FOL_Birch_Tall_Grove_A"] };
+  const G = "FOL_Birch_Tall_Grove_A";
+  const stand = [[G, 0, 0, 1.8, 0], [G, 0.2, 0, 1.5, 0], [G, 0.1, 0.02, 1.5, 0], ["BIN_FOL_Grassland_Trees_SM", 0.3, 0.3, 1, 0], ["BIN_FOL_Grassland_Trees_SM", 0.33, 0.3, 1, 0]];
+  const out = spaced(oneGrove(stand, kit));
+  assert.equal(out.filter((e) => e[0] === G).length, 1, "one grove");
+  assert.ok(out.find((e) => e[0] === G)[3] <= 1.2, "at a modest size");
+  for (let i = 0; i < out.length; i++) for (let j = i + 1; j < out.length; j++) assert.ok(Math.hypot(out[i][1] - out[j][1], out[i][2] - out[j][2]) >= 0.09);
+  assert.deepEqual(singles(kit.trees), ["BIN_FOL_Grassland_Trees_SM", "BIN_FOL_Grassland_Trees_LG"]);
 });
 
 test("wilderness old growth: a giant for the biomes that have one", () => {
