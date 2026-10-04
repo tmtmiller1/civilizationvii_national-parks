@@ -3,6 +3,13 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
+## [1.0.2] - 2026-10-04
+
+- A Wilderness Area now shows its growth without adding trees: wildflowers among the grass from 8 tiles, rarer wildlife
+  from 16 (goats on hills, giraffes on open tropical and plains land, turtles on a shore), and old-growth giants at 24.
+- The mod's folder and files are now named `national-parks`. If you installed 1.0.0 or 1.0.1 by hand, delete the old
+  `national-park` folder from Mods before copying this one in. Saves and options carry over.
+
 ## [1.0.1] - 2026-10-04
 
 - No change in game: the mod plays exactly as 1.0.0. Repository housekeeping only.
