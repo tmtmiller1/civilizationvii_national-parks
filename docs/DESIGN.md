@@ -377,17 +377,21 @@ to 0.46 along an arm is at the tile's edge.
   order gave wrong readings: the captures had slipped by a tile.
   Under `PlacementMode.TERRAIN` these models sink by an amount that grows with scale, so each is lifted by 8 + 24 x
   scale (watched: 0.5 needs about 20).
-- **Buildings.** The founding tile carries the warden's lodge, a log cabin (`IMP_Camp_BldA` at 0.75), an open
-  picnic shelter (`PROP_Pasture_ANT_BldB` at 0.7) and the park sign, with trees and a trail. Elsewhere, one draw per
-  tile (`hash01(t, 70)`) gives open, flat land a cabin village (about one tile in sixteen) or a campsite (one in
-  twelve), and any other non-wooded tile now and then a lone picnic shelter or clapboard ranger house
-  (`PROP_MOD_Farm_BldC`) at 0.38 to 0.55 scale. A cabin village is four or five log cabins (`IMP_Camp_BldA` at 0.36 to
-  0.42) in a loose arc around a trodden clearing, each turned toward its middle, as in the lodges of the American
-  parks; the tile keeps two trees on the side the arc opens to, and no grass or understory. Until 1.2.0 one tile in
-  six got a single cabin, shelter or ranger house at 0.5 to 0.66. The Menagerie shed and arch were dropped as
-  tent-like. A Wilderness Area has none of these: its founding tile gets
-  a tree stand in place of the lodge and shelter, and it has no cabins and no lookout tower. Its walls, trees,
-  wildlife and hawk are the park's.
+- **Buildings.** The founding tile carries the warden's lodge, a log cabin (`IMP_Camp_BldA` at 0.75), an open picnic
+  shelter (`PROP_Pasture_ANT_BldB` at 0.7) and the park sign, with trees and a trail. Elsewhere, one draw per tile
+  (`hash01(t, 70)`) gives open, flat land a cabin village (about one tile in sixteen) or a campsite (one in twelve),
+  and any other non-wooded tile now and then a lone picnic shelter or clapboard ranger house (`PROP_MOD_Farm_BldC`) at
+  0.38 to 0.55 scale. A cabin village is three or four log cabins (`IMP_Camp_BldA`) in two loose rows facing each
+  other across a curving dirt trail, cabins and trees taking turns along each row (cabin, tree, cabin on one side;
+  tree, cabin, tree on the other), as in the lodges of the American parks (a ring round a clearing read as a circle of
+  houses, and bare rows as a housing tract); the rows' trees are the tile's only trees, and it has no grass or
+  understory. Cabins are 0.29 to 0.34 scale. On every tile, trees, shrubs and tufts inside a built piece's room are
+  dropped (`keepClear`, `solidSpots`: cabins and shelters by their scale, tents, fire pits, towers, the sign,
+  monuments), and an animal that would stand in one is not placed; an offline audit of 23,040 dressed tiles (every
+  level, both kinds, five biomes) found no built piece overlapping another and no plant inside one. Until 1.2.0 one
+  tile in six got a single cabin, shelter or ranger house at 0.5 to 0.66. The Menagerie shed and arch were dropped as
+  tent-like. A Wilderness Area has none of these: its founding tile gets a tree stand in place of the lodge and
+  shelter, and it has no cabins and no lookout tower. Its walls, trees, wildlife and hawk are the park's.
 - **Campsite.** Two or three ridge tents (`PROP_Tent_GEN_Sleeper_Standard_C` at 1.1 to 1.25, tinted in the owner's
   colours) round a burning `PROP_Fire_Pit` at 0.7, on a clearing with no grass tufts or understory. At the woodcutter's
   size (0.6) the tents were drawn but went unseen at play zoom among the tile's shrubs (crash soak `ncamp1`: same-camera

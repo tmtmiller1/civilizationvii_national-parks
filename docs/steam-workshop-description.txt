@@ -1,5 +1,5 @@
 [h1]National Parks[/h1]
-[b]Version 1.0.2, for Civilization VII 1.5.0[/b]
+[b]Version 1.0.3, for Civilization VII 1.5.0[/b]
 National Parks lets you found a park or a wilderness area on an empty, Charming tile a city or town owns and grow it, tile by tile, over the wild land around it: mountains, forests, lakes, rivers, the sea, natural wonders and open country. Every tile of park land pays, the land is protected, and the park is drawn on the map with walls, trees, a warden's station and animated wildlife.
 [h2]The Mod Includes[/h2]
 [list]

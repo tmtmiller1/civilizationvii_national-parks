@@ -3,6 +3,13 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
+## [1.0.3] - 2026-10-04
+
+- Cabin villages are laid out as a lodge trail: two loose rows of smaller cabins facing each other across a curving
+  dirt trail, with a tree between each pair of cabins. They replace the ring of cabins round a clearing.
+- Nothing grows through a building: trees, shrubs and grass tufts keep clear of cabins, shelters, tents, lookout
+  towers and monuments, and animals no longer stand inside them.
+
 ## [1.0.2] - 2026-10-04
 
 - A Wilderness Area now shows its growth without adding trees: wildflowers among the grass from 8 tiles, rarer wildlife

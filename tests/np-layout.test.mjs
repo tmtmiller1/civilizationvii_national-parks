@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { hash01, connectedSelection } from "../ui/np-core.js";
-import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle, cabinCluster, lookoutTiles, levelSites, sitesPerLevel, monumentSites, monumentCounts, wildflowers, oldGrowth } from "../ui/np-draw.js";
+import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle, cabinCluster, lookoutTiles, levelSites, sitesPerLevel, monumentSites, monumentCounts, wildflowers, oldGrowth, keepClear, solidSpots } from "../ui/np-draw.js";
 import { baseNameOf, chooseName, rankCandidates } from "../ui/np-names.js";
 
 // A toy hex world: plot p's ring is six made-up neighbors.
@@ -394,26 +394,40 @@ test("lens: one fill per kind and role, revealed tiles only, the founding tile d
   assert.ok(LENS_COLORS.park.anchor.w > LENS_COLORS.park.land.w);
 });
 
-test("a cabin village has four or five small cabins, apart, facing its clearing, clear of the trees", () => {
+test("nothing grows through a building: trees and tufts inside a built piece's room are dropped, the rest kept", () => {
+  const list = [["IMP_Camp_BldA", 0, 0, 0.3, 0], ["BIN_FOL_Grassland_Trees_SM", 0.03, 0.02, 1.2, 0], ["BIN_FOL_Grassland_Trees_SM", 0.2, 0, 1.2, 0],
+    ["BIN_FOL_Grassland_Groundcover_B", -0.04, 0, 1, 0], ["FEATURE_FOREST", 0, 0, 1, 0], ["PROP_Tent_GEN_Sleeper_Standard_C", 0.2, 0.2, 1.1, 0]];
+  const out = keepClear(list).map((p) => `${p[0]}@${p[1]}`);
+  assert.deepEqual(out, ["IMP_Camp_BldA@0", "BIN_FOL_Grassland_Trees_SM@0.2", "FEATURE_FOREST@0", "PROP_Tent_GEN_Sleeper_Standard_C@0.2"]);
+  assert.equal(solidSpots(list).length, 2);
+  const bare = [["BIN_FOL_Grassland_Trees_SM", 0, 0, 1, 0]];
+  assert.equal(keepClear(bare), bare, "a tile with nothing built is untouched");
+});
+
+test("a cabin village: two loose rows across a trail, cabins and trees taking turns, nothing crowded", () => {
   const rad = (d) => (d * Math.PI) / 180;
   for (let t = 0; t < 400; t++) {
     const side = hash01(t, 5) * 360, away = side + 180;
     const c = { x: Math.cos(rad(away)) * 0.06, y: Math.sin(rad(away)) * 0.06 };
-    const cabins = cabinCluster(t, c.x, c.y, side);
-    assert.ok(cabins.length === 4 || cabins.length === 5);
-    for (const [asset, x, y, sc] of cabins) {
-      assert.equal(asset, "IMP_Camp_BldA");
-      assert.ok(sc >= 0.36 && sc <= 0.42, `scale ${sc}`);
-      assert.ok(Math.hypot(x, y) <= 0.27, `cabin out at ${Math.hypot(x, y)}`);
-      // The tree stand keeps within 35 degrees of `side`, 0.14 to 0.26 out (treeStand shape 1).
-      for (let r = 0.14; r <= 0.26; r += 0.04) for (let da = -35; da <= 35; da += 10) {
-        const tx = Math.cos(rad(side + da)) * r, ty = Math.sin(rad(side + da)) * r;
-        assert.ok(Math.hypot(x - tx, y - ty) >= 0.07, `tile ${t}: cabin within ${Math.hypot(x - tx, y - ty)} of a tree`);
-      }
+    const pieces = cabinCluster(t, c.x, c.y, side, ["TREE"]);
+    const cabins = pieces.filter((p) => p[0] === "IMP_Camp_BldA"), trees = pieces.filter((p) => p[0] === "TREE");
+    assert.ok(cabins.length === 3 || cabins.length === 4, `tile ${t}: ${cabins.length} cabins`);
+    assert.equal(trees.length, cabins.length, "a tree in every gap");
+    assert.ok(pieces.some((p) => /Decal_Path/.test(p[0])), "a trail");
+    assert.equal(cabinCluster(t, c.x, c.y, side).filter((p) => p[0] === "TREE").length, 0, "no trees without a kit");
+    for (const [, x, y, sc] of cabins) {
+      assert.ok(sc >= 0.29 && sc <= 0.34, `scale ${sc}`);
+      assert.ok(Math.hypot(x, y) <= 0.27, `tile ${t}: cabin out at ${Math.hypot(x, y)}`);
+    }
+    for (const tr of trees) for (const cab of cabins) {
+      assert.ok(Math.hypot(tr[1] - cab[1], tr[2] - cab[2]) >= 0.08, `tile ${t}: a tree ${Math.hypot(tr[1] - cab[1], tr[2] - cab[2])} from a cabin`);
     }
     for (let i = 0; i < cabins.length; i++) for (let j = i + 1; j < cabins.length; j++) {
       const d = Math.hypot(cabins[i][1] - cabins[j][1], cabins[i][2] - cabins[j][2]);
       assert.ok(d >= 0.1, `tile ${t}: cabins ${d} apart`);
     }
+    // Two rows facing each other, not a ring and not one line: some cabins front the opposite way.
+    const faces = cabins.map((p) => p[4]);
+    assert.ok(Math.max(...faces.map((f) => Math.abs(((f - faces[0]) % 360 + 540) % 360 - 180))) > 120, `tile ${t}: cabins all front one way`);
   }
 });

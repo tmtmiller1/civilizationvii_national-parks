@@ -65,26 +65,41 @@ const STATION = [
 const PARK_BUILDINGS = [["PROP_Pasture_ANT_BldB", 0.5], ["PROP_MOD_Farm_BldC", 0.42]];
 const SHELTER_SHARE = 0.06;       // non-wooded National Park tiles with a lone shelter or ranger house
 /**
- * A cabin village, as in the lodges of the American parks: four or five log cabins (IMP_Camp_BldA, the warden's
- * lodge, well scaled down) in a loose arc around a shared clearing, each turned toward its middle.
+ * A cabin village, as in the lodges of the American parks: three or four log cabins (IMP_Camp_BldA, the warden's
+ * lodge, well scaled down) in two loose rows across a curving dirt trail, cabins and trees taking turns along each
+ * row (cabinCluster). (A ring round a clearing read as a circle of houses; bare rows as a housing tract.)
  */
 const CABIN = "IMP_Camp_BldA";
 const CABIN_SHARE = 0.06;         // open flat National Park tiles with a cabin village
 /**
- * The cabin village's cabins around (cx, cy), the arc opening toward bearing `open` (the tile's trees):
- * [[asset, dx, dy, scale, angle]]. Pure.
+ * The cabin village about (cx, cy): two loose rows facing each other across a dirt trail that curves over the tile
+ * (across bearing `open`). Along each row cabins and trees take turns, a tree of the tile's kind (`trees`) in every
+ * gap, so one row reads cabin, tree, cabin and the other tree, cabin, tree; setbacks, spacing and headings all vary a
+ * little, and each cabin fronts the trail: [[asset, dx, dy, scale, angle]]. Three or four cabins. Pure.
  */
-export function cabinCluster(t, cx, cy, open) {
-  const n = hash01(t, 420) < 0.5 ? 4 : 5;
-  const span = n === 4 ? 165 : 210;
+export function cabinCluster(t, cx, cy, open, trees = null) {
+  const n = hash01(t, 420) < 0.5 ? 3 : 4;
+  const lane = open + 90 + (hash01(t, 418) - 0.5) * 24;          // the trail's bearing, a little off square
+  const bow = (hash01(t, 419) < 0.5 ? -1 : 1) * (0.4 + hash01(t, 417) * 0.5);   // which way it curves, and how much
+  const u = along(lane, 1, 0), w = along(lane + 90, 1, 0);
+  // A point s along the trail and d to its side.
+  const at = (s, d) => { const c = d + bow * s * s; return [cx + u.x * s + w.x * c, cy + u.y * s + w.y * c]; };
+  const stops = n === 3 ? [-0.11, 0, 0.11] : [-0.15, -0.05, 0.05, 0.15];
+  const first = hash01(t, 416) < 0.5 ? 1 : -1;
   const out = [];
-  for (let k = 0; k < n; k++) {
-    // Spread evenly over the arc, give or take, on the far side of the clearing from the trees.
-    const a = open + 180 - span / 2 + (k * span) / (n - 1) + (hash01(t, 421 + k) - 0.5) * 12;
-    const p = along(a, 0.17 + hash01(t, 427 + k) * 0.02, 0);
-    out.push([CABIN, cx + p.x, cy + p.y, 0.36 + hash01(t, 433 + k) * 0.06,
-      Math.floor((a + 180 + (hash01(t, 439 + k) - 0.5) * 20 + 360) % 360)]);
-  }
+  stops.forEach((s0, k) => {
+    const side = k % 2 === 0 ? first : -first;
+    const s = s0 + (hash01(t, 421 + k) - 0.5) * 0.016;
+    const [x, y] = at(s, side * (0.068 + hash01(t, 427 + k) * 0.016));
+    const face = lane + (side > 0 ? -90 : 90) + (hash01(t, 439 + k) - 0.5) * 24;
+    out.push([CABIN, x, y, 0.29 + hash01(t, 433 + k) * 0.05, Math.floor((face + 720) % 360)]);
+    // The gap in the other row at this stop holds a tree.
+    if (trees && trees.length) {
+      const [tx, ty] = at(s0 + (hash01(t, 451 + k) - 0.5) * 0.016, -side * (0.072 + hash01(t, 455 + k) * 0.02));
+      out.push([trees[Math.floor(hash01(t, 459 + k) * trees.length)], tx, ty, 0.8 + hash01(t, 463 + k) * 0.3, Math.floor(hash01(t, 467 + k) * 360)]);
+    }
+  });
+  for (const s0 of [-0.075, 0.075]) { const [x, y] = at(s0, 0); out.push([TRAIL, x, y, 0.9, Math.floor((lane + bow * s0 * 115 + 720) % 360)]); }
   return out;
 }
 // IMP_Campfire was tried at the station and dropped: its light draws as a tall pale column at map zoom.
@@ -723,7 +738,32 @@ export function dressingFor(t, ctx) {
   const mon = ctx.monuments && ctx.monuments.get(t);
   const out = tileDressing(t, ctx);
   // A monument (monumentSites) stands clear of the tile's trees and tufts around it.
-  return mon ? [...clearOf(out, mon[0][1], mon[0][2], 0.13), ...mon] : out;
+  return keepClear(mon ? [...clearOf(out, mon[0][1], mon[0][2], 0.13), ...mon] : out);
+}
+
+/**
+ * The built pieces of a tile's dressing and the room each needs: [[x, y, radius]]. Cabins, shelters and houses by
+ * their scale, tents, fire pits, lookout towers, the park sign and the monuments.
+ */
+const HOUSES = new Set(["IMP_Camp_BldA", "PROP_Pasture_ANT_BldB", "PROP_MOD_Farm_BldC"]);
+const FIXED_ROOM = { PROP_Tent_GEN_Sleeper_Standard_C: 0.05, PROP_Fire_Pit: 0.03, Camp_Lookout_Tower_Bin: 0.07,
+  NAM_SWN_Menagerie_Sign: 0.04, PROP_CairnBase: 0.06, NAF_EGY_CityHall_Obelisk: 0.06, ANT_EEU_Monument_Rock_Structure: 0.08 };
+export function solidSpots(list) {
+  const out = [];
+  for (const [asset, x, y, scale] of list) {
+    if (HOUSES.has(asset)) out.push([x, y, 0.03 + 0.13 * scale]);
+    else if (FIXED_ROOM[asset] != null) out.push([x, y, FIXED_ROOM[asset]]);
+  }
+  return out;
+}
+/**
+ * Drops the trees, shrubs and grass tufts (FOL_ and BIN_FOL_ pieces) that would stand inside a built piece's room, so
+ * nothing grows through a cabin, a tent or a monument. The tile's own feature model and everything built stay. Pure.
+ */
+export function keepClear(list) {
+  const solids = solidSpots(list);
+  if (!solids.length) return list;
+  return list.filter(([asset, x, y]) => !/^(BIN_FOL_|FOL_)/.test(asset) || solids.every(([sx, sy, r]) => Math.hypot(x - sx, y - sy) >= r));
 }
 function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level = 0, lookouts = null, sites = null }) {
   const slot = (plan && plan.get(t)) || {};
@@ -775,7 +815,7 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
   if (open && (pick < CABIN_SHARE || site === "village")) {
     clearing = village = true;
     const c = along(away, 0.06, 0);
-    out.push(...cabinCluster(t, c.x, c.y, away + 180));
+    out.push(...cabinCluster(t, c.x, c.y, away + 180, kit.trees));
   } else if (open && (pick < CABIN_SHARE + CAMP_SHARE || site === "camp")) {
     clearing = camp = true;
     const c = along(away, 0.18, 0);
@@ -798,7 +838,8 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
       const p = along(hash01(t, 2700 + k) * 360, 0.12 + hash01(t, 2710 + k) * 0.14, 0);
       if (kit.under) out.push([kit.under, p.x, p.y, 0.8 + hash01(t, 2720 + k) * 0.4, Math.floor(hash01(t, 2730 + k) * 360)]);
     }
-    const stand = treeStand(t, kit, tower || village ? 2 : 3 + (hash01(t, 16) < 0.5 ? 1 : 0),
+    // A cabin village's trees stand in its rows (cabinCluster), so it gets no stand of its own.
+    const stand = village ? [] : treeStand(t, kit, tower ? 2 : 3 + (hash01(t, 16) < 0.5 ? 1 : 0),
       tower ? 2 : clearing ? 1 : slot.stand || 0, slot.grove || 0);
     // Old growth: at 24 tiles a Wilderness Area's stand on some tiles has one tree swapped for a giant (oldGrowth).
     if (denser >= 3 && stand.length && hash01(t, 2950) < OLD_GROWTH_SHARE) { const g = oldGrowth(biome); if (g) stand[0] = [g[0], stand[0][1], stand[0][2], g[1], stand[0][4]]; }
@@ -974,12 +1015,14 @@ function groundAt(l, dx, dy, wet = false) {
   return water == null ? land : Math.max(land, water);
 }
 
-function populateTile(g, t, anchor, plan, level = 0) {
+function populateTile(g, t, anchor, plan, level = 0, solids = []) {
   const l = locOf(t);
   const handles = [];
   const land = landOf(t, anchor, level);
   const wet = land.water || land.lake || land.river;
   for (const w of wildlifeFor(t, land, plan.get(t))) {
+    // No animal stands in a cabin, a tent or a monument (solidSpots).
+    if (w.kind !== "vfx" && solids.some(([sx, sy, r]) => Math.hypot(w.dx - sx, w.dy - sy) < r + 0.03)) continue;
     if (w.kind === "vfx") { safe(() => g.wild.addVFXAtPlot(w.asset, { x: l.x, y: l.y }, { x: w.dx, y: w.dy, z: w.z })); continue; }
     // A rigged animal is placed at an absolute height: set it on the ground under it (np-wildlife.js SPECIES).
     const z = groundAt(l, w.dx, w.dy, wet) + w.z;
@@ -1028,7 +1071,7 @@ export function drawPark(park, fresh = []) {
   for (const t of park.tiles) if (!freshSet.has(t) && isRevealed(t)) dressTile(g, t, ctx);
   if (g.wild) {
     const handles = [];
-    for (const t of park.tiles) if (isRevealed(t)) handles.push(...populateTile(g, t, park.anchor, plan, level));
+    for (const t of park.tiles) if (isRevealed(t)) handles.push(...populateTile(g, t, park.anchor, plan, level, solidSpots(dressingFor(t, ctx))));
     wakeAnimals(handles, park.id, gen);
   }
   if (!later.length && !freshSet.size) { refreshLens(); return true; }
