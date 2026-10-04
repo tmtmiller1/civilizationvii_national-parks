@@ -1,4 +1,4 @@
-# National Park: design and decisions
+# National Parks: design and decisions
 
 Status: v1.0.0, the first public release (2026-10-04), built and watched in seeded lab games on 1.5.0, 2026-09-27 to
 2026-10-04, in the Exploration and Modern Ages. The version numbers below (1.0.0 to 1.2.0 before the release) name
@@ -54,7 +54,7 @@ every row the shared files reference exists.
 | Names | the adjacent wonder from the map, else places within 2 tiles (Geographic Labels), a river or the settlement | `ui/np-names.js` |
 | Renaming | Geographic Labels' Rename Places when it has park support, else the mod's own box | `ui/np-picker.js` `openParkRename` |
 | The lens | `np-parks-lens`: a plot overlay of every revealed park tile, green or ocher at 0.3 alpha (0.45 on the founding tile), a lens-panel button, repainted after a park is drawn or cleared | `ui/np-lens.js` |
-| Options | Options ▸ Add-ons ▸ National Park, main menu and game: two checkboxes in the shared Mods category, kept in the `tower-national-park` slice of `modSettings` | `ui/np-options.js`, `ui/np-settings.js` |
+| Options | Options ▸ Add-ons ▸ National Parks, main menu and game: two checkboxes in the shared Mods category, kept in the `tower-national-park` slice of `modSettings` | `ui/np-options.js`, `ui/np-settings.js` |
 | Civilopedia | a National Parks section, and a Parks and Wilderness group under Game Concepts (real-world history, IUCN categories, links, and a pointer to the section), generated with their English by `devtools/gen-pedia.py`; checked by `tests/pedia-pages.test.mjs` | `data/np-civilopedia.xml`, `text/en_us/PediaText.xml` |
 | Translation | every displayed string a tag; `tests/i18n.test.mjs` checks use, duplicates and per-language parity | `text/README.md` |
 | Redraw on change | a per-park signature of owner, tiles and revealed tiles | `ui/np-draw.js` |

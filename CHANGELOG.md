@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to National Park are documented here. This project follows
+All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
 ## [1.0.0] - 2026-10-04

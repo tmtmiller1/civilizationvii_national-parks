@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# release.sh: produce a clean zip + Steam Workshop manifest for National Park.
+# release.sh: produce a clean zip + Steam Workshop manifest for National Parks.
 #
 # Usage:  ./release.sh
 # Output: dist/national-park-vX.Y.Z.zip   (X.Y.Z from the modinfo <Version>)
@@ -15,7 +15,7 @@ cd "$(dirname "$0")"
 
 MOD_SLUG="national-park"                    # source dir + zip root
 MODINFO="national-park.modinfo"             # modinfo filename
-TITLE="National Park"                       # Workshop item title
+TITLE="National Parks"                      # Workshop item title
 APPID="1295660"                            # Sid Meier's Civilization VII
 
 DIST_DIR="dist"

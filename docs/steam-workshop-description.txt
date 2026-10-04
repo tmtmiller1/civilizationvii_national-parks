@@ -1,6 +1,6 @@
-[h1]National Park[/h1]
+[h1]National Parks[/h1]
 [b]Version 1.0.0, for Civilization VII 1.5.0[/b]
-National Park lets you found a park or a wilderness area on an empty, Charming tile a city or town owns and grow it, tile by tile, over the wild land around it: mountains, forests, lakes, rivers, the sea, natural wonders and open country. Every tile of park land pays, the land is protected, and the park is drawn on the map with walls, trees, a warden's station and animated wildlife.
+National Parks lets you found a park or a wilderness area on an empty, Charming tile a city or town owns and grow it, tile by tile, over the wild land around it: mountains, forests, lakes, rivers, the sea, natural wonders and open country. Every tile of park land pays, the land is protected, and the park is drawn on the map with walls, trees, a warden's station and animated wildlife.
 [h2]The Mod Includes[/h2]
 [list]
 [*]Found National Park: a city project, or a Gold purchase in any city or town. Then choose an empty flat or hill tile the settlement owns, in any ring, where the game's own appeal is Charming; a resource on it stays collected. Unlocked by Society in the Exploration Age and Natural History in the Modern Age. +4 Happiness, plus +5 Happiness and +5 Culture for each adjacent natural wonder. One per settlement.
@@ -14,13 +14,13 @@ National Park lets you found a park or a wilderness area on an empty, Charming t
 [*]A park drawn to suit its land: broken dry-stone walls with stretches of fence, woods that fill its forest tiles, stands of trees, a warden's lodge and picnic shelter, a lookout tower, lily pads and reeds, buoys at sea, dry-stone walls at the foot of its mountains, and a dashed border with a light shading of its land. It grows richer at 8, 16 and 24 tiles: more campsites, cabin villages and lookouts, thicker woods, more animals, and stone cairns and obelisks scattered over its land. The details are spread so neighboring tiles never repeat the same flock, herd, fish or reeds.
 [*]Animated wildlife: bison, horses, deer, elk, camels, elephants, sheep, llamas, foxes, cranes and crabs, with birds and butterflies overhead and fish, reef fish and the odd whale at sea.
 [*]A Parks and Wilderness lens in the lens menu: every park tile shaded, green for National Parks, ocher for Wilderness Areas.
-[*]Options (Add-ons, National Park): show or hide the park borders and shading, applied at once in a game, and show or hide the lens in the lens menu.
+[*]Options (Add-ons, National Parks): show or hide the park borders and shading, applied at once in a game, and show or hide the lens in the lens menu.
 [*]A National Parks section in the Civilopedia explaining every rule, plus pages under Game Concepts on real national parks and wilderness areas around the world.
 [*]Names from the place: "Uluru National Park", "Redwood Forest Wilderness Area". Rename a park from its picker.
 [*]AI parks grow too: an AI saves up and buys an expansion with its own Gold when the land is worth the price. A park changes hands with its settlement.
 [/list]
 [h2]With Geographic Labels[/h2]
-National Park works on its own. With [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3759067376]Geographic Labels[/url] installed too, version 1.6.0 or later, each park's name is drawn on the map like any other place (from 1.6.1 in place of the label of the wonder it is named after), parks are listed in Geographic Labels' Rename Places, and a new park can also take its name from a nearby mountain range, lake or region. With an earlier Geographic Labels, or without it, park names show in the park's picker and prompt, and National Park's own rename box is used.
+National Parks works on its own. With [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3759067376]Geographic Labels[/url] installed too, version 1.6.0 or later, each park's name is drawn on the map like any other place (from 1.6.1 in place of the label of the wonder it is named after), parks are listed in Geographic Labels' Rename Places, and a new park can also take its name from a nearby mountain range, lake or region. With an earlier Geographic Labels, or without it, park names show in the park's picker and prompt, and National Park's own rename box is used.
 [h2]Compatibility[/h2]
 [list]
 [*]Adds new content only. It doesn't replace base-game files or change base-game rows.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Database>
     <LocalizedText>
-        <Replace Tag="LOC_MOD_NATIONAL_PARK_NAME" Language="pl_PL"><Text>Park narodowy</Text></Replace>
+        <Replace Tag="LOC_MOD_NATIONAL_PARK_NAME" Language="pl_PL"><Text>Parki narodowe</Text></Replace>
         <Replace Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION" Language="pl_PL"><Text>Dodaje parki narodowe i obszary dzikiej przyrody od epoki odkryć. Załóż je na pustym, czarującym polu należącym do miasta lub miasteczka, a potem powiększaj pole po polu na okoliczne tereny: góry, lasy, jeziora, rzeki, morze i cuda natury. Parki narodowe zapewniają kulturę i zadowolenie oraz mają leśniczówkę i domki; obszary dzikiej przyrody zapewniają wpływy i nie mają budowli. Pola każdego parku zapewniają więcej, gdy ten park osiąga 8, 16 i 24 pola. Każdy park jest rysowany z murkami, drzewami i dziką zwierzyną dopasowanymi do jego terenu. Współpracuje z Geographic Labels. Gra jednoosobowa i hotseat.</Text></Replace>
         <Replace Tag="LOC_BUILDING_NATIONAL_PARK_NAME" Language="pl_PL"><Text>Park narodowy</Text></Replace>
         <Replace Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION" Language="pl_PL"><Text>Pole założycielskie parku narodowego, umieszczane na pustym, czarującym polu wybranym po projekcie Założenie parku narodowego. +4 do [icon:YIELD_HAPPINESS] zadowolenia oraz +5 do [icon:YIELD_HAPPINESS] zadowolenia i +5 do [icon:YIELD_CULTURE] kultury za każdy sąsiedni cud natury. Jego teren zapewnia więcej, gdy park osiąga 8, 16 i 24 pola. Powiększ go projektem Powiększenie parku narodowego w mieście albo kup powiększenie za złoto z listy zakupów osiedla. Odblokowywany przez ideę Społeczeństwo w epoce odkryć lub Historia naturalna w epoce nowożytnej. Jeden na osiedle.</Text></Replace>
@@ -27,7 +27,7 @@
         <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" Language="pl_PL"><Text>Dodaje 3 pola obok parku narodowego tego miasta. Wybierasz je przyciskiem Wybierz teren po ukończeniu projektu: otwarty teren, las, góry, jeziora, rzeki, morze lub cuda natury, o ile należą do ciebie. Wiejskie ulepszenia na nich są usuwane; zasoby pozostają pozyskiwane. Każde pole zapewnia +1 do [icon:YIELD_CULTURE] kultury i +1 do [icon:YIELD_HAPPINESS] zadowolenia oprócz własnych dochodów; gdy park narodowy osiągnie 8, 16 i 24 pola, każde jego pole zapewnia więcej, maksymalnie +3 do [icon:YIELD_CULTURE] kultury i +2 do [icon:YIELD_HAPPINESS] zadowolenia. Nie można na nich nic budować. Maksymalnie 24 pola.</Text></Replace>
         <Replace Tag="LOC_NP_PARK_NAME_FORMAT" Language="pl_PL"><Text>Park Narodowy {1_Name}</Text></Replace>
         <Replace Tag="LOC_NP_PARK_NAME_ORDINAL" Language="pl_PL"><Text>{1_Name} {2_Ordinal}</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK" Language="pl_PL"><Text>Park narodowy</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK" Language="pl_PL"><Text>Parki narodowe</Text></Replace>
         <Replace Tag="LOC_OPTIONS_NP_OVERLAY" Language="pl_PL"><Text>Pokazuj granice i cieniowanie parków</Text></Replace>
         <Replace Tag="LOC_OPTIONS_NP_OVERLAY_DESCRIPTION" Language="pl_PL"><Text>Rysuje granicę każdego widocznego parku narodowego (na zielono) i obszaru dzikiej przyrody (na ochrowo) z lekkim cieniowaniem jego terenu, niezależnie od włączonego filtra. Filtr Parki i dzika przyroda cieniuje je mocniej. Działa natychmiast.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_NP_LENS" Language="pl_PL"><Text>Filtr Parki i dzika przyroda</Text></Replace>

@@ -2,7 +2,7 @@
 <Database>
     <EnglishText>
         <Row Tag="LOC_MOD_NATIONAL_PARK_NAME">
-            <Text>National Park</Text>
+            <Text>National Parks</Text>
         </Row>
         <Row Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION">
             <Text>Adds National Parks and Wilderness Areas, from the Exploration Age on. Found one on an empty, Charming tile a city or town owns, then expand it tile by tile over the land around it: mountains, forests, lakes, rivers, the sea and natural wonders. National Parks give Culture and Happiness and have a warden's lodge and cabins; Wilderness Areas give Influence and have no buildings. Each park's tiles give more as that park reaches 8, 16 and 24 tiles. Each park is drawn with walls, trees and wildlife to match its land. Works with Geographic Labels. Single-player and hotseat.</Text>
@@ -91,7 +91,7 @@
         </Row>
         <!-- Options: Mods, National Park -->
         <Row Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK">
-            <Text>National Park</Text>
+            <Text>National Parks</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_NP_OVERLAY">
             <Text>Show park borders and shading</Text>

@@ -1,4 +1,4 @@
-# National Park
+# National Parks
 
 National Parks and Wilderness Areas for Sid Meier's Civilization VII, from the Exploration Age on. Found one on an
 empty, Charming tile a city or town owns, then grow it tile by tile, choosing which wild land to protect: mountains,
@@ -91,7 +91,7 @@ language, see [`text/README.md`](text/README.md).
 
 ## Options
 
-Under **Options ▸ Add-ons ▸ National Park**, from the main menu or in a game:
+Under **Options ▸ Add-ons ▸ National Parks**, from the main menu or in a game:
 
 - **Show park borders and shading** (on by default): draws every National Park's green and every Wilderness Area's
   ocher border with a light shading of its land, whatever lens is on, and turns both off together. The Parks and
@@ -103,7 +103,7 @@ Both are kept from one game to the next.
 
 ## With Geographic Labels
 
-National Park works on its own. With [Geographic Labels](https://steamcommunity.com/sharedfiles/filedetails/?id=3759067376)
+National Parks works on its own. With [Geographic Labels](https://steamcommunity.com/sharedfiles/filedetails/?id=3759067376)
 installed as well, version 1.6.0 or later:
 
 - each park's name is drawn on the map over its land, like any other place; from Geographic Labels 1.6.1, a park
@@ -113,7 +113,7 @@ installed as well, version 1.6.0 or later:
 - a new park can also take its name from a mountain range, lake or region the labels know within two tiles.
 
 With Geographic Labels 1.5.0 or earlier, or without it, park names appear in the picker and prompt, and the picker's
-Rename button opens National Park's own rename box.
+Rename button opens the mod's own rename box.
 
 ## Screenshots
 

@@ -26,7 +26,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_TITLE" Language="pl_PL"><Text>Co tracę?</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_PARA_1" Language="pl_PL"><Text>Farma, kopalnia lub inne wiejskie ulepszenie na polu, które dołącza do parku, jest usuwane (najpierw zostaniesz zapytany), a mieszkaniec, który na nim pracował, wraca jako nowa populacja do rozmieszczenia. Pole zachowuje własne dochody, a zasoby pozostają pozyskiwane.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_TITLE" Language="pl_PL"><Text>O tym modzie</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>National Park 1.0.0 dla Civilization VII 1.5.0. Dodaje wyłącznie zawartość; nie zmienia żadnych zasad gry podstawowej. Włącz go przed rozpoczęciem nowej gry.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>National Parks 1.0.0 dla Civilization VII 1.5.0. Dodaje wyłącznie zawartość; nie zmienia żadnych zasad gry podstawowej. Włącz go przed rozpoczęciem nowej gry.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_COMPAT_TITLE" Language="pl_PL"><Text>Inne mody</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_COMPAT_PARA_1" Language="pl_PL"><Text>[BLIST][LI][B]Cultural Diffusion[/B] (zalecany): jego rozszerzające się granice dają parkom więcej terenu do powiększania, także poza trzecim pierścieniem.[LI][B]Geographic Labels[/B] 1.6.0 lub nowszy: nazwy parków są wyświetlane na mapie i można je zmieniać w Rename Places.[LI][B]Canals[/B]: kanały nigdy nie są kopane przez teren parku, a pola kanałów nie mogą dołączyć do parku.[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CREDITS_TITLE" Language="pl_PL"><Text>Twórcy</Text></Replace>
@@ -110,7 +110,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LENS_TITLE" Language="pl_PL"><Text>Filtr parków</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LENS_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Filtr [B]Parki i dzika przyroda[/B] w menu filtrów cieniuje każde widoczne pole parku: na zielono parki narodowe, na ochrowo obszary dzikiej przyrody, a pole założenia nieco ciemniej. Tylko do podglądu.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_TITLE" Language="pl_PL"><Text>Opcje</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Opcje, Dodatki, Park narodowy. Dostępne z menu głównego i w trakcie gry; ustawienia przechodzą między grami.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Opcje, Dodatki, Parki narodowe. Dostępne z menu głównego i w trakcie gry; ustawienia przechodzą między grami.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_OVERLAY_TITLE" Language="pl_PL"><Text>Cieniowanie parków</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_OVERLAY_PARA_1" Language="pl_PL"><Text>Cały czas cieniuje każdy park na mapie, niezależnie od włączonego filtra. Domyślnie wyłączone. Działa natychmiast.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_LENSBUTTON_TITLE" Language="pl_PL"><Text>Filtr parków</Text></Replace>

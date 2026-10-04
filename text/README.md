@@ -1,6 +1,6 @@
 # Translating National Park (`text/`)
 
-Every string a player sees in National Park is a `LOC_*` tag defined here and looked up by the game at run time. The
+Every string a player sees in National Parks is a `LOC_*` tag defined here and looked up by the game at run time. The
 scripts set no display text of their own, so a translation needs no code change: add the language's files here and
 two lines per file to the modinfo.
 

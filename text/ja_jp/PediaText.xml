@@ -26,7 +26,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_TITLE" Language="ja_JP"><Text>何を失う?</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_PARA_1" Language="ja_JP"><Text>公園に加わるタイルにある農場、鉱山などの郊外の施設は撤去され（事前に確認があります）、そこで働いていた市民は新たな人口として戻り、改めて配置できます。タイルは本来の産出を維持し、資源も引き続き収集されます。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_TITLE" Language="ja_JP"><Text>このMODについて</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>National Park 1.0.0（Civilization VII 1.5.0用）。コンテンツを追加するのみで、基本ゲームのルールは変更しません。新しいゲームを始める前に有効にしてください。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>National Parks 1.0.0（Civilization VII 1.5.0用）。コンテンツを追加するのみで、基本ゲームのルールは変更しません。新しいゲームを始める前に有効にしてください。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_COMPAT_TITLE" Language="ja_JP"><Text>他のMOD</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_COMPAT_PARA_1" Language="ja_JP"><Text>[BLIST][LI][B]Cultural Diffusion[/B]（推奨）: 国境が広がるため、公園が拡張できる土地が増えます。3つ目の環より外側も含まれます。[LI][B]Geographic Labels[/B] 1.6.0以降: 公園の名前がマップ上に表示され、「地名の変更」で変更できます。[LI][B]Canals[/B]: 公園の土地に運河が掘られることはなく、運河のタイルは公園に加えられません。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CREDITS_TITLE" Language="ja_JP"><Text>クレジット</Text></Replace>
