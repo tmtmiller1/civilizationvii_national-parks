@@ -1,4 +1,4 @@
-// np-draw.js - National Park: how a park looks on the map.
+// np-draw.js - National Parks: how a park looks on the map.
 //
 // The improvement has no model of its own (watched 2026-09-27: a completed park drew nothing), so everything is
 // drawn by script from shipped meshes, as Canals draws its canals. Each asset below was auditioned on 1.5.0 on
@@ -19,8 +19,9 @@
 //
 // Size levels: as a park reaches 8, 16 and 24 of its own tiles (np-core.js parkLevel), it draws richer. Each level
 // gives a park a number of level sites (levelSites): a National Park a campsite, a cabin village or a shelter on each,
-// and a lookout tower on another hill; a Wilderness Area a thicket on each, and more meadow and undergrowth
-// everywhere; both more animals (np-scene.js LEVEL_BOOST, herds in np-wildlife.js). Each level only adds to the one
+// and a lookout tower on another hill; a Wilderness Area a thicket on each, more meadow and undergrowth, wildflowers,
+// rarer wildlife from 16 tiles and old-growth giants at 24, never more trees; both more animals (np-scene.js
+// LEVEL_BOOST, herds in np-wildlife.js). Each level only adds to the one
 // below, on tiles taken in a fixed order by hash, so stepping down takes exactly that away and a park looks the same
 // after a reload.
 "use strict";
@@ -672,6 +673,32 @@ export function meadow(t, biome, extra = 0) {
 }
 
 /**
+ * A Wilderness Area's growth shown by swapping, never adding trees (2026-10-04: extra trees crowded into each other).
+ * From 8 tiles about a third of a tile's grass tufts become a clump of wildflowers (FOL_Flowers_Small_*, single cards, so
+ * four to a clump); at 24 tiles OLD_GROWTH_SHARE of the stands have one tree swapped for a giant of the biome, a coast
+ * redwood or, in the tropics, a flowering tree. Pure.
+ */
+const FLOWERS = ["FOL_Flowers_Small_A", "FOL_Flowers_Small_B", "FOL_Flowers_Small_C"];
+const OLD_GROWTH_SHARE = 0.3;
+export function wildflowers(t, tufts) {
+  const out = [];
+  tufts.forEach((p, k) => {
+    if (hash01(t, 2900 + k) >= 0.33) { out.push(p); return; }
+    const kind = FLOWERS[Math.floor(hash01(t, 2910 + k) * FLOWERS.length)];
+    for (let j = 0; j < 4; j++) {
+      const q = along(hash01(t, 2920 + k * 4 + j) * 360, 0.015 + hash01(t, 2940 + k * 4 + j) * 0.035, 0);
+      out.push([kind, p[1] + q.x, p[2] + q.y, 0.8 + hash01(t, 2960 + k * 4 + j) * 0.4, Math.floor(hash01(t, 2980 + k * 4 + j) * 360)]);
+    }
+  });
+  return out;
+}
+export function oldGrowth(biome) {
+  if (biome === "BIOME_TROPICAL") return ["FOL_HB_Flower_Tree_A", 1.4];
+  if (biome === "BIOME_GRASSLAND" || biome === "BIOME_PLAINS" || biome === "BIOME_TUNDRA") return ["FOL_Coastal_Redwood_A", 1.1];
+  return null;
+}
+
+/**
  * A tile's own vegetation, which the game stops drawing under a district: the game's feature model where it has one
  * (FEATURE_MODELS), its tree scatter where the model alone is sparse, the park's woods on wooded tiles with neither,
  * and reeds on wetland with no model. Empty on open ground.
@@ -771,8 +798,11 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
       const p = along(hash01(t, 2700 + k) * 360, 0.12 + hash01(t, 2710 + k) * 0.14, 0);
       if (kit.under) out.push([kit.under, p.x, p.y, 0.8 + hash01(t, 2720 + k) * 0.4, Math.floor(hash01(t, 2730 + k) * 360)]);
     }
-    out.push(...treeStand(t, kit, tower || village ? 2 : 3 + (hash01(t, 16) < 0.5 ? 1 : 0),
-      tower ? 2 : clearing ? 1 : slot.stand || 0, slot.grove || 0));
+    const stand = treeStand(t, kit, tower || village ? 2 : 3 + (hash01(t, 16) < 0.5 ? 1 : 0),
+      tower ? 2 : clearing ? 1 : slot.stand || 0, slot.grove || 0);
+    // Old growth: at 24 tiles a Wilderness Area's stand on some tiles has one tree swapped for a giant (oldGrowth).
+    if (denser >= 3 && stand.length && hash01(t, 2950) < OLD_GROWTH_SHARE) { const g = oldGrowth(biome); if (g) stand[0] = [g[0], stand[0][1], stand[0][2], g[1], stand[0][4]]; }
+    out.push(...stand);
     if ((slot.under != null || thicket || hash01(t, 2600) < 0.2 * denser) && !village && !camp) {
       // The understory, or in the desert its scatter of rocks, on some tiles only; on more of a Wilderness Area's as
       // it reaches each size level.
@@ -781,7 +811,7 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
     }
     if (slot.trail != null) out.push([TRAIL, jit(45, 0.25), jit(46, 0.25), 0.8 + hash01(t, 47) * 0.4, Math.floor(bearing(t, anchor) + jit(48, 40) + 360) % 360]);
     // A village's or a campsite's clearing is trodden ground: no tufts of grass under the cabins or the tents.
-    if (!village && !camp) out.push(...meadow(t, biome, denser));
+    if (!village && !camp) out.push(...(denser ? wildflowers(t, meadow(t, biome, denser)) : meadow(t, biome, denser)));
   }
   if (hill && slot.stones != null) {
     // Four arrangements of stone, spread by the plan so neighboring hills differ.

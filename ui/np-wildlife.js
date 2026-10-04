@@ -1,4 +1,4 @@
-// np-wildlife.js - National Park: the park's living animals, birds, insects and fish.
+// np-wildlife.js - National Parks: the park's living animals, birds, insects and fish.
 //
 // Two kinds of shipped art move on the map, and both were watched moving on 1.5.0 (2026-09-27, frame-difference
 // captures):
@@ -36,7 +36,20 @@ const SPECIES = {
   elephant: ["Char_Elephant_African_RES", 0.32, 3, 1],
   crane: ["CHAR_Eurasian_Crane", 0.5, 3, 0.5],
   crab: ["CHAR_Crab", 0.15, 3, 0.5],   // at 0.45 a crab stood as tall as a house (showcase nsh1)
+  // Rarer species, only in a Wilderness Area from 16 tiles (np-scene.js `rare`). Rigged as the deer is (catalog,
+  // 2026-10-04): scales are first guesses to watch.
+  goat: ["Char_Goat", 0.42, 3, 1],
+  giraffe: ["Char_Giraffe01", 0.4, 3, 1],
+  turtle: ["CHAR_Turtle", 0.3, 2, 0.5],
 };
+/** The rarer species a Wilderness Area gains from 16 tiles, by the land: goats on hills, giraffes on open tropical
+ *  and plains land, turtles on a shore. */
+export function rareFor(f) {
+  if (f.shore != null && (f.lake || f.coast || f.river)) return ["turtle"];
+  if (f.hill || f.mountain) return ["goat"];
+  if (f.biome === "BIOME_TROPICAL" || f.biome === "BIOME_PLAINS") return ["giraffe"];
+  return [];
+}
 
 /** How far above the ground under it species `name` stands. */
 export function liftFor(name) {
@@ -122,6 +135,8 @@ export function wildlifeFor(t, land, slot = {}) {
   }
   // A second, different kind now and then: a fox at the edge of a herd, a crane in the grass.
   if (slot.stray) animal(slot.stray, jit(16, 0.5), jit(17, 0.5), 9);
+  // A rarer species (a Wilderness Area from 16 tiles): a small group of its own, on the shore for a turtle.
+  if (slot.rare) group(slot.rare, SPECIES[slot.rare][2], ...(slot.rare === "turtle" && land.shore != null ? shoreAt(0.3) : [jit(18, 0.4), jit(19, 0.4)]));
   return out;
 }
 

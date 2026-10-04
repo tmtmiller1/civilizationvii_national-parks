@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { hash01, connectedSelection } from "../ui/np-core.js";
-import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle, cabinCluster, lookoutTiles, levelSites, sitesPerLevel, monumentSites, monumentCounts } from "../ui/np-draw.js";
+import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle, cabinCluster, lookoutTiles, levelSites, sitesPerLevel, monumentSites, monumentCounts, wildflowers, oldGrowth } from "../ui/np-draw.js";
 import { baseNameOf, chooseName, rankCandidates } from "../ui/np-names.js";
 
 // A toy hex world: plot p's ring is six made-up neighbors.
@@ -261,6 +261,23 @@ test("scene: no more than two flocks of one kind overhead in a park, however lar
     for (const t of allTiles) if (p.get(t).air) n[p.get(t).air] = (n[p.get(t).air] || 0) + 1;
     assert.ok(Object.values(n).every((k) => k <= 2), `${biome} ${JSON.stringify(n)}`);
   }
+});
+
+test("wilderness growth swaps, never adds trees: wildflower clumps replace tufts, a giant replaces one tree", () => {
+  const tufts = Array.from({ length: 6 }, (_x, k) => ["BIN_FOL_Grassland_Groundcover_B", k * 0.05, 0, 1, 0]);
+  const out = wildflowers(77, tufts);
+  const kept = out.filter((p) => !/FOL_Flowers_Small/.test(p[0])).length, flowers = out.length - kept;
+  assert.ok(kept < 6 && flowers > 0 && flowers % 4 === 0, `${kept} tufts kept, ${flowers} flower cards`);
+  assert.deepEqual(wildflowers(77, tufts), out, "stable");
+  assert.equal(oldGrowth("BIOME_DESERT"), null);
+  assert.ok(oldGrowth("BIOME_GRASSLAND") && oldGrowth("BIOME_TROPICAL"));
+});
+
+test("scene: rarer wildlife only in a Wilderness Area, from 16 tiles", () => {
+  const hills = (t) => plainLand({ hill: t % 2 === 0 });
+  const rare = (level, wild) => [...planScene(allTiles, { land: hills, ring: hexRing, fauna: FAUNA_POOLS, level, wild }).values()].filter((s) => s.rare).length;
+  assert.equal(rare(1, true), 0); assert.equal(rare(3, false), 0);
+  assert.ok(rare(2, true) > 0 && rare(3, true) >= rare(2, true));
 });
 
 test("wildlife: herds grow by one at the 16-tile level and one more at 24", () => {

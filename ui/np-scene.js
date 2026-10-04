@@ -1,4 +1,4 @@
-// np-scene.js - National Park: which tiles of a park carry which accents, planned for the park as a whole.
+// np-scene.js - National Parks: which tiles of a park carry which accents, planned for the park as a whole.
 //
 // Chosen tile by tile, the accents repeated: two lake tiles side by side both got the same lily pads and cattails,
 // neighboring sea tiles the same school of fish, neighboring meadows the same wheeling flock. So each accent is
@@ -8,6 +8,7 @@
 "use strict";
 
 import { hash01 } from "./np-core.js";
+import { rareFor } from "./np-wildlife.js";
 
 /**
  * An accent: `ok(land, t)` says whether a tile can take it, `share` is the part of those tiles that get it, `space`
@@ -19,7 +20,7 @@ import { hash01 } from "./np-core.js";
 const open = (f) => !f.water && !f.lake && !f.river && !f.mountain && !f.wonder;
 const wet = (f) => (f.water || f.lake || f.river) && !f.wonder;
 
-export function accents(fauna) {
+export function accents(fauna, { level = 0, wild = false } = {}) {
   return {
     herd: { salt: 1, share: 0.4, space: 1, ok: (f) => open(f), variants: (f) => herdPool(fauna, f) },
     stray: { salt: 2, share: 0.1, space: 2, ok: (f) => open(f) && !f.anchor, variants: (f) => herdPool(fauna, f) },
@@ -40,6 +41,9 @@ export function accents(fauna) {
     trail: { salt: 17, share: 0.45, space: 1, ok: (f) => open(f) && !f.wooded && !f.anchor, variants: () => [0] },
     grove: { salt: 18, share: 1, space: 0, ok: (f) => open(f), variants: (f) => f.treeKinds || [0] },
     stand: { salt: 19, share: 1, space: 0, ok: (f) => open(f) && !f.wooded && !f.anchor, variants: () => [0, 1, 2, 3] },
+    // A Wilderness Area's rarer wildlife, from 16 tiles (np-wildlife.js rareFor): goats, giraffes, turtles.
+    rare: { salt: 20, share: level >= 3 ? 0.3 : 0.18, space: 2, ok: (f) => wild && level >= 2 && !f.wonder && rareFor(f).length > 0,
+      variants: (f) => rareFor(f) },
   };
 }
 
@@ -109,7 +113,7 @@ export function planScene(tiles, { land, ring, fauna, level = 0, wild = false })
   const facts = new Map(tiles.map((t) => [t, land(t)]));
   const plan = new Map(tiles.map((t) => [t, {}]));
   const near2 = new Map(tiles.map((t) => [t, near(t, 2, ring)]));
-  for (const [key, a] of Object.entries(accents(fauna))) {
+  for (const [key, a] of Object.entries(accents(fauna, { level, wild }))) {
     const eligible = tiles.filter((t) => a.ok(facts.get(t), t));
     if (!eligible.length) continue;
     const share = Math.min(1, a.share * (1 + boostOf(key, wild) * level));
