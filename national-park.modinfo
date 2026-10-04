@@ -7,7 +7,7 @@
 		<Package>NationalPark</Package>
 		<PackageSortIndex>1000</PackageSortIndex>
 		<ShowInBrowser>1</ShowInBrowser>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 	</Properties>
 	<Dependencies>
 		<Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME"/>
