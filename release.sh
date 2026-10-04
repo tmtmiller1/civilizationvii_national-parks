@@ -162,7 +162,7 @@ fi
     echo "    \"appid\"          \"$APPID\""
     [ -n "$PUBLISHED_FILE_ID" ] && echo "    \"publishedfileid\" \"$PUBLISHED_FILE_ID\""
     echo "    \"contentfolder\"  \"$ABS_CONTENT\""
-    [ -n "$ABS_PREVIEW" ] && echo "    \"previewfile\"    \"$ABS_PREVIEW\""
+    # No previewfile: Steam rejects a preview sent with workshop_build_item. Set the image on the Workshop page.
     echo '    "visibility"     "0"'
     echo "    \"title\"          \"$TITLE\""
     # "description" is intentionally omitted so steamcmd preserves the description
