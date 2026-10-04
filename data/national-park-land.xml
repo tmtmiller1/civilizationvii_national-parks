@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Park land markers. Every tile a park takes gets one of these improvements, placed by script (CREATE_ELEMENT), never
+  offered in the build list: no CityBuildable or TownBuildable, no valid districts, no unlock. Each carries the park's
+  payout as its own yield on the tile (Constructible_YieldChanges below). The marker has no art; the mod draws the
+  park.
+
+  A marker needs a rural district under it, which makes the tile count as worked land: the tile keeps its own yields
+  (a river's food, a forest's production, a wonder's culture) and they reach the settlement with the park's payout.
+
+  Every park tile carries its kind's land marker for the size level of its owner's park land of that kind, all parks
+  together (ui/np-core.js markerFor), swapped in place by the sweep as the land grows or shrinks:
+    National Park     base +1 Culture +1 Happiness; 8 tiles +2/+1; 16 tiles +2/+2; 24 tiles +3/+2.
+    Wilderness Area   base +3 Influence; 8 tiles +4; 16 tiles +5; 24 tiles +6.
+  _WILD paid more on a natural wonder, mountain, water or wooded tile in pre-release builds; it stays so older saves load, and the
+  sweep replaces it.
+-->
+<Database>
+    <Improvements>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND" ResourceTier="0" CityBuildable="false" TownBuildable="false" Workable="false"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_WILD" ResourceTier="0" CityBuildable="false" TownBuildable="false" Workable="false"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND" ResourceTier="0" CityBuildable="false" TownBuildable="false" Workable="false"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_WILD" ResourceTier="0" CityBuildable="false" TownBuildable="false" Workable="false"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_8" ResourceTier="0" CityBuildable="false" TownBuildable="false" Workable="false"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_16" ResourceTier="0" CityBuildable="false" TownBuildable="false" Workable="false"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_24" ResourceTier="0" CityBuildable="false" TownBuildable="false" Workable="false"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND_8" ResourceTier="0" CityBuildable="false" TownBuildable="false" Workable="false"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND_16" ResourceTier="0" CityBuildable="false" TownBuildable="false" Workable="false"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND_24" ResourceTier="0" CityBuildable="false" TownBuildable="false" Workable="false"/>
+    </Improvements>
+    <!-- The payout is the marker's own yield on its tile, so it shows there with the yields layer on, and reaches the
+         settlement because the tile is worked, on top of the tile's own yields. -->
+    <Constructible_YieldChanges>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND" YieldType="YIELD_CULTURE" YieldChange="1"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND" YieldType="YIELD_HAPPINESS" YieldChange="1"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_WILD" YieldType="YIELD_CULTURE" YieldChange="2"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_WILD" YieldType="YIELD_HAPPINESS" YieldChange="1"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND" YieldType="YIELD_DIPLOMACY" YieldChange="3"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_WILD" YieldType="YIELD_DIPLOMACY" YieldChange="3"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_8" YieldType="YIELD_CULTURE" YieldChange="2"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_8" YieldType="YIELD_HAPPINESS" YieldChange="1"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_16" YieldType="YIELD_CULTURE" YieldChange="2"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_16" YieldType="YIELD_HAPPINESS" YieldChange="2"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_24" YieldType="YIELD_CULTURE" YieldChange="3"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_24" YieldType="YIELD_HAPPINESS" YieldChange="2"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND_8" YieldType="YIELD_DIPLOMACY" YieldChange="4"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND_16" YieldType="YIELD_DIPLOMACY" YieldChange="5"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND_24" YieldType="YIELD_DIPLOMACY" YieldChange="6"/>
+    </Constructible_YieldChanges>
+</Database>

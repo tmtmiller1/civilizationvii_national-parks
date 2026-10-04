@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <EnglishText>
+        <Row Tag="LOC_MOD_NATIONAL_PARK_NAME">
+            <Text>National Park</Text>
+        </Row>
+        <Row Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION">
+            <Text>Adds National Parks and Wilderness Areas, from the Exploration Age on. Found one on an empty, Charming tile a city or town owns, then expand it tile by tile over the land around it: mountains, forests, lakes, rivers, the sea and natural wonders. National Parks give Culture and Happiness and have a warden's lodge and cabins; Wilderness Areas give Influence and have no buildings. Each park's tiles give more as that park reaches 8, 16 and 24 tiles. Each park is drawn with walls, trees and wildlife to match its land. Works with Geographic Labels. Single-player and hotseat.</Text>
+        </Row>
+
+        <!-- The founding improvement -->
+        <Row Tag="LOC_BUILDING_NATIONAL_PARK_NAME">
+            <Text>National Park</Text>
+        </Row>
+        <Row Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION">
+            <Text>The founding tile of a National Park, placed on the empty, Charming tile you choose after Found National Park. +4 [icon:YIELD_HAPPINESS] Happiness, plus +5 [icon:YIELD_HAPPINESS] Happiness and +5 [icon:YIELD_CULTURE] Culture for each adjacent natural wonder. Its land gives more as the park reaches 8, 16 and 24 tiles. Expand it with the Expand National Park project in a city, or buy an expansion with Gold from the settlement's purchase list. Unlocked by Society in the Exploration Age or Natural History in the Modern Age. One per settlement.</Text>
+        </Row>
+        <Row Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP">
+            <Text>Founded with Found National Park, on an empty, Charming tile the settlement owns.</Text>
+        </Row>
+
+        <!-- Park land markers: one per tile a park has taken -->
+        <Row Tag="LOC_NP_LAND_NAME">
+            <Text>National Park land</Text>
+        </Row>
+        <Row Tag="LOC_NP_LAND_DESCRIPTION">
+            <Text>Land in a National Park. Gives +1 [icon:YIELD_CULTURE] Culture and +1 [icon:YIELD_HAPPINESS] Happiness on top of the tile's own yields, more as its park grows: +2 [icon:YIELD_CULTURE] Culture at 8 tiles, +2 [icon:YIELD_CULTURE] and +2 [icon:YIELD_HAPPINESS] at 16, +3 [icon:YIELD_CULTURE] and +2 [icon:YIELD_HAPPINESS] at 24. Land lost or built over counts against it. Resources stay collected. Nothing can be built here.</Text>
+        </Row>
+        <Row Tag="LOC_NP_WILD_NAME">
+            <Text>National Park backcountry</Text>
+        </Row>
+        <Row Tag="LOC_NP_WILD_DESCRIPTION">
+            <Text>A natural wonder, mountain, water or forest tile in a National Park. Gives +2 [icon:YIELD_CULTURE] Culture and +1 [icon:YIELD_HAPPINESS] Happiness on top of the tile's own yields. Resources stay collected. Nothing can be built here.</Text>
+        </Row>
+
+        <!-- The Wilderness Area: the park's twin, paid in Influence, with no houses or shelters -->
+        <Row Tag="LOC_WILDERNESS_AREA_NAME">
+            <Text>Wilderness Area</Text>
+        </Row>
+        <Row Tag="LOC_WILDERNESS_AREA_DESCRIPTION">
+            <Text>The founding tile of a Wilderness Area, placed on the empty, Charming tile you choose after Found Wilderness Area. +4 [icon:YIELD_DIPLOMACY] Influence, plus +10 [icon:YIELD_DIPLOMACY] Influence for each adjacent natural wonder. Its land gives more as the area reaches 8, 16 and 24 tiles. Expand it with the Expand Wilderness Area project in a city, or buy an expansion with Gold from the settlement's purchase list. Has no buildings. Unlocked by Society in the Exploration Age or Natural History in the Modern Age. One per settlement.</Text>
+        </Row>
+        <Row Tag="LOC_WILDERNESS_AREA_TOOLTIP">
+            <Text>Founded with Found Wilderness Area, on an empty, Charming tile the settlement owns.</Text>
+        </Row>
+        <Row Tag="LOC_WA_LAND_NAME">
+            <Text>Wilderness Area land</Text>
+        </Row>
+        <Row Tag="LOC_WA_LAND_DESCRIPTION">
+            <Text>Land in a Wilderness Area. Gives +3 [icon:YIELD_DIPLOMACY] Influence on top of the tile's own yields, more as its area grows: +4 at 8 tiles, +5 at 16, +6 at 24. Land lost or built over counts against it. Resources stay collected. Nothing can be built here.</Text>
+        </Row>
+        <Row Tag="LOC_WA_WILD_NAME">
+            <Text>Wilderness Area backcountry</Text>
+        </Row>
+        <Row Tag="LOC_WA_WILD_DESCRIPTION">
+            <Text>A natural wonder, mountain, water or forest tile in a Wilderness Area. Gives +3 [icon:YIELD_DIPLOMACY] Influence on top of the tile's own yields. Resources stay collected. Nothing can be built here.</Text>
+        </Row>
+        <Row Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME">
+            <Text>Expand Wilderness Area</Text>
+        </Row>
+        <Row Tag="LOC_WA_NAME_FORMAT">
+            <Text>{1_Name} Wilderness Area</Text>
+        </Row>
+        <Row Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_EX">
+            <Text>Adds 1 tile next to this city's Wilderness Area. You choose it with the Choose land button once the project finishes: open land, forest, mountains, lakes, rivers, the sea or a natural wonder, as long as you own it. Rural improvements on it are removed; resources stay collected. Each tile gives +3 [icon:YIELD_DIPLOMACY] Influence on top of its own yields; when the Wilderness Area reaches 8, 16 and 24 tiles, every tile of it gives +4, +5 and then +6. Nothing can be built on it. Up to 24 tiles.</Text>
+        </Row>
+        <Row Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO">
+            <Text>Adds 3 tiles next to this city's Wilderness Area. You choose them with the Choose land button once the project finishes: open land, forest, mountains, lakes, rivers, the sea or natural wonders, as long as you own them. Rural improvements on them are removed; resources stay collected. Each tile gives +3 [icon:YIELD_DIPLOMACY] Influence on top of its own yields; when the Wilderness Area reaches 8, 16 and 24 tiles, every tile of it gives +4, +5 and then +6. Nothing can be built on them. Up to 24 tiles.</Text>
+        </Row>
+
+        <!-- The expansion project -->
+        <Row Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME">
+            <Text>Expand National Park</Text>
+        </Row>
+        <Row Tag="LOC_NP_MULTIPLAYER">
+            <Text>National Parks and Wilderness Areas do not grow in network games.</Text>
+        </Row>
+        <Row Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_EX">
+            <Text>Adds 1 tile next to this city's National Park. You choose it with the Choose land button once the project finishes: open land, forest, mountains, lakes, rivers, the sea or a natural wonder, as long as you own it. Rural improvements on it are removed; resources stay collected. Each tile gives +1 [icon:YIELD_CULTURE] Culture and +1 [icon:YIELD_HAPPINESS] Happiness on top of its own yields; when the National Park reaches 8, 16 and 24 tiles, every tile of it gives more, up to +3 [icon:YIELD_CULTURE] Culture and +2 [icon:YIELD_HAPPINESS] Happiness. Nothing can be built on it. Up to 24 tiles.</Text>
+        </Row>
+        <Row Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO">
+            <Text>Adds 3 tiles next to this city's National Park. You choose them with the Choose land button once the project finishes: open land, forest, mountains, lakes, rivers, the sea or natural wonders, as long as you own them. Rural improvements on them are removed; resources stay collected. Each tile gives +1 [icon:YIELD_CULTURE] Culture and +1 [icon:YIELD_HAPPINESS] Happiness on top of its own yields; when the National Park reaches 8, 16 and 24 tiles, every tile of it gives more, up to +3 [icon:YIELD_CULTURE] Culture and +2 [icon:YIELD_HAPPINESS] Happiness. Nothing can be built on them. Up to 24 tiles.</Text>
+        </Row>
+
+        <!-- Park names. {1_Name} is a place name from Geographic Labels or the map. -->
+        <Row Tag="LOC_NP_PARK_NAME_FORMAT">
+            <Text>{1_Name} National Park</Text>
+        </Row>
+        <Row Tag="LOC_NP_PARK_NAME_ORDINAL">
+            <Text>{1_Name} {2_Ordinal}</Text>
+        </Row>
+        <!-- Options: Mods, National Park -->
+        <Row Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK">
+            <Text>National Park</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_NP_OVERLAY">
+            <Text>Show park borders and shading</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_NP_OVERLAY_DESCRIPTION">
+            <Text>Draws the border of every National Park (green) and Wilderness Area (ocher) you can see, with a light shading of its land, whatever lens is on. The Parks and Wilderness lens shades them more strongly. Takes effect immediately.</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_NP_LENS">
+            <Text>Parks and Wilderness lens</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_NP_LENS_DESCRIPTION">
+            <Text>Adds the Parks and Wilderness lens to the lens menu. Takes effect the next time you open the lens menu.</Text>
+        </Row>
+        <!-- The lens -->
+        <Row Tag="LOC_NP_LENS">
+            <Text>Parks and Wilderness</Text>
+        </Row>
+        <Row Tag="LOC_NP_GEO_TYPE">
+            <Text>Park or wilderness</Text>
+        </Row>
+
+        <!-- The tile picker -->
+        <Row Tag="LOC_NP_PICKER_TITLE">
+            <Text>Expand {1_Park}</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_HINT">
+            <Text>Click up to {1_Count} lit {1_Count: plural 1?tile; other?tiles;} to select {1_Count: plural 1?it; other?them;}, then Confirm. {2_Selected} selected.</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_HINT_FULL">
+            <Text>This fills the park ({1_Max} tiles). {2_Selected} selected; press Confirm to add {2_Selected: plural 1?it; other?them;}.</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_CONFIRM">
+            <Text>Confirm</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_CONFIRM_TIP">
+            <Text>Add the selected tiles</Text>
+        </Row>
+        <Row Tag="LOC_NP_PROMPT">
+            <Text>{1_Park}: {2_Count} more {2_Count: plural 1?tile; other?tiles;} to choose for its expansion</Text>
+        </Row>
+        <Row Tag="LOC_NP_PROMPT_BUTTON">
+            <Text>Choose land</Text>
+        </Row>
+        <Row Tag="LOC_NP_PROMPT_BUTTON_TIP">
+            <Text>Choose the tiles to add</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_NONE">
+            <Text>There's no land next to it that can be added right now. The expansion is saved until land is available.</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_DONE">
+            <Text>Done</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_DONE_TIP">
+            <Text>Add the selected tiles and give up the rest of this expansion</Text>
+        </Row>
+        <Row Tag="LOC_NP_DONE_TITLE">
+            <Text>End this expansion?</Text>
+        </Row>
+        <Row Tag="LOC_NP_DONE_BODY">
+            <Text>{1_Count} {1_Count: plural 1?tile; other?tiles;} of this expansion {1_Count: plural 1?hasn't; other?haven't;} been placed and will be lost. Choose Later to keep {1_Count: plural 1?it; other?them;}.</Text>
+        </Row>
+        <Row Tag="LOC_NP_CONFIRM_TITLE">
+            <Text>Add this tile?</Text>
+        </Row>
+        <Row Tag="LOC_NP_CONFIRM_STRIP">
+            <Text>The {1_Improvement} on this tile will be removed.</Text>
+        </Row>
+        <Row Tag="LOC_NP_RENAME_TITLE">
+            <Text>Rename</Text>
+        </Row>
+        <Row Tag="LOC_NP_RENAME_SAVE">
+            <Text>Save</Text>
+        </Row>
+        <Row Tag="LOC_NP_RENAME_RESTORE">
+            <Text>Restore</Text>
+        </Row>
+        <Row Tag="LOC_NP_RENAME_CANCEL">
+            <Text>Cancel</Text>
+        </Row>
+        <Row Tag="LOC_NP_BUY_NONE">
+            <Text>This settlement doesn't have a park of yours.</Text>
+        </Row>
+        <Row Tag="LOC_NP_BUY_FULL">
+            <Text>Full (24 tiles).</Text>
+        </Row>
+        <Row Tag="LOC_NP_BUY_GOLD">
+            <Text>Not enough Gold.</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_LATER">
+            <Text>Later</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_LATER_TIP">
+            <Text>Save the rest of this expansion for a later turn</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_RENAME">
+            <Text>Rename</Text>
+        </Row>
+        <Row Tag="LOC_NP_PICKER_RENAME_TIP">
+            <Text>Change the name</Text>
+        </Row>
+
+        <!-- Placement refusals -->
+        <Row Tag="LOC_NP_TILE_IS_PARKLAND">
+            <Text>This tile belongs to a National Park or Wilderness Area and can't be built on.</Text>
+        </Row>
+
+        <!-- Founding: the Found projects, and the picker that places the new park -->
+        <Row Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_NAME">
+            <Text>Found National Park</Text>
+        </Row>
+        <Row Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION">
+            <Text>Founds a National Park in this settlement. When it is done, press Choose land and pick an empty, Charming flat or hill tile the settlement owns: no district, improvement or building on it. A resource on it stays collected. +4 [icon:YIELD_HAPPINESS] Happiness, and more next to a natural wonder. One per settlement.</Text>
+        </Row>
+        <Row Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_NAME">
+            <Text>Found Wilderness Area</Text>
+        </Row>
+        <Row Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION">
+            <Text>Founds a Wilderness Area in this settlement. When it is done, press Choose land and pick an empty, Charming flat or hill tile the settlement owns: no district, improvement or building on it. A resource on it stays collected. +4 [icon:YIELD_DIPLOMACY] Influence, and more next to a natural wonder. One per settlement.</Text>
+        </Row>
+        <Row Tag="LOC_NP_FOUND_NO_LAND">
+            <Text>This settlement owns no empty, Charming flat or hill tile.</Text>
+        </Row>
+        <Row Tag="LOC_NP_FOUND_PICKER_TITLE">
+            <Text>{1_Settlement}: new National Park</Text>
+        </Row>
+        <Row Tag="LOC_WA_FOUND_PICKER_TITLE">
+            <Text>{1_Settlement}: new Wilderness Area</Text>
+        </Row>
+        <Row Tag="LOC_NP_FOUND_PICKER_HINT">
+            <Text>Click a lit tile, then Confirm.</Text>
+        </Row>
+        <Row Tag="LOC_NP_FOUND_NONE">
+            <Text>This settlement owns no empty, Charming flat or hill tile right now. The new park waits until one is free.</Text>
+        </Row>
+        <Row Tag="LOC_NP_FOUND_PROMPT">
+            <Text>{1_Settlement}: choose where to found the National Park</Text>
+        </Row>
+        <Row Tag="LOC_WA_FOUND_PROMPT">
+            <Text>{1_Settlement}: choose where to found the Wilderness Area</Text>
+        </Row>
+        <Row Tag="LOC_NP_FOUND_OFFER_BODY">
+            <Text>The National Park has been approved. Choose an empty, Charming tile this settlement owns to found it on; it can grow over the land around it later.</Text>
+        </Row>
+        <Row Tag="LOC_WA_FOUND_OFFER_BODY">
+            <Text>The Wilderness Area has been approved. Choose an empty, Charming tile this settlement owns to found it on; it can grow over the wild land around it later.</Text>
+        </Row>
+        <Row Tag="LOC_NP_FOUND_PROMPT_BUTTON_TIP">
+            <Text>Choose the tile to found it on</Text>
+        </Row>
+        <Row Tag="LOC_NP_FOUND_LATER_TIP">
+            <Text>Leave the founding for a later turn; it stays waiting</Text>
+        </Row>
+        <Row Tag="LOC_NP_PROMPT_BODY">
+            <Text>{1_Count} more {1_Count: plural 1?tile; other?tiles;} to choose for its expansion</Text>
+        </Row>
+        <Row Tag="LOC_NP_FOUND_PROMPT_BODY">
+            <Text>Choose where to found the National Park</Text>
+        </Row>
+        <Row Tag="LOC_WA_FOUND_PROMPT_BODY">
+            <Text>Choose where to found the Wilderness Area</Text>
+        </Row>
+        <!-- Quotes for the decision pop-ups (np-quotes.js); sources in docs/quote-sources.md -->
+        <Row Tag="LOC_NP_QUOTE_PARK_1">
+            <Text>"Everybody needs beauty as well as bread, places to play in and pray in, where Nature may heal and cheer and give strength to body and soul alike." John Muir, The Yosemite (1912)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_PARK_2">
+            <Text>"…mountain parks and reservations are useful not only as fountains of timber and irrigating rivers, but as fountains of life." John Muir, Our National Parks (1901)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_PARK_3">
+            <Text>"Climb the mountains and get their good tidings. Nature's peace will flow into you as sunshine flows into trees." John Muir, Our National Parks (1901)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_PARK_4">
+            <Text>"…the wildest health and pleasure grounds accessible and available to tourists seeking escape from care and dust and early death are the parks and reservations of the West." John Muir, Our National Parks (1901)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_PARK_5">
+            <Text>"…the enjoyment of scenery employs the mind without fatigue and yet exercises it; tranquilizes it and yet enlivens it…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_PARK_6">
+            <Text>"…the Yosemite should be held, guarded and managed for the free use of the whole body of the people forever…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_PARK_7">
+            <Text>"This Park was created, and is now administered, for the benefit and enjoyment of the people." Theodore Roosevelt, Presidential Addresses and State Papers, vol. 1 (1904)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_PARK_8">
+            <Text>"No nation has ever fallen for having too much scenery." Enos A. Mills, Your National Parks (1917)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_WILD_1">
+            <Text>"…in Wildness is the preservation of the World." Henry David Thoreau, Walking (1862)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_WILD_2">
+            <Text>"We need the tonic of wildness…" Henry David Thoreau, Walden (1854)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_WILD_3">
+            <Text>"We can never have enough of Nature." Henry David Thoreau, Walden (1854)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_WILD_4">
+            <Text>"Thousands of tired, nerve-shaken, over-civilized people are beginning to find out that going to the mountains is going home; that wildness is a necessity…" John Muir, Our National Parks (1901)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_WILD_5">
+            <Text>"None of Nature's landscapes are ugly so long as they are wild…" John Muir, Our National Parks (1901)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_WILD_6">
+            <Text>"Thus protected, these wildernesses will remain forever wild, forever mysterious and primeval…" Enos A. Mills, Your National Parks (1917)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_WILD_7">
+            <Text>"All National Parks are wild-life sanctuaries, places of refuge for birds and animals. There the wild folk are not pursued, trapped, or shot." Enos A. Mills, Your National Parks (1917)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_WILD_8">
+            <Text>"In the wilderness, I find something more dear and connate than in streets or villages." Ralph Waldo Emerson, Nature (1836)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_WILD_9">
+            <Text>"When we try to pick out anything by itself, we find it hitched to everything else in the universe." John Muir, My First Summer in the Sierra (1911)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_WILD_10">
+            <Text>"…from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved." Charles Darwin, On the Origin of Species, 1st ed. (1859)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_NOLAND_1">
+            <Text>"Not the law, but the land sets the limit." Mary Austin, The Land of Little Rain (1903)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_NOLAND_2">
+            <Text>"The manner of the country makes the usage of life there, and the land will not be lived in except in its own fashion." Mary Austin, The Land of Little Rain (1903)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_NOLAND_3">
+            <Text>"Let us spend one day as deliberately as Nature, and not be thrown off the track by every nutshell and mosquito's wing that falls on the rails." Henry David Thoreau, Walden (1854)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_NOLAND_4">
+            <Text>"Heaven is under our feet as well as over our heads." Henry David Thoreau, Walden (1854)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_NOLAND_5">
+            <Text>"The health of the eye seems to demand a horizon. We are never tired, so long as we can see far enough." Ralph Waldo Emerson, Nature (1836)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_STRIP_1">
+            <Text>"Leave it as it is. You can not improve on it. The ages have been at work on it, and man can only mar it." Theodore Roosevelt, Presidential Addresses and State Papers, vol. 1 (1904)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_STRIP_2">
+            <Text>"Shall I not rejoice also at the abundance of the weeds whose seeds are the granary of the birds?" Henry David Thoreau, Walden (1854)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_STRIP_3">
+            <Text>"These beans have results which are not harvested by me. Do they not grow for woodchucks partly?" Henry David Thoreau, Walden (1854)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_STRIP_4">
+            <Text>"He is to become a co-worker with nature in the reconstruction of the damaged fabric…" George Perkins Marsh, Man and Nature (1864)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_STRIP_5">
+            <Text>"Man has too long forgotten that the earth was given to him for usufruct alone, not for consumption, still less for profligate waste." George Perkins Marsh, Man and Nature (1864)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_DONE_1">
+            <Text>"…a man is rich in proportion to the number of things which he can afford to let alone." Henry David Thoreau, Walden (1854)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_DONE_2">
+            <Text>"I love a broad margin to my life." Henry David Thoreau, Walden (1854)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_DONE_3">
+            <Text>"…in every walk with Nature one receives far more than he seeks." John Muir, Steep Trails (1918)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_DONE_4">
+            <Text>"…much, we can say comfortingly, must always be in great part wild, particularly the sea and the sky, the floods of light from the stars…" John Muir, Our National Parks (1901)</Text>
+        </Row>
+        <Row Tag="LOC_NP_QUOTE_DONE_5">
+            <Text>"When I come back, I go to Nature to be soothed and healed, and to have my senses put in tune once more." John Burroughs, Time and Change (1912)</Text>
+        </Row>
+    </EnglishText>
+</Database>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_NATIONAL_PARK_NAME" Language="ja_JP"><Text>国立公園</Text></Replace>
+        <Replace Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION" Language="ja_JP"><Text>探検の時代から国立公園と原生自然地域が登場します。都市や町が所有する空きの魅力的なタイルに設立し、山岳、森林、湖、河川、海、自然遺産など、周囲の土地へ1タイルずつ拡張していきます。国立公園は文化力と幸福度をもたらし、管理棟と山小屋があります。原生自然地域は影響力をもたらし、建造物はありません。各公園のタイルは、その公園が8、16、24タイルに達するたびに産出が増えます。各公園は土地に合わせて石垣、樹木、野生動物とともに描かれます。Geographic Labelsに対応。シングルプレイとホットシートに対応。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_NAME" Language="ja_JP"><Text>国立公園</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION" Language="ja_JP"><Text>国立公園の設立タイル。「国立公園の設立」の完了後に選んだ空きの魅力的なタイルに置かれる。[icon:YIELD_HAPPINESS] 幸福度+4。さらに隣接する自然遺産1つにつき [icon:YIELD_HAPPINESS] 幸福度+5、[icon:YIELD_CULTURE] 文化力+5。この公園が8、16、24タイルに達すると、その土地の産出が増える。都市でプロジェクト「国立公園の拡張」を実行するか、居住地の購入リストからゴールドで拡張を購入すると拡張できる。探検の時代は「社会」、近代は「博物学」でアンロック。居住地ごとに1つまで。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP" Language="ja_JP"><Text>「国立公園の設立」で、居住地が所有する空きの魅力的なタイルに設立する。</Text></Replace>
+        <Replace Tag="LOC_NP_LAND_NAME" Language="ja_JP"><Text>国立公園の土地</Text></Replace>
+        <Replace Tag="LOC_NP_LAND_DESCRIPTION" Language="ja_JP"><Text>国立公園内の土地。タイル本来の産出に加えて [icon:YIELD_CULTURE] 文化力+1、[icon:YIELD_HAPPINESS] 幸福度+1をもたらし、その公園が大きくなるほど増える。8タイルで [icon:YIELD_CULTURE] 文化力+2、16タイルで [icon:YIELD_CULTURE] +2と [icon:YIELD_HAPPINESS] +2、24タイルで [icon:YIELD_CULTURE] +3と [icon:YIELD_HAPPINESS] +2。失った土地や上に建設された土地はその公園のタイル数から差し引かれる。資源は引き続き収集される。ここには何も建設できない。</Text></Replace>
+        <Replace Tag="LOC_NP_WILD_NAME" Language="ja_JP"><Text>国立公園の奥地</Text></Replace>
+        <Replace Tag="LOC_NP_WILD_DESCRIPTION" Language="ja_JP"><Text>国立公園内の自然遺産、山岳、水域、森林のタイル。タイル本来の産出に加えて [icon:YIELD_CULTURE] 文化力+2、[icon:YIELD_HAPPINESS] 幸福度+1をもたらす。資源は引き続き収集される。ここには何も建設できない。</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_NAME" Language="ja_JP"><Text>原生自然地域</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_DESCRIPTION" Language="ja_JP"><Text>原生自然地域の設立タイル。「原生自然地域の設立」の完了後に選んだ空きの魅力的なタイルに置かれる。[icon:YIELD_DIPLOMACY] 影響力+4。さらに隣接する自然遺産1つにつき [icon:YIELD_DIPLOMACY] 影響力+10。この原生自然地域が8、16、24タイルに達すると、その土地の産出が増える。都市でプロジェクト「原生自然地域の拡張」を実行するか、居住地の購入リストからゴールドで拡張を購入すると拡張できる。建造物はない。探検の時代は「社会」、近代は「博物学」でアンロック。居住地ごとに1つまで。</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_TOOLTIP" Language="ja_JP"><Text>「原生自然地域の設立」で、居住地が所有する空きの魅力的なタイルに設立する。</Text></Replace>
+        <Replace Tag="LOC_WA_LAND_NAME" Language="ja_JP"><Text>原生自然地域の土地</Text></Replace>
+        <Replace Tag="LOC_WA_LAND_DESCRIPTION" Language="ja_JP"><Text>原生自然地域内の土地。タイル本来の産出に加えて [icon:YIELD_DIPLOMACY] 影響力+3をもたらし、その原生自然地域が大きくなるほど増える。8タイルで+4、16タイルで+5、24タイルで+6。失った土地や上に建設された土地はその原生自然地域のタイル数から差し引かれる。資源は引き続き収集される。ここには何も建設できない。</Text></Replace>
+        <Replace Tag="LOC_WA_WILD_NAME" Language="ja_JP"><Text>原生自然地域の奥地</Text></Replace>
+        <Replace Tag="LOC_WA_WILD_DESCRIPTION" Language="ja_JP"><Text>原生自然地域内の自然遺産、山岳、水域、森林のタイル。タイル本来の産出に加えて [icon:YIELD_DIPLOMACY] 影響力+3をもたらす。資源は引き続き収集される。ここには何も建設できない。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME" Language="ja_JP"><Text>原生自然地域の拡張</Text></Replace>
+        <Replace Tag="LOC_WA_NAME_FORMAT" Language="ja_JP"><Text>{1_Name}原生自然地域</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_EX" Language="ja_JP"><Text>この都市の原生自然地域に隣接するタイルを1つ追加する。追加するタイルはプロジェクト完了後に「土地を選ぶ」ボタンから選ぶ。自分が所有していれば、開けた土地、森林、山岳、湖、河川、海、自然遺産のいずれでもよい。そのタイルの郊外の施設は撤去されるが、資源は引き続き収集される。各タイルは本来の産出に加えて [icon:YIELD_DIPLOMACY] 影響力+3をもたらす。その原生自然地域が8、16、24タイルに達すると、そのすべてのタイルが+4、+5、+6をもたらすようになる。そのタイルには何も建設できない。最大24タイル。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO" Language="ja_JP"><Text>この都市の原生自然地域に隣接するタイルを3つ追加する。追加するタイルはプロジェクト完了後に「土地を選ぶ」ボタンから選ぶ。自分が所有していれば、開けた土地、森林、山岳、湖、河川、海、自然遺産のいずれでもよい。それらのタイルの郊外の施設は撤去されるが、資源は引き続き収集される。各タイルは本来の産出に加えて [icon:YIELD_DIPLOMACY] 影響力+3をもたらす。その原生自然地域が8、16、24タイルに達すると、そのすべてのタイルが+4、+5、+6をもたらすようになる。それらのタイルには何も建設できない。最大24タイル。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME" Language="ja_JP"><Text>国立公園の拡張</Text></Replace>
+        <Replace Tag="LOC_NP_MULTIPLAYER" Language="ja_JP"><Text>ネットワークゲームでは国立公園と原生自然地域は拡張されない。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_EX" Language="ja_JP"><Text>この都市の国立公園に隣接するタイルを1つ追加する。追加するタイルはプロジェクト完了後に「土地を選ぶ」ボタンから選ぶ。自分が所有していれば、開けた土地、森林、山岳、湖、河川、海、自然遺産のいずれでもよい。そのタイルの郊外の施設は撤去されるが、資源は引き続き収集される。各タイルは本来の産出に加えて [icon:YIELD_CULTURE] 文化力+1、[icon:YIELD_HAPPINESS] 幸福度+1をもたらす。その国立公園が8、16、24タイルに達するとそのすべてのタイルの産出が増え、最大で [icon:YIELD_CULTURE] 文化力+3、[icon:YIELD_HAPPINESS] 幸福度+2になる。そのタイルには何も建設できない。最大24タイル。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" Language="ja_JP"><Text>この都市の国立公園に隣接するタイルを3つ追加する。追加するタイルはプロジェクト完了後に「土地を選ぶ」ボタンから選ぶ。自分が所有していれば、開けた土地、森林、山岳、湖、河川、海、自然遺産のいずれでもよい。それらのタイルの郊外の施設は撤去されるが、資源は引き続き収集される。各タイルは本来の産出に加えて [icon:YIELD_CULTURE] 文化力+1、[icon:YIELD_HAPPINESS] 幸福度+1をもたらす。その国立公園が8、16、24タイルに達するとそのすべてのタイルの産出が増え、最大で [icon:YIELD_CULTURE] 文化力+3、[icon:YIELD_HAPPINESS] 幸福度+2になる。それらのタイルには何も建設できない。最大24タイル。</Text></Replace>
+        <Replace Tag="LOC_NP_PARK_NAME_FORMAT" Language="ja_JP"><Text>{1_Name}国立公園</Text></Replace>
+        <Replace Tag="LOC_NP_PARK_NAME_ORDINAL" Language="ja_JP"><Text>{1_Name} {2_Ordinal}</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK" Language="ja_JP"><Text>国立公園</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_OVERLAY" Language="ja_JP"><Text>公園の境界線と色付けを表示</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_OVERLAY_DESCRIPTION" Language="ja_JP"><Text>どのレンズを使用中でも、見えるすべての国立公園（緑）と原生自然地域（黄土色）の境界線を描き、その土地に薄く色を付けます。「公園と原生自然」レンズではより濃く色が付きます。すぐに反映されます。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_LENS" Language="ja_JP"><Text>「公園と原生自然」レンズ</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_LENS_DESCRIPTION" Language="ja_JP"><Text>レンズメニューに「公園と原生自然」レンズを追加します。次にレンズメニューを開いたときに反映されます。</Text></Replace>
+        <Replace Tag="LOC_NP_LENS" Language="ja_JP"><Text>公園と原生自然</Text></Replace>
+        <Replace Tag="LOC_NP_GEO_TYPE" Language="ja_JP"><Text>公園・原生自然</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_TITLE" Language="ja_JP"><Text>{1_Park}を拡張</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_HINT" Language="ja_JP"><Text>光っている{1_Count: plural other?タイル;}を最大{1_Count}個までクリックして{1_Count: plural other?選択;}し、「確定」を押してください。選択中: {2_Selected}</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_HINT_FULL" Language="ja_JP"><Text>これで公園が上限（{1_Max}タイル）に達します。選択中: {2_Selected}。「確定」を押すと{2_Selected: plural other?追加;}されます。</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_CONFIRM" Language="ja_JP"><Text>確定</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_CONFIRM_TIP" Language="ja_JP"><Text>選択したタイルを追加する</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT" Language="ja_JP"><Text>{1_Park}: 拡張のためにあと{2_Count}{2_Count: plural other?タイル;}を選んでください</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT_BUTTON" Language="ja_JP"><Text>土地を選ぶ</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT_BUTTON_TIP" Language="ja_JP"><Text>追加するタイルを選ぶ</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_NONE" Language="ja_JP"><Text>現在、隣接していて追加できる土地がありません。追加できる土地が得られるまで、拡張は保留されます。</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_DONE" Language="ja_JP"><Text>完了</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_DONE_TIP" Language="ja_JP"><Text>選択したタイルを追加し、この拡張の残りを放棄する</Text></Replace>
+        <Replace Tag="LOC_NP_DONE_TITLE" Language="ja_JP"><Text>この拡張を終了しますか?</Text></Replace>
+        <Replace Tag="LOC_NP_DONE_BODY" Language="ja_JP"><Text>この拡張の{1_Count}{1_Count: plural other?タイル;}が{1_Count: plural other?未配置;}のまま失われます。{1_Count: plural other?残す;}場合は「後で」を選んでください。</Text></Replace>
+        <Replace Tag="LOC_NP_CONFIRM_TITLE" Language="ja_JP"><Text>このタイルを追加しますか?</Text></Replace>
+        <Replace Tag="LOC_NP_CONFIRM_STRIP" Language="ja_JP"><Text>このタイルの{1_Improvement}は撤去されます。</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_TITLE" Language="ja_JP"><Text>名前の変更</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_SAVE" Language="ja_JP"><Text>保存</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_RESTORE" Language="ja_JP"><Text>元に戻す</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_CANCEL" Language="ja_JP"><Text>キャンセル</Text></Replace>
+        <Replace Tag="LOC_NP_BUY_NONE" Language="ja_JP"><Text>この居住地にはあなたの公園がありません。</Text></Replace>
+        <Replace Tag="LOC_NP_BUY_FULL" Language="ja_JP"><Text>上限（24タイル）</Text></Replace>
+        <Replace Tag="LOC_NP_BUY_GOLD" Language="ja_JP"><Text>ゴールドが足りません。</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_LATER" Language="ja_JP"><Text>後で</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_LATER_TIP" Language="ja_JP"><Text>この拡張の残りを後のターンに保留する</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_RENAME" Language="ja_JP"><Text>名前の変更</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_RENAME_TIP" Language="ja_JP"><Text>名前を変更する</Text></Replace>
+        <Replace Tag="LOC_NP_TILE_IS_PARKLAND" Language="ja_JP"><Text>このタイルは国立公園または原生自然地域に属しているため、建設できない。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_NAME" Language="ja_JP"><Text>国立公園の設立</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION" Language="ja_JP"><Text>この居住地に国立公園を設立する。完了後に「土地を選ぶ」を押し、居住地が所有する空きの魅力的な平地または丘陵のタイルを選ぶ。区域、施設、建造物のないタイルに限る。そのタイルの資源は引き続き収集される。[icon:YIELD_HAPPINESS] 幸福度+4。自然遺産に隣接していればさらに増える。居住地ごとに1つまで。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_NAME" Language="ja_JP"><Text>原生自然地域の設立</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION" Language="ja_JP"><Text>この居住地に原生自然地域を設立する。完了後に「土地を選ぶ」を押し、居住地が所有する空きの魅力的な平地または丘陵のタイルを選ぶ。区域、施設、建造物のないタイルに限る。そのタイルの資源は引き続き収集される。[icon:YIELD_DIPLOMACY] 影響力+4。自然遺産に隣接していればさらに増える。居住地ごとに1つまで。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NO_LAND" Language="ja_JP"><Text>この居住地には、空きの魅力的な平地または丘陵のタイルがありません。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PICKER_TITLE" Language="ja_JP"><Text>{1_Settlement}: 新しい国立公園</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="ja_JP"><Text>{1_Settlement}: 新しい原生自然地域</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="ja_JP"><Text>光っているタイルをクリックし、「確定」を押してください。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NONE" Language="ja_JP"><Text>この居住地には現在、空きの魅力的な平地または丘陵のタイルがありません。新しい公園は、空きができるまで待機します。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PROMPT" Language="ja_JP"><Text>{1_Settlement}: 国立公園の設立地を選んでください</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_PROMPT" Language="ja_JP"><Text>{1_Settlement}: 原生自然地域の設立地を選んでください</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="ja_JP"><Text>国立公園の設立が承認されました。この居住地が所有する空きの魅力的なタイルを選んで設立地を決めてください。後で周囲の土地へ広げられます。</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_OFFER_BODY" Language="ja_JP"><Text>原生自然地域の設立が承認されました。この居住地が所有する空きの魅力的なタイルを選んで設立地を決めてください。後で周囲の原生の土地へ広げられます。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PROMPT_BUTTON_TIP" Language="ja_JP"><Text>設立するタイルを選ぶ</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_LATER_TIP" Language="ja_JP"><Text>設立を後のターンに回します。保留されたままになります</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT_BODY" Language="ja_JP"><Text>拡張のためにあと{1_Count}{1_Count: plural other?タイル;}を選んでください</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PROMPT_BODY" Language="ja_JP"><Text>国立公園の設立地を選んでください</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_PROMPT_BODY" Language="ja_JP"><Text>原生自然地域の設立地を選んでください</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_1" Language="ja_JP"><Text>"Everybody needs beauty as well as bread, places to play in and pray in, where Nature may heal and cheer and give strength to body and soul alike." John Muir, The Yosemite (1912)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_2" Language="ja_JP"><Text>"…mountain parks and reservations are useful not only as fountains of timber and irrigating rivers, but as fountains of life." John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_3" Language="ja_JP"><Text>"Climb the mountains and get their good tidings. Nature's peace will flow into you as sunshine flows into trees." John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_4" Language="ja_JP"><Text>"…the wildest health and pleasure grounds accessible and available to tourists seeking escape from care and dust and early death are the parks and reservations of the West." John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_5" Language="ja_JP"><Text>"…the enjoyment of scenery employs the mind without fatigue and yet exercises it; tranquilizes it and yet enlivens it…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_6" Language="ja_JP"><Text>"…the Yosemite should be held, guarded and managed for the free use of the whole body of the people forever…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_7" Language="ja_JP"><Text>"This Park was created, and is now administered, for the benefit and enjoyment of the people." Theodore Roosevelt, Presidential Addresses and State Papers, vol. 1 (1904)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_8" Language="ja_JP"><Text>"No nation has ever fallen for having too much scenery." Enos A. Mills, Your National Parks (1917)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_1" Language="ja_JP"><Text>"…in Wildness is the preservation of the World." Henry David Thoreau, Walking (1862)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_2" Language="ja_JP"><Text>"We need the tonic of wildness…" Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_3" Language="ja_JP"><Text>"We can never have enough of Nature." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_4" Language="ja_JP"><Text>"Thousands of tired, nerve-shaken, over-civilized people are beginning to find out that going to the mountains is going home; that wildness is a necessity…" John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_5" Language="ja_JP"><Text>"None of Nature's landscapes are ugly so long as they are wild…" John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_6" Language="ja_JP"><Text>"Thus protected, these wildernesses will remain forever wild, forever mysterious and primeval…" Enos A. Mills, Your National Parks (1917)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_7" Language="ja_JP"><Text>"All National Parks are wild-life sanctuaries, places of refuge for birds and animals. There the wild folk are not pursued, trapped, or shot." Enos A. Mills, Your National Parks (1917)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_8" Language="ja_JP"><Text>"In the wilderness, I find something more dear and connate than in streets or villages." Ralph Waldo Emerson, Nature (1836)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_9" Language="ja_JP"><Text>"When we try to pick out anything by itself, we find it hitched to everything else in the universe." John Muir, My First Summer in the Sierra (1911)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_10" Language="ja_JP"><Text>"…from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved." Charles Darwin, On the Origin of Species, 1st ed. (1859)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_1" Language="ja_JP"><Text>"Not the law, but the land sets the limit." Mary Austin, The Land of Little Rain (1903)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_2" Language="ja_JP"><Text>"The manner of the country makes the usage of life there, and the land will not be lived in except in its own fashion." Mary Austin, The Land of Little Rain (1903)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_3" Language="ja_JP"><Text>"Let us spend one day as deliberately as Nature, and not be thrown off the track by every nutshell and mosquito's wing that falls on the rails." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_4" Language="ja_JP"><Text>"Heaven is under our feet as well as over our heads." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_5" Language="ja_JP"><Text>"The health of the eye seems to demand a horizon. We are never tired, so long as we can see far enough." Ralph Waldo Emerson, Nature (1836)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_1" Language="ja_JP"><Text>"Leave it as it is. You can not improve on it. The ages have been at work on it, and man can only mar it." Theodore Roosevelt, Presidential Addresses and State Papers, vol. 1 (1904)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_2" Language="ja_JP"><Text>"Shall I not rejoice also at the abundance of the weeds whose seeds are the granary of the birds?" Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_3" Language="ja_JP"><Text>"These beans have results which are not harvested by me. Do they not grow for woodchucks partly?" Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_4" Language="ja_JP"><Text>"He is to become a co-worker with nature in the reconstruction of the damaged fabric…" George Perkins Marsh, Man and Nature (1864)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_5" Language="ja_JP"><Text>"Man has too long forgotten that the earth was given to him for usufruct alone, not for consumption, still less for profligate waste." George Perkins Marsh, Man and Nature (1864)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_1" Language="ja_JP"><Text>"…a man is rich in proportion to the number of things which he can afford to let alone." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_2" Language="ja_JP"><Text>"I love a broad margin to my life." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_3" Language="ja_JP"><Text>"…in every walk with Nature one receives far more than he seeks." John Muir, Steep Trails (1918)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_4" Language="ja_JP"><Text>"…much, we can say comfortingly, must always be in great part wild, particularly the sea and the sky, the floods of light from the stars…" John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_5" Language="ja_JP"><Text>"When I come back, I go to Nature to be soothed and healed, and to have my senses put in tune once more." John Burroughs, Time and Change (1912)</Text></Replace>
+    </LocalizedText>
+</Database>

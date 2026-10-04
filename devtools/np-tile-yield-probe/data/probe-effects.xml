@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameEffects xmlns="GameEffects">
+    <Modifier id="MOD_NP_PROBE_TILE_CULTURE" collection="COLLECTION_SINGLE_PLOT_YIELDS" effect="EFFECT_PLOT_ADJUST_YIELD">
+        <Argument name="YieldType">YIELD_CULTURE</Argument>
+        <Argument name="Amount">2</Argument>
+    </Modifier>
+</GameEffects>

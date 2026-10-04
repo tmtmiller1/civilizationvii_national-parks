@@ -1,0 +1,48 @@
+[h1]National Park[/h1]
+[b]Version 1.0.0, for Civilization VII 1.5.0[/b]
+National Park lets you found a park or a wilderness area on an empty, Charming tile a city or town owns and grow it, tile by tile, over the wild land around it: mountains, forests, lakes, rivers, the sea, natural wonders and open country. Every tile of park land pays, the land is protected, and the park is drawn on the map with walls, trees, a warden's station and animated wildlife.
+[h2]The Mod Includes[/h2]
+[list]
+[*]Found National Park: a city project, or a Gold purchase in any city or town. Then choose an empty flat or hill tile the settlement owns, in any ring, where the game's own appeal is Charming; a resource on it stays collected. Unlocked by Society in the Exploration Age and Natural History in the Modern Age. +4 Happiness, plus +5 Happiness and +5 Culture for each adjacent natural wonder. One per settlement.
+[*]The Wilderness Area, the park's twin: founded and grown the same way, paid in Influence (+4, plus +10 for each adjacent natural wonder), with no lodge, cabins or lookout, only the land and its wildlife inside an ocher border. A settlement can have one of each.
+[*]Expand National Park and Expand Wilderness Area, repeatable city projects at a flat cost. Any settlement with a park, town or city, can also buy an expansion for Gold from its purchase list. Each expansion adds 1 tile in the Exploration Age and 3 in the Modern Age, up to 24 tiles.
+[*]A tile picker, opened from a Choose land button: the land the park can take is lit on the map. Click to select, then Confirm, Done or Later.
+[*]A park tile keeps its own yields and gives the park's on top: +1 Culture and +1 Happiness in a National Park, +3 Influence in a Wilderness Area. The yields layer shows them on the tiles.
+[*]Size bonuses: as a park reaches 8, 16 and 24 tiles of its own, every tile of it pays more, up to +3 Culture and +2 Happiness, or +6 Influence. Land lost steps it back down.
+[*]Resources come with the land: a resource tile joins without a question and its resource stays collected. A tile with a farm or other improvement joins after you confirm, and the citizen who worked it comes back as new population to place.
+[*]Protected land: no settlement, yours or an AI's, can build on park land or grow into it. An Expedition Base stays, and roads still cross it.
+[*]A park drawn to suit its land: broken dry-stone walls with stretches of fence, woods that fill its forest tiles, stands of trees, a warden's lodge and picnic shelter, a lookout tower, lily pads and reeds, buoys at sea, dry-stone walls at the foot of its mountains, and a dashed border with a light shading of its land. It grows richer at 8, 16 and 24 tiles: more campsites, cabin villages and lookouts, thicker woods, more animals, and stone cairns and obelisks scattered over its land. The details are spread so neighboring tiles never repeat the same flock, herd, fish or reeds.
+[*]Animated wildlife: bison, horses, deer, elk, camels, elephants, sheep, llamas, foxes, cranes and crabs, with birds and butterflies overhead and fish, reef fish and the odd whale at sea.
+[*]A Parks and Wilderness lens in the lens menu: every park tile shaded, green for National Parks, ocher for Wilderness Areas.
+[*]Options (Add-ons, National Park): show or hide the park borders and shading, applied at once in a game, and show or hide the lens in the lens menu.
+[*]A National Parks section in the Civilopedia explaining every rule, plus pages under Game Concepts on real national parks and wilderness areas around the world.
+[*]Names from the place: "Uluru National Park", "Redwood Forest Wilderness Area". Rename a park from its picker.
+[*]AI parks grow too: an AI saves up and buys an expansion with its own Gold when the land is worth the price. A park changes hands with its settlement.
+[/list]
+[h2]With Geographic Labels[/h2]
+National Park works on its own. With [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3759067376]Geographic Labels[/url] installed too, version 1.6.0 or later, each park's name is drawn on the map like any other place (from 1.6.1 in place of the label of the wonder it is named after), parks are listed in Geographic Labels' Rename Places, and a new park can also take its name from a nearby mountain range, lake or region. With an earlier Geographic Labels, or without it, park names show in the park's picker and prompt, and National Park's own rename box is used.
+[h2]Compatibility[/h2]
+[list]
+[*]Adds new content only. It doesn't replace base-game files or change base-game rows.
+[*]Start a new game with the mod enabled. In a game already in progress, the park is not available if its civic was researched before the mod was added.
+[*]Suggested with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3757509212]Cultural Diffusion[/url]: a park grows only into land its settlement owns, and Cultural Diffusion's spreading borders give it more land to grow into, past the third ring too.
+[*]Works with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3808170627]Canals[/url]: a Canal is never dug through park land, and a canal tile cannot join a park.
+[*]Single-player and hotseat games. In a network game the parks already on the map are drawn and named for every player, but new parks are not founded and parks do not grow.
+[/list]
+[h2]Languages[/h2]
+English, Deutsch, Español, Français, Italiano, 日本語, 한국어, Polski, Português (Brasil), Русский, 简体中文 and 繁體中文. The translations are machine translations using the game's own terms; corrections from native speakers are welcome in the comments.
+[h2]Source and documentation[/h2]
+[list]
+[*][b]What's new:[/b] [url=https://github.com/tmtmiller1/civilizationvii_national-parks/releases/latest]the latest release notes and a download[/url]
+[*][b]Full documentation:[/b] [url=https://github.com/tmtmiller1/civilizationvii_national-parks/blob/main/README.md]how the mod works[/url]
+[/list]
+[h2]For modders[/h2]
+This mod is developed with [url=https://github.com/tmtmiller1/civilizationvii_tower-bench]Tower Bench[/url], a free, open-source test bench for Civilization VII mods. It connects to a running game from your browser or the command line: inspect and change the map with every write verified and undoable, diff the world between two turns, prove your deployed code is what the game runs, find which mod causes a crash, and see which copy of each mod is actually loaded.
+[h2]Credits[/h2]
+[list]
+[*][b]Tower[/b], for design and Civilization VII implementation.
+[/list]
+[h2]Special Thanks[/h2]
+[list]
+[*][b]Potato McWhisky[/b], for teaching me to love again, Civilization-wise (Civ VI), after growing up as a Civilization II, IV, and V player. Making this mod is an act of faith that the community will eventually help make Civilization VII as good as the previous entries.
+[/list]

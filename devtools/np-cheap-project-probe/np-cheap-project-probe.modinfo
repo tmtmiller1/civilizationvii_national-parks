@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DEV ONLY. Drops the first Expand National Park in a city to cost 1, so the loop can be watched within a turn.
+     Install beside national-park for a probe run, and remove it from Mods/ afterward. -->
+<Mod id="tower-national-park-cheap-project-probe" version="1" xmlns="ModInfo">
+	<Properties>
+		<Name>National Park cheap project probe (dev)</Name>
+		<Description>Dev only: the first Expand National Park in a city costs 1.</Description>
+		<Authors>Tower</Authors>
+		<Package>NationalPark</Package>
+		<ShowInBrowser>1</ShowInBrowser>
+		<AffectsSavedGames>1</AffectsSavedGames>
+	</Properties>
+	<Dependencies>
+		<Mod id="tower-national-park" title="National Park"/>
+	</Dependencies>
+	<ActionCriteria>
+		<Criteria id="always"><AlwaysMet></AlwaysMet></Criteria>
+	</ActionCriteria>
+	<ActionGroups>
+		<ActionGroup id="np-probe-data" scope="game" criteria="always">
+			<Actions>
+				<UpdateDatabase><Item>data/cheap.xml</Item></UpdateDatabase>
+			</Actions>
+			<Properties><LoadOrder>10000</LoadOrder></Properties>
+		</ActionGroup>
+	</ActionGroups>
+</Mod>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Loaded first in its age: the types and rows everything else references.
+     Modern Age: the park, the wilderness area and their projects from the Natural History civic (first tier). Three tiles per expansion. -->
+<Database>
+    <Types>
+        <Row Type="IMPROVEMENT_NATIONAL_PARK" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="IMPROVEMENT_NATIONAL_PARK_LAND" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="IMPROVEMENT_NATIONAL_PARK_WILD" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="PROJECT_EXPAND_NATIONAL_PARK" Kind="KIND_PROJECT"/>
+        <Row Type="PROJECT_FOUND_NATIONAL_PARK" Kind="KIND_PROJECT"/>
+        <Row Type="IMPROVEMENT_WILDERNESS_AREA" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="IMPROVEMENT_WILDERNESS_AREA_LAND" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="IMPROVEMENT_WILDERNESS_AREA_WILD" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="IMPROVEMENT_NATIONAL_PARK_LAND_8" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="IMPROVEMENT_NATIONAL_PARK_LAND_16" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="IMPROVEMENT_NATIONAL_PARK_LAND_24" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="IMPROVEMENT_WILDERNESS_AREA_LAND_8" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="IMPROVEMENT_WILDERNESS_AREA_LAND_16" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="IMPROVEMENT_WILDERNESS_AREA_LAND_24" Kind="KIND_CONSTRUCTIBLE"/>
+        <Row Type="PROJECT_EXPAND_WILDERNESS_AREA" Kind="KIND_PROJECT"/>
+        <Row Type="PROJECT_FOUND_WILDERNESS_AREA" Kind="KIND_PROJECT"/>
+    </Types>
+    <Constructibles>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" Name="LOC_BUILDING_NATIONAL_PARK_NAME" Description="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION"
+             Tooltip="LOC_BUILDING_NATIONAL_PARK_TOOLTIP" ConstructibleClass="IMPROVEMENT" Cost="400" Population="1" Age="AGE_MODERN"
+             RequiresUnlock="true" CostProgressionModel="COST_PROGRESSION_PREVIOUS_COPIES_CITY" CostProgressionParam1="100"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND" Name="LOC_NP_LAND_NAME" Description="LOC_NP_LAND_DESCRIPTION"
+             Tooltip="LOC_NP_LAND_DESCRIPTION" ConstructibleClass="IMPROVEMENT" Cost="1" Population="0" Age="AGE_MODERN" RequiresUnlock="true"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_WILD" Name="LOC_NP_WILD_NAME" Description="LOC_NP_WILD_DESCRIPTION"
+             Tooltip="LOC_NP_WILD_DESCRIPTION" ConstructibleClass="IMPROVEMENT" Cost="1" Population="0" Age="AGE_MODERN" RequiresUnlock="true"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" Name="LOC_WILDERNESS_AREA_NAME" Description="LOC_WILDERNESS_AREA_DESCRIPTION"
+             Tooltip="LOC_WILDERNESS_AREA_TOOLTIP" ConstructibleClass="IMPROVEMENT" Cost="400" Population="1" Age="AGE_MODERN"
+             RequiresUnlock="true" CostProgressionModel="COST_PROGRESSION_PREVIOUS_COPIES_CITY" CostProgressionParam1="100"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND" Name="LOC_WA_LAND_NAME" Description="LOC_WA_LAND_DESCRIPTION"
+             Tooltip="LOC_WA_LAND_DESCRIPTION" ConstructibleClass="IMPROVEMENT" Cost="1" Population="0" Age="AGE_MODERN" RequiresUnlock="true"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_WILD" Name="LOC_WA_WILD_NAME" Description="LOC_WA_WILD_DESCRIPTION"
+             Tooltip="LOC_WA_WILD_DESCRIPTION" ConstructibleClass="IMPROVEMENT" Cost="1" Population="0" Age="AGE_MODERN" RequiresUnlock="true"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_8" Name="LOC_NP_LAND_NAME" Description="LOC_NP_LAND_DESCRIPTION"
+             Tooltip="LOC_NP_LAND_DESCRIPTION" ConstructibleClass="IMPROVEMENT" Cost="1" Population="0" Age="AGE_MODERN" RequiresUnlock="true"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_16" Name="LOC_NP_LAND_NAME" Description="LOC_NP_LAND_DESCRIPTION"
+             Tooltip="LOC_NP_LAND_DESCRIPTION" ConstructibleClass="IMPROVEMENT" Cost="1" Population="0" Age="AGE_MODERN" RequiresUnlock="true"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND_24" Name="LOC_NP_LAND_NAME" Description="LOC_NP_LAND_DESCRIPTION"
+             Tooltip="LOC_NP_LAND_DESCRIPTION" ConstructibleClass="IMPROVEMENT" Cost="1" Population="0" Age="AGE_MODERN" RequiresUnlock="true"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND_8" Name="LOC_WA_LAND_NAME" Description="LOC_WA_LAND_DESCRIPTION"
+             Tooltip="LOC_WA_LAND_DESCRIPTION" ConstructibleClass="IMPROVEMENT" Cost="1" Population="0" Age="AGE_MODERN" RequiresUnlock="true"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND_16" Name="LOC_WA_LAND_NAME" Description="LOC_WA_LAND_DESCRIPTION"
+             Tooltip="LOC_WA_LAND_DESCRIPTION" ConstructibleClass="IMPROVEMENT" Cost="1" Population="0" Age="AGE_MODERN" RequiresUnlock="true"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA_LAND_24" Name="LOC_WA_LAND_NAME" Description="LOC_WA_LAND_DESCRIPTION"
+             Tooltip="LOC_WA_LAND_DESCRIPTION" ConstructibleClass="IMPROVEMENT" Cost="1" Population="0" Age="AGE_MODERN" RequiresUnlock="true"/>
+    </Constructibles>
+    <Projects>
+        <Row ProjectType="PROJECT_EXPAND_NATIONAL_PARK" Name="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME" ShortName="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME"
+             Description="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" CityOnly="true" Cost="300"
+             PrereqConstructible="IMPROVEMENT_NATIONAL_PARK" RequiresUnlock="false"/>
+        <Row ProjectType="PROJECT_EXPAND_WILDERNESS_AREA" Name="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME" ShortName="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME"
+             Description="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO" CityOnly="true" Cost="300"
+             PrereqConstructible="IMPROVEMENT_WILDERNESS_AREA" RequiresUnlock="false"/>
+        <!-- Found: places nothing itself; the park goes on the empty tile its owner then chooses (ui/np-core.js foundPark).
+             The civic gate, one of each kind per settlement and the empty-tile rule are applied by ui/np-main.js. -->
+        <Row ProjectType="PROJECT_FOUND_NATIONAL_PARK" Name="LOC_PROJECT_FOUND_NATIONAL_PARK_NAME" ShortName="LOC_PROJECT_FOUND_NATIONAL_PARK_NAME"
+             Description="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION" CityOnly="true" Cost="400" RequiresUnlock="false"/>
+        <Row ProjectType="PROJECT_FOUND_WILDERNESS_AREA" Name="LOC_PROJECT_FOUND_WILDERNESS_AREA_NAME" ShortName="LOC_PROJECT_FOUND_WILDERNESS_AREA_NAME"
+             Description="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION" CityOnly="true" Cost="400" RequiresUnlock="false"/>
+    </Projects>
+    <ProgressionTreeNodeUnlocks>
+        <Row ProgressionTreeNodeType="NODE_CIVIC_MO_MAIN_NATURAL_HISTORY" TargetKind="KIND_CONSTRUCTIBLE" TargetType="IMPROVEMENT_NATIONAL_PARK" UnlockDepth="1"/>
+        <Row ProgressionTreeNodeType="NODE_CIVIC_MO_MAIN_NATURAL_HISTORY" TargetKind="KIND_CONSTRUCTIBLE" TargetType="IMPROVEMENT_WILDERNESS_AREA" UnlockDepth="1"/>
+    </ProgressionTreeNodeUnlocks>
+</Database>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_TITLE" Language="zh_Hans_CN"><Text>国家公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_START_TITLE" Language="zh_Hans_CN"><Text>入门指南</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_GROW_TITLE" Language="zh_Hans_CN"><Text>建立与扩建</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_LAND_TITLE" Language="zh_Hans_CN"><Text>公园土地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_WORLD_TITLE" Language="zh_Hans_CN"><Text>地图上的公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_INTERFACE_TITLE" Language="zh_Hans_CN"><Text>滤镜与选项</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_REAL_TITLE" Language="zh_Hans_CN"><Text>公园与荒野</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_TITLE" Language="zh_Hans_CN"><Text>国家公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>在定居点拥有的迷人空地块上建立国家公园，然后向周围的土地扩建：山脉、森林、湖泊、河流、海洋、自然奇观和开阔地。由你决定公园纳入哪些地块。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="zh_Hans_CN"><Text>公园地块在自身产出之外额外提供[icon:YIELD_CULTURE] 文化值和[icon:YIELD_HAPPINESS] 幸福值，且其上无法建造任何东西。每座公园的地块都会随该公园的扩大而提供更多产出。每座公园以其所保护的地方命名，并在地图上绘有围墙、树木和野生动物。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_KINDS_TITLE" Language="zh_Hans_CN"><Text>两种公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_KINDS_PARA_1" Language="zh_Hans_CN"><Text>[B]国家公园[/B]：提供[icon:YIELD_CULTURE] 文化值和[icon:YIELD_HAPPINESS] 幸福值。设有管理员小屋、木屋和瞭望塔。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_KINDS_PARA_2" Language="zh_Hans_CN"><Text>[B]荒野保护区[/B]：建立、扩建和保护方式相同，但提供[icon:YIELD_DIPLOMACY] 影响力。没有任何建筑。每个定居点两种各可拥有1座。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_WHERE_TITLE" Language="zh_Hans_CN"><Text>如何开始</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI]在城市中通过[B]建立国家公园[/B]或[B]建立荒野保护区[/B]项目建立国家公园或荒野保护区，或在任意定居点的购买列表中花费金币购买，然后点击[B]选择土地[/B]，选择一个迷人空地块。[LI]在城市中通过[B]扩建国家公园[/B]或[B]扩建荒野保护区[/B]项目扩建，或在定居点的购买列表中花费金币购买扩建。[LI]点击[B]选择土地[/B]，在地图上选择新的地块。[LI]开启[B]公园与荒野[/B]滤镜即可查看所有公园。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_TITLE" Language="zh_Hans_CN"><Text>常见问题</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_TITLE" Language="zh_Hans_CN"><Text>为什么我无法建造公园？</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_PARA_1" Language="zh_Hans_CN"><Text>你需要在探索时代研究“社会”市政，或在近世时代研究“自然历史”市政；该定居点尚未拥有同类公园；且该定居点拥有1个平坦或崎岖的空地块，其吸引力须为迷人或惊艳：其上不能有区块、改良设施或建筑。如果在加入本模组之前就已研究该市政，则不会提供公园。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_TITLE" Language="zh_Hans_CN"><Text>为什么我的公园无法扩建？</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="zh_Hans_CN"><Text>公园只会纳入其所有者已拥有且与公园相邻的地块。如果扩建完成时没有这样的地块，你会收到提示，这些地块将等待至有土地可用。公园最多24个地块。在网络游戏中公园无法扩建。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_TITLE" Language="zh_Hans_CN"><Text>国家公园还是荒野保护区？</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_PARA_1" Language="zh_Hans_CN"><Text>国家公园提供[icon:YIELD_CULTURE] 文化值和[icon:YIELD_HAPPINESS] 幸福值；荒野保护区提供[icon:YIELD_DIPLOMACY] 影响力。两者每个地块的价值大致相当。一个定居点可以同时建造两者。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_TITLE" Language="zh_Hans_CN"><Text>我要付出什么？</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_PARA_1" Language="zh_Hans_CN"><Text>并入公园的地块上的农场、矿井或其他乡村改良设施将被移除（会先询问你），在其上工作的市民会作为新人口返回，由你重新安置。该地块保留自身产出，资源仍被收集。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_TITLE" Language="zh_Hans_CN"><Text>关于本模组</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>国家公园 1.0.0，适用于《文明VII》1.5.0。仅添加内容，不改变任何基础游戏规则。请在开始新游戏前启用。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_COMPAT_TITLE" Language="zh_Hans_CN"><Text>其他模组</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_COMPAT_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI][B]Cultural Diffusion[/B]（推荐）：其不断扩张的边界让公园有更多土地可扩建，包括第三环以外。[LI][B]Geographic Labels[/B] 1.6.0或更高版本：公园名称会显示在地图上，并可在 Rename Places 中修改。[LI][B]Canals[/B]：运河绝不会穿过公园土地，运河地块也无法并入公园。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CREDITS_TITLE" Language="zh_Hans_CN"><Text>制作团队</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CREDITS_PARA_1" Language="zh_Hans_CN"><Text>由 Tower 制作。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_TITLE" Language="zh_Hans_CN"><Text>建立公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>城市可通过[B]建立国家公园[/B]或[B]建立荒野保护区[/B]项目建立公园；城市和城镇也可在其购买列表中花费金币购买。然后点击[B]选择土地[/B]，选择该定居点拥有的一个平坦或崎岖空地块，不限环数，且须为迷人（见下文）：其上不能有区块、改良设施或建筑。其上的资源仍被收集。选择界面中只有这些地块会亮起。每个定居点可拥有1座国家公园和1座荒野保护区。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CHARMING_TITLE" Language="zh_Hans_CN"><Text>迷人土地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CHARMING_PARA_1" Language="zh_Hans_CN"><Text>公园须建立在迷人的土地上：吸引力为3或以上，以游戏的吸引力滤镜和地块提示中显示的数值为准。吸引力来自地块周围的土地：每个相邻的山脉、水岸、可航行河流、森林、热带雨林、针叶林、疏林草原或灌木草原各+1，相邻的自然奇观+6。吸引力只影响建立地块；公园扩建时可纳入任何允许纳入的土地，之后吸引力下降的地块也仍会留在公园内。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_UNLOCK_TITLE" Language="zh_Hans_CN"><Text>解锁</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_UNLOCK_PARA_1" Language="zh_Hans_CN"><Text>探索时代：[B]社会[/B]市政。近世时代：[B]自然历史[/B]市政。在探索时代建造的公园会连同所有地块一起进入近世时代。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_TITLE" Language="zh_Hans_CN"><Text>建立地块</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_1" Language="zh_Hans_CN"><Text>[B]国家公园[/B]：+4 [icon:YIELD_HAPPINESS] 幸福值，每有1个相邻的自然奇观，额外+5 [icon:YIELD_HAPPINESS] 幸福值和+5 [icon:YIELD_CULTURE] 文化值。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_2" Language="zh_Hans_CN"><Text>[B]荒野保护区[/B]：+4 [icon:YIELD_DIPLOMACY] 影响力，每有1个相邻的自然奇观，额外+10 [icon:YIELD_DIPLOMACY] 影响力。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_3" Language="zh_Hans_CN"><Text>两者每回合维护费用均为2 [icon:YIELD_GOLD] 金币。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_TITLE" Language="zh_Hans_CN"><Text>扩建公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>每次扩建都会在公园旁增加地块：探索时代1个，近世时代3个。每次的花费都相同。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_PROJECT_TITLE" Language="zh_Hans_CN"><Text>项目</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_PROJECT_PARA_1" Language="zh_Hans_CN"><Text>拥有公园的城市可以不限次数地执行[B]扩建国家公园[/B]或[B]扩建荒野保护区[/B]，每次花费300 [icon:YIELD_PRODUCTION] 生产力。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_GOLD_TITLE" Language="zh_Hans_CN"><Text>用金币购买</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_GOLD_PARA_1" Language="zh_Hans_CN"><Text>打开任意拥有公园的定居点的购买列表，购买[B]扩建国家公园[/B]或[B]扩建荒野保护区[/B]。在标准速度下花费1,200 [icon:YIELD_GOLD] 金币。城镇无法执行项目，因此城镇通过这种方式扩建公园。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_LIMIT_TITLE" Language="zh_Hans_CN"><Text>规模上限</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_LIMIT_PARA_1" Language="zh_Hans_CN"><Text>公园最多可拥有24个地块。当你的选择使公园达到上限时，选择器会提示你，该次扩建剩余的地块将会失去。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_TITLE" Language="zh_Hans_CN"><Text>选择地块</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>扩建完成时，屏幕顶部会出现[B]选择土地[/B]按钮；用金币购买扩建后，选择界面会立即打开。在选择界面中，公园可纳入的地块会在地图上亮起。点击地块将其选中，再次点击则取消选中。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_BUTTONS_TITLE" Language="zh_Hans_CN"><Text>按钮</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_BUTTONS_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI][B]确认[/B]：加入选中的地块。如果还有剩余地块待放置，选择器会保持打开。[LI][B]完成[/B]：加入选中的地块，并放弃本次扩建的剩余部分（会先询问你）。[LI][B]稍后[/B]：将剩余地块留到之后的回合。[LI][B]重命名[/B]：为公园重新命名。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_TITLE" Language="zh_Hans_CN"><Text>保留的地块</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_PARA_1" Language="zh_Hans_CN"><Text>有地块等待放置时，屏幕顶部的[B]选择土地[/B]按钮可重新打开选择器。保留的地块会延续到下一个时代。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_TITLE" Language="zh_Hans_CN"><Text>可纳入的地块</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>公园旁任何归你所有的乡村地块：开阔地、森林、山脉、湖泊、河流、海洋和自然奇观。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_TITLE" Language="zh_Hans_CN"><Text>资源</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_PARA_1" Language="zh_Hans_CN"><Text>带有资源的地块会直接并入，无需确认，资源仍被收集。公园将取代原本收集该资源的种植园、营地或渔船。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_IMPROVE_TITLE" Language="zh_Hans_CN"><Text>改良设施</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_IMPROVE_PARA_1" Language="zh_Hans_CN"><Text>如果地块上有农场、矿井或其他乡村改良设施且没有资源，会先询问你，然后移除该改良设施。[B]远征营地[/B]会保留原位并继续运作。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_NEVER_TITLE" Language="zh_Hans_CN"><Text>不可纳入</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_NEVER_PARA_1" Language="zh_Hans_CN"><Text>市区、建筑、其他公园的地块，以及不归你所有的地块。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_FAR_TITLE" Language="zh_Hans_CN"><Text>第三环以外</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_FAR_PARA_1" Language="zh_Hans_CN"><Text>城市第三环以外的地块，无论是购买的，还是由 Cultural Diffusion 等模组获得的，都可以并入公园并提供相同的产出。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_TITLE" Language="zh_Hans_CN"><Text>产出</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>并入公园的地块保留自身产出，例如[icon:YIELD_FOOD] 食物和[icon:YIELD_PRODUCTION] 生产力，并额外提供下列公园产出。该地块无需市民耕作。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_TABLE_TITLE" Language="zh_Hans_CN"><Text>每个地块</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_TABLE_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI][B]国家公园[/B]：+1 [icon:YIELD_CULTURE] 文化值，+1 [icon:YIELD_HAPPINESS] 幸福值。[LI][B]荒野保护区[/B]：+3 [icon:YIELD_DIPLOMACY] 影响力。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_TABLE_PARA_2" Language="zh_Hans_CN"><Text>这些产出会随下列规模加成而提高。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_MILESTONES_TITLE" Language="zh_Hans_CN"><Text>规模加成</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_MILESTONES_PARA_1" Language="zh_Hans_CN"><Text>每座国家公园和荒野保护区各自计算其地块数。当其中一座达到8、16和24个地块时，它的每个地块都会提供更多产出：</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_MILESTONES_PARA_2" Language="zh_Hans_CN"><Text>[BLIST][LI][B]国家公园[/B]：达到8个地块时，每个地块提供+2 [icon:YIELD_CULTURE] 文化值和+1 [icon:YIELD_HAPPINESS] 幸福值；16个时提供+2 [icon:YIELD_CULTURE] 和+2 [icon:YIELD_HAPPINESS]；24个时提供+3 [icon:YIELD_CULTURE] 和+2 [icon:YIELD_HAPPINESS]。[LI][B]荒野保护区[/B]：达到8个地块时，每个地块提供+4 [icon:YIELD_DIPLOMACY] 影响力；16个时提供+5；24个时提供+6。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_MILESTONES_PARA_3" Language="zh_Hans_CN"><Text>计算的是该公园当前拥有的土地：失去、被建造占用或放弃的地块会从中扣除，其地块的产出也会随之回落。你的其他公园不计入其中。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_MILESTONES_PARA_4" Language="zh_Hans_CN"><Text>无论公园规模大小，建立地块都保持其自身的产出不变。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_WONDERS_TITLE" Language="zh_Hans_CN"><Text>自然奇观</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_WONDERS_PARA_1" Language="zh_Hans_CN"><Text>自然奇观同样保留自身产出，并额外获得公园产出。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_SHOWN_TITLE" Language="zh_Hans_CN"><Text>查看产出</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_SHOWN_PARA_1" Language="zh_Hans_CN"><Text>开启产出图层即可在地图上查看每个地块的产出。产出归拥有该公园的定居点所有。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_TITLE" Language="zh_Hans_CN"><Text>保护</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>公园土地无法开发。任何定居点，无论是你的还是AI的，都无法在其上建造，也无法向其扩张。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_RURAL_TITLE" Language="zh_Hans_CN"><Text>乡村改良设施</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_RURAL_PARA_1" Language="zh_Hans_CN"><Text>如果有人（包括AI）在公园土地上建造乡村改良设施，该设施将被移除，地块重新归入公园。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_URBAN_TITLE" Language="zh_Hans_CN"><Text>建筑与城区</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_URBAN_PARA_1" Language="zh_Hans_CN"><Text>建筑和市区永远不会被移除。如果公园地块上仍出现了建筑或市区，该地块将脱离公园。如果该地块是建立地块，公园会将建立地块移至公园内的另一个地块，并尽可能选在自然奇观旁。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_TITLE" Language="zh_Hans_CN"><Text>易主</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_PARA_1" Language="zh_Hans_CN"><Text>定居点被征服时，其公园会连同所有地块归新所有者所有。被其他玩家夺取的单个公园地块将脱离公园。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_TITLE" Language="zh_Hans_CN"><Text>公园外观</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>每座公园都根据其地形绘制：森林地块上布满树林，丘陵上有树木、岩石和石堆，湖泊和河流中有睡莲叶和芦苇，偶尔还有划艇；陆地边缘有低矮的石墙和几段栅栏，与开阔水域相接处有浮标。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="zh_Hans_CN"><Text>国家公园的建立地块上有管理员小屋和野餐亭，扩建后会出现木屋，丘陵上还有瞭望塔。荒野保护区没有任何建筑。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_TITLE" Language="zh_Hans_CN"><Text>野生动物</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="zh_Hans_CN"><Text>每个地块都有相应的动物：野牛、马、鹿、驼鹿、骆驼、绵羊、羊驼、大象、狐狸、鹤和螃蟹，空中有飞鸟和蝴蝶，湖泊和河流中有鱼，海中有鱼群、珊瑚礁鱼，偶尔还有鲸鱼。相邻地块不会出现相同的兽群、鸟群或鱼。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_TITLE" Language="zh_Hans_CN"><Text>边界</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_PARA_1" Language="zh_Hans_CN"><Text>虚线精确标示出公园包含的地块：国家公园为绿色，荒野保护区为赭色。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_TITLE" Language="zh_Hans_CN"><Text>名称</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>新公园以其旁边的自然奇观命名，例如乌鲁鲁国家公园。若旁边没有奇观或该名称已被使用，则以附近的河流、地点或其所在定居点命名。公园扩建时名称不会改变。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_CHAPTER_RENAME_TITLE" Language="zh_Hans_CN"><Text>重命名</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_CHAPTER_RENAME_PARA_1" Language="zh_Hans_CN"><Text>在公园的选择器中点击[B]重命名[/B]。[B]恢复[/B]可还原原始名称。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_CHAPTER_LABELS_TITLE" Language="zh_Hans_CN"><Text>Geographic Labels</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_CHAPTER_LABELS_PARA_1" Language="zh_Hans_CN"><Text>安装 Geographic Labels 1.6.0或更高版本后，公园名称会显示在地图上，并列在 Rename Places 的“公园或荒野”分类下。新公园还可以附近的山脉、湖泊或地区命名。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_TITLE" Language="zh_Hans_CN"><Text>AI与多人游戏</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_AI_TITLE" Language="zh_Hans_CN"><Text>AI公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_AI_PARA_1" Language="zh_Hans_CN"><Text>AI玩家也会建立公园，通常建在自然奇观旁，并不时花费金币为其公园购买扩建。AI公园会立即选择新地块，优先选择奇观和山脉，且绝不会纳入会让其失去改良设施的地块。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_HOTSEAT_TITLE" Language="zh_Hans_CN"><Text>热座</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_HOTSEAT_PARA_1" Language="zh_Hans_CN"><Text>每位玩家在自己的回合为自己的公园选择地块。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_NETWORK_TITLE" Language="zh_Hans_CN"><Text>网络游戏</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_NETWORK_PARA_1" Language="zh_Hans_CN"><Text>公园可以建造但无法扩建：扩建项目不可用，也没有地块选择器和金币购买。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LENS_TITLE" Language="zh_Hans_CN"><Text>公园滤镜</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LENS_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>滤镜菜单中的[B]公园与荒野[/B]滤镜会为你能看到的所有公园地块着色：国家公园为绿色，荒野保护区为赭色，建立地块颜色稍深。仅用于显示。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_TITLE" Language="zh_Hans_CN"><Text>选项</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>选项 &gt; 附加内容 &gt; 国家公园。可在主菜单和游戏中使用；设置会在不同游戏间保留。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_OVERLAY_TITLE" Language="zh_Hans_CN"><Text>为公园土地着色</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_OVERLAY_PARA_1" Language="zh_Hans_CN"><Text>无论开启何种滤镜，始终为地图上的所有公园着色。默认关闭。立即生效。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_LENSBUTTON_TITLE" Language="zh_Hans_CN"><Text>公园滤镜</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_LENSBUTTON_PARA_1" Language="zh_Hans_CN"><Text>将公园与荒野滤镜加入滤镜菜单。默认开启。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_TITLE" Language="zh_Hans_CN"><Text>国家公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>国家公园是一个国家为保护其风景、野生动物和自然景观而划出的土地，同时向公众开放参观。大多数国家公园由国家政府所有和管理。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_ORIGINS_TITLE" Language="zh_Hans_CN"><Text>最早的公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_ORIGINS_PARA_1" Language="zh_Hans_CN"><Text>1864年，美国国会将约塞米蒂山谷和马里波萨巨杉林授予加利福尼亚州，“供公众使用、休憩和娱乐”。1872年3月1日，尤利西斯·S·格兰特总统签署法案，设立了世界上第一座国家公园——黄石国家公园。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_ORIGINS_PARA_2" Language="zh_Hans_CN"><Text>博物学家约翰·缪尔为约塞米蒂奔走呼吁，并于1892年创立了塞拉俱乐部。1906年，西奥多·罗斯福总统签署《古迹法》，允许总统将土地作为国家纪念地加以保护；大峡谷于1908年以此方式受到保护，并于1919年成为国家公园。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_NPS_TITLE" Language="zh_Hans_CN"><Text>国家公园管理局</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_NPS_PARA_1" Language="zh_Hans_CN"><Text>1916年，美国国会设立美国国家公园管理局，负责照管各公园，使其“完好无损，供子孙后代享用”。如今它管理着400多处地点，其中60多处是国家公园，从缅因州的阿卡迪亚到阿拉斯加州的德纳里。网站：nps.gov</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_PEOPLE_TITLE" Language="zh_Hans_CN"><Text>原住民土地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_PEOPLE_PARA_1" Language="zh_Hans_CN"><Text>许多国家公园建立在从原住民手中夺取的土地上。其中一些后来已经归还，或改为共同管理。澳大利亚的乌鲁鲁-卡塔丘塔国家公园于1985年归还给其传统所有者阿南古人；他们将公园租给政府，并与澳大利亚国家公园管理局共同管理。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_TITLE" Language="zh_Hans_CN"><Text>荒野保护区</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>荒野保护区是尽可能不受人类开发影响的受保护土地：没有道路、建筑或机动车辆。游客徒步、骑马或乘独木舟出行，区内设施很少。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_US_TITLE" Language="zh_Hans_CN"><Text>美国</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_US_PARA_1" Language="zh_Hans_CN"><Text>第一个荒野保护区是新墨西哥州的希拉荒野，1924年由林务局在林务官奥尔多·利奥波德的敦促下划设。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_US_PARA_2" Language="zh_Hans_CN"><Text>1964年的《荒野法》主要由霍华德·扎尼泽起草，由林登·B·约翰逊总统签署。该法将荒野描述为“大地及其生命群落不受人类羁绊、人类自身只是过客而不会久留”的区域。它建立了国家荒野保护体系，如今约有800个荒野保护区，面积超过1.1亿英亩（约44.5万平方公里），由四个联邦机构管理。网站：wilderness.net</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_ELSEWHERE_TITLE" Language="zh_Hans_CN"><Text>其他地区</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_ELSEWHERE_PARA_1" Language="zh_Hans_CN"><Text>其他国家以各自的方式保护荒野。芬兰于1991年在拉普兰划设了十二个荒野保护区，澳大利亚的塔斯马尼亚荒原自1982年起成为世界遗产。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WORLD_TITLE" Language="zh_Hans_CN"><Text>世界各地的公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WORLD_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>继黄石之后，其他国家也纷纷设立了自己的国家公园。以下是一些最早和最知名的国家公园：</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WORLD_CHAPTER_LIST_TITLE" Language="zh_Hans_CN"><Text>首创与地标</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WORLD_CHAPTER_LIST_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI][B]澳大利亚[/B]：悉尼以南的皇家国家公园，1879年，世界上第二座国家公园。[LI][B]加拿大[/B]：班夫，始于1885年设立的温泉保护区。成立于1911年的加拿大国家公园管理局是世界上第一个国家公园管理机构。[LI][B]新西兰[/B]：汤加里罗，其土地由恩加蒂图瓦雷托阿部落最高酋长特修修·图基诺四世于1887年赠予。[LI][B]瑞典[/B]：1909年设立九座国家公园，为欧洲之首。[LI][B]瑞士[/B]：瑞士国家公园，1914年，阿尔卑斯山区第一座国家公园。[LI][B]南非[/B]：克鲁格国家公园，1926年。[LI][B]日本[/B]：1934年设立首批国家公园。[LI][B]英国[/B]：峰区，1951年。英国的国家公园内包括农场、村庄和城镇。[LI][B]坦桑尼亚[/B]：塞伦盖蒂国家公园，1951年。[LI][B]厄瓜多尔[/B]：加拉帕戈斯国家公园，1959年。[LI][B]格陵兰[/B]：东北格陵兰国家公园，1974年，世界上最大的国家公园，面积约375,000平方英里（约97万平方公里）。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_TITLE" Language="zh_Hans_CN"><Text>保护地类型</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>世界自然保护联盟（IUCN）按管理方式将保护地分为以下类别：</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_CONTENT_PARA_2" Language="zh_Hans_CN"><Text>[BLIST][LI][B]Ia[/B] 严格自然保护区[LI][B]Ib[/B] 荒野保护区[LI][B]II[/B] 国家公园[LI][B]III[/B] 自然遗迹或地貌[LI][B]IV[/B] 栖息地/物种管理区[LI][B]V[/B] 陆地/海洋景观保护区[LI][B]VI[/B] 自然资源可持续利用保护区[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_CONTENT_PARA_3" Language="zh_Hans_CN"><Text>本游戏中的国家公园和荒野保护区分别以第II类和第Ib类为原型。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_HERITAGE_TITLE" Language="zh_Hans_CN"><Text>世界遗产</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_HERITAGE_PARA_1" Language="zh_Hans_CN"><Text>许多公园同时也是联合国教科文组织世界遗产。黄石国家公园于1978年成为首批列入名录的遗产地之一。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_THIRTY_TITLE" Language="zh_Hans_CN"><Text>“30×30”目标</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_THIRTY_PARA_1" Language="zh_Hans_CN"><Text>2022年，近200个国家通过了《昆明-蒙特利尔全球生物多样性框架》，目标是到2030年保护全球30%的陆地和海洋。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_LINKS_TITLE" Language="zh_Hans_CN"><Text>延伸阅读</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_LINKS_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI]美国国家公园管理局：nps.gov[LI]美国荒野保护区：wilderness.net[LI]加拿大国家公园管理局：parks.canada.ca[LI]澳大利亚国家公园管理局：parksaustralia.gov.au[LI]南非国家公园：sanparks.org[LI]英国国家公园：nationalparks.uk[LI]世界自然保护联盟（IUCN）：iucn.org[LI]Protected Planet，全球保护地数据库：protectedplanet.net[LI]联合国教科文组织世界遗产：whc.unesco.org[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_BRIDGE_TITLE" Language="zh_Hans_CN"><Text>本游戏中</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_BRIDGE_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>你可以在定居点拥有的空地块上建立国家公园和荒野保护区，并将其扩建到周围的土地上。具体规则见[B]国家公园[/B]部分。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_NATIONAL_PARK" Language="zh_Hans_CN"><Text>国家公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WILDERNESS_AREA" Language="zh_Hans_CN"><Text>荒野保护区</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_NATURAL_WONDER" Language="zh_Hans_CN"><Text>自然奇观</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_CONSERVATION" Language="zh_Hans_CN"><Text>自然保护</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_HELP" Language="zh_Hans_CN"><Text>帮助</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_FAQ" Language="zh_Hans_CN"><Text>常见问题</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_CREDITS" Language="zh_Hans_CN"><Text>制作团队</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_COMPATIBILITY" Language="zh_Hans_CN"><Text>兼容性</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_FOUNDING" Language="zh_Hans_CN"><Text>建立</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_SOCIETY" Language="zh_Hans_CN"><Text>社会</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_NATURAL_HISTORY" Language="zh_Hans_CN"><Text>自然历史</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_EXPAND" Language="zh_Hans_CN"><Text>扩建</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_PROJECT" Language="zh_Hans_CN"><Text>项目</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_PURCHASE" Language="zh_Hans_CN"><Text>购买</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_PICKER" Language="zh_Hans_CN"><Text>选择器</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_SELECT" Language="zh_Hans_CN"><Text>选择</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_RESOURCES" Language="zh_Hans_CN"><Text>资源</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_OPEN_SEA" Language="zh_Hans_CN"><Text>海洋</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_EXPEDITION_BASE" Language="zh_Hans_CN"><Text>远征营地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_YIELDS" Language="zh_Hans_CN"><Text>产出</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_CULTURE" Language="zh_Hans_CN"><Text>文化值</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_HAPPINESS" Language="zh_Hans_CN"><Text>幸福值</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_INFLUENCE" Language="zh_Hans_CN"><Text>影响力</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_PROTECTION" Language="zh_Hans_CN"><Text>保护</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_CONQUEST" Language="zh_Hans_CN"><Text>征服</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WILDLIFE" Language="zh_Hans_CN"><Text>野生动物</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WALLS" Language="zh_Hans_CN"><Text>围墙</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_NAMES" Language="zh_Hans_CN"><Text>名称</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_RENAME" Language="zh_Hans_CN"><Text>重命名</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_GEOGRAPHIC_LABELS" Language="zh_Hans_CN"><Text>Geographic Labels</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_AI" Language="zh_Hans_CN"><Text>AI</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_MULTIPLAYER" Language="zh_Hans_CN"><Text>多人游戏</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_HOTSEAT" Language="zh_Hans_CN"><Text>热座</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_LENS" Language="zh_Hans_CN"><Text>滤镜</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_OVERLAY" Language="zh_Hans_CN"><Text>叠加层</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_OPTIONS" Language="zh_Hans_CN"><Text>选项</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_SETTINGS" Language="zh_Hans_CN"><Text>设置</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_YELLOWSTONE" Language="zh_Hans_CN"><Text>黄石</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_YOSEMITE" Language="zh_Hans_CN"><Text>约塞米蒂</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_NPS" Language="zh_Hans_CN"><Text>国家公园管理局</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WILDERNESS_ACT" Language="zh_Hans_CN"><Text>荒野法</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WORLD_PARKS" Language="zh_Hans_CN"><Text>世界各国国家公园</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_IUCN" Language="zh_Hans_CN"><Text>世界自然保护联盟</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_PROTECTED_AREA" Language="zh_Hans_CN"><Text>保护地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WORLD_HERITAGE" Language="zh_Hans_CN"><Text>世界遗产</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_LINKS" Language="zh_Hans_CN"><Text>链接</Text></Replace>
+    </LocalizedText>
+</Database>

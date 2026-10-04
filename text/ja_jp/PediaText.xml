@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_TITLE" Language="ja_JP"><Text>国立公園</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_START_TITLE" Language="ja_JP"><Text>はじめに</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_GROW_TITLE" Language="ja_JP"><Text>設立と拡張</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_LAND_TITLE" Language="ja_JP"><Text>公園の土地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_WORLD_TITLE" Language="ja_JP"><Text>マップ上の公園</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_INTERFACE_TITLE" Language="ja_JP"><Text>レンズとオプション</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_REAL_TITLE" Language="ja_JP"><Text>公園と原生自然</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_TITLE" Language="ja_JP"><Text>国立公園</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>居住地が所有する空きの魅力的なタイルに国立公園を設立し、山岳、森林、湖、河川、海、自然遺産、開けた土地など、周囲の土地へ拡張していきます。どのタイルを加えるかはプレイヤーが選びます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="ja_JP"><Text>公園のタイルは本来の産出に加えて [icon:YIELD_CULTURE] 文化力と [icon:YIELD_HAPPINESS] 幸福度をもたらし、そこには何も建設できません。各公園のタイルは、その公園が広がるほど産出が増えます。各公園には保護する場所にちなんだ名前が付き、マップ上に石垣、樹木、野生動物とともに描かれます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_KINDS_TITLE" Language="ja_JP"><Text>2つの種類</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_KINDS_PARA_1" Language="ja_JP"><Text>[B]国立公園[/B]: [icon:YIELD_CULTURE] 文化力と [icon:YIELD_HAPPINESS] 幸福度をもたらします。管理棟、山小屋、展望台があります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_KINDS_PARA_2" Language="ja_JP"><Text>[B]原生自然地域[/B]: 設立、拡張、保護の方法は同じですが、[icon:YIELD_DIPLOMACY] 影響力をもたらします。建造物はありません。1つの居住地にそれぞれ1つずつ設けられます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_WHERE_TITLE" Language="ja_JP"><Text>始め方</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="ja_JP"><Text>[BLIST][LI]都市でプロジェクト[B]国立公園の設立[/B]または[B]原生自然地域の設立[/B]を実行するか、任意の居住地の購入リストからゴールドで購入し、[B]土地を選ぶ[/B]を押して空きの魅力的なタイルを選びます。[LI]都市でプロジェクト[B]国立公園の拡張[/B]または[B]原生自然地域の拡張[/B]を実行するか、居住地の購入リストからゴールドで拡張を購入します。[LI][B]土地を選ぶ[/B]を押し、マップ上で新しいタイルを選びます。[LI][B]公園と原生自然[/B]レンズをオンにすると、すべての公園を確認できます。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_TITLE" Language="ja_JP"><Text>よくある質問</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_TITLE" Language="ja_JP"><Text>公園を建設できないのはなぜ?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_PARA_1" Language="ja_JP"><Text>探検の時代なら社会制度「社会」、近代なら「博物学」が必要です。さらに、その種類の公園をまだ持っていない居住地と、その居住地が所有する空きの魅力的な平地または丘陵のタイルが必要です。空きタイルとは、区域、施設、建造物のないタイルです。MODをゲームに追加する前にその社会制度を研究していた場合、公園は選択肢に表示されません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_TITLE" Language="ja_JP"><Text>公園が拡張されないのはなぜ?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="ja_JP"><Text>公園に加えられるのは、所有者がすでに所有している、公園に隣接するタイルだけです。拡張の完了時に該当するタイルがなければ通知が届き、土地が得られるまでタイルは保留されます。公園は24タイルが上限です。ネットワークゲームでは公園は拡張されません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_TITLE" Language="ja_JP"><Text>国立公園と原生自然地域、どちらがよい?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_PARA_1" Language="ja_JP"><Text>国立公園は [icon:YIELD_CULTURE] 文化力と [icon:YIELD_HAPPINESS] 幸福度を、原生自然地域は [icon:YIELD_DIPLOMACY] 影響力をもたらします。1タイルあたりの価値はほぼ同じです。1つの居住地で両方を建設できます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_TITLE" Language="ja_JP"><Text>何を失う?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_PARA_1" Language="ja_JP"><Text>公園に加わるタイルにある農場、鉱山などの郊外の施設は撤去され（事前に確認があります）、そこで働いていた市民は新たな人口として戻り、改めて配置できます。タイルは本来の産出を維持し、資源も引き続き収集されます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_TITLE" Language="ja_JP"><Text>このMODについて</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>National Park 1.0.0（Civilization VII 1.5.0用）。コンテンツを追加するのみで、基本ゲームのルールは変更しません。新しいゲームを始める前に有効にしてください。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_COMPAT_TITLE" Language="ja_JP"><Text>他のMOD</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_COMPAT_PARA_1" Language="ja_JP"><Text>[BLIST][LI][B]Cultural Diffusion[/B]（推奨）: 国境が広がるため、公園が拡張できる土地が増えます。3つ目の環より外側も含まれます。[LI][B]Geographic Labels[/B] 1.6.0以降: 公園の名前がマップ上に表示され、「地名の変更」で変更できます。[LI][B]Canals[/B]: 公園の土地に運河が掘られることはなく、運河のタイルは公園に加えられません。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CREDITS_TITLE" Language="ja_JP"><Text>クレジット</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CREDITS_PARA_1" Language="ja_JP"><Text>制作: Tower</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_TITLE" Language="ja_JP"><Text>公園の設立</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>都市はプロジェクト[B]国立公園の設立[/B]または[B]原生自然地域の設立[/B]で公園を設立します。都市と町は購入リストからゴールドで購入することもできます。その後[B]土地を選ぶ[/B]を押し、居住地が所有する平地または丘陵の空きタイルのうち、魅力的なもの(下記参照)をどの環からでも選びます。区域、施設、建造物のないタイルに限ります。そのタイルの資源は引き続き収集されます。選択画面では該当するタイルだけが光ります。各居住地は国立公園と原生自然地域を1つずつ持てます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CHARMING_TITLE" Language="ja_JP"><Text>魅力的な土地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CHARMING_PARA_1" Language="ja_JP"><Text>公園は魅力的な土地に設立します。魅力的な土地とは、ゲームのアピールレンズやタイルのツールチップに表示されるアピールが3以上の土地です。アピールはタイルの周囲の土地で決まります。隣接する山岳、沿岸、航行可能な河川、森林、熱帯雨林、タイガ、サバンナ・ウッドランド、ヤマヨモギの草原1つにつき1、隣接する自然遺産1つにつき6が加わります。アピールが関係するのは設立タイルだけです。公園が拡張する土地は、追加できるものなら何でもかまいません。後でアピールが下がったタイルも公園に残ります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_UNLOCK_TITLE" Language="ja_JP"><Text>アンロック</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_UNLOCK_PARA_1" Language="ja_JP"><Text>探検の時代: 社会制度[B]社会[/B]。近代: 社会制度[B]博物学[/B]。探検の時代に建設した公園は、すべてのタイルとともに近代へ引き継がれます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_TITLE" Language="ja_JP"><Text>設立タイル</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_1" Language="ja_JP"><Text>[B]国立公園[/B]: [icon:YIELD_HAPPINESS] 幸福度+4。さらに隣接する自然遺産1つにつき [icon:YIELD_HAPPINESS] 幸福度+5、[icon:YIELD_CULTURE] 文化力+5。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_2" Language="ja_JP"><Text>[B]原生自然地域[/B]: [icon:YIELD_DIPLOMACY] 影響力+4。さらに隣接する自然遺産1つにつき [icon:YIELD_DIPLOMACY] 影響力+10。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_3" Language="ja_JP"><Text>どちらも維持費として毎ターン [icon:YIELD_GOLD] ゴールド2がかかります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_TITLE" Language="ja_JP"><Text>公園の拡張</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>拡張するたびに、公園に隣接するタイルが追加されます。探検の時代は1タイル、近代は3タイルです。コストは毎回同じです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_PROJECT_TITLE" Language="ja_JP"><Text>プロジェクト</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_PROJECT_PARA_1" Language="ja_JP"><Text>公園のある都市は、[B]国立公園の拡張[/B]または[B]原生自然地域の拡張[/B]を何度でも実行できます。1回につき [icon:YIELD_PRODUCTION] 生産力300が必要です。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_GOLD_TITLE" Language="ja_JP"><Text>ゴールドで購入</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_GOLD_PARA_1" Language="ja_JP"><Text>公園のある居住地の購入リストを開き、[B]国立公園の拡張[/B]または[B]原生自然地域の拡張[/B]を購入します。ゲームスピード「標準」では [icon:YIELD_GOLD] ゴールド1,200がかかります。町はプロジェクトを実行できないため、町の公園はこの方法で拡張します。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_LIMIT_TITLE" Language="ja_JP"><Text>最大サイズ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_LIMIT_PARA_1" Language="ja_JP"><Text>公園は最大24タイルまでです。選択によって上限に達するとタイル選択画面で通知され、その拡張で残ったタイルは失われます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_TITLE" Language="ja_JP"><Text>タイルの選択</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>拡張が完了すると、画面上部に[B]土地を選ぶ[/B]ボタンが表示されます。ゴールドで購入した場合は、すぐに選択画面が開きます。選択画面では、公園に加えられるタイルがマップ上で光ります。タイルをクリックすると選択され、もう一度クリックすると選択が解除されます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_BUTTONS_TITLE" Language="ja_JP"><Text>ボタン</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_BUTTONS_PARA_1" Language="ja_JP"><Text>[BLIST][LI][B]確定[/B]: 選択したタイルを追加します。配置するタイルが残っている場合、選択画面は開いたままです。[LI][B]完了[/B]: 選択したタイルを追加し、この拡張の残りを放棄します（事前に確認があります）。[LI][B]後で[/B]: 残りのタイルを別のターンに保留します。[LI][B]名前の変更[/B]: 公園の名前を変更します。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_TITLE" Language="ja_JP"><Text>保留中のタイル</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_PARA_1" Language="ja_JP"><Text>保留中のタイルがある間は、画面上部の[B]土地を選ぶ[/B]ボタンで選択画面を再び開けます。保留中のタイルは次の時代へ引き継がれます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_TITLE" Language="ja_JP"><Text>追加できるタイル</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>公園に隣接する、自分が所有する郊外のタイルすべて。開けた土地、森林、山岳、湖、河川、外洋、自然遺産が含まれます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_TITLE" Language="ja_JP"><Text>資源</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_PARA_1" Language="ja_JP"><Text>資源のあるタイルは確認なしで追加され、資源は引き続き収集されます。資源を収集していたプランテーション、キャンプ、漁船は公園に置き換わります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_IMPROVE_TITLE" Language="ja_JP"><Text>施設</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_IMPROVE_PARA_1" Language="ja_JP"><Text>資源がなく、農場や鉱山などの郊外の施設があるタイルは、事前に確認があり、施設は撤去されます。[B]探検基地[/B]はそのまま残り、機能し続けます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_NEVER_TITLE" Language="ja_JP"><Text>追加できないもの</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_NEVER_PARA_1" Language="ja_JP"><Text>市街区域、建造物、ほかの公園のタイル、自分が所有していないタイル。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_FAR_TITLE" Language="ja_JP"><Text>3つ目の環より外側</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_FAR_PARA_1" Language="ja_JP"><Text>都市の3つ目の環より外側のタイルも、購入したものやCultural DiffusionなどのMODで獲得したものであれば公園に加えられ、同じ産出をもたらします。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_TITLE" Language="ja_JP"><Text>産出</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>公園に加わったタイルは、[icon:YIELD_FOOD] 食料や [icon:YIELD_PRODUCTION] 生産力などの本来の産出を維持し、さらに以下の公園の産出をもたらします。市民を配置する必要はありません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_TABLE_TITLE" Language="ja_JP"><Text>タイルごとの産出</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_TABLE_PARA_1" Language="ja_JP"><Text>[BLIST][LI][B]国立公園[/B]: [icon:YIELD_CULTURE] 文化力+1、[icon:YIELD_HAPPINESS] 幸福度+1。[LI][B]原生自然地域[/B]: [icon:YIELD_DIPLOMACY] 影響力+3。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_TABLE_PARA_2" Language="ja_JP"><Text>これらは下記の規模ボーナスで増えます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_MILESTONES_TITLE" Language="ja_JP"><Text>規模ボーナス</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_MILESTONES_PARA_1" Language="ja_JP"><Text>国立公園と原生自然地域は、それぞれ自身のタイルを数えます。8、16、24タイルに達すると、その公園の全タイルの産出が増えます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_MILESTONES_PARA_2" Language="ja_JP"><Text>[BLIST][LI][B]国立公園[/B]: 各タイルの産出は、8タイルで [icon:YIELD_CULTURE] 文化力+2と [icon:YIELD_HAPPINESS] 幸福度+1、16タイルで [icon:YIELD_CULTURE] +2と [icon:YIELD_HAPPINESS] +2、24タイルで [icon:YIELD_CULTURE] +3と [icon:YIELD_HAPPINESS] +2になります。[LI][B]原生自然地域[/B]: 各タイルの産出は、8タイルで [icon:YIELD_DIPLOMACY] 影響力+4、16タイルで+5、24タイルで+6になります。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_MILESTONES_PARA_3" Language="ja_JP"><Text>数えるのはその公園が現在保有している土地です。失ったタイル、上に建設されたタイル、手放したタイルはその公園のタイル数から差し引かれ、タイルの産出も下の段階に戻ります。ほかの公園は数に含まれません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_MILESTONES_PARA_4" Language="ja_JP"><Text>設立タイルは規模にかかわらず自身の産出を維持します。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_WONDERS_TITLE" Language="ja_JP"><Text>自然遺産</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_WONDERS_PARA_1" Language="ja_JP"><Text>自然遺産も自身の産出を維持したまま、公園の産出が上乗せされます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_SHOWN_TITLE" Language="ja_JP"><Text>産出の確認</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_YIELDS_CHAPTER_SHOWN_PARA_1" Language="ja_JP"><Text>産出レイヤーをオンにすると、マップ上で各タイルの産出を確認できます。産出は公園を所有する居住地に入ります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_TITLE" Language="ja_JP"><Text>保護</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>公園の土地は開発できません。自分のものもAIのものも含め、どの居住地もそこに建設したり、拡大したりできません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_RURAL_TITLE" Language="ja_JP"><Text>郊外の施設</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_RURAL_PARA_1" Language="ja_JP"><Text>AIを含め、誰かが公園の土地に郊外の施設を建設すると、その施設は撤去され、タイルは公園に戻ります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_URBAN_TITLE" Language="ja_JP"><Text>建造物と区域</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_URBAN_PARA_1" Language="ja_JP"><Text>建造物と市街区域が撤去されることはありません。それでも公園のタイルにそれらが建った場合、そのタイルは公園から外れます。それが設立タイルの場合、公園は設立タイルを自身の別のタイルに移します。可能であれば自然遺産に隣接するタイルが選ばれます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_TITLE" Language="ja_JP"><Text>所有者の変更</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_PARA_1" Language="ja_JP"><Text>居住地が征服されると、その公園はすべてのタイルとともに新しい所有者のものになります。公園のタイルが1つだけほかのプレイヤーに奪われた場合、そのタイルは公園から外れます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_TITLE" Language="ja_JP"><Text>公園の外観</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>各公園は土地に合わせて描かれます。森林のタイルには一面の森、丘陵には樹木、岩、ケルン、湖や河川にはスイレンの葉やアシ、ときおり手こぎボート。陸側の境界には低い石垣と所々に柵が並び、外海と接する所にはブイが浮かびます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="ja_JP"><Text>国立公園には設立タイルに管理棟とピクニック用のあずまやがあり、拡張すると山小屋が、丘陵には展望台が建ちます。原生自然地域には建造物はありません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_TITLE" Language="ja_JP"><Text>野生動物</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="ja_JP"><Text>タイルに合わせた動物が現れます。バイソン、馬、シカ、ヘラジカ、ラクダ、ヒツジ、リャマ、ゾウ、キツネ、ツル、カニ。空には鳥やチョウが舞い、湖や河川には魚が、海には魚の群れやサンゴ礁の魚、ときおりクジラが現れます。隣り合うタイルに同じ群れや魚が現れることはありません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_TITLE" Language="ja_JP"><Text>境界線</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_PARA_1" Language="ja_JP"><Text>破線で公園に含まれるタイルを正確に示します。国立公園は緑、原生自然地域は黄土色です。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_TITLE" Language="ja_JP"><Text>名前</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>新しい公園には、隣にある自然遺産にちなんだ名前が付きます（例: ウルル国立公園）。隣に自然遺産がない場合や、その名前が使用済みの場合は、近くの河川や地名、または居住地にちなんだ名前が付きます。公園が拡張されても名前は変わりません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_CHAPTER_RENAME_TITLE" Language="ja_JP"><Text>名前の変更</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_CHAPTER_RENAME_PARA_1" Language="ja_JP"><Text>公園の選択画面で[B]名前の変更[/B]を押します。[B]元に戻す[/B]で元の名前に戻ります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_CHAPTER_LABELS_TITLE" Language="ja_JP"><Text>Geographic Labels</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_CHAPTER_LABELS_PARA_1" Language="ja_JP"><Text>Geographic Labels 1.6.0以降を使用すると、公園の名前がマップ上に表示され、「地名の変更」の「公園・原生自然」に一覧表示されます。新しい公園に、近くの山脈、湖、地域にちなんだ名前が付くこともあります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_TITLE" Language="ja_JP"><Text>AIとマルチプレイヤー</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_AI_TITLE" Language="ja_JP"><Text>AIの公園</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_AI_PARA_1" Language="ja_JP"><Text>AIプレイヤーも公園を設立し（多くは自然遺産の隣）、ときおりゴールドで公園の拡張を購入します。AIの公園はすぐに新しいタイルを選び、遺産や山岳を優先し、施設を失うことになるタイルは選びません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_HOTSEAT_TITLE" Language="ja_JP"><Text>ホットシート</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_HOTSEAT_PARA_1" Language="ja_JP"><Text>各プレイヤーは自分のターンに、自分の公園のタイルを選びます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_NETWORK_TITLE" Language="ja_JP"><Text>ネットワークゲーム</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OTHERS_CHAPTER_NETWORK_PARA_1" Language="ja_JP"><Text>公園は建設できますが、拡張はできません。拡張プロジェクトは利用できず、タイル選択画面やゴールドでの購入もありません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LENS_TITLE" Language="ja_JP"><Text>公園レンズ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LENS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>レンズメニューの[B]公園と原生自然[/B]レンズは、見えるすべての公園のタイルに色を付けます。国立公園は緑、原生自然地域は黄土色で、設立タイルは少し濃く表示されます。表示のみの機能です。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_TITLE" Language="ja_JP"><Text>オプション</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>オプション &gt; 追加コンテンツ &gt; 国立公園。メインメニューとゲーム中のどちらからでも設定でき、設定はゲーム間で引き継がれます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_OVERLAY_TITLE" Language="ja_JP"><Text>公園の土地に色を付ける</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_OVERLAY_PARA_1" Language="ja_JP"><Text>どのレンズを使用中でも、マップ上のすべての公園に常に色を付けます。初期設定はオフです。すぐに反映されます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_LENSBUTTON_TITLE" Language="ja_JP"><Text>公園レンズ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OPTIONS_CHAPTER_LENSBUTTON_PARA_1" Language="ja_JP"><Text>レンズメニューに「公園と原生自然」レンズを追加します。初期設定はオンです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_TITLE" Language="ja_JP"><Text>国立公園</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>国立公園とは、国が景観、野生生物、自然の特徴を保護しつつ、一般の人々が訪れられるようにするために指定した土地です。多くは国の政府が所有し、管理しています。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_ORIGINS_TITLE" Language="ja_JP"><Text>最初の公園</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_ORIGINS_PARA_1" Language="ja_JP"><Text>1864年、アメリカ合衆国議会はヨセミテ渓谷とジャイアントセコイアのマリポサ・グローブを「公共の利用、保養、レクリエーションのため」にカリフォルニア州へ譲渡しました。1872年3月1日、ユリシーズ・S・グラント大統領が法案に署名し、世界初の国立公園であるイエローストーンが誕生しました。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_ORIGINS_PARA_2" Language="ja_JP"><Text>博物学者ジョン・ミューアはヨセミテの保護を訴え、1892年にシエラクラブを設立しました。1906年、セオドア・ルーズベルト大統領が古物法に署名し、大統領が土地をナショナル・モニュメントとして保護できるようになりました。グランドキャニオンは1908年にこの方法で保護され、1919年に国立公園となりました。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_NPS_TITLE" Language="ja_JP"><Text>国立公園局</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_NPS_PARA_1" Language="ja_JP"><Text>1916年、議会は公園を管理し、「将来の世代が楽しめるよう損なわれることなく」残すため、アメリカ合衆国国立公園局を設立しました。現在はメイン州のアケイディアからアラスカ州のデナリまで、400か所以上を管理しており、そのうち60か所以上が国立公園です。ウェブサイト: nps.gov</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_PEOPLE_TITLE" Language="ja_JP"><Text>先住民の土地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_PARKS_CHAPTER_PEOPLE_PARA_1" Language="ja_JP"><Text>多くの国立公園は、先住民から奪われた土地に設けられました。その後、返還されたり、共同で管理されたりしているものもあります。オーストラリアのウルル＝カタ・ジュタ国立公園は、1985年に伝統的所有者であるアナングに返還されました。アナングはこの土地を政府に貸与し、パークス・オーストラリアと共同で管理しています。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_TITLE" Language="ja_JP"><Text>原生自然地域</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>原生自然地域とは、人による開発を可能な限り排除した保護地域です。道路、建物、自動車はありません。訪問者は徒歩、馬、カヌーで移動し、施設はほとんどありません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_US_TITLE" Language="ja_JP"><Text>アメリカ合衆国</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_US_PARA_1" Language="ja_JP"><Text>最初の原生自然地域はニューメキシコ州のヒラ原生自然地域で、森林官アルド・レオポルドの働きかけにより、1924年に森林局が指定しました。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_US_PARA_2" Language="ja_JP"><Text>1964年の原生自然法は、主にハワード・ザーナイザーが起草し、リンドン・B・ジョンソン大統領が署名したもので、原生自然を「大地とその生命の共同体が人間によって束縛されず、人間自身はとどまることのない訪問者である場所」と定義しています。この法律によって国立原生自然保全システムが創設され、現在は約800の原生自然地域、合計1億1000万エーカー（約45万平方キロメートル）以上を4つの連邦機関が管理しています。ウェブサイト: wilderness.net</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_ELSEWHERE_TITLE" Language="ja_JP"><Text>ほかの国々</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WILD_CHAPTER_ELSEWHERE_PARA_1" Language="ja_JP"><Text>ほかの国々もそれぞれの方法で原生自然を保護しています。フィンランドは1991年にラップランドに12の原生自然地域を指定し、オーストラリアのタスマニア原生地域は1982年から世界遺産に登録されています。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WORLD_TITLE" Language="ja_JP"><Text>世界の公園</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WORLD_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>イエローストーンの後、ほかの国々も独自の国立公園を設けました。特に初期のもの、よく知られたものを挙げます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WORLD_CHAPTER_LIST_TITLE" Language="ja_JP"><Text>最初の公園と代表的な公園</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_WORLD_CHAPTER_LIST_PARA_1" Language="ja_JP"><Text>[BLIST][LI][B]オーストラリア[/B]: 1879年、シドニーの南にロイヤル国立公園。世界で2番目の国立公園。[LI][B]カナダ[/B]: 1885年に温泉保護区として始まったバンフ。1911年に設立されたパークス・カナダは、世界初の国立公園管理機関。[LI][B]ニュージーランド[/B]: ナティ・トゥファレトアの最高首長テ・ヘウヘウ・トゥキノ4世が1887年に贈った土地から生まれたトンガリロ。[LI][B]スウェーデン[/B]: 1909年に9つの国立公園。ヨーロッパ初。[LI][B]スイス[/B]: 1914年のスイス国立公園。アルプス初。[LI][B]南アフリカ[/B]: 1926年のクルーガー国立公園。[LI][B]日本[/B]: 1934年に最初の国立公園。[LI][B]イギリス[/B]: 1951年のピーク・ディストリクト。イギリスの国立公園には農場、村、町も含まれる。[LI][B]タンザニア[/B]: 1951年のセレンゲティ国立公園。[LI][B]エクアドル[/B]: 1959年のガラパゴス国立公園。[LI][B]グリーンランド[/B]: 1974年の北東グリーンランド国立公園。面積は約375,000平方マイル（約97万平方キロメートル）で、世界最大の国立公園。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_TITLE" Language="ja_JP"><Text>保護地域の種類</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>国際自然保護連合（IUCN）は、保護地域を管理方法によってカテゴリーに分類しています。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_CONTENT_PARA_2" Language="ja_JP"><Text>[BLIST][LI][B]Ia[/B] 厳正保護地域[LI][B]Ib[/B] 原生自然地域[LI][B]II[/B] 国立公園[LI][B]III[/B] 天然記念物[LI][B]IV[/B] 生息地・種管理地域[LI][B]V[/B] 景観保護地域[LI][B]VI[/B] 自然資源の持続可能な利用を伴う保護地域[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_CONTENT_PARA_3" Language="ja_JP"><Text>このゲームの国立公園と原生自然地域は、カテゴリーIIとIbをモデルにしています。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_HERITAGE_TITLE" Language="ja_JP"><Text>世界遺産</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_HERITAGE_PARA_1" Language="ja_JP"><Text>多くの公園はユネスコの世界遺産にも登録されています。イエローストーンは1978年、最初に登録された遺産の1つです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_THIRTY_TITLE" Language="ja_JP"><Text>30by30</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_KINDS_CHAPTER_THIRTY_PARA_1" Language="ja_JP"><Text>2022年、200近い国々が昆明・モントリオール生物多様性枠組を採択しました。2030年までに世界の陸と海の30%を保護することを目指しています。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_LINKS_TITLE" Language="ja_JP"><Text>参考資料</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_REAL_LINKS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>[BLIST][LI]アメリカ合衆国国立公園局: nps.gov[LI]アメリカ合衆国の原生自然地域: wilderness.net[LI]パークス・カナダ: parks.canada.ca[LI]パークス・オーストラリア: parksaustralia.gov.au[LI]南アフリカ国立公園: sanparks.org[LI]イギリスの国立公園: nationalparks.uk[LI]IUCN: iucn.org[LI]世界の保護地域のデータベース、Protected Planet: protectedplanet.net[LI]ユネスコ世界遺産: whc.unesco.org[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_BRIDGE_TITLE" Language="ja_JP"><Text>このゲームでは</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_NP_BRIDGE_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>居住地が所有する空きタイルに国立公園と原生自然地域を設立し、周囲の土地へ拡張できます。ルールは[B]国立公園[/B]セクションで説明しています。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_NATIONAL_PARK" Language="ja_JP"><Text>国立公園</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WILDERNESS_AREA" Language="ja_JP"><Text>原生自然地域</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_NATURAL_WONDER" Language="ja_JP"><Text>自然遺産</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_CONSERVATION" Language="ja_JP"><Text>自然保護</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_HELP" Language="ja_JP"><Text>ヘルプ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_FAQ" Language="ja_JP"><Text>よくある質問</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_CREDITS" Language="ja_JP"><Text>クレジット</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_COMPATIBILITY" Language="ja_JP"><Text>互換性</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_FOUNDING" Language="ja_JP"><Text>設立</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_SOCIETY" Language="ja_JP"><Text>社会</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_NATURAL_HISTORY" Language="ja_JP"><Text>博物学</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_EXPAND" Language="ja_JP"><Text>拡張</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_PROJECT" Language="ja_JP"><Text>プロジェクト</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_PURCHASE" Language="ja_JP"><Text>購入</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_PICKER" Language="ja_JP"><Text>選択画面</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_SELECT" Language="ja_JP"><Text>選択</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_RESOURCES" Language="ja_JP"><Text>資源</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_OPEN_SEA" Language="ja_JP"><Text>外洋</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_EXPEDITION_BASE" Language="ja_JP"><Text>探検基地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_YIELDS" Language="ja_JP"><Text>産出</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_CULTURE" Language="ja_JP"><Text>文化力</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_HAPPINESS" Language="ja_JP"><Text>幸福度</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_INFLUENCE" Language="ja_JP"><Text>影響力</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_PROTECTION" Language="ja_JP"><Text>保護</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_CONQUEST" Language="ja_JP"><Text>征服</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WILDLIFE" Language="ja_JP"><Text>野生動物</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WALLS" Language="ja_JP"><Text>石垣</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_NAMES" Language="ja_JP"><Text>名前</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_RENAME" Language="ja_JP"><Text>名前の変更</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_GEOGRAPHIC_LABELS" Language="ja_JP"><Text>Geographic Labels</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_AI" Language="ja_JP"><Text>AI</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_MULTIPLAYER" Language="ja_JP"><Text>マルチプレイヤー</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_HOTSEAT" Language="ja_JP"><Text>ホットシート</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_LENS" Language="ja_JP"><Text>レンズ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_OVERLAY" Language="ja_JP"><Text>オーバーレイ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_OPTIONS" Language="ja_JP"><Text>オプション</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_SETTINGS" Language="ja_JP"><Text>設定</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_YELLOWSTONE" Language="ja_JP"><Text>イエローストーン</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_YOSEMITE" Language="ja_JP"><Text>ヨセミテ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_NPS" Language="ja_JP"><Text>国立公園局</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WILDERNESS_ACT" Language="ja_JP"><Text>原生自然法</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WORLD_PARKS" Language="ja_JP"><Text>世界の国立公園</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_IUCN" Language="ja_JP"><Text>IUCN</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_PROTECTED_AREA" Language="ja_JP"><Text>保護地域</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_WORLD_HERITAGE" Language="ja_JP"><Text>世界遺産</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NP_TERM_LINKS" Language="ja_JP"><Text>リンク</Text></Replace>
+    </LocalizedText>
+</Database>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  IMPROVEMENT_NATIONAL_PARK: the park's founding tile. An improvement (not a building), so it keeps the natural ground
+  under it. It is not built through the production list: the engine places an improvement only on a tile that already
+  carries a rural district (it would replace a farm) and never on a bare one, even with CanBuildOnNonDistrict (watched
+  2026-10-02). A settlement founds a park with Found National Park (a city's project, or a purchase in a city or town;
+  data/national-park-<age>.xml), and the mod places the improvement by script on the empty tile its owner chooses
+  (ui/np-core.js foundPark). It then grows with Expand National Park, or an expansion bought for Gold.
+
+  IMPROVEMENT_WILDERNESS_AREA is its twin: the same founding and growth, paid in Influence (+4, and +10 for each
+  adjacent natural wonder) instead of Happiness and Culture, and drawn without houses or shelters.
+
+  Reward on the founding tile: Happiness always, plus Happiness and Culture for every adjacent natural wonder
+  through AdjacentNaturalWonder on the mod's own Adjacency_YieldChanges rows.
+
+  The Constructibles rows are in the per-age files with their civic unlocks (which show the park in the civics tree
+  and gate the Found projects); everything else here is shared by both ages. The improvement has no art of its own
+  (watched 2026-09-27: a completed park drew nothing); the look is drawn by script from shipped meshes.
+-->
+<Database>
+
+    <Improvements>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" ResourceTier="0" CityBuildable="false" TownBuildable="false" OnePerSettlement="true"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" ResourceTier="0" CityBuildable="false" TownBuildable="false" OnePerSettlement="true"/>
+    </Improvements>
+
+    <Constructible_ValidDistricts>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" DistrictType="DISTRICT_RURAL"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" DistrictType="DISTRICT_RURAL"/>
+        <!-- The mod moves a founded park onto a wilderness district, which no building is offered (ui/np-core.js). -->
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" DistrictType="DISTRICT_WILDERNESS"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" DistrictType="DISTRICT_WILDERNESS"/>
+    </Constructible_ValidDistricts>
+    <Constructible_ValidTerrains>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" TerrainType="TERRAIN_FLAT"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" TerrainType="TERRAIN_HILL"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" TerrainType="TERRAIN_FLAT"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" TerrainType="TERRAIN_HILL"/>
+    </Constructible_ValidTerrains>
+
+    <Constructible_YieldChanges>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" YieldType="YIELD_HAPPINESS" YieldChange="4"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" YieldType="YIELD_DIPLOMACY" YieldChange="4"/>
+    </Constructible_YieldChanges>
+
+    <Constructible_Maintenances>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" YieldType="YIELD_GOLD" Amount="2"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" YieldType="YIELD_GOLD" Amount="2"/>
+    </Constructible_Maintenances>
+
+    <Adjacency_YieldChanges>
+        <Row ID="NationalParkNWHappiness" YieldType="YIELD_HAPPINESS" YieldChange="5" TilesRequired="1" ProjectMaxYield="true" AdjacentNaturalWonder="true"/>
+        <Row ID="NationalParkNWCulture"   YieldType="YIELD_CULTURE"   YieldChange="5" TilesRequired="1" ProjectMaxYield="true" AdjacentNaturalWonder="true"/>
+        <Row ID="WildernessAreaNWInfluence" YieldType="YIELD_DIPLOMACY" YieldChange="10" TilesRequired="1" ProjectMaxYield="true" AdjacentNaturalWonder="true"/>
+    </Adjacency_YieldChanges>
+    <Constructible_Adjacencies>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" YieldChangeId="NationalParkNWHappiness"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" YieldChangeId="NationalParkNWCulture"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" YieldChangeId="WildernessAreaNWInfluence"/>
+    </Constructible_Adjacencies>
+
+    <Constructible_Plunders>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" PlunderType="PLUNDER_CULTURE" Amount="120"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" PlunderType="PLUNDER_CULTURE" Amount="120"/>
+    </Constructible_Plunders>
+
+    <!-- The tile picker that adds land to a park (ui/np-picker.js). Without this row the engine refuses
+         InterfaceMode.switchTo for it. "Placement" is the view every base plot chooser uses. -->
+    <InterfaceModes>
+        <Row InterfaceModeType="INTERFACEMODE_NP_ADD_TILES" ViewName="Placement"/>
+    </InterfaceModes>
+</Database>

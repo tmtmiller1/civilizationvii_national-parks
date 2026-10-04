@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <Constructible_YieldChanges>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND" YieldType="YIELD_CULTURE" YieldChange="1"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_LAND" YieldType="YIELD_HAPPINESS" YieldChange="1"/>
+    </Constructible_YieldChanges>
+    <ConstructibleModifiers>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK_WILD" ModifierId="MOD_NP_PROBE_TILE_CULTURE"/>
+    </ConstructibleModifiers>
+</Database>

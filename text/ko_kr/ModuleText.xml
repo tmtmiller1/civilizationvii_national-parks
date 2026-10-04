@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_NATIONAL_PARK_NAME" Language="ko_KR"><Text>국립공원</Text></Replace>
+        <Replace Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION" Language="ko_KR"><Text>대항해시대부터 국립공원과 원생지역을 추가합니다. 도시나 마을이 소유한 빈 멋진 매력도 타일에 건설한 뒤, 주변 땅으로 한 타일씩 확장하세요. 산, 숲, 호수, 강, 바다, 자연경관이 모두 포함됩니다. 국립공원은 문화와 행복도를 제공하며 관리소와 오두막이 있습니다. 원생지역은 영향력을 제공하며 건물이 없습니다. 각 공원의 타일은 그 공원이 8, 16, 24타일에 이를 때마다 더 많이 제공합니다. 각 공원은 땅에 맞춰 담장, 나무, 야생 동물과 함께 그려집니다. Geographic Labels와 호환됩니다. 싱글 플레이 및 핫시트.</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_NAME" Language="ko_KR"><Text>국립공원</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION" Language="ko_KR"><Text>국립공원의 첫 타일로, 국립공원 건설 후 직접 고른 빈 멋진 매력도 타일에 놓입니다. +4 [icon:YIELD_HAPPINESS] 행복도, 그리고 인접한 자연경관마다 +5 [icon:YIELD_HAPPINESS] 행복도와 +5 [icon:YIELD_CULTURE] 문화를 추가로 얻습니다. 이 국립공원이 8, 16, 24타일에 이르면 그 부지가 더 많이 제공합니다. 도시에서 국립공원 확장 프로젝트로 확장하거나, 정착지의 구매 목록에서 금으로 확장을 구매할 수 있습니다. 대항해시대에는 사회, 근대 시대에는 자연사로 해금됩니다. 정착지당 하나만 건설할 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP" Language="ko_KR"><Text>국립공원 건설 프로젝트로, 정착지가 소유한 빈 멋진 매력도 타일에 건설합니다.</Text></Replace>
+        <Replace Tag="LOC_NP_LAND_NAME" Language="ko_KR"><Text>국립공원 부지</Text></Replace>
+        <Replace Tag="LOC_NP_LAND_DESCRIPTION" Language="ko_KR"><Text>국립공원에 속한 땅입니다. 타일의 원래 생산량에 더해 +1 [icon:YIELD_CULTURE] 문화와 +1 [icon:YIELD_HAPPINESS] 행복도를 제공하며, 그 국립공원이 커질수록 늘어납니다. 8타일에서 +2 [icon:YIELD_CULTURE] 문화, 16타일에서 +2 [icon:YIELD_CULTURE] 및 +2 [icon:YIELD_HAPPINESS], 24타일에서 +3 [icon:YIELD_CULTURE] 및 +2 [icon:YIELD_HAPPINESS]를 제공합니다. 잃었거나 다른 것이 건설된 땅은 그 국립공원의 타일 수에서 빠집니다. 자원은 계속 수집됩니다. 이곳에는 아무것도 건설할 수 없습니다.</Text></Replace>
+        <Replace Tag="LOC_NP_WILD_NAME" Language="ko_KR"><Text>국립공원 오지</Text></Replace>
+        <Replace Tag="LOC_NP_WILD_DESCRIPTION" Language="ko_KR"><Text>국립공원에 속한 자연경관, 산, 물 또는 숲 타일입니다. 타일의 원래 생산량에 더해 +2 [icon:YIELD_CULTURE] 문화와 +1 [icon:YIELD_HAPPINESS] 행복도를 제공합니다. 자원은 계속 수집됩니다. 이곳에는 아무것도 건설할 수 없습니다.</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_NAME" Language="ko_KR"><Text>원생지역</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_DESCRIPTION" Language="ko_KR"><Text>원생지역의 첫 타일로, 원생지역 지정 후 직접 고른 빈 멋진 매력도 타일에 놓입니다. +4 [icon:YIELD_DIPLOMACY] 영향력, 그리고 인접한 자연경관마다 +10 [icon:YIELD_DIPLOMACY] 영향력을 추가로 얻습니다. 이 원생지역이 8, 16, 24타일에 이르면 그 부지가 더 많이 제공합니다. 도시에서 원생지역 확장 프로젝트로 확장하거나, 정착지의 구매 목록에서 금으로 확장을 구매할 수 있습니다. 건물이 없습니다. 대항해시대에는 사회, 근대 시대에는 자연사로 해금됩니다. 정착지당 하나만 건설할 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_TOOLTIP" Language="ko_KR"><Text>원생지역 지정 프로젝트로, 정착지가 소유한 빈 멋진 매력도 타일에 건설합니다.</Text></Replace>
+        <Replace Tag="LOC_WA_LAND_NAME" Language="ko_KR"><Text>원생지역 부지</Text></Replace>
+        <Replace Tag="LOC_WA_LAND_DESCRIPTION" Language="ko_KR"><Text>원생지역에 속한 땅입니다. 타일의 원래 생산량에 더해 +3 [icon:YIELD_DIPLOMACY] 영향력을 제공하며, 그 원생지역이 커질수록 늘어납니다. 8타일에서 +4, 16타일에서 +5, 24타일에서 +6을 제공합니다. 잃었거나 다른 것이 건설된 땅은 그 원생지역의 타일 수에서 빠집니다. 자원은 계속 수집됩니다. 이곳에는 아무것도 건설할 수 없습니다.</Text></Replace>
+        <Replace Tag="LOC_WA_WILD_NAME" Language="ko_KR"><Text>원생지역 오지</Text></Replace>
+        <Replace Tag="LOC_WA_WILD_DESCRIPTION" Language="ko_KR"><Text>원생지역에 속한 자연경관, 산, 물 또는 숲 타일입니다. 타일의 원래 생산량에 더해 +3 [icon:YIELD_DIPLOMACY] 영향력을 제공합니다. 자원은 계속 수집됩니다. 이곳에는 아무것도 건설할 수 없습니다.</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME" Language="ko_KR"><Text>원생지역 확장</Text></Replace>
+        <Replace Tag="LOC_WA_NAME_FORMAT" Language="ko_KR"><Text>{1_Name} 원생지역</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_EX" Language="ko_KR"><Text>이 도시의 원생지역 옆에 타일 1개를 추가합니다. 프로젝트가 끝나면 땅 고르기 버튼으로 직접 고릅니다. 소유한 땅이라면 개활지, 숲, 산, 호수, 강, 바다, 자연경관 모두 가능합니다. 그 위의 교외 시설은 제거되며, 자원은 계속 수집됩니다. 각 타일은 원래 생산량에 더해 +3 [icon:YIELD_DIPLOMACY] 영향력을 제공하며, 원생지역이 8, 16, 24타일에 이르면 그 원생지역의 모든 타일이 차례로 +4, +5, +6을 제공합니다. 그 위에는 아무것도 건설할 수 없습니다. 최대 24타일까지 확장할 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO" Language="ko_KR"><Text>이 도시의 원생지역 옆에 타일 3개를 추가합니다. 프로젝트가 끝나면 땅 고르기 버튼으로 직접 고릅니다. 소유한 땅이라면 개활지, 숲, 산, 호수, 강, 바다, 자연경관 모두 가능합니다. 그 위의 교외 시설은 제거되며, 자원은 계속 수집됩니다. 각 타일은 원래 생산량에 더해 +3 [icon:YIELD_DIPLOMACY] 영향력을 제공하며, 원생지역이 8, 16, 24타일에 이르면 그 원생지역의 모든 타일이 차례로 +4, +5, +6을 제공합니다. 그 위에는 아무것도 건설할 수 없습니다. 최대 24타일까지 확장할 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME" Language="ko_KR"><Text>국립공원 확장</Text></Replace>
+        <Replace Tag="LOC_NP_MULTIPLAYER" Language="ko_KR"><Text>네트워크 게임에서는 국립공원과 원생지역이 확장되지 않습니다.</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_EX" Language="ko_KR"><Text>이 도시의 국립공원 옆에 타일 1개를 추가합니다. 프로젝트가 끝나면 땅 고르기 버튼으로 직접 고릅니다. 소유한 땅이라면 개활지, 숲, 산, 호수, 강, 바다, 자연경관 모두 가능합니다. 그 위의 교외 시설은 제거되며, 자원은 계속 수집됩니다. 각 타일은 원래 생산량에 더해 +1 [icon:YIELD_CULTURE] 문화와 +1 [icon:YIELD_HAPPINESS] 행복도를 제공하며, 국립공원이 8, 16, 24타일에 이르면 그 국립공원의 모든 타일이 더 많이 제공해 최대 +3 [icon:YIELD_CULTURE] 문화와 +2 [icon:YIELD_HAPPINESS] 행복도가 됩니다. 그 위에는 아무것도 건설할 수 없습니다. 최대 24타일까지 확장할 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" Language="ko_KR"><Text>이 도시의 국립공원 옆에 타일 3개를 추가합니다. 프로젝트가 끝나면 땅 고르기 버튼으로 직접 고릅니다. 소유한 땅이라면 개활지, 숲, 산, 호수, 강, 바다, 자연경관 모두 가능합니다. 그 위의 교외 시설은 제거되며, 자원은 계속 수집됩니다. 각 타일은 원래 생산량에 더해 +1 [icon:YIELD_CULTURE] 문화와 +1 [icon:YIELD_HAPPINESS] 행복도를 제공하며, 국립공원이 8, 16, 24타일에 이르면 그 국립공원의 모든 타일이 더 많이 제공해 최대 +3 [icon:YIELD_CULTURE] 문화와 +2 [icon:YIELD_HAPPINESS] 행복도가 됩니다. 그 위에는 아무것도 건설할 수 없습니다. 최대 24타일까지 확장할 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_NP_PARK_NAME_FORMAT" Language="ko_KR"><Text>{1_Name} 국립공원</Text></Replace>
+        <Replace Tag="LOC_NP_PARK_NAME_ORDINAL" Language="ko_KR"><Text>{1_Name} {2_Ordinal}</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK" Language="ko_KR"><Text>국립공원</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_OVERLAY" Language="ko_KR"><Text>공원 경계 및 음영 표시</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_OVERLAY_DESCRIPTION" Language="ko_KR"><Text>켜진 렌즈와 관계없이, 보이는 모든 국립공원(초록색)과 원생지역(황토색)의 경계를 그리고 그 땅에 옅은 음영을 표시합니다. 공원 및 원생지역 렌즈에서는 음영이 더 짙게 표시됩니다. 즉시 적용됩니다.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_LENS" Language="ko_KR"><Text>공원 및 원생지역 렌즈</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_LENS_DESCRIPTION" Language="ko_KR"><Text>렌즈 메뉴에 공원 및 원생지역 렌즈를 추가합니다. 다음에 렌즈 메뉴를 열 때 적용됩니다.</Text></Replace>
+        <Replace Tag="LOC_NP_LENS" Language="ko_KR"><Text>공원 및 원생지역</Text></Replace>
+        <Replace Tag="LOC_NP_GEO_TYPE" Language="ko_KR"><Text>공원 또는 원생지역</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_TITLE" Language="ko_KR"><Text>{1_Park} 확장</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_HINT" Language="ko_KR"><Text>빛나는 {1_Count: plural 1?타일; other?타일;}을 최대 {1_Count}개까지 클릭해 {1_Count: plural 1?선택한 뒤; other?선택한 뒤;} 확정을 누르세요. {2_Selected}개 선택됨.</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_HINT_FULL" Language="ko_KR"><Text>이번 확장으로 공원이 가득 찹니다({1_Max}타일). {2_Selected}개 선택됨. 확정을 눌러 {2_Selected: plural 1?추가하세요; other?추가하세요;}.</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_CONFIRM" Language="ko_KR"><Text>확정</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_CONFIRM_TIP" Language="ko_KR"><Text>선택한 타일을 추가합니다</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT" Language="ko_KR"><Text>{1_Park}: 확장할 타일 {2_Count}{2_Count: plural other?개;}를 더 고르세요</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT_BUTTON" Language="ko_KR"><Text>땅 고르기</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT_BUTTON_TIP" Language="ko_KR"><Text>추가할 타일을 고릅니다</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_NONE" Language="ko_KR"><Text>지금은 옆에 추가할 수 있는 땅이 없습니다. 땅이 생길 때까지 확장이 보존됩니다.</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_DONE" Language="ko_KR"><Text>완료</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_DONE_TIP" Language="ko_KR"><Text>선택한 타일을 추가하고 이번 확장의 나머지는 포기합니다</Text></Replace>
+        <Replace Tag="LOC_NP_DONE_TITLE" Language="ko_KR"><Text>이번 확장을 끝내시겠습니까?</Text></Replace>
+        <Replace Tag="LOC_NP_DONE_BODY" Language="ko_KR"><Text>이번 확장에서 {1_Count}개의 {1_Count: plural 1?타일; other?타일;}이 아직 {1_Count: plural 1?배치되지 않았으며; other?배치되지 않았으며;}, 사라지게 됩니다. {1_Count: plural 1?보존하려면; other?보존하려면;} 나중에를 선택하세요.</Text></Replace>
+        <Replace Tag="LOC_NP_CONFIRM_TITLE" Language="ko_KR"><Text>이 타일을 추가하시겠습니까?</Text></Replace>
+        <Replace Tag="LOC_NP_CONFIRM_STRIP" Language="ko_KR"><Text>이 타일의 {1_Improvement}이(가) 제거됩니다.</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_TITLE" Language="ko_KR"><Text>이름 변경</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_SAVE" Language="ko_KR"><Text>저장</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_RESTORE" Language="ko_KR"><Text>복원</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_CANCEL" Language="ko_KR"><Text>취소</Text></Replace>
+        <Replace Tag="LOC_NP_BUY_NONE" Language="ko_KR"><Text>이 정착지에는 당신의 공원이 없습니다.</Text></Replace>
+        <Replace Tag="LOC_NP_BUY_FULL" Language="ko_KR"><Text>가득 참(24타일).</Text></Replace>
+        <Replace Tag="LOC_NP_BUY_GOLD" Language="ko_KR"><Text>금이 부족합니다.</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_LATER" Language="ko_KR"><Text>나중에</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_LATER_TIP" Language="ko_KR"><Text>이번 확장의 나머지를 이후 턴으로 미룹니다</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_RENAME" Language="ko_KR"><Text>이름 변경</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_RENAME_TIP" Language="ko_KR"><Text>이름을 바꿉니다</Text></Replace>
+        <Replace Tag="LOC_NP_TILE_IS_PARKLAND" Language="ko_KR"><Text>이 타일은 국립공원 또는 원생지역에 속해 있어 건설할 수 없습니다.</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_NAME" Language="ko_KR"><Text>국립공원 건설</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION" Language="ko_KR"><Text>이 정착지에 국립공원을 건설합니다. 프로젝트가 끝나면 땅 고르기를 누르고, 정착지가 소유한 빈 멋진 매력도 평지 또는 언덕 타일을 고르세요. 특수지구, 시설, 건물이 없어야 합니다. 그 위의 자원은 계속 수집됩니다. +4 [icon:YIELD_HAPPINESS] 행복도를 제공하며, 자연경관 옆이면 더 많이 제공합니다. 정착지당 하나만 건설할 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_NAME" Language="ko_KR"><Text>원생지역 지정</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION" Language="ko_KR"><Text>이 정착지에 원생지역을 지정합니다. 프로젝트가 끝나면 땅 고르기를 누르고, 정착지가 소유한 빈 멋진 매력도 평지 또는 언덕 타일을 고르세요. 특수지구, 시설, 건물이 없어야 합니다. 그 위의 자원은 계속 수집됩니다. +4 [icon:YIELD_DIPLOMACY] 영향력을 제공하며, 자연경관 옆이면 더 많이 제공합니다. 정착지당 하나만 건설할 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NO_LAND" Language="ko_KR"><Text>이 정착지에는 빈 멋진 매력도 평지 또는 언덕 타일이 없습니다.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PICKER_TITLE" Language="ko_KR"><Text>{1_Settlement}: 새 국립공원</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="ko_KR"><Text>{1_Settlement}: 새 원생지역</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="ko_KR"><Text>빛나는 타일을 클릭한 뒤 확정을 누르세요.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NONE" Language="ko_KR"><Text>지금 이 정착지에는 빈 멋진 매력도 평지 또는 언덕 타일이 없습니다. 타일이 빌 때까지 새 공원이 대기합니다.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PROMPT" Language="ko_KR"><Text>{1_Settlement}: 국립공원을 설립할 곳을 고르세요</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_PROMPT" Language="ko_KR"><Text>{1_Settlement}: 원생지역을 설립할 곳을 고르세요</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="ko_KR"><Text>국립공원 설립이 승인되었습니다. 이 정착지가 소유한 빈 멋진 매력도 타일을 골라 설립할 곳을 정하세요. 나중에 주변 땅으로 넓힐 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_OFFER_BODY" Language="ko_KR"><Text>원생지역 설립이 승인되었습니다. 이 정착지가 소유한 빈 멋진 매력도 타일을 골라 설립할 곳을 정하세요. 나중에 주변의 야생 땅으로 넓힐 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PROMPT_BUTTON_TIP" Language="ko_KR"><Text>설립할 타일 고르기</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_LATER_TIP" Language="ko_KR"><Text>설립을 나중 턴으로 미룹니다. 대기 상태로 남습니다</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT_BODY" Language="ko_KR"><Text>확장할 타일 {1_Count}{1_Count: plural other?개;}를 더 고르세요</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PROMPT_BODY" Language="ko_KR"><Text>국립공원을 설립할 곳을 고르세요</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_PROMPT_BODY" Language="ko_KR"><Text>원생지역을 설립할 곳을 고르세요</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_1" Language="ko_KR"><Text>"Everybody needs beauty as well as bread, places to play in and pray in, where Nature may heal and cheer and give strength to body and soul alike." John Muir, The Yosemite (1912)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_2" Language="ko_KR"><Text>"…mountain parks and reservations are useful not only as fountains of timber and irrigating rivers, but as fountains of life." John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_3" Language="ko_KR"><Text>"Climb the mountains and get their good tidings. Nature's peace will flow into you as sunshine flows into trees." John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_4" Language="ko_KR"><Text>"…the wildest health and pleasure grounds accessible and available to tourists seeking escape from care and dust and early death are the parks and reservations of the West." John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_5" Language="ko_KR"><Text>"…the enjoyment of scenery employs the mind without fatigue and yet exercises it; tranquilizes it and yet enlivens it…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_6" Language="ko_KR"><Text>"…the Yosemite should be held, guarded and managed for the free use of the whole body of the people forever…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_7" Language="ko_KR"><Text>"This Park was created, and is now administered, for the benefit and enjoyment of the people." Theodore Roosevelt, Presidential Addresses and State Papers, vol. 1 (1904)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_8" Language="ko_KR"><Text>"No nation has ever fallen for having too much scenery." Enos A. Mills, Your National Parks (1917)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_1" Language="ko_KR"><Text>"…in Wildness is the preservation of the World." Henry David Thoreau, Walking (1862)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_2" Language="ko_KR"><Text>"We need the tonic of wildness…" Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_3" Language="ko_KR"><Text>"We can never have enough of Nature." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_4" Language="ko_KR"><Text>"Thousands of tired, nerve-shaken, over-civilized people are beginning to find out that going to the mountains is going home; that wildness is a necessity…" John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_5" Language="ko_KR"><Text>"None of Nature's landscapes are ugly so long as they are wild…" John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_6" Language="ko_KR"><Text>"Thus protected, these wildernesses will remain forever wild, forever mysterious and primeval…" Enos A. Mills, Your National Parks (1917)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_7" Language="ko_KR"><Text>"All National Parks are wild-life sanctuaries, places of refuge for birds and animals. There the wild folk are not pursued, trapped, or shot." Enos A. Mills, Your National Parks (1917)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_8" Language="ko_KR"><Text>"In the wilderness, I find something more dear and connate than in streets or villages." Ralph Waldo Emerson, Nature (1836)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_9" Language="ko_KR"><Text>"When we try to pick out anything by itself, we find it hitched to everything else in the universe." John Muir, My First Summer in the Sierra (1911)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_10" Language="ko_KR"><Text>"…from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved." Charles Darwin, On the Origin of Species, 1st ed. (1859)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_1" Language="ko_KR"><Text>"Not the law, but the land sets the limit." Mary Austin, The Land of Little Rain (1903)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_2" Language="ko_KR"><Text>"The manner of the country makes the usage of life there, and the land will not be lived in except in its own fashion." Mary Austin, The Land of Little Rain (1903)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_3" Language="ko_KR"><Text>"Let us spend one day as deliberately as Nature, and not be thrown off the track by every nutshell and mosquito's wing that falls on the rails." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_4" Language="ko_KR"><Text>"Heaven is under our feet as well as over our heads." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_5" Language="ko_KR"><Text>"The health of the eye seems to demand a horizon. We are never tired, so long as we can see far enough." Ralph Waldo Emerson, Nature (1836)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_1" Language="ko_KR"><Text>"Leave it as it is. You can not improve on it. The ages have been at work on it, and man can only mar it." Theodore Roosevelt, Presidential Addresses and State Papers, vol. 1 (1904)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_2" Language="ko_KR"><Text>"Shall I not rejoice also at the abundance of the weeds whose seeds are the granary of the birds?" Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_3" Language="ko_KR"><Text>"These beans have results which are not harvested by me. Do they not grow for woodchucks partly?" Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_4" Language="ko_KR"><Text>"He is to become a co-worker with nature in the reconstruction of the damaged fabric…" George Perkins Marsh, Man and Nature (1864)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_5" Language="ko_KR"><Text>"Man has too long forgotten that the earth was given to him for usufruct alone, not for consumption, still less for profligate waste." George Perkins Marsh, Man and Nature (1864)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_1" Language="ko_KR"><Text>"…a man is rich in proportion to the number of things which he can afford to let alone." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_2" Language="ko_KR"><Text>"I love a broad margin to my life." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_3" Language="ko_KR"><Text>"…in every walk with Nature one receives far more than he seeks." John Muir, Steep Trails (1918)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_4" Language="ko_KR"><Text>"…much, we can say comfortingly, must always be in great part wild, particularly the sea and the sky, the floods of light from the stars…" John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_5" Language="ko_KR"><Text>"When I come back, I go to Nature to be soothed and healed, and to have my senses put in tune once more." John Burroughs, Time and Change (1912)</Text></Replace>
+    </LocalizedText>
+</Database>

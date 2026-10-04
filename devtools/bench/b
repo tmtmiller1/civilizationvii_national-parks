@@ -1,0 +1,3 @@
+#!/bin/zsh
+# b - run the Tower Bench CLI from anywhere: b eval '<js>', b lab start ..., b set feature ...
+cd "${0:A:h}/../../../../tools/tower-bench" && exec node tower-bench.mjs "$@"

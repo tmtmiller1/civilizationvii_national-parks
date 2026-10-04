@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="tower-national-park" version="1" xmlns="ModInfo">
+	<Properties>
+		<Name>LOC_MOD_NATIONAL_PARK_NAME</Name>
+		<Description>LOC_MOD_NATIONAL_PARK_DESCRIPTION</Description>
+		<Authors>Tower</Authors>
+		<Package>NationalPark</Package>
+		<PackageSortIndex>1000</PackageSortIndex>
+		<ShowInBrowser>1</ShowInBrowser>
+		<Version>1.0.0</Version>
+	</Properties>
+	<Dependencies>
+		<Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME"/>
+	</Dependencies>
+	<ActionCriteria>
+		<Criteria id="always">
+			<AlwaysMet></AlwaysMet>
+		</Criteria>
+		<!-- Parks exist from the Exploration Age on. Each age gets the shared data plus its own Constructibles, project
+		     and civic unlock rows (a civic node exists only in its age's database). -->
+		<Criteria id="exploration-age-current">
+			<AgeInUse>AGE_EXPLORATION</AgeInUse>
+		</Criteria>
+		<Criteria id="modern-age-current">
+			<AgeInUse>AGE_MODERN</AgeInUse>
+		</Criteria>
+	</ActionCriteria>
+	<ActionGroups>
+		<!-- Shell scope: text for the Additional Content browser, which runs before any game is loaded. -->
+		<ActionGroup id="national-park-shell" scope="shell" criteria="always">
+			<Actions>
+				<UpdateText>
+					<Item>text/en_us/ModuleText.xml</Item>
+					<Item locale="de_DE">text/de_de/ModuleText.xml</Item>
+					<Item locale="es_ES">text/es_es/ModuleText.xml</Item>
+					<Item locale="fr_FR">text/fr_fr/ModuleText.xml</Item>
+					<Item locale="it_IT">text/it_it/ModuleText.xml</Item>
+					<Item locale="ja_JP">text/ja_jp/ModuleText.xml</Item>
+					<Item locale="ko_KR">text/ko_kr/ModuleText.xml</Item>
+					<Item locale="pl_PL">text/pl_pl/ModuleText.xml</Item>
+					<Item locale="pt_BR">text/pt_br/ModuleText.xml</Item>
+					<Item locale="ru_RU">text/ru_ru/ModuleText.xml</Item>
+					<Item locale="zh_Hans_CN">text/zh_cn/ModuleText.xml</Item>
+					<Item locale="zh_Hant_HK">text/zh_hk/ModuleText.xml</Item>
+				</UpdateText>
+				<!-- The Options entry, so it can be set from the main menu too. -->
+				<UIScripts>
+					<Item>ui/np-options.js</Item>
+				</UIScripts>
+				<ImportFiles>
+					<Item>ui/np-options.js</Item>
+					<Item>ui/np-settings.js</Item>
+				</ImportFiles>
+			</Actions>
+		</ActionGroup>
+		<ActionGroup id="national-park-exploration" scope="game" criteria="exploration-age-current">
+			<Actions>
+				<UpdateText>
+					<Item>text/en_us/ModuleText.xml</Item>
+					<Item>text/en_us/PediaText.xml</Item>
+					<Item locale="de_DE">text/de_de/ModuleText.xml</Item>
+					<Item locale="de_DE">text/de_de/PediaText.xml</Item>
+					<Item locale="es_ES">text/es_es/ModuleText.xml</Item>
+					<Item locale="es_ES">text/es_es/PediaText.xml</Item>
+					<Item locale="fr_FR">text/fr_fr/ModuleText.xml</Item>
+					<Item locale="fr_FR">text/fr_fr/PediaText.xml</Item>
+					<Item locale="it_IT">text/it_it/ModuleText.xml</Item>
+					<Item locale="it_IT">text/it_it/PediaText.xml</Item>
+					<Item locale="ja_JP">text/ja_jp/ModuleText.xml</Item>
+					<Item locale="ja_JP">text/ja_jp/PediaText.xml</Item>
+					<Item locale="ko_KR">text/ko_kr/ModuleText.xml</Item>
+					<Item locale="ko_KR">text/ko_kr/PediaText.xml</Item>
+					<Item locale="pl_PL">text/pl_pl/ModuleText.xml</Item>
+					<Item locale="pl_PL">text/pl_pl/PediaText.xml</Item>
+					<Item locale="pt_BR">text/pt_br/ModuleText.xml</Item>
+					<Item locale="pt_BR">text/pt_br/PediaText.xml</Item>
+					<Item locale="ru_RU">text/ru_ru/ModuleText.xml</Item>
+					<Item locale="ru_RU">text/ru_ru/PediaText.xml</Item>
+					<Item locale="zh_Hans_CN">text/zh_cn/ModuleText.xml</Item>
+					<Item locale="zh_Hant_HK">text/zh_hk/ModuleText.xml</Item>
+					<Item locale="zh_Hans_CN">text/zh_cn/PediaText.xml</Item>
+					<Item locale="zh_Hant_HK">text/zh_hk/PediaText.xml</Item>
+				</UpdateText>
+				<UpdateDatabase>
+					<Item>data/national-park-exploration.xml</Item>
+					<Item>data/national-park.xml</Item>
+					<Item>data/national-park-land.xml</Item>
+					<Item>data/national-park-gameeffects.xml</Item>
+					<Item>data/national-park-resources.sql</Item>
+					<Item>data/national-park-project.xml</Item>
+					<Item>data/np-civilopedia.xml</Item>
+				</UpdateDatabase>
+				<UpdateIcons>
+					<Item>data/national-park-icons.xml</Item>
+				</UpdateIcons>
+				<UIScripts>
+					<Item>ui/np-main.js</Item>
+					<Item>ui/np-options.js</Item>
+				</UIScripts>
+				<ImportFiles>
+					<Item>ui/np-main.js</Item>
+					<Item>ui/np-core.js</Item>
+					<Item>ui/np-draw.js</Item>
+					<Item>ui/np-picker.js</Item>
+					<Item>ui/np-dialog.js</Item>
+					<Item>ui/np-quotes.js</Item>
+					<Item>ui/np-purchase.js</Item>
+					<Item>ui/np-names.js</Item>
+					<Item>ui/np-wildlife.js</Item>
+					<Item>ui/np-scene.js</Item>
+					<Item>ui/np-lens.js</Item>
+					<Item>ui/np-settings.js</Item>
+					<Item>ui/np-options.js</Item>
+				</ImportFiles>
+			</Actions>
+			<Properties>
+				<LoadOrder>9999</LoadOrder>
+			</Properties>
+		</ActionGroup>
+		<ActionGroup id="national-park-modern" scope="game" criteria="modern-age-current">
+			<Actions>
+				<UpdateText>
+					<Item>text/en_us/ModuleText.xml</Item>
+					<Item>text/en_us/PediaText.xml</Item>
+					<Item locale="de_DE">text/de_de/ModuleText.xml</Item>
+					<Item locale="de_DE">text/de_de/PediaText.xml</Item>
+					<Item locale="es_ES">text/es_es/ModuleText.xml</Item>
+					<Item locale="es_ES">text/es_es/PediaText.xml</Item>
+					<Item locale="fr_FR">text/fr_fr/ModuleText.xml</Item>
+					<Item locale="fr_FR">text/fr_fr/PediaText.xml</Item>
+					<Item locale="it_IT">text/it_it/ModuleText.xml</Item>
+					<Item locale="it_IT">text/it_it/PediaText.xml</Item>
+					<Item locale="ja_JP">text/ja_jp/ModuleText.xml</Item>
+					<Item locale="ja_JP">text/ja_jp/PediaText.xml</Item>
+					<Item locale="ko_KR">text/ko_kr/ModuleText.xml</Item>
+					<Item locale="ko_KR">text/ko_kr/PediaText.xml</Item>
+					<Item locale="pl_PL">text/pl_pl/ModuleText.xml</Item>
+					<Item locale="pl_PL">text/pl_pl/PediaText.xml</Item>
+					<Item locale="pt_BR">text/pt_br/ModuleText.xml</Item>
+					<Item locale="pt_BR">text/pt_br/PediaText.xml</Item>
+					<Item locale="ru_RU">text/ru_ru/ModuleText.xml</Item>
+					<Item locale="ru_RU">text/ru_ru/PediaText.xml</Item>
+					<Item locale="zh_Hans_CN">text/zh_cn/ModuleText.xml</Item>
+					<Item locale="zh_Hant_HK">text/zh_hk/ModuleText.xml</Item>
+					<Item locale="zh_Hans_CN">text/zh_cn/PediaText.xml</Item>
+					<Item locale="zh_Hant_HK">text/zh_hk/PediaText.xml</Item>
+				</UpdateText>
+				<UpdateDatabase>
+					<Item>data/national-park-modern.xml</Item>
+					<Item>data/national-park.xml</Item>
+					<Item>data/national-park-land.xml</Item>
+					<Item>data/national-park-gameeffects.xml</Item>
+					<Item>data/national-park-resources.sql</Item>
+					<Item>data/national-park-project.xml</Item>
+					<Item>data/np-civilopedia.xml</Item>
+				</UpdateDatabase>
+				<UpdateIcons>
+					<Item>data/national-park-icons.xml</Item>
+				</UpdateIcons>
+				<UIScripts>
+					<Item>ui/np-main.js</Item>
+					<Item>ui/np-options.js</Item>
+				</UIScripts>
+				<ImportFiles>
+					<Item>ui/np-main.js</Item>
+					<Item>ui/np-core.js</Item>
+					<Item>ui/np-draw.js</Item>
+					<Item>ui/np-picker.js</Item>
+					<Item>ui/np-dialog.js</Item>
+					<Item>ui/np-quotes.js</Item>
+					<Item>ui/np-purchase.js</Item>
+					<Item>ui/np-names.js</Item>
+					<Item>ui/np-wildlife.js</Item>
+					<Item>ui/np-scene.js</Item>
+					<Item>ui/np-lens.js</Item>
+					<Item>ui/np-settings.js</Item>
+					<Item>ui/np-options.js</Item>
+				</ImportFiles>
+			</Actions>
+			<Properties>
+				<LoadOrder>9999</LoadOrder>
+			</Properties>
+		</ActionGroup>
+	</ActionGroups>
+	<LocalizedText>
+		<File>text/en_us/ModuleText.xml</File>
+		<File>text/en_us/PediaText.xml</File>
+	</LocalizedText>
+</Mod>

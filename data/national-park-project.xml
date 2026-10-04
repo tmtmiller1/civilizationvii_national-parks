@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  PROJECT_EXPAND_NATIONAL_PARK and PROJECT_EXPAND_WILDERNESS_AREA: repeatable city projects, each offered only in a
+  city that has its founding improvement (PrereqConstructible). Each completion lets the owner add land: the local
+  player chooses the tiles in a picker (ui/np-picker.js), and an AI's are chosen for it. The cost is flat. The
+  Projects rows themselves are in the per-age files, since the tiles a completion adds differ by age (1 in
+  Exploration, 3 in Modern) and so does their text. This file holds no rows.
+
+  The yield comes from the land: every tile added carries a marker improvement that pays on its own tile
+  (data/national-park-land.xml), so a larger park is worth more.
+-->
+<Database>
+
+</Database>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dev only: the first Expand National Park in a city costs 1. The cost still rises by CostProgressionParam1 with each
+     expansion, so the per-city progression can be read (a later expansion can be finished with BuildQueue.addProgress).
+     RequiresUnlock="false" does not open either item: the civic unlock rows still gate them. -->
+<Database>
+	<Projects>
+		<Update><Where ProjectType="PROJECT_EXPAND_NATIONAL_PARK"/><Set Cost="1" RequiresUnlock="false"/></Update>
+	</Projects>
+	<Constructibles>
+		<Update><Where ConstructibleType="IMPROVEMENT_NATIONAL_PARK"/><Set RequiresUnlock="false"/></Update>
+	</Constructibles>
+</Database>

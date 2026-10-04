@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_NATIONAL_PARK_NAME" Language="zh_Hant_HK"><Text>國家公園</Text></Replace>
+        <Replace Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION" Language="zh_Hant_HK"><Text>從探索時代起加入國家公園與荒野保護區。在城市或城鎮擁有的迷人空置格位上建立一座，再逐格向周圍土地擴展：山地、森林、湖泊、河流、海洋與自然奇觀。國家公園提供文化值與幸福感，設有管理員小屋與木屋；荒野保護區提供影響力，沒有任何建築。每座公園達到8、16和24個格位時，該公園的每個格位都會提供更多收益。每座公園都會依其地形繪出圍牆、樹木與野生動物。可與 Geographic Labels 搭配使用。支援單人遊戲與熱座。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_NAME" Language="zh_Hant_HK"><Text>國家公園</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION" Language="zh_Hant_HK"><Text>國家公園的起始格位，在「建立國家公園」完成後放置於你選擇的迷人空置格位上。+4[icon:YIELD_HAPPINESS]幸福感，每個相鄰的自然奇觀再+5[icon:YIELD_HAPPINESS]幸福感和+5[icon:YIELD_CULTURE]文化值。當該公園達到8、16和24個格位時，其土地會提供更多收益。可在城市中以「擴展國家公園」專案擴展，或在聚落的購買清單中以金幣購買一次擴展。於探索時代由「社會」市政解鎖，於近代由「自然歷史」市政解鎖。每個聚落限一座。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP" Language="zh_Hant_HK"><Text>以「建立國家公園」建立，位於聚落擁有的迷人空置格位上。</Text></Replace>
+        <Replace Tag="LOC_NP_LAND_NAME" Language="zh_Hant_HK"><Text>國家公園土地</Text></Replace>
+        <Replace Tag="LOC_NP_LAND_DESCRIPTION" Language="zh_Hant_HK"><Text>國家公園內的土地。在該格位自身的收益之外，額外提供+1[icon:YIELD_CULTURE]文化值和+1[icon:YIELD_HAPPINESS]幸福感，並隨其所屬公園的擴大而提高：達到8個格位時為+2[icon:YIELD_CULTURE]文化值，16個時為+2[icon:YIELD_CULTURE]和+2[icon:YIELD_HAPPINESS]，24個時為+3[icon:YIELD_CULTURE]和+2[icon:YIELD_HAPPINESS]。失去或被建造佔用的土地會從該公園的計數中扣除。資源仍會持續收集。此處無法建造任何東西。</Text></Replace>
+        <Replace Tag="LOC_NP_WILD_NAME" Language="zh_Hant_HK"><Text>國家公園腹地</Text></Replace>
+        <Replace Tag="LOC_NP_WILD_DESCRIPTION" Language="zh_Hant_HK"><Text>國家公園內的自然奇觀、山地、水域或森林格位。在該格位自身的收益之外，額外提供+2[icon:YIELD_CULTURE]文化值和+1[icon:YIELD_HAPPINESS]幸福感。資源仍會持續收集。此處無法建造任何東西。</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_NAME" Language="zh_Hant_HK"><Text>荒野保護區</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_DESCRIPTION" Language="zh_Hant_HK"><Text>荒野保護區的起始格位，在「建立荒野保護區」完成後放置於你選擇的迷人空置格位上。+4[icon:YIELD_DIPLOMACY]影響力，每個相鄰的自然奇觀再+10[icon:YIELD_DIPLOMACY]影響力。當該保護區達到8、16和24個格位時，其土地會提供更多收益。可在城市中以「擴展荒野保護區」專案擴展，或在聚落的購買清單中以金幣購買一次擴展。沒有任何建築。於探索時代由「社會」市政解鎖，於近代由「自然歷史」市政解鎖。每個聚落限一座。</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_TOOLTIP" Language="zh_Hant_HK"><Text>以「建立荒野保護區」建立，位於聚落擁有的迷人空置格位上。</Text></Replace>
+        <Replace Tag="LOC_WA_LAND_NAME" Language="zh_Hant_HK"><Text>荒野保護區土地</Text></Replace>
+        <Replace Tag="LOC_WA_LAND_DESCRIPTION" Language="zh_Hant_HK"><Text>荒野保護區內的土地。在該格位自身的收益之外，額外提供+3[icon:YIELD_DIPLOMACY]影響力，並隨其所屬保護區的擴大而提高：達到8個格位時為+4，16個時為+5，24個時為+6。失去或被建造佔用的土地會從該保護區的計數中扣除。資源仍會持續收集。此處無法建造任何東西。</Text></Replace>
+        <Replace Tag="LOC_WA_WILD_NAME" Language="zh_Hant_HK"><Text>荒野保護區腹地</Text></Replace>
+        <Replace Tag="LOC_WA_WILD_DESCRIPTION" Language="zh_Hant_HK"><Text>荒野保護區內的自然奇觀、山地、水域或森林格位。在該格位自身的收益之外，額外提供+3[icon:YIELD_DIPLOMACY]影響力。資源仍會持續收集。此處無法建造任何東西。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME" Language="zh_Hant_HK"><Text>擴展荒野保護區</Text></Replace>
+        <Replace Tag="LOC_WA_NAME_FORMAT" Language="zh_Hant_HK"><Text>{1_Name}荒野保護區</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_EX" Language="zh_Hant_HK"><Text>為此城市的荒野保護區增加1個相鄰格位。專案完成後，以「選擇土地」按鈕由你選擇：空曠土地、森林、山地、湖泊、河流、海洋或自然奇觀，只要是你擁有的格位即可。其上的鄉村改良設施會被移除；資源仍會持續收集。每個格位在自身的收益之外額外提供+3[icon:YIELD_DIPLOMACY]影響力；當該荒野保護區達到8、16和24個格位時，其每個格位依次提供+4、+5和+6。其上無法建造任何東西。最多24個格位。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO" Language="zh_Hant_HK"><Text>為此城市的荒野保護區增加3個相鄰格位。專案完成後，以「選擇土地」按鈕由你選擇：空曠土地、森林、山地、湖泊、河流、海洋或自然奇觀，只要是你擁有的格位即可。其上的鄉村改良設施會被移除；資源仍會持續收集。每個格位在自身的收益之外額外提供+3[icon:YIELD_DIPLOMACY]影響力；當該荒野保護區達到8、16和24個格位時，其每個格位依次提供+4、+5和+6。其上無法建造任何東西。最多24個格位。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME" Language="zh_Hant_HK"><Text>擴展國家公園</Text></Replace>
+        <Replace Tag="LOC_NP_MULTIPLAYER" Language="zh_Hant_HK"><Text>在網路遊戲中，國家公園與荒野保護區無法擴展。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_EX" Language="zh_Hant_HK"><Text>為此城市的國家公園增加1個相鄰格位。專案完成後，以「選擇土地」按鈕由你選擇：空曠土地、森林、山地、湖泊、河流、海洋或自然奇觀，只要是你擁有的格位即可。其上的鄉村改良設施會被移除；資源仍會持續收集。每個格位在自身的收益之外額外提供+1[icon:YIELD_CULTURE]文化值和+1[icon:YIELD_HAPPINESS]幸福感；當該國家公園達到8、16和24個格位時，其每個格位都會提供更多收益，最高可達+3[icon:YIELD_CULTURE]文化值和+2[icon:YIELD_HAPPINESS]幸福感。其上無法建造任何東西。最多24個格位。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" Language="zh_Hant_HK"><Text>為此城市的國家公園增加3個相鄰格位。專案完成後，以「選擇土地」按鈕由你選擇：空曠土地、森林、山地、湖泊、河流、海洋或自然奇觀，只要是你擁有的格位即可。其上的鄉村改良設施會被移除；資源仍會持續收集。每個格位在自身的收益之外額外提供+1[icon:YIELD_CULTURE]文化值和+1[icon:YIELD_HAPPINESS]幸福感；當該國家公園達到8、16和24個格位時，其每個格位都會提供更多收益，最高可達+3[icon:YIELD_CULTURE]文化值和+2[icon:YIELD_HAPPINESS]幸福感。其上無法建造任何東西。最多24個格位。</Text></Replace>
+        <Replace Tag="LOC_NP_PARK_NAME_FORMAT" Language="zh_Hant_HK"><Text>{1_Name}國家公園</Text></Replace>
+        <Replace Tag="LOC_NP_PARK_NAME_ORDINAL" Language="zh_Hant_HK"><Text>{1_Name} {2_Ordinal}</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK" Language="zh_Hant_HK"><Text>國家公園</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_OVERLAY" Language="zh_Hant_HK"><Text>顯示公園邊界與色彩</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_OVERLAY_DESCRIPTION" Language="zh_Hant_HK"><Text>無論開啟哪種視圖，都會繪製你可見的每座國家公園（綠色）與荒野保護區（赭色）的邊界，並為其土地加上淡淡的色彩。「公園與荒野」視圖會以更深的色彩顯示它們。立即生效。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_LENS" Language="zh_Hant_HK"><Text>公園與荒野視圖</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_NP_LENS_DESCRIPTION" Language="zh_Hant_HK"><Text>將「公園與荒野」視圖加入視圖選單。下次開啟視圖選單時生效。</Text></Replace>
+        <Replace Tag="LOC_NP_LENS" Language="zh_Hant_HK"><Text>公園與荒野</Text></Replace>
+        <Replace Tag="LOC_NP_GEO_TYPE" Language="zh_Hant_HK"><Text>公園或荒野</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_TITLE" Language="zh_Hant_HK"><Text>擴展{1_Park}</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_HINT" Language="zh_Hant_HK"><Text>點擊最多{1_Count}個亮起的{1_Count: plural 1?格位; other?格位;}來選取{1_Count: plural 1?它; other?它們;}，然後按下「確認」。已選取{2_Selected}個。</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_HINT_FULL" Language="zh_Hant_HK"><Text>這將使公園達到上限（{1_Max}個格位）。已選取{2_Selected}個；按下「確認」來加入{2_Selected: plural 1?它; other?它們;}。</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_CONFIRM" Language="zh_Hant_HK"><Text>確認</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_CONFIRM_TIP" Language="zh_Hant_HK"><Text>加入選取的格位</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT" Language="zh_Hant_HK"><Text>{1_Park}：還需為擴展選擇{2_Count}個{2_Count: plural 1?格位; other?格位;}</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT_BUTTON" Language="zh_Hant_HK"><Text>選擇土地</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT_BUTTON_TIP" Language="zh_Hant_HK"><Text>選擇要加入的格位</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_NONE" Language="zh_Hant_HK"><Text>目前旁邊沒有可加入的土地。此次擴展會保留，直到有可用的土地為止。</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_DONE" Language="zh_Hant_HK"><Text>完成</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_DONE_TIP" Language="zh_Hant_HK"><Text>加入選取的格位，並放棄此次擴展的其餘部分</Text></Replace>
+        <Replace Tag="LOC_NP_DONE_TITLE" Language="zh_Hant_HK"><Text>結束此次擴展？</Text></Replace>
+        <Replace Tag="LOC_NP_DONE_BODY" Language="zh_Hant_HK"><Text>此次擴展中有{1_Count}個{1_Count: plural 1?格位; other?格位;}{1_Count: plural 1?尚未; other?尚未;}放置，將會失去。選擇「稍後」可保留{1_Count: plural 1?它; other?它們;}。</Text></Replace>
+        <Replace Tag="LOC_NP_CONFIRM_TITLE" Language="zh_Hant_HK"><Text>加入此格位？</Text></Replace>
+        <Replace Tag="LOC_NP_CONFIRM_STRIP" Language="zh_Hant_HK"><Text>此格位上的{1_Improvement}將被移除。</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_TITLE" Language="zh_Hant_HK"><Text>重新命名</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_SAVE" Language="zh_Hant_HK"><Text>儲存</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_RESTORE" Language="zh_Hant_HK"><Text>還原</Text></Replace>
+        <Replace Tag="LOC_NP_RENAME_CANCEL" Language="zh_Hant_HK"><Text>取消</Text></Replace>
+        <Replace Tag="LOC_NP_BUY_NONE" Language="zh_Hant_HK"><Text>此聚落沒有屬於你的公園。</Text></Replace>
+        <Replace Tag="LOC_NP_BUY_FULL" Language="zh_Hant_HK"><Text>已滿（24個格位）。</Text></Replace>
+        <Replace Tag="LOC_NP_BUY_GOLD" Language="zh_Hant_HK"><Text>金幣不足。</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_LATER" Language="zh_Hant_HK"><Text>稍後</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_LATER_TIP" Language="zh_Hant_HK"><Text>將此次擴展的其餘部分保留到之後的回合</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_RENAME" Language="zh_Hant_HK"><Text>重新命名</Text></Replace>
+        <Replace Tag="LOC_NP_PICKER_RENAME_TIP" Language="zh_Hant_HK"><Text>變更名稱</Text></Replace>
+        <Replace Tag="LOC_NP_TILE_IS_PARKLAND" Language="zh_Hant_HK"><Text>此格位屬於國家公園或荒野保護區，無法在其上建造。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_NAME" Language="zh_Hant_HK"><Text>建立國家公園</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION" Language="zh_Hant_HK"><Text>在此聚落建立一座國家公園。專案完成後，按下「選擇土地」，並挑選聚落擁有的一個迷人空置平坦或丘陵格位：其上不能有區域、改良設施或建築。其上的資源仍會持續收集。+4[icon:YIELD_HAPPINESS]幸福感，位於自然奇觀旁則更多。每個聚落限一座。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_NAME" Language="zh_Hant_HK"><Text>建立荒野保護區</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION" Language="zh_Hant_HK"><Text>在此聚落建立一座荒野保護區。專案完成後，按下「選擇土地」，並挑選聚落擁有的一個迷人空置平坦或丘陵格位：其上不能有區域、改良設施或建築。其上的資源仍會持續收集。+4[icon:YIELD_DIPLOMACY]影響力，位於自然奇觀旁則更多。每個聚落限一座。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NO_LAND" Language="zh_Hant_HK"><Text>此聚落沒有迷人的空置平坦或丘陵格位。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PICKER_TITLE" Language="zh_Hant_HK"><Text>{1_Settlement}：新的國家公園</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="zh_Hant_HK"><Text>{1_Settlement}：新的荒野保護區</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="zh_Hant_HK"><Text>點擊一個亮起的格位，然後按下「確認」。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NONE" Language="zh_Hant_HK"><Text>此聚落目前沒有迷人的空置平坦或丘陵格位。新公園會保留，直到有格位空出為止。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PROMPT" Language="zh_Hant_HK"><Text>{1_Settlement}：選擇國家公園的建立地點</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_PROMPT" Language="zh_Hant_HK"><Text>{1_Settlement}：選擇荒野保護區的建立地點</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="zh_Hant_HK"><Text>國家公園已獲批准。請選擇該聚落擁有的一個迷人空置格位作為建立地點；之後它可以擴展到周圍的土地。</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_OFFER_BODY" Language="zh_Hant_HK"><Text>荒野保護區已獲批准。請選擇該聚落擁有的一個迷人空置格位作為建立地點；之後它可以擴展到周圍的荒野。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PROMPT_BUTTON_TIP" Language="zh_Hant_HK"><Text>選擇建立公園的格位</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_LATER_TIP" Language="zh_Hant_HK"><Text>將建立推遲到之後的回合；它會繼續等待</Text></Replace>
+        <Replace Tag="LOC_NP_PROMPT_BODY" Language="zh_Hant_HK"><Text>還需為擴展選擇{1_Count}個{1_Count: plural 1?格位; other?格位;}</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_PROMPT_BODY" Language="zh_Hant_HK"><Text>選擇國家公園的建立地點</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_PROMPT_BODY" Language="zh_Hant_HK"><Text>選擇荒野保護區的建立地點</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_1" Language="zh_Hant_HK"><Text>"Everybody needs beauty as well as bread, places to play in and pray in, where Nature may heal and cheer and give strength to body and soul alike." John Muir, The Yosemite (1912)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_2" Language="zh_Hant_HK"><Text>"…mountain parks and reservations are useful not only as fountains of timber and irrigating rivers, but as fountains of life." John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_3" Language="zh_Hant_HK"><Text>"Climb the mountains and get their good tidings. Nature's peace will flow into you as sunshine flows into trees." John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_4" Language="zh_Hant_HK"><Text>"…the wildest health and pleasure grounds accessible and available to tourists seeking escape from care and dust and early death are the parks and reservations of the West." John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_5" Language="zh_Hant_HK"><Text>"…the enjoyment of scenery employs the mind without fatigue and yet exercises it; tranquilizes it and yet enlivens it…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_6" Language="zh_Hant_HK"><Text>"…the Yosemite should be held, guarded and managed for the free use of the whole body of the people forever…" Frederick Law Olmsted, Yosemite and the Mariposa Grove: A Preliminary Report (1865)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_7" Language="zh_Hant_HK"><Text>"This Park was created, and is now administered, for the benefit and enjoyment of the people." Theodore Roosevelt, Presidential Addresses and State Papers, vol. 1 (1904)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_PARK_8" Language="zh_Hant_HK"><Text>"No nation has ever fallen for having too much scenery." Enos A. Mills, Your National Parks (1917)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_1" Language="zh_Hant_HK"><Text>"…in Wildness is the preservation of the World." Henry David Thoreau, Walking (1862)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_2" Language="zh_Hant_HK"><Text>"We need the tonic of wildness…" Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_3" Language="zh_Hant_HK"><Text>"We can never have enough of Nature." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_4" Language="zh_Hant_HK"><Text>"Thousands of tired, nerve-shaken, over-civilized people are beginning to find out that going to the mountains is going home; that wildness is a necessity…" John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_5" Language="zh_Hant_HK"><Text>"None of Nature's landscapes are ugly so long as they are wild…" John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_6" Language="zh_Hant_HK"><Text>"Thus protected, these wildernesses will remain forever wild, forever mysterious and primeval…" Enos A. Mills, Your National Parks (1917)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_7" Language="zh_Hant_HK"><Text>"All National Parks are wild-life sanctuaries, places of refuge for birds and animals. There the wild folk are not pursued, trapped, or shot." Enos A. Mills, Your National Parks (1917)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_8" Language="zh_Hant_HK"><Text>"In the wilderness, I find something more dear and connate than in streets or villages." Ralph Waldo Emerson, Nature (1836)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_9" Language="zh_Hant_HK"><Text>"When we try to pick out anything by itself, we find it hitched to everything else in the universe." John Muir, My First Summer in the Sierra (1911)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_WILD_10" Language="zh_Hant_HK"><Text>"…from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved." Charles Darwin, On the Origin of Species, 1st ed. (1859)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_1" Language="zh_Hant_HK"><Text>"Not the law, but the land sets the limit." Mary Austin, The Land of Little Rain (1903)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_2" Language="zh_Hant_HK"><Text>"The manner of the country makes the usage of life there, and the land will not be lived in except in its own fashion." Mary Austin, The Land of Little Rain (1903)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_3" Language="zh_Hant_HK"><Text>"Let us spend one day as deliberately as Nature, and not be thrown off the track by every nutshell and mosquito's wing that falls on the rails." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_4" Language="zh_Hant_HK"><Text>"Heaven is under our feet as well as over our heads." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_NOLAND_5" Language="zh_Hant_HK"><Text>"The health of the eye seems to demand a horizon. We are never tired, so long as we can see far enough." Ralph Waldo Emerson, Nature (1836)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_1" Language="zh_Hant_HK"><Text>"Leave it as it is. You can not improve on it. The ages have been at work on it, and man can only mar it." Theodore Roosevelt, Presidential Addresses and State Papers, vol. 1 (1904)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_2" Language="zh_Hant_HK"><Text>"Shall I not rejoice also at the abundance of the weeds whose seeds are the granary of the birds?" Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_3" Language="zh_Hant_HK"><Text>"These beans have results which are not harvested by me. Do they not grow for woodchucks partly?" Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_4" Language="zh_Hant_HK"><Text>"He is to become a co-worker with nature in the reconstruction of the damaged fabric…" George Perkins Marsh, Man and Nature (1864)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_STRIP_5" Language="zh_Hant_HK"><Text>"Man has too long forgotten that the earth was given to him for usufruct alone, not for consumption, still less for profligate waste." George Perkins Marsh, Man and Nature (1864)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_1" Language="zh_Hant_HK"><Text>"…a man is rich in proportion to the number of things which he can afford to let alone." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_2" Language="zh_Hant_HK"><Text>"I love a broad margin to my life." Henry David Thoreau, Walden (1854)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_3" Language="zh_Hant_HK"><Text>"…in every walk with Nature one receives far more than he seeks." John Muir, Steep Trails (1918)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_4" Language="zh_Hant_HK"><Text>"…much, we can say comfortingly, must always be in great part wild, particularly the sea and the sky, the floods of light from the stars…" John Muir, Our National Parks (1901)</Text></Replace>
+        <Replace Tag="LOC_NP_QUOTE_DONE_5" Language="zh_Hant_HK"><Text>"When I come back, I go to Nature to be soothed and healed, and to have my senses put in tune once more." John Burroughs, Time and Change (1912)</Text></Replace>
+    </LocalizedText>
+</Database>

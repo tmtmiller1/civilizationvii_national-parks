@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- DEV ONLY. Ends the Exploration Age after 12 age-progress points (about 12 turns) in a NEW game, so the transition to the
+     Modern Age can be watched with a park on the map. Age progress is fixed when a game starts. Remove it from Mods/
+     afterward: it shortens every game it loads into. -->
+<Mod id="tower-national-park-short-age-probe" version="1" xmlns="ModInfo">
+	<Properties>
+		<Name>National Park short age probe (dev)</Name>
+		<Description>Dev only: the Exploration Age ends after 12 points.</Description>
+		<Authors>Tower</Authors>
+		<Package>NationalPark</Package>
+		<ShowInBrowser>1</ShowInBrowser>
+		<AffectsSavedGames>1</AffectsSavedGames>
+	</Properties>
+	<ActionCriteria>
+		<Criteria id="always"><AlwaysMet></AlwaysMet></Criteria>
+	</ActionCriteria>
+	<ActionGroups>
+		<ActionGroup id="np-short-age-data" scope="game" criteria="always">
+			<Actions>
+				<UpdateDatabase><Item>data/short-age.xml</Item></UpdateDatabase>
+			</Actions>
+			<Properties><LoadOrder>10002</LoadOrder></Properties>
+		</ActionGroup>
+	</ActionGroups>
+</Mod>

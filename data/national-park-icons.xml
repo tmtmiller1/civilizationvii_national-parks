@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Loaded through UpdateIcons, not UpdateDatabase (base: age-modern.modinfo). New textures cannot be authored
+     yet, so the park's entries use the base City Park build icon and the Wilderness Area's the Wild Game resource icon. The land markers need one too: without it the city and
+     town view drew a lettered "N" badge on every park tile (watched 2026-09-29). -->
+<Database>
+    <IconDefinitions>
+        <Row>
+            <ID>IMPROVEMENT_NATIONAL_PARK</ID>
+            <Path>blp:buildicon_citypark</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_NATIONAL_PARK_LAND</ID>
+            <Path>blp:buildicon_citypark</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_NATIONAL_PARK_LAND_8</ID>
+            <Path>blp:buildicon_citypark</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_NATIONAL_PARK_LAND_16</ID>
+            <Path>blp:buildicon_citypark</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_NATIONAL_PARK_LAND_24</ID>
+            <Path>blp:buildicon_citypark</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_NATIONAL_PARK_WILD</ID>
+            <Path>blp:buildicon_citypark</Path>
+        </Row>
+        <Row>
+            <ID>PROJECT_EXPAND_NATIONAL_PARK</ID>
+            <Path>blp:buildicon_citypark</Path>
+        </Row>
+        <Row>
+            <ID>PROJECT_FOUND_NATIONAL_PARK</ID>
+            <Path>blp:buildicon_citypark</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_WILDERNESS_AREA</ID>
+            <Path>blp:resicon_wildgame</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_WILDERNESS_AREA_LAND</ID>
+            <Path>blp:resicon_wildgame</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_WILDERNESS_AREA_LAND_8</ID>
+            <Path>blp:resicon_wildgame</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_WILDERNESS_AREA_LAND_16</ID>
+            <Path>blp:resicon_wildgame</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_WILDERNESS_AREA_LAND_24</ID>
+            <Path>blp:resicon_wildgame</Path>
+        </Row>
+        <Row>
+            <ID>IMPROVEMENT_WILDERNESS_AREA_WILD</ID>
+            <Path>blp:resicon_wildgame</Path>
+        </Row>
+        <Row>
+            <ID>PROJECT_EXPAND_WILDERNESS_AREA</ID>
+            <Path>blp:resicon_wildgame</Path>
+        </Row>
+        <Row>
+            <ID>PROJECT_FOUND_WILDERNESS_AREA</ID>
+            <Path>blp:resicon_wildgame</Path>
+        </Row>
+    </IconDefinitions>
+</Database>
