@@ -291,8 +291,10 @@ class NpAddTilesMode extends ChoosePlotInterfaceMode {
       InterfaceMode.switchToDefault();
     };
     if (!left) { go(); return true; }
+    // Later: the tiles selected are added, the rest of the expansion is kept for another turn (as the question says).
+    const later = () => { if (this.park && this.selected.length) this.confirm(); InterfaceMode.switchToDefault(); };
     askInPicker({ title: compose("LOC_NP_DONE_TITLE"), ...eyebrowOf(park.kind), body: compose("LOC_NP_DONE_BODY", left),
-      quote: quoteFor("DONE", `done|${park.id}|${park.tiles.length}`) }, go);
+      quote: quoteFor("DONE", `done|${park.id}|${park.tiles.length}`) }, go, [{ label: "LOC_NP_PICKER_LATER", onPress: later }]);
     return true;
   }
 
@@ -452,11 +454,12 @@ function eyebrowOf(kindKey) {
 }
 
 /**
- * A question over the picker, answered OK or Cancel, in the same form as the game's decision pop-ups (np-dialog.js).
+ * A question over the picker, answered OK or Cancel (or one of `extra`, shown between them), in the same form as the
+ * game's decision pop-ups (np-dialog.js).
  * The game's own dialog box is not used here: opening it switches the map out of the picker's interface mode and the
  * selection is lost. `view`: { title, eyebrow, eyebrowIcon, body, quote }.
  */
-function askInPicker(view, yes) {
+function askInPicker(view, yes, extra = []) {
   safe(() => { const old = document.getElementById(ASK_ID); if (old) old.remove(); });
   const box = document.createElement("div");
   box.id = ASK_ID;
@@ -464,6 +467,7 @@ function askInPicker(view, yes) {
   hideBannerWhile(box);
   const frame = decisionFrame(view, [
     { label: "LOC_GENERIC_OK", onPress: () => { box.remove(); yes(); } },
+    ...extra.map((c) => ({ label: c.label, onPress: () => { box.remove(); c.onPress(); } })),
     { label: "LOC_GENERIC_CANCEL", onPress: () => box.remove() },
   ]);
   frame.style.maxWidth = "44rem";

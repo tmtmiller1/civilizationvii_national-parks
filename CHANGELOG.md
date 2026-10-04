@@ -9,6 +9,8 @@ semantic versioning.
   dirt trail, with a tree between each pair of cabins. They replace the ring of cabins round a clearing.
 - Nothing grows through a building: trees, shrubs and grass tufts keep clear of cabins, shelters, tents, lookout
   towers and monuments, and animals no longer stand inside them.
+- "End this expansion?" now has a Later button, as its text says: the tiles you selected are added and the rest of the
+  expansion is kept for another turn.
 - The wildflower clumps in Wilderness Areas are gone: they read as yellow blots on the map. A Wilderness Area still
   gains rarer wildlife at 16 tiles and old-growth giants at 24.
 
