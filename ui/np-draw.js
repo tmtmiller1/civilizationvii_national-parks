@@ -789,8 +789,12 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
   const biome = biomeOf(t);
   const kit = KITS[biome] || DEFAULT_KIT;
   const out = [];
-  // The founding tile keeps its own look under the park's buildings: an oasis keeps its pond, woods their trees.
-  const own = ownLook(t, kit);
+  // Standing water (marsh, bog, oasis, watering hole) takes nothing built: a shelter drawn on one stood in the middle
+  // of its pond (watched 2026-10-04, cap57-mod).
+  const pond = isWet(t);
+  // The founding tile keeps its own look under the park's buildings (woods keep their trees), except a pond, which the
+  // warden's lodge would stand in: there the ground is drawn dry.
+  const own = t === anchor && buildings && pond ? [] : ownLook(t, kit);
   if (t === anchor && !buildings) {
     // A Wilderness Area has no warden's lodge: its founding tile is a stand of trees like any other.
     if (own.length) return own;
@@ -820,7 +824,7 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
   // a clearing: the tile's trees keep to one side (treeStand shape 1, around the bearing hash01(t, 5)) and it sits
   // across from them. A minor river runs through its tile's middle, so neither goes there.
   const tower = t === lookout || !!(lookouts && lookouts.includes(t));
-  const lone = buildings && !tower && !wooded;
+  const lone = buildings && !tower && !wooded && !pond;
   const open = lone && !hill && !featureModel(t) && !isRiver(t);
   const pick = hash01(t, 70);
   const away = hash01(t, 5) * 360 + 180;
@@ -839,7 +843,7 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
     const [asset, sc] = PARK_BUILDINGS[Math.floor(hash01(t, 71) * PARK_BUILDINGS.length)];
     out.push([asset, jit(72, 0.2), jit(73, 0.2), sc * (0.9 + hash01(t, 74) * 0.2), Math.floor(hash01(t, 75) * 360)]);
   }
-  if (tower) out.push([LOOKOUT, 0.05, 0.05, 0.5, Math.floor(hash01(t, 15) * 4) * 90]);
+  if (tower && !pond) out.push([LOOKOUT, 0.05, 0.05, 0.5, Math.floor(hash01(t, 15) * 4) * 90]);
   // The tile's own vegetation, which its district hides (ownLook).
   const model = featureModel(t);
   out.push(...own);
@@ -889,7 +893,7 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
       for (let k = 0; k < n; k++) { const p = at(0.18 + hash01(t, 54 + k) * 0.12, k * 50); out.push([localRock(t, 57 + k, biome), p.x, p.y, 0.3 + hash01(t, 60 + k) * 0.2, spin(63 + k)]); }
     }
   }
-  if (slot.cairn != null) out.push([CAIRN, jit(59, 0.35), jit(60, 0.35), 0.35 + hash01(t, 64) * 0.2, Math.floor(hash01(t, 65) * 360)]);
+  if (slot.cairn != null && !pond) out.push([CAIRN, jit(59, 0.35), jit(60, 0.35), 0.35 + hash01(t, 64) * 0.2, Math.floor(hash01(t, 65) * 360)]);
   return out;
 }
 
@@ -901,7 +905,7 @@ function jit0(t, salt, r) { return (hash01(t, salt) - 0.5) * r; }
  */
 export function siteMap(tiles, anchor, level, buildings, lookouts = []) {
   const open = (t) => !isWater(t) && !isLake(t) && !isNavRiver(t) && !isMountain(t) && !isWonder(t) && !isWooded(t)
-    && !featureModel(t) && terrainOf(t) !== "TERRAIN_HILL" && !isRiver(t);
+    && !featureModel(t) && !isWet(t) && terrainOf(t) !== "TERRAIN_HILL" && !isRiver(t);
   const taken = (t) => lookouts.includes(t) || (buildings && hash01(t, 70) < CABIN_SHARE + CAMP_SHARE);
   return levelSites(tiles, anchor, level, buildings, open, taken);
 }
@@ -911,7 +915,7 @@ export function monumentMap(tiles, anchor, level, buildings, lookouts = [], site
   // Woods and sagebrush take one too (watched 2026-10-04, nlv6-park: a park of forest, water and sagebrush desert had
   // almost no bare open land and drew none); the tiles a feature model alone draws (marsh, oasis) do not.
   const open = (t) => !isWater(t) && !isLake(t) && !isNavRiver(t) && !isMountain(t) && !isWonder(t)
-    && !MODEL_ALONE.has(featureModel(t)) && !lookouts.includes(t) && !sites.has(t)
+    && !MODEL_ALONE.has(featureModel(t)) && !isWet(t) && !lookouts.includes(t) && !sites.has(t)
     && !(buildings && (hash01(t, 70) < CABIN_SHARE + CAMP_SHARE || hash01(t, 70) > 1 - SHELTER_SHARE));
   return monumentSites(tiles, anchor, level, buildings, open);
 }

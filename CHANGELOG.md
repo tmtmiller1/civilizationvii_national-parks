@@ -15,6 +15,8 @@ semantic versioning.
   grove), woods and cabin rows take none, and no tree stands in another's crown.
 - The wildflower clumps in Wilderness Areas are gone: they read as yellow blots on the map. A Wilderness Area still
   gains rarer wildlife at 16 tiles and old-growth giants at 24.
+- Nothing is built on standing water: shelters, lookout towers, cairns and monuments keep off marsh, bog, oasis and
+  watering-hole tiles, and a warden's lodge founded on one stands on dry ground instead of in the pond.
 
 ## [1.0.2] - 2026-10-04
 
