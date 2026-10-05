@@ -3,6 +3,13 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
+## [1.0.4] - 2026-10-05
+
+- Saving a National Parks option can no longer wipe other mods' saved options. The game sometimes reports the shared
+  options store as empty when it is not; if that happened at the moment you changed one of this mod's options, the
+  store was written back holding only this mod's options. The store is now read again before an empty answer is
+  believed, a failed read never leads to a write, and only the options you changed are written.
+
 ## [1.0.3] - 2026-10-05
 
 - Cabin villages are laid out as a lodge trail: two loose rows of smaller cabins facing each other across a curving
