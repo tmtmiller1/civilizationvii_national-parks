@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { hash01, connectedSelection } from "../ui/np-core.js";
-import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle, cabinCluster, lookoutTiles, levelSites, sitesPerLevel, monumentSites, monumentCounts, oldGrowth, oneGrove, spaced, singles, keepClear, solidSpots } from "../ui/np-draw.js";
+import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle, cabinCluster, campsite, lookoutTiles, levelSites, sitesPerLevel, monumentSites, monumentCounts, oldGrowth, oneGrove, spaced, singles, keepClear, solidSpots, coverSpots, settleAnimals, behindStation, parkFabric, leanStand, trailPieces, spillTrees } from "../ui/np-draw.js";
 import { baseNameOf, chooseName, rankCandidates } from "../ui/np-names.js";
 
 // A toy hex world: plot p's ring is six made-up neighbors.
@@ -422,8 +422,8 @@ test("a cabin village: two loose rows across a trail, cabins and trees taking tu
     assert.ok(pieces.some((p) => /Decal_Path/.test(p[0])), "a trail");
     assert.equal(cabinCluster(t, c.x, c.y, side).filter((p) => p[0] === "TREE").length, 0, "no trees without a kit");
     for (const [, x, y, sc] of cabins) {
-      assert.ok(sc >= 0.29 && sc <= 0.34, `scale ${sc}`);
-      assert.ok(Math.hypot(x, y) <= 0.27, `tile ${t}: cabin out at ${Math.hypot(x, y)}`);
+      assert.ok(sc >= 0.38 && sc <= 0.43, `scale ${sc}`);
+      assert.ok(Math.hypot(x, y) <= 0.3, `tile ${t}: cabin out at ${Math.hypot(x, y)}`);
     }
     for (const tr of trees) for (const cab of cabins) {
       assert.ok(Math.hypot(tr[1] - cab[1], tr[2] - cab[2]) >= 0.08, `tile ${t}: a tree ${Math.hypot(tr[1] - cab[1], tr[2] - cab[2])} from a cabin`);
@@ -435,5 +435,80 @@ test("a cabin village: two loose rows across a trail, cabins and trees taking tu
     // Two rows facing each other, not a ring and not one line: some cabins front the opposite way.
     const faces = cabins.map((p) => p[4]);
     assert.ok(Math.max(...faces.map((f) => Math.abs(((f - faces[0]) % 360 + 540) % 360 - 180))) > 120, `tile ${t}: cabins all front one way`);
+  }
+});
+
+test("animals stand on open ground: clear of buildings and trees, apart from each other, moved before dropped", () => {
+  const dressing = [["IMP_Camp_BldA", 0, 0, 0.4, 0], ["FOL_Pine_A", 0.2, 0, 1, 0], ["BIN_FOL_Grass_Patch", -0.2, 0, 1, 0]];
+  const cover = coverSpots(dressing);
+  assert.equal(cover.length, 2, "grass hides nothing");
+  const herd = [0, 1, 2, 3].map((k) => ({ kind: "animal", asset: "A", dx: k * 0.01, dy: 0, z: 1, scale: 0.2, angle: 0 }));
+  const out = settleAnimals([...herd, { kind: "vfx", asset: "V", dx: 0, dy: 0, z: 0 }], cover);
+  const animals = out.filter((w) => w.kind === "animal");
+  assert.equal(animals.length, 4, "none dropped while the tile has room");
+  assert.equal(out.length, 5, "effects pass through");
+  for (const a of animals) {
+    assert.ok(Math.hypot(a.dx, a.dy) <= 0.42, "on the tile");
+    for (const [x, y, r] of cover) assert.ok(Math.hypot(a.dx - x, a.dy - y) >= r, "in cover");
+  }
+  for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) assert.ok(Math.hypot(animals[i].dx - animals[j].dx, animals[i].dy - animals[j].dy) >= 0.07, "animals stacked");
+  const clear = settleAnimals([{ kind: "animal", asset: "A", dx: -0.25, dy: 0.25, z: 1, scale: 0.2, angle: 0 }], cover);
+  assert.deepEqual([clear[0].dx, clear[0].dy], [-0.25, 0.25], "an animal standing clear stays");
+});
+
+test("the warden's lodge is not hidden: its tile's trees stand behind it or well to the side", () => {
+  const list = [["IMP_Camp_BldA", -0.14, 0.12, 0.75, 30], ["FOL_Pine_A", -0.2, -0.2, 1, 0], ["FOL_Pine_A", 0, 0.3, 1, 0], ["BIN_FOL_Trees", 0.4, -0.1, 1, 0],
+    ["BIN_FOL_Grass_Patch", 0, -0.2, 1, 0], ["FEATURE_SAGEBRUSH_STEPPE", 0, 0, 1, 0]];
+  const kept = behindStation(list);
+  assert.equal(kept.length, 5);
+  assert.ok(!kept.some((p) => p[0] === "FOL_Pine_A" && p[2] < 0.2), "a tree in front of the lodge");
+});
+
+test("a park's fabric: stands gather toward woods and across edges, footpaths join the founding tile to what is built", () => {
+  const tiles = [];
+  for (let r = 2; r < 7; r++) for (let c = 2; c < 7; c++) tiles.push(r * 10 + c);
+  const wooded = (t) => t % 10 === 2;                         // the west column is forest
+  const { lean, trail, spill, regions } = parkFabric(tiles, 44, [26, 64], { ring, wooded, walk: (t) => t !== 45, biome: (t) => (t < 40 ? "A" : "B") });
+  const angle = (d) => (360 - 60 * d) % 360;
+  for (const t of tiles.filter((x) => x % 10 === 3 && x !== 44)) {
+    const d = [0, 1, 2, 3, 4, 5].find((k) => angle(k) === lean.get(t));
+    assert.ok(wooded(ring(t)[d]), `tile ${t} beside the woods leans ${lean.get(t)}`);
+  }
+  assert.ok(!lean.has(22) && !lean.has(44), "woods and the founding tile do not lean");
+  assert.ok(spill.has(23) && !spill.has(25), "the woods spill over the tiles beside them only");
+  assert.equal(new Set(regions.values()).size, 2, "one region for each stretch of one biome");
+  assert.ok(regions.get(22) === regions.get(36) && regions.get(42) === regions.get(66) && !regions.has(45), "a region is a biome in one piece of walkable land");
+  // Away from the woods the open tiles pair off: a tile leans at the tile that leans back at it.
+  for (const t of tiles.filter((x) => x % 10 > 3 && lean.has(x) && x !== 45)) {
+    const d = [0, 1, 2, 3, 4, 5].find((k) => angle(k) === lean.get(t)), n = ring(t)[d];
+    assert.equal(lean.get(n), angle((d + 3) % 6), `tile ${t} leans at ${n}, which does not lean back`);
+  }
+  assert.ok(tiles.filter((t) => lean.has(t)).length > tiles.length / 2, "most open tiles lean");
+  // Each destination is joined to the founding tile, tile to tile, and both sides of a crossed edge carry it.
+  const seen = new Set();
+  for (const dest of [26, 64]) {
+    seen.clear();
+    let t = dest, steps = 0;
+    while (t !== 44 && steps++ < 20) {
+      const degs = trail.get(t);
+      assert.ok(degs && degs.length, `tile ${t} on the way from ${dest} has no path`);
+      const next = ring(t).find((n, d) => degs.includes(angle(d)) && (trail.get(n) || []).includes(angle((d + 3) % 6)) && n !== t && (n === 44 || true) && Math.abs(n - 44) < Math.abs(t - 44) + 11 && !seen.has(n));
+      seen.add(t); assert.notEqual(next, undefined, `path breaks at ${t}`); t = next;
+    }
+    assert.equal(t, 44, `no way from ${dest} to the founding tile`);
+  }
+  assert.ok(!trail.has(45), "no path over a tile that cannot be walked");
+  const leaned = leanStand([["T", 0, 0, 1, 0], ["T", 0.4, 0, 1, 0]], 0);
+  assert.ok(leaned[0][1] > 0.15 && Math.hypot(leaned[1][1], leaned[1][2]) <= 0.4501, "a leaning stand moves over and stays on the tile");
+  assert.equal(trailPieces(5, [0, 180]).length, 4);
+  for (const [, x, y] of spillTrees(7, [0], ["T"])) assert.ok(x > 0.3 && Math.hypot(x, y) < 0.5, "spilled trees stand at the edge toward the woods");
+});
+
+test("a campsite is a crescent beside its fire, never a ring round it", () => {
+  for (let t = 0; t < 300; t++) {
+    const tents = campsite(t, 0, 0).filter((p) => /Tent/.test(p[0])).map(([, x, y]) => Math.atan2(y, x) * 180 / Math.PI);
+    assert.ok(tents.length === 2 || tents.length === 3);
+    const span = Math.max(...tents.map((a) => Math.max(...tents.map((b) => Math.abs(((a - b + 540) % 360) - 180)))));
+    assert.ok(span <= 160, `tile ${t}: tents span ${span} degrees round the fire`);
   }
 });

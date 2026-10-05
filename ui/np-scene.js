@@ -22,8 +22,9 @@ const wet = (f) => (f.water || f.lake || f.river) && !f.wonder;
 
 export function accents(fauna, { level = 0, wild = false } = {}) {
   return {
-    herd: { salt: 1, share: 0.4, space: 1, ok: (f) => open(f), variants: (f) => herdPool(fauna, f) },
-    stray: { salt: 2, share: 0.1, space: 2, ok: (f) => open(f) && !f.anchor, variants: (f) => herdPool(fauna, f) },
+    herd: { salt: 1, share: 0.5, space: 1, ok: (f) => open(f) && !f.wooded, variants: (f) => herdPool(fauna, f) },
+    // A stray of a second kind stands only where no region is given: a region keeps to its one animal.
+    stray: { salt: 2, share: 0.1, space: 2, ok: (f) => f.region == null && open(f) && !f.wooded && !f.anchor, variants: (f) => herdPool(fauna, f) },
     climber: { salt: 3, share: 0.45, space: 1, ok: (f) => f.mountain && !f.wonder, variants: () => ["llama", "sheep"] },
     air: { salt: 4, share: 0.22, space: 1, perVariant: 2, ok: (f) => !f.lake && !f.river, variants: (f) => (f.water ? fauna.coastAir : airOf(fauna, f)) },
     school: { salt: 5, share: 0.35, space: 1, ok: (f) => f.coast && !f.wonder, variants: () => fauna.schools },
@@ -47,13 +48,23 @@ export function accents(fauna, { level = 0, wild = false } = {}) {
   };
 }
 
+/** A weighted pick from a pool by a region's seed: the one kind the whole region carries. */
+function regional(pool, seed, salt) {
+  const total = pool.reduce((n, v) => n + weightOf(v), 0);
+  let x = hash01(seed, salt) * total;
+  for (const v of pool) { x -= weightOf(v); if (x < 0) return [nameOf(v)]; }
+  return [nameOf(pool[pool.length - 1])];
+}
+// A tile in a region (np-draw.js parkRegions) carries the region's one herd animal and one bird, so a swath of land
+// has its own wildlife; a tile with no region given (the tests' toy parks) draws from the whole pool as before.
 function herdPool(fauna, f) {
   const b = fauna.biomes[f.biome] || fauna.biomes.default;
-  return f.hill ? b.hill : b.land;
+  const pool = f.hill ? b.hill : b.land;
+  return f.region != null ? regional(pool, f.region, f.hill ? 814 : 813) : pool;
 }
 function airOf(fauna, f) {
   const b = fauna.biomes[f.biome] || fauna.biomes.default;
-  return b.air;
+  return f.region != null ? regional(b.air, f.region, 815) : b.air;
 }
 
 /**

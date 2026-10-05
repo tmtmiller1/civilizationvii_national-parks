@@ -56,13 +56,17 @@ const BUOY_SHARE = 0.5;
 const DUST = "VFX_Dust_In_Place_SquadCom_Tan";
 const STAGGER_MS = 110;
 
+// One scale for everything built, from the models' own sizes (asset catalog, 2026-10-04): about 1.1 model units to
+// the metre, so the pieces agree with each other. A cabin (12.7 tall as modelled) at 0.4 stands 5; the warden's
+// lodge, the largest house in a park, 9.5; a picnic shelter 3.6; a ranger house 5.6; a wall tent 4.5; a lookout
+// tower 18. The animals take the same care in np-wildlife.js (SPECIES). Trees and plants keep the game's sizes.
 const STATION = [
   ["IMP_Camp_BldA", -0.14, 0.12, 0.75, 30],           // log cabin, the warden's lodge
-  ["PROP_Pasture_ANT_BldB", 0.2, -0.14, 0.7, 300],     // open picnic shelter
-  ["NAM_SWN_Menagerie_Sign", 0.3, 0.12, 1, 0],
+  ["PROP_Pasture_ANT_BldB", 0.2, -0.14, 0.55, 300],    // open picnic shelter
+  ["NAM_SWN_Menagerie_Sign", 0.3, 0.12, 0.75, 0],
 ];
 /** A lone picnic shelter or clapboard ranger house, now and then on a park's open land. */
-const PARK_BUILDINGS = [["PROP_Pasture_ANT_BldB", 0.5], ["PROP_MOD_Farm_BldC", 0.42]];
+const PARK_BUILDINGS = [["PROP_Pasture_ANT_BldB", 0.55]];
 const SHELTER_SHARE = 0.06;       // non-wooded National Park tiles with a lone shelter or ranger house
 /**
  * A cabin village, as in the lodges of the American parks: three or four log cabins (IMP_Camp_BldA, the warden's
@@ -84,22 +88,22 @@ export function cabinCluster(t, cx, cy, open, trees = null) {
   const u = along(lane, 1, 0), w = along(lane + 90, 1, 0);
   // A point s along the trail and d to its side.
   const at = (s, d) => { const c = d + bow * s * s; return [cx + u.x * s + w.x * c, cy + u.y * s + w.y * c]; };
-  const stops = n === 3 ? [-0.11, 0, 0.11] : [-0.15, -0.05, 0.05, 0.15];
+  const stops = n === 3 ? [-0.14, 0, 0.14] : [-0.18, -0.06, 0.06, 0.18];
   const first = hash01(t, 416) < 0.5 ? 1 : -1;
   const out = [];
   stops.forEach((s0, k) => {
     const side = k % 2 === 0 ? first : -first;
     const s = s0 + (hash01(t, 421 + k) - 0.5) * 0.016;
-    const [x, y] = at(s, side * (0.068 + hash01(t, 427 + k) * 0.016));
+    const [x, y] = at(s, side * (0.086 + hash01(t, 427 + k) * 0.02));
     const face = lane + (side > 0 ? -90 : 90) + (hash01(t, 439 + k) - 0.5) * 24;
-    out.push([CABIN, x, y, 0.29 + hash01(t, 433 + k) * 0.05, Math.floor((face + 720) % 360)]);
+    out.push([CABIN, x, y, 0.38 + hash01(t, 433 + k) * 0.05, Math.floor((face + 720) % 360)]);
     // The gap in the other row at this stop holds a tree.
     if (trees && trees.length) {
-      const [tx, ty] = at(s0 + (hash01(t, 451 + k) - 0.5) * 0.016, -side * (0.072 + hash01(t, 455 + k) * 0.02));
+      const [tx, ty] = at(s0 + (hash01(t, 451 + k) - 0.5) * 0.016, -side * (0.09 + hash01(t, 455 + k) * 0.02));
       out.push([trees[Math.floor(hash01(t, 459 + k) * trees.length)], tx, ty, 0.8 + hash01(t, 463 + k) * 0.3, Math.floor(hash01(t, 467 + k) * 360)]);
     }
   });
-  for (const s0 of [-0.075, 0.075]) { const [x, y] = at(s0, 0); out.push([TRAIL, x, y, 0.9, Math.floor((lane + bow * s0 * 115 + 720) % 360)]); }
+  for (const s0 of [-0.1, 0.1]) { const [x, y] = at(s0, 0); out.push([TRAIL, x, y, 1.1, Math.floor((lane + bow * s0 * 115 + 720) % 360)]); }
   return out;
 }
 // IMP_Campfire was tried at the station and dropped: its light draws as a tall pale column at map zoom.
@@ -117,14 +121,15 @@ const CAMP_FIRE = "PROP_Fire_Pit";
 const CAMP_SHARE = 0.08;          // open flat National Park tiles with a campsite
 /** The campsite's pieces around (cx, cy) on tile t: [[asset, dx, dy, scale, angle, tint?]]. Pure. */
 export function campsite(t, cx, cy) {
-  const out = [[CAMP_FIRE, cx, cy, 0.7, Math.floor(hash01(t, 401) * 360)]];
+  const out = [[CAMP_FIRE, cx, cy, 0.5, Math.floor(hash01(t, 401) * 360)]];
   const n = hash01(t, 402) < 0.5 ? 2 : 3;
   const a0 = hash01(t, 403) * 360;
   for (let k = 0; k < n; k++) {
-    // Around the fire, each tent turned to face it, give or take.
-    const a = a0 + k * (360 / n) + (hash01(t, 404 + k) - 0.5) * 30;
-    const p = along(a, 0.13 + hash01(t, 405 + k) * 0.02, 0);
-    out.push([CAMP_TENT, cx + p.x, cy + p.y, 1.1 + hash01(t, 409 + k) * 0.15,
+    // A crescent on one side of the fire, open to the other, never a ring round it: each tent turned to face the
+    // fire, give or take, and none the same distance from it.
+    const a = a0 + (k - (n - 1) / 2) * 62 + (hash01(t, 404 + k) - 0.5) * 24;
+    const p = along(a, 0.085 + hash01(t, 405 + k) * 0.05, 0);
+    out.push([CAMP_TENT, cx + p.x, cy + p.y, 0.7 + hash01(t, 409 + k) * 0.1,
       Math.floor((a + 90 + (hash01(t, 412 + k) - 0.5) * 30 + 360) % 360), "owner"]);
   }
   return out;
@@ -181,7 +186,8 @@ const ROWBOAT = "PAC_HWI_Palace_RowBoat";
 /** Per biome: tree bins, an understory bin (or null), and an accent. The animals are in np-wildlife.js. */
 const KITS = {
   BIOME_GRASSLAND: { trees: ["BIN_FOL_Grassland_Trees_SM", "BIN_FOL_Grassland_Trees_LG", "FOL_Birch_Tall_Grove_A"], under: "BIN_FOL_Grassland_Shrubs", accent: ACCENT },
-  BIOME_PLAINS: { trees: ["BIN_FOL_Plains_Trees_SM", "BIN_FOL_Elm_Tree_C"], under: null, accent: ACCENT },
+  BIOME_PLAINS: { trees: ["BIN_FOL_Plains_Trees_SM", "BIN_FOL_Elm_Tree_C"], under: null, accent: ACCENT,
+    clusters: ["FOL_Plains_Cluster_G", "FOL_Plains_Cluster_F", "FOL_Plains_Cluster_I"] },
   BIOME_DESERT: { trees: ["BIN_FOL_Desert_Trees_SM"], under: "BIN_FOL_Desert_Shrubs", accent: null, rocks: "BIN_FOL_Desert_Sm_Rocks" },
   BIOME_TUNDRA: { trees: ["BIN_FOL_Tundra_Trees_SM", "BIN_FOL_Tundra_Trees_LG", "FOL_Birch_Tall_Grove_A"], under: "BIN_FOL_Tundra_Shrubs", accent: null },
   BIOME_TROPICAL: { trees: ["BIN_FOL_Tropical_Trees_SM", "BIN_FOL_Tropical_Trees_MD"], under: "BIN_FOL_Tropical_Shrubs", accent: ACCENT },
@@ -501,27 +507,164 @@ export function hawkTile(tiles, anchor, lookout, mountain = isMountain) {
 }
 
 /**
+ * What ties a park's tiles together, so it reads as one place and not a tile-by-tile set of scenes (pure):
+ *   lean:  Map(tile -> degrees) for open tiles, the side its trees gather on. Beside the park's woods that is the
+ *          woods' side, so a forest thins out over its neighbors instead of stopping at the tile edge; otherwise it is
+ *          the edge it shares with the open tile it is paired with (pairs are made strongest edge first, by the
+ *          edge's own hash, each tile once), so the two tiles' trees meet as one grove across their edge.
+ *   spill: Map(tile -> [degrees]) for open tiles beside the park's woods, the edges a few of the woods' trees step
+ *          over (spillTrees).
+ *   trail: Map(tile -> [degrees]) the edges a footpath crosses on the tile. The paths run from the founding tile to
+ *          each destination (`dests`: villages, campsites, lookouts, monuments) by the shortest way over the park's
+ *          walkable land, sharing their way where they can, so the trails join up from tile to tile.
+ */
+export function parkFabric(tiles, anchor, dests, { ring = ringOf, wooded = isWooded, walk = walkable, biome = biomeOf } = {}) {
+  const inPark = new Set(tiles), lean = new Map(), trail = new Map(), spill = new Map();
+  const edgeHash = (a, b) => hash01(Math.min(a, b) * 31 + Math.max(a, b), 310);
+  for (const t of tiles) {
+    if (!walk(t) || wooded(t) || t === anchor) continue;
+    const near = ring(t).map((n, d) => ({ n, d })).filter((x) => x.n >= 0 && inPark.has(x.n) && walk(x.n));
+    const woods = near.filter((x) => wooded(x.n)).sort((a, b) => edgeHash(t, b.n) - edgeHash(t, a.n));
+    if (woods.length) { lean.set(t, armAngle(woods[0].d)); spill.set(t, woods.slice(0, 2).map((x) => armAngle(x.d))); }
+  }
+  // The rest pair off, strongest shared edge first, each tile once: both lean to the edge between them.
+  const free = (t) => walk(t) && !wooded(t) && t !== anchor && !lean.has(t);
+  const pairs = [];
+  for (const t of tiles) if (free(t)) ring(t).forEach((n, d) => { if (n > t && inPark.has(n) && free(n)) pairs.push([edgeHash(t, n), t, n, d]); });
+  pairs.sort((a, b) => b[0] - a[0]);
+  for (const [, t, n, d] of pairs) {
+    if (lean.has(t) || lean.has(n)) continue;
+    lean.set(t, armAngle(d)); lean.set(n, armAngle((d + 3) % 6));
+  }
+  // Shortest ways from the founding tile, breadth first.
+  const from = new Map([[anchor, -1]]), queue = [anchor];
+  for (let q = 0; q < queue.length; q++) {
+    for (const n of ring(queue[q])) if (n >= 0 && inPark.has(n) && walk(n) && !from.has(n)) { from.set(n, queue[q]); queue.push(n); }
+  }
+  const add = (t, deg) => { const l = trail.get(t) || []; if (!l.includes(deg)) l.push(deg); trail.set(t, l); };
+  for (const dest of dests) {
+    for (let t = dest; from.has(t) && from.get(t) >= 0; t = from.get(t)) {
+      const back = from.get(t), d = ring(t).indexOf(back);
+      add(t, armAngle(d)); add(back, armAngle((d + 3) % 6));
+    }
+  }
+  return { lean, trail, spill, regions: parkRegions(tiles, { ring, walk, biome }) };
+}
+/** Trees of the woods next door, standing just inside an open tile's edge toward them (parkFabric spill). Pure. */
+export function spillTrees(t, degs, trees) {
+  const out = [];
+  degs.forEach((deg, j) => {
+    const n = 2 + (hash01(t, 350 + j) < 0.5 ? 1 : 0);
+    for (let k = 0; k < n; k++) {
+      const p = along(deg, 0.34 + hash01(t, 352 + j * 9 + k) * 0.1, (k - (n - 1) / 2) * 0.15 + (hash01(t, 361 + j * 9 + k) - 0.5) * 0.06);
+      out.push([trees[Math.floor(hash01(t, 370 + j * 9 + k) * trees.length)], p.x, p.y, 0.9 + hash01(t, 379 + j * 9 + k) * 0.5, Math.floor(hash01(t, 388 + j * 9 + k) * 360)]);
+    }
+  });
+  return out;
+}
+/**
+ * A park's regions: Map(tile -> region seed), a region being land of one biome in one piece (tiles joined through
+ * `ring`), named by its lowest tile. A region is the unit of a park's character: one kind of tree, one density of
+ * stand, one herd animal and one bird across the whole swath (regionCharacter), where each tile once drew its own.
+ */
+export function parkRegions(tiles, { ring = ringOf, biome = biomeOf, walk = walkable } = {}) {
+  const inPark = new Set(tiles), out = new Map();
+  for (const t of tiles.slice().sort((a, b) => a - b)) {
+    if (out.has(t) || !walk(t)) continue;
+    const b = biome(t), queue = [t];
+    out.set(t, t);
+    for (let q = 0; q < queue.length; q++) for (const n of ring(queue[q])) {
+      if (n >= 0 && inPark.has(n) && !out.has(n) && walk(n) && biome(n) === b) { out.set(n, t); queue.push(n); }
+    }
+  }
+  return out;
+}
+/**
+ * A region's character, from its seed alone (pure): `tree` an index into its biome's single trees, `density` 0 open
+ * meadow with the odd tree, 1 parkland, 2 groves. Animals take theirs in np-wildlife.js (regionFauna).
+ */
+export function regionCharacter(seed) {
+  const d = hash01(seed, 812);
+  return { tree: Math.floor(hash01(seed, 811) * 97), density: d < 0.3 ? 0 : d < 0.75 ? 1 : 2 };
+}
+/** How many steps tile t is from the founding tile. */
+function stepsFrom(t, anchor) { const a = locOf(t), b = locOf(anchor); return safe(() => GameplayMap.getPlotDistance(a.x, a.y, b.x, b.y), 99); }
+/**
+ * What the base drawing builds on a National Park tile, by the tile's hash and how far it is from the warden's lodge:
+ * "village", "camp", "shelter" or "". Cabins, tents and shelters gather within two tiles of the lodge, thin out at
+ * three and stop there, so a park has a visitor's corner and the rest of its land is left to itself, as a Wilderness
+ * Area is. (They once fell anywhere by the tile's hash alone, each tile its own scene.)
+ */
+export function baseSite(t, anchor, steps = stepsFrom) {
+  const d = steps(t, anchor), z = d <= 2 ? 2.2 : d === 3 ? 0.8 : 0;
+  const pick = hash01(t, 70);
+  if (pick < CABIN_SHARE * z) return "village";
+  if (pick < (CABIN_SHARE + CAMP_SHARE) * z) return "camp";
+  if (pick > 1 - SHELTER_SHARE * z) return "shelter";
+  return "";
+}
+const SITE_REACH = 3;     // level sites (levelSites) keep within this many tiles of the lodge too
+function walkable(t) { return !isWater(t) && !isLake(t) && !isNavRiver(t) && !isMountain(t) && !isWonder(t); }
+const LEAN = 0.3;         // how far a leaning stand shifts toward its edge, in tile offsets
+/** A stand's trees moved toward the tile's leaning side, kept on the tile. Pure. */
+export function leanStand(list, deg) {
+  if (deg == null) return list;
+  const s = along(deg, LEAN, 0);
+  return list.map(([a, x, y, sc, an]) => {
+    let nx = x * 0.6 + s.x, ny = y * 0.6 + s.y;
+    const r = Math.hypot(nx, ny);
+    if (r > 0.45) { nx *= 0.45 / r; ny *= 0.45 / r; }
+    return [a, nx, ny, sc, an];
+  });
+}
+/** The footpath on a tile: decals from the middle out to each edge the path crosses (parkFabric trail). Pure. */
+export function trailPieces(t, degs) {
+  const out = [];
+  for (const deg of degs) for (const [k, r] of [[0, 0.16], [1, 0.36]]) {
+    const p = along(deg, r, (hash01(t, 330 + k + deg) - 0.5) * 0.04);
+    out.push([TRAIL, p.x, p.y, 1.1, Math.floor((deg + (hash01(t, 340 + k + deg) - 0.5) * 16 + 360) % 360)]);
+  }
+  return out;
+}
+/**
  * Trees for an open tile, in one of four shapes the plan spreads so neighbors differ: 0 a loose ring round a
  * center tree, 1 a clump to one side of a clearing, 2 two or three trees spread wide over a meadow, 3 a tight grove.
  * Most trees are the tile's `grove` kind, the rest mixed in; an accent now and then.
  */
-function treeStand(t, kit, count, shape = 0, grove = 0) {
+function treeStand(t, kit, count, shape = 0, grove = 0, pure = false, axis = null) {
   const out = [];
-  const pick = (salt) => kit.trees[hash01(t, salt) < 0.7 ? grove % kit.trees.length : Math.floor(hash01(t, salt + 90) * kit.trees.length)];
+  // `pure`: every tree the region's one kind (regionCharacter), and no flowering accent.
+  const pick = (salt) => kit.trees[pure || hash01(t, salt) < 0.7 ? grove % kit.trees.length : Math.floor(hash01(t, salt + 90) * kit.trees.length)];
   const jit = (salt, r) => (hash01(t, salt) - 0.5) * r;
-  const spin = Math.floor(hash01(t, 1) * 6);
   const side = hash01(t, 5) * 360;
   const n = shape === 2 ? Math.max(2, count - 2) : shape === 3 ? count + 1 : count;
+  // No ring of trees round a middle (the first stands were, and read as planted): the trees string out along a
+  // bending line, as a copse or a windbreak grows, unevenly spaced and of uneven size with one taller than the rest.
+  // `axis` (degrees) sets the line, so a stand can run beside a footpath; otherwise the tile's own hash does.
+  const line = axis != null ? axis : hash01(t, 1) * 180;
+  const gap = shape === 2 ? [0.15, 0.1] : shape === 3 ? [0.07, 0.05] : [0.1, 0.07];
+  const wide = shape === 2 ? 0.22 : shape === 3 ? 0.1 : 0.15;
+  const bend = (hash01(t, 6) - 0.5) * 1.6;
+  const offset = axis != null ? (hash01(t, 7) < 0.5 ? -1 : 1) * (0.13 + hash01(t, 9) * 0.05) : jit(7, 0.12);
+  const steps = [];
+  for (let k = 0, at = 0; k < n; k++) { steps.push(at); at += gap[0] + hash01(t, 8 + k) * gap[1]; }
+  const mid = steps[steps.length - 1] / 2, tall = Math.floor(hash01(t, 12) * n);
   for (let k = 0; k < n; k++) {
     let p;
     if (shape === 1) p = along(side + jit(2 + k, 70), 0.14 + hash01(t, 8 + k) * 0.12, 0);
-    else if (shape === 2) p = along(((spin + k * 2) % 6) * 60 + jit(2 + k, 50), 0.22 + hash01(t, 8 + k) * 0.12, 0);
-    else if (shape === 3) p = along(((spin + k) % 6) * 60 + jit(2 + k, 40), 0.08 + hash01(t, 8 + k) * 0.1, 0);
-    else p = along(((spin + k) % 6) * 60 + jit(2 + k, 40), 0.16 + hash01(t, 8 + k) * 0.14, 0);
-    out.push([pick(10 + k), p.x, p.y, 1.1 + hash01(t, 13 + k) * 0.8, Math.floor(hash01(t, 14 + k) * 360)]);
+    else { const u = steps[k] - mid; p = along(line, u, offset + bend * u * u + jit(2 + k, wide)); }
+    out.push([pick(10 + k), p.x, p.y, (k === tall ? 1.5 : 0.95) + hash01(t, 13 + k) * 0.5, Math.floor(hash01(t, 14 + k) * 360)]);
   }
-  if (shape === 0) out.push([pick(19), jit(20, 0.1), jit(21, 0.1), 1.3 + hash01(t, 22) * 0.5, Math.floor(hash01(t, 23) * 360)]);
-  if (kit.accent && hash01(t, 24) < 0.3) out.push([kit.accent, jit(25, 0.3), jit(26, 0.3), 1 + hash01(t, 27) * 0.4, Math.floor(hash01(t, 28) * 360)]);
+  if (!pure && kit.accent && hash01(t, 24) < 0.3) out.push([kit.accent, jit(25, 0.3), jit(26, 0.3), 1 + hash01(t, 27) * 0.4, Math.floor(hash01(t, 28) * 360)]);
+  if (kit.clusters && out.length) {
+    // A biome whose only tree is one small model (the plains' elm) read as an orchard: the same tree, evenly spaced
+    // (watched 2026-10-04, cap57-bio2). There the stand is one of the game's own mixed clumps with a tree or two of
+    // uneven size beside it.
+    const [, cx, cy, , ca] = out[0];
+    const loners = out.slice(1, 3).map(([a, x, y, , an], k) => [a, x, y, 0.8 + hash01(t, 290 + k) * 0.9, an]);
+    const cluster = kit.clusters[(pure ? grove : Math.floor(hash01(t, 289) * kit.clusters.length)) % kit.clusters.length];
+    return spaced([[cluster, cx, cy, 1 + hash01(t, 288) * 0.2, ca], ...loners]);
+  }
   return spaced(oneGrove(out, kit));
 }
 
@@ -530,7 +673,7 @@ function treeStand(t, kit, count, shape = 0, grove = 0) {
  * and all over a forest lattice, the yellow birch groves piled into each other in loud masses (watched 2026-10-04,
  * cap57-exp). A tile takes one at most (oneGrove), at a modest size, and the lattice and cabin rows take none (singles).
  */
-const GROVES = new Set(["FOL_Birch_Tall_Grove_A"]);
+const GROVES = new Set(["FOL_Birch_Tall_Grove_A", "FOL_Plains_Cluster_G", "FOL_Plains_Cluster_F", "FOL_Plains_Cluster_I"]);
 export function singles(trees) { const s = trees.filter((a) => !GROVES.has(a)); return s.length ? s : trees; }
 export function oneGrove(list, kit) {
   const single = singles(kit.trees)[0];
@@ -582,7 +725,7 @@ function waterDressing(t, slot) {
       out.push([CATTAIL, p.x, p.y, 1.1 + hash01(t, 36 + k) * 0.8, Math.floor(hash01(t, 39 + k) * 360)]);
     }
   }
-  if (slot.boat != null) out.push([ROWBOAT, jit(8, 0.25), jit(9, 0.25), 1.2 + hash01(t, 11) * 0.4, Math.floor(hash01(t, 10) * 360)]);
+  if (slot.boat != null) out.push([ROWBOAT, jit(8, 0.25), jit(9, 0.25), 0.75 + hash01(t, 11) * 0.2, Math.floor(hash01(t, 10) * 360)]);
   return out;
 }
 
@@ -621,8 +764,12 @@ export function gameScatter(t, biome, feature = "") {
   if (!bins) return null;
   const n = byFeature ? byFeature.spots : 5;
   const out = [];
-  SCATTER_SPOTS.slice(0, n).forEach(([x, y], k) => bins.forEach((b, j) =>
-    out.push([b, x + j * 0.04, y - j * 0.03, 1, Math.floor(hash01(t, 220 + k * 3 + j) * 360)])));
+  // The same spots on every tile made every tile the same picture: each tile turns them its own way and shifts each.
+  const turn = hash01(t, 219) * 360;
+  SCATTER_SPOTS.slice(0, n).forEach(([x, y], k) => bins.forEach((b, j) => {
+    const p = along(turn, x + j * 0.04 + jit0(t, 230 + k, 0.08), y - j * 0.03 + jit0(t, 240 + k, 0.08));
+    out.push([b, p.x, p.y, 0.8 + hash01(t, 250 + k * 3 + j) * 0.5, Math.floor(hash01(t, 220 + k * 3 + j) * 360)]);
+  }));
   return out;
 }
 
@@ -672,11 +819,14 @@ export function forestCover(t, kit, spacing = FOREST_SPACING) {
     const shift = (r & 1) ? spacing / 2 : 0;
     for (let x = -FOREST_REACH - shift; x <= FOREST_REACH; x += spacing) {
       k++;
-      const px = x + shift + jit0(t, 200 + k, spacing * 0.6), py = y + jit0(t, 400 + k, spacing * 0.6);
-      if (!inHex(px, py, FOREST_REACH)) continue;
+      // Well off the lattice, a fifth of its places left as glades and the trees of uneven size, so the wood does not
+      // read as planted rows (a plains wood of one small elm did: watched 2026-10-04, cap57-bio4).
+      const px = x + shift + jit0(t, 200 + k, spacing * 0.95), py = y + jit0(t, 400 + k, spacing * 0.95);
+      if (!inHex(px, py, FOREST_REACH) || hash01(t, 2200 + k) < 0.2) continue;
       const kinds = singles(kit.trees);
-      const pick = kinds[Math.floor(hash01(t, 600 + k) * kinds.length)];
-      out.push([pick, px, py, 0.9 + hash01(t, 800 + k) * 0.6, Math.floor(hash01(t, 1000 + k) * 360)]);
+      const pick = kit.clusters && hash01(t, 2400 + k) < 0.3 ? kit.clusters[Math.floor(hash01(t, 2600 + k) * kit.clusters.length)]
+        : kinds[Math.floor(hash01(t, 600 + k) * kinds.length)];
+      out.push([pick, px, py, 0.75 + hash01(t, 800 + k) * hash01(t, 801 + k) * 1.1, Math.floor(hash01(t, 1000 + k) * 360)]);
       if (kit.under && hash01(t, 1200 + k) < 0.25) out.push([kit.under, px + jit0(t, 1400 + k, 0.08), py + jit0(t, 1600 + k, 0.08), 0.8 + hash01(t, 1800 + k) * 0.4, Math.floor(hash01(t, 2000 + k) * 360)]);
     }
   }
@@ -745,6 +895,20 @@ function ownLook(t, kit) {
 }
 
 /**
+ * The founding tile's own look under a National Park's station: its trees stand behind the warden's lodge or well
+ * to its sides, never between it and the viewer (the map is seen from the south). A wood that the game draws as one
+ * model gives way to the park's own trees there, which can be placed one by one. Before this a lodge founded in woods
+ * or beside its own stand was half hidden (watched 2026-10-04, cap57-sc2).
+ */
+function stationLook(t, kit) {
+  const model = featureModel(t);
+  const list = isWooded(t) && model ? forestCover(t, kit) : ownLook(t, kit);
+  return behindStation(list);
+}
+export function behindStation(list) {
+  return list.filter(([asset, x, y]) => !/^(BIN_FOL_|FOL_)/.test(asset) || /Groundcover|Grass|Flower/i.test(asset) || y >= 0.2 || Math.abs(x) >= 0.38);
+}
+/**
  * Dressing for one tile: [[asset, dx, dy, scale, angle]]. `ctx` carries the anchor and lookout tiles and the park's
  * plan (np-scene.js), whose entry for the tile says which accents it carries; `level` is the park's size level, `lookouts` every lookout tower's tile at that level (lookoutTiles) and `sites` its level sites
  * (levelSites).
@@ -771,6 +935,52 @@ export function solidSpots(list) {
   }
   return out;
 }
+/** What hides an animal on a tile: [[x, y, radius]] for the built pieces and for every tree and tree bin. Pure. */
+export function coverSpots(list) {
+  const out = solidSpots(list).map(([x, y, r]) => [x, y, r + 0.03]);
+  // A campsite is people's ground: animals keep outside its ring of tents (camels stood at the tent doors, watched
+  // 2026-10-04, cap57-sc2).
+  for (const [asset, x, y] of list) if (asset === CAMP_FIRE) out.push([x, y, 0.2]);
+  // So is a cabin village and the warden's lodge: a herd stood among the cabins and four elephants at the lodge door
+  // (watched 2026-10-04, cap57-bio4). The lodge is the one cabin drawn large.
+  const cabins = list.filter(([asset]) => asset === CABIN);
+  if (cabins.length >= 3) out.push([cabins.reduce((n, c) => n + c[1], 0) / cabins.length, cabins.reduce((n, c) => n + c[2], 0) / cabins.length, 0.3]);
+  for (const [, x, y, scale] of cabins) if (scale > 0.6) out.push([x, y, 0.3]);
+  for (const [asset, x, y, scale] of list) {
+    if (/Groundcover|Grass|Shrub|Flower|LilyPad|Cattail|Rocks/i.test(asset)) continue;
+    if (GROVES.has(asset)) out.push([x, y, 0.09 * scale]);
+    else if (/^BIN_FOL_/.test(asset)) out.push([x, y, 0.1 * scale]);
+    else if (/^FOL_/.test(asset)) out.push([x, y, 0.055 * scale]);
+  }
+  return out;
+}
+const ANIMAL_GAP = 0.07;
+/**
+ * Moves each animal to open ground: out of the room of anything built, clear of the trees (coverSpots), and apart
+ * from the animals already placed. An animal standing clear stays; one that is not takes the nearest free spot on
+ * rings round where it stood, and is dropped only when the tile has none. Before this a herd by a stand of trees
+ * stood half behind it, and one by a cabin village was dropped whole (watched 2026-10-04, cap57-scale). Pure.
+ */
+export function settleAnimals(animals, cover, reach = 0.42) {
+  const placed = [], out = [];
+  const free = (x, y) => Math.hypot(x, y) <= reach && cover.every(([cx, cy, r]) => Math.hypot(x - cx, y - cy) >= r)
+    && placed.every(([px, py]) => Math.hypot(x - px, y - py) >= ANIMAL_GAP);
+  for (const w of animals) {
+    if (w.kind === "vfx") { out.push(w); continue; }
+    let spot = free(w.dx, w.dy) ? [w.dx, w.dy] : null;
+    for (let ring = 1; !spot && ring <= 12; ring++) {
+      const r = ring * 0.04;
+      for (let k = 0; k < 12 && !spot; k++) {
+        const a = (k / 12) * Math.PI * 2 + ring;
+        const x = w.dx + Math.cos(a) * r, y = w.dy + Math.sin(a) * r;
+        if (free(x, y)) spot = [x, y];
+      }
+    }
+    if (!spot) continue;
+    placed.push(spot); out.push({ ...w, dx: spot[0], dy: spot[1] });
+  }
+  return out;
+}
 /**
  * Drops the trees, shrubs and grass tufts (FOL_ and BIN_FOL_ pieces) that would stand inside a built piece's room, so
  * nothing grows through a cabin, a tent or a monument. The tile's own feature model and everything built stay. Pure.
@@ -780,7 +990,7 @@ export function keepClear(list) {
   if (!solids.length) return list;
   return list.filter(([asset, x, y]) => !/^(BIN_FOL_|FOL_)/.test(asset) || solids.every(([sx, sy, r]) => Math.hypot(x - sx, y - sy) >= r));
 }
-function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level = 0, lookouts = null, sites = null }) {
+function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level = 0, lookouts = null, sites = null, fabric = null }) {
   const slot = (plan && plan.get(t)) || {};
   if (isWonder(t)) return [];
   if (isMountain(t)) return slot.cairn != null ? [[CAIRN, jit0(t, 61, 0.2), jit0(t, 62, 0.2), 0.5 + hash01(t, 63) * 0.2, Math.floor(hash01(t, 3) * 360)]] : [];
@@ -792,13 +1002,16 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
   // Standing water (marsh, bog, oasis, watering hole) takes nothing built: a shelter drawn on one stood in the middle
   // of its pond (watched 2026-10-04, cap57-mod).
   const pond = isWet(t);
+  // The tile's region sets its trees (parkRegions, regionCharacter): one kind, one density, the whole swath alike.
+  const region = fabric && fabric.regions && fabric.regions.has(t) ? regionCharacter(fabric.regions.get(t)) : null;
+  const kind = region ? region.tree % kit.trees.length : slot.grove || 0;
   // The founding tile keeps its own look under the park's buildings (woods keep their trees), except a pond, which the
   // warden's lodge would stand in: there the ground is drawn dry.
-  const own = t === anchor && buildings && pond ? [] : ownLook(t, kit);
+  const own = t === anchor && buildings ? (pond ? [] : stationLook(t, kit)) : ownLook(t, kit);
   if (t === anchor && !buildings) {
     // A Wilderness Area has no warden's lodge: its founding tile is a stand of trees like any other.
     if (own.length) return own;
-    out.push(...treeStand(t, kit, 4, 0, slot.grove || 0));
+    out.push(...treeStand(t, kit, 4, 0, kind, !!region));
     if (kit.under && slot.under != null) out.push([kit.under, jit(40, 0.3), jit(41, 0.3), 0.8 + hash01(t, 42) * 0.4, Math.floor(hash01(t, 43) * 360)]);
     return out;
   }
@@ -806,15 +1019,16 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
     for (const s of STATION) out.push(s);
     out.push(...own);
     if (!own.length) {
-      // A stand behind the station, away from the arch and sign on the east side.
-      for (const [k, x, y] of [[11, -0.3, -0.12], [12, -0.22, -0.3], [13, 0.02, 0.3]]) {
-        out.push([kit.trees[k % kit.trees.length], x + jit(k, 0.06), y + jit(k + 3, 0.06), 1.4 + hash01(t, k + 6) * 0.4, Math.floor(hash01(t, k + 9) * 360)]);
+      // A stand behind the station (the map is seen from the south, so behind is north), none in front of it.
+      for (const [k, x, y] of [[11, -0.34, 0.3], [12, -0.06, 0.37], [13, 0.2, 0.33]]) {
+        out.push([kit.trees[k % kit.trees.length], x + jit(k, 0.05), y + jit(k + 3, 0.04), 1.1 + hash01(t, k + 6) * 0.3, Math.floor(hash01(t, k + 9) * 360)]);
       }
-      if (kit.accent) out.push([kit.accent, -0.05, 0.22, 1.2, 0]);
+      if (kit.accent) out.push([kit.accent, -0.38, 0.1, 1.1, 0]);
       if (kit.under) out.push([kit.under, -0.15, -0.28, 1, 0]);
       out.push(...meadow(t, biomeOf(t)).slice(0, 3));
     }
-    out.push([TRAIL, 0.12, 0.1, 1, 30]);
+    if (fabric && fabric.trail.has(t)) out.push(...trailPieces(t, fabric.trail.get(t)).filter(([, x, y]) => Math.hypot(x, y) > 0.3));
+    else out.push([TRAIL, 0.12, 0.1, 1, 30]);
     return out;
   }
   const hill = terrainOf(t) === "TERRAIN_HILL";
@@ -826,24 +1040,26 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
   const tower = t === lookout || !!(lookouts && lookouts.includes(t));
   const lone = buildings && !tower && !wooded && !pond;
   const open = lone && !hill && !featureModel(t) && !isRiver(t);
-  const pick = hash01(t, 70);
+  const base = buildings ? baseSite(t, anchor) : "";
   const away = hash01(t, 5) * 360 + 180;
   // A level site (levelSites) adds its camp, village or shelter where the base draw gave the tile none.
   const site = (sites && sites.get(t)) || "";
+  // A cabin village's and a spilled wood's trees are the region's kind too.
+  const regional = region && !GROVES.has(kit.trees[kind]) ? [kit.trees[kind]] : singles(kit.trees);
   let village = false, camp = false;
-  if (open && (pick < CABIN_SHARE || site === "village")) {
+  if (open && (base === "village" || site === "village")) {
     clearing = village = true;
     const c = along(away, 0.06, 0);
-    out.push(...cabinCluster(t, c.x, c.y, away + 180, singles(kit.trees)));
-  } else if (open && (pick < CABIN_SHARE + CAMP_SHARE || site === "camp")) {
+    out.push(...cabinCluster(t, c.x, c.y, away + 180, regional));
+  } else if (open && (base === "camp" || site === "camp")) {
     clearing = camp = true;
     const c = along(away, 0.18, 0);
     out.push(...campsite(t, c.x, c.y));
-  } else if (lone && (pick > 1 - SHELTER_SHARE || site === "shelter")) {
+  } else if (lone && (base === "shelter" || site === "shelter")) {
     const [asset, sc] = PARK_BUILDINGS[Math.floor(hash01(t, 71) * PARK_BUILDINGS.length)];
     out.push([asset, jit(72, 0.2), jit(73, 0.2), sc * (0.9 + hash01(t, 74) * 0.2), Math.floor(hash01(t, 75) * 360)]);
   }
-  if (tower && !pond) out.push([LOOKOUT, 0.05, 0.05, 0.5, Math.floor(hash01(t, 15) * 4) * 90]);
+  if (tower && !pond) out.push([LOOKOUT, 0.05, 0.05, 0.4, Math.floor(hash01(t, 15) * 4) * 90]);
   // The tile's own vegetation, which its district hides (ownLook).
   const model = featureModel(t);
   out.push(...own);
@@ -858,8 +1074,18 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
       if (kit.under) out.push([kit.under, p.x, p.y, 0.8 + hash01(t, 2720 + k) * 0.4, Math.floor(hash01(t, 2730 + k) * 360)]);
     }
     // A cabin village's trees stand in its rows (cabinCluster), so it gets no stand of its own.
-    const stand = village ? [] : treeStand(t, kit, tower ? 2 : 3 + (hash01(t, 16) < 0.5 ? 1 : 0),
-      tower ? 2 : clearing ? 1 : slot.stand || 0, slot.grove || 0);
+    // An open tile's stand gathers toward the woods or the grove next door (parkFabric lean); a clearing's keeps
+    // its own side, away from the camp.
+    // A region's density: open meadow with the odd tree, parkland, or groves; a tile varies a little within it.
+    const few = hash01(t, 16) < 0.5 ? 1 : 0;
+    const count = !region ? 3 + few : region.density === 0 ? 1 + few : region.density === 1 ? 3 : 4 + few;
+    const shape = !region ? slot.stand || 0 : region.density === 0 ? 2 : region.density === 1 ? (few ? 0 : 2) : (few ? 3 : 0);
+    // Where a footpath crosses the tile the stand runs beside it, so the path is what the land is arranged along;
+    // elsewhere it gathers toward the woods or the grove next door.
+    const path = fabric && fabric.trail.has(t) && !clearing && !tower ? fabric.trail.get(t)[0] + (hash01(t, 17) - 0.5) * 20 : null;
+    const own = village ? [] : treeStand(t, kit, tower ? 2 : count, tower ? 2 : clearing ? 1 : shape, kind, !!region, path);
+    const leaned = fabric && !clearing && !tower && path == null ? leanStand(own, fabric.lean.get(t)) : own;
+    const stand = fabric ? spaced([...leaned, ...(fabric.spill.has(t) && !village ? spillTrees(t, fabric.spill.get(t), regional) : [])]) : own;
     // Old growth: at 24 tiles a Wilderness Area's stand on some tiles has one tree swapped for a giant (oldGrowth).
     if (denser >= 3 && stand.length && hash01(t, 2950) < OLD_GROWTH_SHARE) {
       const g = oldGrowth(biome);
@@ -877,7 +1103,8 @@ function tileDressing(t, { anchor, lookout, buildings = true, plan = null, level
       const bin = kit.rocks && (!kit.under || hash01(t, 44) < 0.5) ? kit.rocks : kit.under;
       if (bin) out.push([bin, jit(40, 0.35), jit(41, 0.35), 0.8 + hash01(t, 42) * 0.4, Math.floor(hash01(t, 43) * 360)]);
     }
-    if (slot.trail != null) out.push([TRAIL, jit(45, 0.25), jit(46, 0.25), 0.8 + hash01(t, 47) * 0.4, Math.floor(bearing(t, anchor) + jit(48, 40) + 360) % 360]);
+    if (fabric) { if (fabric.trail.has(t) && !village) out.push(...trailPieces(t, fabric.trail.get(t))); }
+    else if (slot.trail != null) out.push([TRAIL, jit(45, 0.25), jit(46, 0.25), 0.8 + hash01(t, 47) * 0.4, Math.floor(bearing(t, anchor) + jit(48, 40) + 360) % 360]);
     // A village's or a campsite's clearing is trodden ground: no tufts of grass under the cabins or the tents.
     if (!village && !camp) out.push(...meadow(t, biome, denser));
   }
@@ -906,8 +1133,9 @@ function jit0(t, salt, r) { return (hash01(t, salt) - 0.5) * r; }
 export function siteMap(tiles, anchor, level, buildings, lookouts = []) {
   const open = (t) => !isWater(t) && !isLake(t) && !isNavRiver(t) && !isMountain(t) && !isWonder(t) && !isWooded(t)
     && !featureModel(t) && !isWet(t) && terrainOf(t) !== "TERRAIN_HILL" && !isRiver(t);
-  const taken = (t) => lookouts.includes(t) || (buildings && hash01(t, 70) < CABIN_SHARE + CAMP_SHARE);
-  return levelSites(tiles, anchor, level, buildings, open, taken);
+  const near = (t) => !buildings || stepsFrom(t, anchor) <= SITE_REACH;
+  const taken = (t) => lookouts.includes(t) || (buildings && /village|camp/.test(baseSite(t, anchor)));
+  return levelSites(tiles, anchor, level, buildings, (t) => open(t) && near(t), taken);
 }
 
 /** A park's monuments as drawn: on open land a monument can stand on, clear of camps, villages, shelters and towers. */
@@ -916,10 +1144,20 @@ export function monumentMap(tiles, anchor, level, buildings, lookouts = [], site
   // almost no bare open land and drew none); the tiles a feature model alone draws (marsh, oasis) do not.
   const open = (t) => !isWater(t) && !isLake(t) && !isNavRiver(t) && !isMountain(t) && !isWonder(t)
     && !MODEL_ALONE.has(featureModel(t)) && !isWet(t) && !lookouts.includes(t) && !sites.has(t)
-    && !(buildings && (hash01(t, 70) < CABIN_SHARE + CAMP_SHARE || hash01(t, 70) > 1 - SHELTER_SHARE));
+    && !(buildings && baseSite(t, anchor) !== "");
   return monumentSites(tiles, anchor, level, buildings, open);
 }
 
+/**
+ * A park's fabric (parkFabric) for a drawing context: its footpaths lead to the tiles that hold something built (a
+ * National Park's villages, campsites, shelters, lookouts and monuments), found from the drawing without a fabric.
+ */
+export function fabricFor(tiles, ctx) {
+  const BUILT = /^(IMP_Camp_BldA|PROP_Tent_GEN_Sleeper_Standard_C|PROP_Pasture_ANT_BldB|PROP_MOD_Farm_BldC|Camp_Lookout_Tower_Bin|PROP_CairnBase|NAF_EGY_CityHall_Obelisk|ANT_EEU_Monument_Rock_Structure)$/;
+  const bare = { ...ctx, fabric: null };
+  const dests = ctx.buildings === false ? [] : tiles.filter((t) => t !== ctx.anchor && safe(() => dressingFor(t, bare), []).some((e) => BUILT.test(e[0])));
+  return parkFabric(tiles, ctx.anchor, dests);
+}
 /** A park's own size level (np-core.js parkLevel), which sets how rich it is drawn. */
 export function levelOf(park) { return parkLevel(park); }
 
@@ -1013,13 +1251,14 @@ function buoy(g, e) {
 }
 
 /** The land facts np-wildlife.js chooses from, read from the map. */
-function landOf(t, anchor, level = 0) {
+function landOf(t, anchor, level = 0, regions = null) {
   const water = isWater(t), lake = isLake(t), river = isNavRiver(t);
   const shoreDir = water || lake || river ? ringOf(t).findIndex((n) => n >= 0 && !isWater(n) && !isNavRiver(n)) : -1;
   return { biome: biomeOf(t), water, lake, river, coast: water && !lake, hill: terrainOf(t) === "TERRAIN_HILL",
     mountain: isMountain(t), wonder: isWonder(t), wooded: isWooded(t), anchor: t === anchor, level,
     shore: shoreDir >= 0 ? armAngle(shoreDir) : null,
-    treeKinds: (KITS[biomeOf(t)] || DEFAULT_KIT).trees.map((_x, i) => i) };
+    treeKinds: (KITS[biomeOf(t)] || DEFAULT_KIT).trees.map((_x, i) => i),
+    region: regions && regions.has(t) ? regions.get(t) : null };
 }
 
 /** Rigged animals start their idle only once loaded; staggered so a herd does not move in step, and repeated
@@ -1042,14 +1281,13 @@ function groundAt(l, dx, dy, wet = false) {
   return water == null ? land : Math.max(land, water);
 }
 
-function populateTile(g, t, anchor, plan, level = 0, solids = []) {
+function populateTile(g, t, anchor, plan, level = 0, cover = []) {
   const l = locOf(t);
   const handles = [];
   const land = landOf(t, anchor, level);
   const wet = land.water || land.lake || land.river;
-  for (const w of wildlifeFor(t, land, plan.get(t))) {
-    // No animal stands in a cabin, a tent or a monument (solidSpots).
-    if (w.kind !== "vfx" && solids.some(([sx, sy, r]) => Math.hypot(w.dx - sx, w.dy - sy) < r + 0.03)) continue;
+  // Every animal on open ground: none in a cabin, a tent or a monument, none behind a tree (settleAnimals).
+  for (const w of settleAnimals(wildlifeFor(t, land, plan.get(t)), land.water || land.lake ? [] : cover)) {
     if (w.kind === "vfx") { safe(() => g.wild.addVFXAtPlot(w.asset, { x: l.x, y: l.y }, { x: w.dx, y: w.dy, z: w.z })); continue; }
     // A rigged animal is placed at an absolute height: set it on the ground under it (np-wildlife.js SPECIES).
     const z = groundAt(l, w.dx, w.dy, wet) + w.z;
@@ -1086,8 +1324,10 @@ export function drawPark(park, fresh = []) {
   const lookout = lookouts.length ? lookouts[0] : -1;
   const sites = siteMap(park.tiles, park.anchor, level, buildings, lookouts);
   const monuments = monumentMap(park.tiles, park.anchor, level, buildings, lookouts, sites);
-  const plan = planScene(park.tiles, { land: (t) => landOf(t, park.anchor, level), ring: ringOf, fauna: FAUNA_POOLS, level, wild: !buildings });
+  const regions = parkRegions(park.tiles);
+  const plan = planScene(park.tiles, { land: (t) => landOf(t, park.anchor, level, regions), ring: ringOf, fauna: FAUNA_POOLS, level, wild: !buildings });
   const ctx = { anchor: park.anchor, lookout, lookouts, sites, monuments, level, buildings, plan, owner: park.owner, hawk: hawkTile(park.tiles, park.anchor, lookout) };
+  ctx.fabric = fabricFor(park.tiles, ctx);
   const edges = wallEdges(park.tiles).filter((e) => isRevealed(e.plot));
   const later = [];
   for (const e of edges) {
@@ -1098,7 +1338,7 @@ export function drawPark(park, fresh = []) {
   for (const t of park.tiles) if (!freshSet.has(t) && isRevealed(t)) dressTile(g, t, ctx);
   if (g.wild) {
     const handles = [];
-    for (const t of park.tiles) if (isRevealed(t)) handles.push(...populateTile(g, t, park.anchor, plan, level, solidSpots(dressingFor(t, ctx))));
+    for (const t of park.tiles) if (isRevealed(t)) handles.push(...populateTile(g, t, park.anchor, plan, level, coverSpots(dressingFor(t, ctx))));
     wakeAnimals(handles, park.id, gen);
   }
   if (!later.length && !freshSet.size) { refreshLens(); return true; }

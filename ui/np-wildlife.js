@@ -24,23 +24,26 @@ import { hash01 } from "./np-core.js";
  * it) plus this. In pre-release builds every animal was lifted 8 + 24 x scale from zero, which floated them on low ground (the fox
  * on a shore, camels on a cliff's lip) and buried them on hills.
  */
+// Scales are set against the park's buildings (np-draw.js STATION), from the models' own heights (asset catalog,
+// 2026-10-04): an animal stands about two and a half times its true size beside a cabin, so it still shows at map zoom, and none
+// under two model units. At the first scales (0.4 to 0.5) an elk stood three times the height of a village cabin.
 const SPECIES = {
-  deer: ["Char_Deer", 0.42, 4, 1],
-  elk: ["CHAR_Elk", 0.45, 3, 1],
-  bison: ["Char_Bison_RES", 0.4, 5, 1],
-  horse: ["CHAR_Horse_RES", 0.4, 4, 1],
-  fox: ["CHAR_Fox", 0.5, 2, 1],
-  camel: ["CHAR_Camel", 0.4, 3, 1],
-  llama: ["CHAR_Llama_RES", 0.42, 3, 1],
-  sheep: ["Char_Sheep_RES", 0.45, 4, 1],
-  elephant: ["Char_Elephant_African_RES", 0.32, 3, 1],
-  crane: ["CHAR_Eurasian_Crane", 0.5, 3, 0.5],
-  crab: ["CHAR_Crab", 0.15, 3, 0.5],   // at 0.45 a crab stood as tall as a house (showcase nsh1)
+  deer: ["Char_Deer", 0.2, 4, 1],
+  elk: ["CHAR_Elk", 0.22, 3, 1],
+  bison: ["Char_Bison_RES", 0.21, 5, 1],
+  horse: ["CHAR_Horse_RES", 0.21, 4, 1],
+  fox: ["CHAR_Fox", 0.3, 2, 1],
+  camel: ["CHAR_Camel", 0.26, 3, 1],
+  llama: ["CHAR_Llama_RES", 0.25, 3, 1],
+  sheep: ["Char_Sheep_RES", 0.26, 4, 1],
+  elephant: ["Char_Elephant_African_RES", 0.28, 3, 1],
+  crane: ["CHAR_Eurasian_Crane", 0.19, 3, 0.5],
+  crab: ["CHAR_Crab", 0.1, 3, 0.5],
   // Rarer species, only in a Wilderness Area from 16 tiles (np-scene.js `rare`). Rigged as the deer is (catalog,
-  // 2026-10-04): scales are first guesses to watch.
-  goat: ["Char_Goat", 0.42, 3, 1],
-  giraffe: ["Char_Giraffe01", 0.4, 3, 1],
-  turtle: ["CHAR_Turtle", 0.3, 2, 0.5],
+  // 2026-10-04).
+  goat: ["Char_Goat", 0.21, 3, 1],
+  giraffe: ["Char_Giraffe01", 0.2, 3, 1],
+  turtle: ["CHAR_Turtle", 0.26, 2, 0.5],
 };
 /** The rarer species a Wilderness Area gains from 16 tiles, by the land: goats on hills, giraffes on open tropical
  *  and plains land, turtles on a shore. */
@@ -103,17 +106,21 @@ export function wildlifeFor(t, land, slot = {}) {
   const jit = (salt, r) => (h(salt) - 0.5) * r;
   const out = [];
   const vfx = (asset, dx, dy) => out.push({ kind: "vfx", asset, dx, dy, z: 0 });
-  const animal = (name, dx, dy, k) => {
+  const animal = (name, dx, dy, k, heading = null) => {
     const [asset, scale] = SPECIES[name];
     const s = scale * (0.85 + h(40 + k) * 0.3);
-    out.push({ kind: "animal", asset, dx, dy, z: liftFor(name), scale: s, angle: Math.floor(h(50 + k) * 360) });
+    out.push({ kind: "animal", asset, dx, dy, z: liftFor(name), scale: s, angle: Math.floor(heading != null ? (heading + 360) % 360 : h(50 + k) * 360) });
   };
   const group = (name, max, cx, cy, extra = 0) => {
     const n = 1 + Math.floor(h(2) * h(3) * max) + extra;   // mostly singles and pairs, the odd larger group
-    const spread = 0.05 + h(33) * 0.08;
+    // A herd on the move, not a ring round its leader: strung out along one line, each a little to a side, all
+    // headed much the same way.
+    const way = h(33) * Math.PI * 2, heading = h(34) * 360;
+    let along = 0;
     for (let k = 0; k < n; k++) {
-      const a = h(10 + k) * Math.PI * 2, r = k === 0 ? 0 : spread + h(20 + k) * 0.08;
-      animal(name, cx + Math.cos(a) * r, cy + Math.sin(a) * r, k);
+      const side = (h(20 + k) - 0.5) * 0.1;
+      animal(name, cx + Math.cos(way) * along - Math.sin(way) * side, cy + Math.sin(way) * along + Math.cos(way) * side, k, heading + (h(60 + k) - 0.5) * 50);
+      along += 0.07 + h(10 + k) * 0.06;
     }
   };
   const shoreAt = (r) => {

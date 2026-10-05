@@ -3,7 +3,7 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
-## [1.0.3] - 2026-10-04
+## [1.0.3] - 2026-10-05
 
 - Cabin villages are laid out as a lodge trail: two loose rows of smaller cabins facing each other across a curving
   dirt trail, with a tree between each pair of cabins. They replace the ring of cabins round a clearing.
@@ -17,6 +17,21 @@ semantic versioning.
   gains rarer wildlife at 16 tiles and old-growth giants at 24.
 - Nothing is built on standing water: shelters, lookout towers, cairns and monuments keep off marsh, bog, oasis and
   watering-hole tiles, and a warden's lodge founded on one stands on dry ground instead of in the pond.
+- A park reads as one place instead of a set of separate tiles. Footpaths run from the warden's lodge to each cabin
+  village, campsite, shelter, lookout and monument and join up from tile to tile; stands of trees gather toward the
+  woods next door or meet a neighbor's stand across the shared edge, and woods thin out over the tiles beside them.
+- Each stretch of one biome in a park has its own character: one kind of tree, open meadow or parkland or groves, one
+  herd animal and one bird across the whole stretch.
+- Cabins, tents and picnic shelters gather within three tiles of the warden's lodge; the rest of a National Park's land
+  is left to itself.
+- Buildings and animals are drawn to one scale. Animals are about half their old size (an elk no longer stands taller
+  than a cabin), and tents, picnic shelters, lookout towers, the lodge's sign and rowboats are smaller.
+- Animals stand on open ground, clear of buildings and trees and apart from each other, and a herd is strung out along
+  a line and headed one way instead of circling its leader.
+- Trees stand along a bending line, unevenly spaced with one taller than the rest, not in a ring; plains parks use the
+  game's mixed tree clumps instead of rows of one small elm; the same scatter of plants no longer repeats on every tile.
+- A campsite is a crescent of tents on one side of its fire, and the trees on the warden's lodge's tile stand behind
+  the lodge, not in front of it.
 
 ## [1.0.2] - 2026-10-04
 
