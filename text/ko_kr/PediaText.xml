@@ -88,10 +88,10 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_TITLE" Language="ko_KR"><Text>소유자 변경</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_PARA_1" Language="ko_KR"><Text>정착지가 정복되면, 그 공원은 모든 타일과 함께 새 소유자에게 넘어갑니다. 다른 플레이어가 공원 타일 하나만 가져가면 그 타일은 공원에서 빠집니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_TITLE" Language="ko_KR"><Text>공원의 모습</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>각 공원은 땅에 맞춰 그려집니다. 숲 타일에는 우거진 숲이, 언덕에는 나무, 바위, 돌무더기가, 호수와 강에는 수련 잎과 갈대, 가끔 나룻배가 있고, 육지 가장자리를 따라 낮은 돌담과 울타리가, 탁 트인 바다와 만나는 곳에는 부표가 있습니다.</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="ko_KR"><Text>국립공원은 건설 타일에 관리소와 피크닉 쉼터가 있고, 확장되면 오두막이, 언덕에는 전망대가 생깁니다. 원생지역에는 건물이 없습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>각 공원은 땅에 맞춰 하나의 장소로 설계됩니다. 숲 타일을 채운 숲은 탁 트인 땅 쪽으로 갈수록 성기어지고, 물가와 숲 가장자리에는 나무 무리가, 곳곳에는 관목, 바위, 갈대가 있으며, 육지 가장자리를 따라 낮은 돌담과 울타리가, 탁 트인 바다와 만나는 곳에는 부표가 있습니다. 자원이 있는 타일은 평소와 같은 모습입니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="ko_KR"><Text>국립공원은 건설 타일에 관리소와 피크닉 쉼터가 있고, 확장되면 야영장, 오두막, 또 하나의 쉼터, 언덕 위의 전망대가 생기며, 모두 오솔길로 관리소와 이어집니다. 두 종류 모두 확장되면서 기념물이 생깁니다. 돌무더기, 그다음 오벨리스크(원생지역에서는 고인돌), 그다음 두 번째 돌무더기입니다. 원생지역에는 건물도 오솔길도 없습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_TITLE" Language="ko_KR"><Text>야생 동물</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="ko_KR"><Text>각 타일에 어울리는 동물들: 들소, 말, 사슴, 엘크, 낙타, 양, 라마, 코끼리, 여우, 두루미, 게가 있고, 하늘에는 새와 나비가, 호수와 강에는 물고기가, 바다에는 물고기 떼, 산호초 물고기, 가끔 고래가 있습니다. 이웃한 타일에는 같은 무리나 물고기가 나타나지 않습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="ko_KR"><Text>땅에 어울리는 동물들: 들소, 말, 사슴, 엘크, 낙타, 양, 라마, 코끼리, 여우, 두루미, 게가 있고, 하늘에는 새와 나비가, 호수와 강에는 물고기가, 바다에는 물고기 떼, 산호초 물고기, 가끔 고래가 있습니다. 공원 안에서 같은 생물 군계가 이어진 구역마다 고유한 무리 동물과 새가 있으며, 무리는 사람과 길에서 떨어진 탁 트인 땅에 머뭅니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_TITLE" Language="ko_KR"><Text>경계</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_PARA_1" Language="ko_KR"><Text>점선이 공원에 속한 타일을 정확히 보여 줍니다. 국립공원은 초록색, 원생지역은 황토색입니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_TITLE" Language="ko_KR"><Text>이름</Text></Replace>

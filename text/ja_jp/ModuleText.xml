@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="ja_JP"><Text>{1_Settlement}: 新しい原生自然地域</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="ja_JP"><Text>光っているタイルをクリックし、「確定」を押してください。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="ja_JP"><Text>この居住地には現在、空きの魅力的な平地または丘陵のタイルがありません。新しい公園は、空きができるまで待機します。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="ja_JP"><Text>取りやめて{1_Gold}ゴールドを取り戻す</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="ja_JP"><Text>ゴールドの返還</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="ja_JP"><Text>この居住地にはすでに同じ種類の公園があるか、土地を待っている公園があるため、完了したプロジェクトでは何も設立されませんでした。費用として{1_Gold} [icon:YIELD_GOLD] ゴールドが返還されました。</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="ja_JP"><Text>この公園を設立する予定だった居住地があなたのものではなくなったため、設立は取り消されました。費用として{1_Gold} [icon:YIELD_GOLD] ゴールドが返還されました。</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="ja_JP"><Text>この公園はすでに上限の大きさに達しているため、完了した拡張では何も追加されませんでした。費用として{1_Gold} [icon:YIELD_GOLD] ゴールドが返還されました。</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="ja_JP"><Text>この居住地には拡張できる公園がなくなったため、完了した拡張では何も追加されませんでした。費用として{1_Gold} [icon:YIELD_GOLD] ゴールドが返還されました。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="ja_JP"><Text>{1_Settlement}: 国立公園の設立地を選んでください</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="ja_JP"><Text>{1_Settlement}: 原生自然地域の設立地を選んでください</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="ja_JP"><Text>国立公園の設立が承認されました。この居住地が所有する空きの魅力的なタイルを選んで設立地を決めてください。後で周囲の土地へ広げられます。</Text></Replace>

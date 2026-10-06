@@ -88,10 +88,10 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_TITLE" Language="zh_Hant_HK"><Text>易主</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_PARA_1" Language="zh_Hant_HK"><Text>聚落被征服時，其公園會連同所有格位一起歸新擁有者所有。若單一公園格位被其他玩家奪取，該格位會脫離公園。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_TITLE" Language="zh_Hant_HK"><Text>公園的外觀</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>每座公園都會依其地形繪製：森林格位上佈滿林木，丘陵上有樹木、岩石與石堆，湖泊與河流上有睡蓮葉與蘆葦，偶爾還有划艇；陸地邊緣有低矮石牆夾雜幾段籬笆，與開闊水域交界處則有浮標。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="zh_Hant_HK"><Text>國家公園在建立格位上設有管理員小屋與野餐亭，擴展後會出現木屋，丘陵上還有瞭望塔。荒野保護區沒有任何建築。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>每座公園都會依其地形作為一個整體來規劃：林木佈滿森林格位，並向開闊地帶逐漸稀疏，水岸與林木邊緣有成片的樹木，還有零星的灌木、岩石與蘆葦；陸地邊緣有低矮石牆夾雜幾段籬笆，與開闊水域交界處則有浮標。有資源的格位外觀一如往常。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="zh_Hant_HK"><Text>國家公園在建立格位上設有管理員小屋與野餐亭，擴展後會出現露營地、木屋、另一座野餐亭與丘陵上的瞭望塔，全部以步道與管理員小屋相連。兩類公園都會隨著擴展獲得紀念物：先是一座石堆，然後是一座方尖碑（荒野保護區則為支石墓），之後是第二座石堆。荒野保護區沒有任何建築，也沒有步道。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_TITLE" Language="zh_Hant_HK"><Text>野生動物</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="zh_Hant_HK"><Text>每個格位都有合適的動物：野牛、馬、鹿、麋鹿、駱駝、綿羊、駱馬、大象、狐狸、鶴與螃蟹，天空有鳥與蝴蝶，湖泊與河流中有魚，海中則有魚群、珊瑚礁魚，偶爾還有鯨魚。相鄰的格位絕不會出現相同的獸群、鳥群或魚。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="zh_Hant_HK"><Text>各片土地都有合適的動物：野牛、馬、鹿、麋鹿、駱駝、綿羊、駱馬、大象、狐狸、鶴與螃蟹，天空有鳥與蝴蝶，湖泊與河流中有魚，海中則有魚群、珊瑚礁魚，偶爾還有鯨魚。公園內每一片連續的同種生物群落都有自己的群居動物與鳥類，獸群會留在遠離人與道路的開闊地帶。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_TITLE" Language="zh_Hant_HK"><Text>邊界</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_PARA_1" Language="zh_Hant_HK"><Text>虛線會準確標示哪些格位屬於公園：國家公園為綠色，荒野保護區為赭色。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_TITLE" Language="zh_Hant_HK"><Text>名稱</Text></Replace>

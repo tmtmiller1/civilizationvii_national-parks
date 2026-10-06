@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="zh_Hans_CN"><Text>{1_Settlement}：新荒野保护区</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="zh_Hans_CN"><Text>点击一个亮起的地块，然后点击“确认”。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="zh_Hans_CN"><Text>该定居点目前没有迷人的平坦或崎岖空地块。新公园将保留，直到有地块空出。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="zh_Hans_CN"><Text>取消并取回{1_Gold}金币</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="zh_Hans_CN"><Text>金币已退还</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="zh_Hans_CN"><Text>该定居点已有一座同类公园，或有一座正在等待土地，因此完成的项目无可建立。其花费已退还：{1_Gold} [icon:YIELD_GOLD] 金币。</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="zh_Hans_CN"><Text>原本要建立这座公园的定居点已不再属于你，因此建立已取消。其花费已退还：{1_Gold} [icon:YIELD_GOLD] 金币。</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="zh_Hans_CN"><Text>这座公园已达到上限，因此完成的扩建没有增加任何地块。其花费已退还：{1_Gold} [icon:YIELD_GOLD] 金币。</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="zh_Hans_CN"><Text>该定居点已没有可扩建的公园，因此完成的扩建没有增加任何地块。其花费已退还：{1_Gold} [icon:YIELD_GOLD] 金币。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="zh_Hans_CN"><Text>{1_Settlement}：选择国家公园的建立地点</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="zh_Hans_CN"><Text>{1_Settlement}：选择荒野保护区的建立地点</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="zh_Hans_CN"><Text>国家公园已获批准。请选择该定居点拥有的一块迷人空地块作为建立地点；之后它可以扩展到周围的土地。</Text></Replace>

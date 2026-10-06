@@ -88,10 +88,10 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_TITLE" Language="ja_JP"><Text>所有者の変更</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_PARA_1" Language="ja_JP"><Text>居住地が征服されると、その公園はすべてのタイルとともに新しい所有者のものになります。公園のタイルが1つだけほかのプレイヤーに奪われた場合、そのタイルは公園から外れます。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_TITLE" Language="ja_JP"><Text>公園の外観</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>各公園は土地に合わせて描かれます。森林のタイルには一面の森、丘陵には樹木、岩、ケルン、湖や河川にはスイレンの葉やアシ、ときおり手こぎボート。陸側の境界には低い石垣と所々に柵が並び、外海と接する所にはブイが浮かびます。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="ja_JP"><Text>国立公園には設立タイルに管理棟とピクニック用のあずまやがあり、拡張すると山小屋が、丘陵には展望台が建ちます。原生自然地域には建造物はありません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>各公園は、土地に合わせてひとつの場所として設計されます。森林のタイルを埋める森は開けた土地に向かってまばらになり、岸辺や森の縁には木立が、所々に低木、岩、アシが見られます。陸側の境界には低い石垣と所々に柵が並び、外海と接する所にはブイが浮かびます。資源のあるタイルの見た目はいつもと変わりません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="ja_JP"><Text>国立公園には設立タイルに管理棟とピクニック用のあずまやがあり、拡張するとキャンプ場、山小屋、もう1つのあずまや、丘陵の展望台が加わり、すべてが遊歩道で管理棟とつながります。どちらの種類も拡張するにつれて記念碑が加わります。石のケルン、次にオベリスク（原生自然地域ではドルメン）、そして2つ目のケルンです。原生自然地域には建造物も遊歩道もありません。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_TITLE" Language="ja_JP"><Text>野生動物</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="ja_JP"><Text>タイルに合わせた動物が現れます。バイソン、馬、シカ、ヘラジカ、ラクダ、ヒツジ、リャマ、ゾウ、キツネ、ツル、カニ。空には鳥やチョウが舞い、湖や河川には魚が、海には魚の群れやサンゴ礁の魚、ときおりクジラが現れます。隣り合うタイルに同じ群れや魚が現れることはありません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="ja_JP"><Text>土地に合わせた動物が現れます。バイソン、馬、シカ、ヘラジカ、ラクダ、ヒツジ、リャマ、ゾウ、キツネ、ツル、カニ。空には鳥やチョウが舞い、湖や河川には魚が、海には魚の群れやサンゴ礁の魚、ときおりクジラが現れます。公園内でひと続きになった同じバイオームごとに、群れをなす動物と鳥がそれぞれ1種類ずつ決まっており、群れは人や道から離れた開けた土地にとどまります。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_TITLE" Language="ja_JP"><Text>境界線</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_PARA_1" Language="ja_JP"><Text>破線で公園に含まれるタイルを正確に示します。国立公園は緑、原生自然地域は黄土色です。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_TITLE" Language="ja_JP"><Text>名前</Text></Replace>

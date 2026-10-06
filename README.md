@@ -40,7 +40,10 @@ forests, lakes, rivers, the sea, natural wonders and open country.
   park grows over can be any it may take, and a tile whose appeal later falls stays in the park.
 - **What a park can take.** Any rural land you own beside the park: open land, forest, mountains, lakes, rivers, the
   open sea and natural wonders. Resources come with the land: a tile with a resource joins without a question and its
-  resource stays collected, the park taking over from the plantation, camp or fishing boat that harvested it. A tile
+  resource stays collected, the park taking over from the plantation, camp or fishing boat that harvested it; a tile
+  with tea, cotton, citrus, sugar, jade, niter, salt, rubies, ivory, horses, wool, hides, furs, truffles, cloves,
+  lapis lazuli or nickel keeps its improvement instead and pays its own yields, not the park's, so that it looks as
+  the game draws it. A tile
   with a farm or other improvement and no resource joins after you confirm; the improvement is removed, and the
   citizen who worked it comes back as new population for you to place. An Expedition Base stays where it is and keeps
   working its mountain or wonder. Urban districts and buildings are never taken.
@@ -48,18 +51,22 @@ forests, lakes, rivers, the sea, natural wonders and open country.
   it: the game offers park land to no building and no farm. Urban development is never removed: if a building ever
   lands on park land anyway, that tile leaves the park, and if it is the founding tile, the park moves its founding
   improvement to another of its tiles, beside the natural wonder where it can.
-- **It looks like a park.** The park is drawn from the game's own art, suited to its land: woods that fill its forest
-  tiles edge to edge, stands of trees with a flowering accent, stones and cairns on hills, lily pads and reeds on a
-  lake, reeds along a river, a rowboat now and then, a warden's station on the founding tile, and a lookout tower once
-  the park has grown. As a park reaches 8, 16 and 24 tiles it is drawn richer, with more campsites, cabin villages and
-  lookouts in a National Park, rarer wildlife and old-growth giants in a Wilderness Area, more animals in
-  both, and monuments scattered over its land: stone cairns from 8 tiles, obelisks (dolmens in a Wilderness Area) from
-  16. These are spread over the park so that neighboring tiles differ: no two tiles side by side carry the same flock,
-  school of fish, herd, reeds or lily pads. Low dry-stone walls, with stretches of stone-and-timber fence, run along
-  most of its land edges in broken, uneven runs, the way walls line a scenic parkway; water gets no walls, only a buoy
+- **It looks like one place.** The park is planned as a whole and drawn from the game's own art, suited to its land.
+  Footpaths run from the warden's lodge on the founding tile to a camp, a cabin village, a picnic shelter, the lookout
+  towers, the monuments and the water's edge, and join into one network; cabins stand beside their path and a camp
+  sits at its path's end. Woods fill the park's forest tiles and thin toward open ground, stands of trees gather along
+  shores and the edges of woods and run on across tile edges, and shrubs, rocks and reeds grow in patches. Herds keep to
+  open land the park leaves for them, away from people and paths. A park gains a little as it reaches 8, 16 and 24
+  tiles, never more of the same: at most four structures and two lookouts in a National Park, and up to three
+  monuments (a stone cairn, then an obelisk or, in a Wilderness Area, a dolmen, then a second cairn), each on rough
+  ground where the park has any, with rocks and low scrub at its foot. A Wilderness Area builds nothing; it gains rarer
+  wildlife and, at 24 tiles, old-growth giants. Land far from the paths is left to itself, and a tile with a resource
+  looks exactly as the game draws it. Low dry-stone walls, with stretches of stone-and-timber fence, run along most of
+  the park's land edges in broken, uneven runs, the way walls line a scenic parkway; water gets no walls, only a buoy
   where the park's water meets the open sea. A dashed green border marks exactly which land is park, and new land
   joins with its walls going up one run at a time.
-- **It is alive.** Animated wildlife suited to each tile: bison and horses on the plains, elk in the tundra, camels
+- **It is alive.** Animated wildlife suited to the land, one herd animal and one bird to each stretch of a biome: bison
+  and horses on the plains, elk in the tundra, camels
   in the desert, elephants and cranes in the jungle, sheep and llamas on the hills, deer and foxes almost anywhere,
   cranes on the shores and crabs on the coast. Overhead, birds and butterflies; in lakes, leaping and swimming fish;
   at sea, gulls, schools of fish, reef fish along the shore and now and then a whale.
@@ -149,7 +156,8 @@ the equivalent Mods folder on your platform, then enable it in-game.
   placement keep working.
 - Park land pays the park's yields only: yields another mod adds to a park tile itself are set aside along with the
   tile's natural ones. Yields a mod adds to a settlement as a whole are untouched.
-- Suggested with [Cultural Diffusion](https://github.com/tmtmiller1/civilizationvii-cultural-diffusion): a park grows only into
+- Suggested with [Cultural Diffusion](https://github.com/tmtmiller1/civilizationvii-cultural-diffusion): a park grows
+  only into
   land its settlement owns, and Cultural Diffusion's spreading borders give it more land to grow into.
 - Works with [Canals](https://github.com/tmtmiller1/civilizationvii_canals): a Canal is never dug through park land, and a
   canal tile cannot join a park.

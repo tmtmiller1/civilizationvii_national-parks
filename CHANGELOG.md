@@ -3,6 +3,44 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
+## [1.1.0] - 2026-10-05
+
+- A park is now planned as a whole before any of it is drawn, and each tile draws its part of that plan. Footpaths
+  run from the warden's lodge to a camp, a cabin village, a shelter, the lookouts, the monuments and the water's edge
+  as one joined network; cabins stand along their path, a camp sits at its path's end, and trees part where a path
+  runs. Woods thin toward open land, stands of trees gather along shores and the edges of woods and run on across
+  tile edges, and shrubs and rocks grow in patches instead of single clumps. Land far from the paths is left to itself.
+- A park carries less as it grows, not more of the same: at most four structures, two lookouts and three monuments,
+  three or four herds and a few flocks, however large it is.
+- Monuments have a setting. A cairn, an obelisk or a Wilderness Area's dolmen stands on a hill where the park has one,
+  never on a tile a river crosses, with rocks and low scrub at its foot and the trees held back round it. The cairn
+  is drawn at about a third of its old size, in scale with the cabins.
+- Herds keep to open ground the park leaves for them, away from the lodge, the cabins, the tents and the paths.
+- On sand and snow, where a footpath's bare earth is hard to see, small stone waymarks stand along it.
+- Lookout towers stand where there is something to look out over: on a cliff above the sea first, then along the
+  coast, on a cliff, by a lake or on a hill, at the water's side of the tile. A large park by the sea can carry three.
+- Nothing stands in a river. Camps, monuments, lookouts and trees keep to its banks, herds graze beside it, and a
+  footpath's bare earth stops at each bank.
+- A tile with a resource looks as the game draws it. For most resources the park puts back the resource's own model
+  and the tile's own vegetation, which the game hides on park land, and places nothing else there. Tea, cotton,
+  citrus, sugar, jade, niter, salt, rubies, ivory, horses, wool, hides, furs, truffles, cloves, lapis lazuli and
+  nickel are drawn by the game in a way the park cannot restore, so a tile with one of those joins the park as a
+  tile with an Expedition Base does: it keeps its improvement, carries no park marker, pays its own yields instead
+  of the park's, and is left exactly as the game draws it.
+- Hiking trails can be followed on sand and snow: there they are a narrow gravel track marked with cairns.
+- A cabin village gathers round a small green instead of lining its path.
+- The animals are drawn larger, so they can be seen at the zoom the game is played at.
+- A Found National Park or Found Wilderness Area project can no longer be wasted. A settlement queues only one at a
+  time, and buying the founding for Gold takes the queued project out of the build queue.
+- If a Found or Expand project still completes with nothing left to do (the settlement already has that park, the park
+  is at its full size, or the park is gone), its cost comes back as Gold and a notice says why.
+- A park that was paid for but not yet placed is refunded if its settlement is lost first. Before, the Gold or
+  production was gone.
+- A new park that has no free Charming tile can be cancelled for what it cost, from the notice that says so; the
+  notice returns every 10 turns while it waits.
+- Hotseat: Gold being spent, pop-ups and refund notices are kept per player, so one seat's purchase or refund never
+  shows up on another's turn.
+
 ## [1.0.4] - 2026-10-05
 
 - Saving a National Parks option can no longer wipe other mods' saved options. The game sometimes reports the shared

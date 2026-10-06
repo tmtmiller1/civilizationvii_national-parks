@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="pl_PL"><Text>{1_Settlement}: nowy obszar dzikiej przyrody</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="pl_PL"><Text>Kliknij podświetlone pole, a następnie Potwierdź.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="pl_PL"><Text>To osiedle nie ma obecnie pustego, czarującego płaskiego ani pagórkowatego pola. Nowy park poczeka, aż jakieś się zwolni.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="pl_PL"><Text>Anuluj i odzyskaj złoto ({1_Gold})</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="pl_PL"><Text>Zwrot złota</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="pl_PL"><Text>To osiedle ma już park tego rodzaju albo taki, który czeka na swój teren, więc ukończony projekt nie miał czego założyć. Jego koszt został zwrócony: {1_Gold} [icon:YIELD_GOLD] złota.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="pl_PL"><Text>Osiedle, które miało założyć ten park, nie należy już do ciebie, więc założenie zostało anulowane. Jego koszt został zwrócony: {1_Gold} [icon:YIELD_GOLD] złota.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="pl_PL"><Text>Ten park ma już pełny rozmiar, więc ukończone powiększenie niczego nie dodało. Jego koszt został zwrócony: {1_Gold} [icon:YIELD_GOLD] złota.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="pl_PL"><Text>To osiedle nie ma już parku, który można powiększyć, więc ukończone powiększenie niczego nie dodało. Jego koszt został zwrócony: {1_Gold} [icon:YIELD_GOLD] złota.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="pl_PL"><Text>{1_Settlement}: wybierz, gdzie założyć park narodowy</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="pl_PL"><Text>{1_Settlement}: wybierz, gdzie założyć obszar dzikiej przyrody</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="pl_PL"><Text>Park narodowy został zatwierdzony. Wybierz puste, czarujące pole tego osiedla, na którym zostanie założony; później może rozrastać się na okoliczne ziemie.</Text></Replace>

@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="it_IT"><Text>{1_Settlement}: nuova Area wilderness</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="it_IT"><Text>Clicca una casella illuminata, poi Conferma.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="it_IT"><Text>Questo insediamento al momento non possiede alcuna casella pianeggiante o collinare vuota con Appeal Delizioso. Il nuovo parco attende che ne si liberi una.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="it_IT"><Text>Annullala e recupera {1_Gold} Oro</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="it_IT"><Text>Oro restituito</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="it_IT"><Text>Questo insediamento ha già un parco di questo tipo, o uno in attesa del suo terreno, quindi il progetto completato non aveva nulla da fondare. Il suo costo è stato restituito: {1_Gold} [icon:YIELD_GOLD] Oro.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="it_IT"><Text>L'insediamento che doveva fondare questo parco non è più tuo, quindi la fondazione è stata annullata. Il suo costo è stato restituito: {1_Gold} [icon:YIELD_GOLD] Oro.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="it_IT"><Text>Questo parco ha già raggiunto la dimensione massima, quindi l'espansione completata non ha aggiunto nulla. Il suo costo è stato restituito: {1_Gold} [icon:YIELD_GOLD] Oro.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="it_IT"><Text>Questo insediamento non ha più un parco da espandere, quindi l'espansione completata non ha aggiunto nulla. Il suo costo è stato restituito: {1_Gold} [icon:YIELD_GOLD] Oro.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="it_IT"><Text>{1_Settlement}: scegli dove fondare il parco nazionale</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="it_IT"><Text>{1_Settlement}: scegli dove fondare l'area wilderness</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="it_IT"><Text>Il parco nazionale è stato approvato. Scegli una casella vuota con Appeal Delizioso di questo insediamento dove fondarlo; in seguito potrà estendersi sulla terra intorno.</Text></Replace>

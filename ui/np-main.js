@@ -14,6 +14,10 @@
 //     parks follow their founding tile's owner, lost or built-on land is dropped, and a park is redrawn when its
 //     tiles, owner or visible tiles changed.
 //   Full size. A park stops at MAX_PARK_TILES; Expand National Park is then refused in its city.
+//   Nothing paid for is lost. A Found or Expand project that completes with nothing left to do (a second founding, a
+//     full park) is paid back in Gold at the purchase rate, as is a founding whose settlement is lost before its park
+//     is placed; a human is told why, on their own turn. A project that can no longer do anything is taken out of the
+//     player's build queue.
 //   Network games: CREATE_ELEMENT and the save's record are local, so there the mod writes nothing (np-core.js
 //     setReadOnly). Parks are read from the map at load and each turn, drawn, shaded and named; the founding rule and
 //     park-land protection apply; parks do not grow (Expand National Park is refused).
@@ -24,7 +28,8 @@ import {
   parkAtAnchor, allParkTiles, createPark, dissolvePark, reconcile, eligibleTiles, addTile,
   aiScore, aiTakes, aiSavingStep, tileGain, room, save, displayName, ensureMarkers, isFull, expansionPrice, settlementOf, scanMap, removeOrphanMarkers, removeOrphanWilds,
   setReadOnly, until, isIndependent, foundings, foundingById, addFounding, settlementHasKind, foundingTiles, foundPark,
-  dropFounding, GOLD_PER_PRODUCTION, gameAppeal,
+  dropFounding, GOLD_PER_PRODUCTION, gameAppeal, foundingRefund, foundingFate, completionOutcome, staleQueueEntries,
+  notices, noticesFor, addNotice, dropNotice,
 } from "./np-core.js";
 import * as core from "./np-core.js";
 import * as draw from "./np-draw.js";
@@ -33,11 +38,11 @@ import { registerLens, applySettings } from "./np-lens.js";
 import { setPurchaseHandler } from "./np-purchase.js";
 import { generateName, registerWithGeoLabels, unregisterFromGeoLabels, refreshGeoLabels } from "./np-names.js";
 import { openPicker, openFoundingPicker, offerFoundingDialog, chooseTile, confirmChoice, finishChoice, startPrompt, stopPrompt, noticeNoLand,
-  setBuyHandler, buySelected } from "./np-picker.js";
+  noticeRefund, setBuyHandler, buySelected } from "./np-picker.js";
 
 const G = globalThis;
 const KEY = "__towerNationalPark";
-const VERSION = "1.0.4";
+const VERSION = "1.1.0";
 const SETTLE_MS = 600;
 const EVENT_SETTLE_MS = 1500;
 // A park piece landing is drawn sooner, so new park land is not left bare while the dressing waits (about 2 s before).
@@ -49,7 +54,17 @@ registerLens();
 const state = { originals: null, wrappers: null, listeners: [], multiplayer: false, parkKeys: new Set(), projectKeys: new Set(),
   foundKeys: new Map(),   // Found project raw id or hash -> kind
   markerKeys: new Set(),  // park land markers (raw id and hash), whose landing redraws a park at once
-  on: false, sweepTimer: 0, sweepReason: null, offerTimer: 0, spending: 0, aiTurn: null, aiRuns: 0 };
+  on: false, sweepTimer: 0, sweepReason: null, aiTurn: null, aiRuns: 0,
+  // Per player, as hotseat seats share this script: a pop-up waiting for a clear screen ("offer:<player>",
+  // "notice:<player>", "noland:<founding>" -> timer), and Gold charged that has not left the treasury yet
+  // (player -> Gold).
+  timers: new Map(), spending: new Map() };
+
+/** Run `fn` after `ms`, in place of whatever was waiting under `key`. */
+function later(key, fn, ms) {
+  clearTimeout(state.timers.get(key));
+  state.timers.set(key, setTimeout(fn, ms));
+}
 
 // placement
 
@@ -103,13 +118,158 @@ function foundPrice(cityID, kind) {
   return Math.round(GOLD_PER_PRODUCTION * (cost > 0 ? cost : 400));
 }
 
-/** A founding was paid for: a human chooses the tile from the Choose land prompt, an AI's park is placed at once. */
-function startFounding(kind, owner, cityID, from) {
-  const f = addFounding(kind.key, owner, cityID);
-  log(`founding ${f.id}: ${kind.key} for ${owner}:${cityID.id} (${from})`);
+/** The price to give back for a founding whose record holds none (an older save's), when its own settlement may be
+ *  gone: the price in any settlement its owner still holds, else the project's listed cost at the purchase rate. */
+function foundPriceNow(owner, kind) {
+  const city = safe(() => Players.get(owner).Cities.getCities()[0], null);
+  if (city) return foundPrice(city.id, kind);
+  return Math.round(GOLD_PER_PRODUCTION * safe(() => GameInfo.Projects.lookup(kind.found).Cost, 400));
+}
+
+/** A settlement's name as the game holds it (a text tag, or the player's own words), or "". */
+function nameOfCity(cityID) { return safe(() => String(Cities.get(cityID).name || ""), ""); }
+
+// the build queue
+//
+// The wrapped placement query refuses a new Found request, but a project already in a build queue is the engine's and
+// completes whatever the mod answers. So a Found project is not queued twice, and a queued one that can no longer
+// found anything (the same founding was bought for Gold meanwhile) is taken out with the game's own queue edit, the
+// request its build queue panel sends for the remove button (model-build-queue.js cancelItem): a BUILD request with
+// InsertMode RemoveAt and the entry's position. A copy that completes all the same is paid back (onProjectCompleted).
+
+/** The project type of each entry in a settlement's build queue, in queue order; null for anything but a project. */
+function queuedProjects(cityID) {
+  const queue = safe(() => Cities.get(cityID).BuildQueue.getQueue(), null) || [];
+  return [...queue].map((e) => {
+    if (!e || e.projectType == null || !safe(() => e.orderType === OrderTypes.ORDER_ADVANCE, true)) return null;
+    return safe(() => GameInfo.Projects.lookup(e.projectType).ProjectType, null);
+  });
+}
+
+/** Whether a settlement's build queue already holds a kind's Found project. */
+function foundQueued(cityID, kind) { return queuedProjects(cityID).includes(kind.found); }
+
+/**
+ * Take out of a settlement's build queue the entries that can no longer do anything (np-core.js staleQueueEntries).
+ * Only the player at the screen's own queue, on their own turn: the request is the player's, and between the read and
+ * the request the queue must not move. Returns how many removals were sent.
+ */
+function pruneQueue(cityID) {
+  if (state.multiplayer || !cityID || !isLocal(cityID.owner) || safe(() => GameContext.hasSentTurnComplete(), false)) return 0;
+  const queue = queuedProjects(cityID);
+  if (!queue.some((t) => t)) return 0;
+  const stale = staleQueueEntries(queue, (key) => settlementHasKind(cityID, key), (key) => isFull(parkOfCity(cityID, key)));
+  let sent = 0;
+  for (const at of stale) {
+    const args = { InsertMode: CityOperationsParametersValues.RemoveAt, QueueLocation: at };
+    if (!safe(() => Game.CityOperations.canStart(cityID, CityOperationTypes.BUILD, args, false).Success, false)) {
+      log(`build queue of ${cityID.id}: ${queue[at]} at ${at} could not be removed`);
+      continue;
+    }
+    safe(() => Game.CityOperations.sendRequest(cityID, CityOperationTypes.BUILD, args));
+    log(`build queue of ${cityID.id}: ${queue[at]} at ${at} removed; it could no longer do anything`);
+    sent++;
+  }
+  return sent;
+}
+
+/** pruneQueue for every settlement of the player at the screen. */
+function pruneQueues() {
+  const me = safe(() => GameContext.localPlayerID, -1);
+  for (const city of safe(() => Players.get(me).Cities.getCities(), []) || []) pruneQueue(city.id);
+}
+
+// Gold in and out
+
+/**
+ * Take `price` Gold from a player's treasury; false when it is short. The Gold leaves a few seconds after the call, so
+ * what is still on its way out counts against that player's next purchase.
+ */
+function charge(owner, price) {
+  const balance = () => safe(() => Players.get(owner).Treasury.goldBalance, 0);
+  const gold = balance();
+  if (gold - (state.spending.get(owner) || 0) < price) return false;
+  state.spending.set(owner, (state.spending.get(owner) || 0) + price);
+  safe(() => Players.grantYield(owner, YieldTypes.YIELD_GOLD, -price));
+  until(() => balance() <= gold - price + 0.5, 10000)
+    .then(() => { state.spending.set(owner, Math.max(0, (state.spending.get(owner) || 0) - price)); });
+  return true;
+}
+
+function isAlive(owner) {
+  const alive = safe(() => Players.isAlive(owner), null);
+  return alive == null ? !!safe(() => Players.get(owner), null) : !!alive;
+}
+
+/**
+ * Give `gold` back to a player for something paid for that came to nothing. A human is told why: the notice is kept
+ * in the save's record and shown on that player's own turn (deliverNotices), at once when they are at the screen.
+ * `about` names the kind and the settlement or park for the notice; `tell` false when the player asked for it.
+ */
+function refund(owner, gold, why, about = {}, tell = true) {
+  if (state.multiplayer || !(gold > 0) || !isAlive(owner)) return false;
+  safe(() => Players.grantYield(owner, YieldTypes.YIELD_GOLD, gold));
+  log(`${gold} Gold returned to player ${owner} (${why})`);
+  if (tell && isHuman(owner)) { addNotice({ owner, why, gold, ...about }); later(`notice:${owner}`, () => deliverNotices(owner), 500); }
+  return true;
+}
+
+/** Show the player at the screen their waiting refund notices, one at a time, once nothing else is on screen. */
+function deliverNotices(owner, tries = 0) {
+  if (state.multiplayer || !isLocal(owner)) return;   // another seat's stay in the record until its own turn
+  const n = noticesFor(owner)[0];
+  if (!n) return;
+  if (noticeRefund(n)) { dropNotice(n.id); tries = 0; }
+  if (tries < 120 && noticesFor(owner).length) later(`notice:${owner}`, () => deliverNotices(owner, tries + 1), 2500);
+}
+
+/** A founding was paid for (`by` "gold" or "project", `paid` its price in Gold): a human chooses the tile from the
+ *  Choose land prompt, an AI's park is placed at once. */
+function startFounding(kind, owner, cityID, by, paid) {
+  const f = addFounding(kind.key, owner, cityID, { paid, by, name: nameOfCity(cityID) });
+  log(`founding ${f.id}: ${kind.key} for ${owner}:${cityID.id} (${by}, ${paid} Gold)`);
   if (!isHuman(owner)) autoFound(f);
-  else if (isLocal(owner) && !foundingTiles(cityID).length) setTimeout(() => noticeNoLand(null, f), 1500);
+  else if (isLocal(owner) && !foundingTiles(cityID).length) later(`noland:${f.id}`, () => tellNoLand(f.id), 1500);
   return f;
+}
+
+/** Tell the player at the screen that their founding has no land to stand on; it may wait, or be given up for what it
+ *  cost. The turn is recorded, and the reminder comes again FOUNDING_ASK_TURNS later (np-core.js foundingFate). */
+function tellNoLand(id) {
+  const f = foundingById(id);
+  if (!f || !isLocal(f.owner)) return;
+  f.asked = safe(() => Game.turn, 0);
+  save();
+  const gold = foundingRefund(f, foundPriceNow(f.owner, KINDS[f.kind] || KINDS.park));
+  noticeNoLand(null, f, { gold, run: () => cancelFounding(id) });
+}
+
+/** Give up a founding of the player at the screen for the Gold it cost. Returns the Gold returned. */
+function cancelFounding(id) {
+  const f = foundingById(id);
+  if (!f || !isLocal(f.owner) || state.multiplayer) return 0;
+  const gold = foundingRefund(f, foundPriceNow(f.owner, KINDS[f.kind] || KINDS.park));
+  dropFounding(id);
+  log(`founding ${id} given up by its owner`);
+  return refund(f.owner, gold, "cancelled", {}, false) ? gold : 0;
+}
+
+/** Settle one waiting founding (np-core.js foundingFate): a founding that cannot become a park gives its Gold back. */
+function settleFounding(f, reason) {
+  const kind = KINDS[f.kind] || KINDS.park;
+  const city = safe(() => Cities.get(f.city), null);
+  const fate = foundingFate({
+    settlement: !!city && safe(() => city.owner, -1) === f.owner, ownerAlive: isAlive(f.owner), human: isHuman(f.owner),
+    tiles: foundingTiles(f.city).length, turn: safe(() => Game.turn, 0), asked: f.asked,
+    paid: f.paid, price: f.paid > 0 ? 0 : foundPriceNow(f.owner, kind), readOnly: state.multiplayer,
+  });
+  if (fate.act === "refund" || fate.act === "drop") {
+    dropFounding(f.id);
+    log(`founding ${f.id} let go (${fate.why}${fate.gold ? `, ${fate.gold} Gold to return` : ""})`);
+    if (fate.act === "refund") refund(f.owner, fate.gold, fate.why, { kind: kind.key, name: f.name || "" });
+  } else if (fate.act === "ask" && reason === "turn" && isLocal(f.owner)) {
+    later(`noland:${f.id}`, () => tellNoLand(f.id), 1500);
+  }
 }
 
 /** Place an AI's founding on its best tile (every candidate is Charming or better): beside a natural wonder first, then
@@ -131,23 +291,20 @@ function buyFounding(cityID, kind) {
   const why = foundingRefusal(cityID, kind);
   if (why) return why === "hide" ? "LOC_NP_BUY_NONE" : why;
   const price = foundPrice(cityID, kind);
-  const balance = () => safe(() => Players.get(owner).Treasury.goldBalance, 0);
-  const gold = balance();
-  if (gold - state.spending < price) return "LOC_NP_BUY_GOLD";
-  state.spending += price;
-  safe(() => Players.grantYield(owner, YieldTypes.YIELD_GOLD, -price));
-  until(() => balance() <= gold - price + 0.5, 10000).then(() => { state.spending = Math.max(0, state.spending - price); });
-  const f = startFounding(kind, owner, cityID, `bought for ${price} Gold`);
-  setTimeout(() => offerFounding(f.id), 300);
+  if (!charge(owner, price)) return "LOC_NP_BUY_GOLD";
+  const f = startFounding(kind, owner, cityID, "gold", price);
+  // The same project in this city's build queue could now found nothing: it comes out.
+  pruneQueue(cityID);
+  later(`offer:${owner}`, () => offerFounding(f.id), 300);
   return "";
 }
 
-/** Offer a founding's pop-up (Choose land or Later) once nothing else is on screen, retrying meanwhile. */
+/** Offer a founding's pop-up (Choose land or Later) once nothing else is on screen, retrying meanwhile. It is its
+ *  owner's: once another player is at the screen the offer ends, and the Choose land prompt is the way in. */
 function offerFounding(id, tries = 0) {
-  clearTimeout(state.offerTimer);
   const f = foundingById(id);
   if (!f || !isLocal(f.owner) || !foundingTiles(f.city).length || offerFoundingDialog(f)) return;
-  if (tries < 120) state.offerTimer = setTimeout(() => offerFounding(id, tries + 1), 2500);
+  if (tries < 120) later(`offer:${f.owner}`, () => offerFounding(id, tries + 1), 2500);
 }
 
 // The AI weighs founding once a turn with its own Gold, as it weighs expansions: at peace, with Gold coming in, it
@@ -168,7 +325,7 @@ function foundAiParks() {
         const price = foundPrice(city.id, kind);
         if (safe(() => player.Treasury.goldBalance, 0) < price * 1.5) continue;
         safe(() => Players.grantYield(pid, YieldTypes.YIELD_GOLD, -price));
-        startFounding(kind, pid, city.id, `AI, ${price} Gold`);   // an AI's founding is placed at once (autoFound)
+        startFounding(kind, pid, city.id, "gold", price);   // an AI's founding is placed at once (autoFound)
         done = true;
         break;
       }
@@ -216,7 +373,8 @@ function wrapCanStart(original) {
       if (expandsFullPark(cityID, type, args)) return { ...(res || {}), Success: false };
       const fk = foundKindOf(type, args);
       if (fk) {
-        const why = foundingRefusal(cityID, fk);
+        // One at a time: a second copy in the build queue would complete with nothing left to found.
+        const why = foundingRefusal(cityID, fk) || (foundQueued(cityID, fk) ? "hide" : "");
         if (why === "hide") return { ...(res || {}), Success: false, Requirements: { ...((res && res.Requirements) || {}), MeetsRequirements: false } };
         if (why) return refuse(res, why);
         return res;
@@ -242,7 +400,7 @@ function wrapSendRequest(original) {
       if (state.multiplayer && safe(() => isExpandProject(type, args), false)) { log("Expand National Park refused: network game"); return false; }
       if (safe(() => expandsFullPark(cityID, type, args), false)) { log("Expand National Park refused: the park is at its full size"); return false; }
       const fk = safe(() => foundKindOf(type, args), null);
-      if (fk && safe(() => foundingRefusal(cityID, fk), "hide")) { log(`Found ${fk.key} refused in ${cityID && cityID.id}`); return false; }
+      if (fk && safe(() => foundingRefusal(cityID, fk) || (foundQueued(cityID, fk) ? "hide" : ""), "hide")) { log(`Found ${fk.key} refused in ${cityID && cityID.id}`); return false; }
       const rule = safe(() => ruleFor(type, args), null);
       const at = plotOfArgs(args);
       if (rule && at >= 0 && !rule.keep(at)) {
@@ -348,22 +506,35 @@ function growAiParks() {
 
 function onProjectCompleted(data) {
   if (state.multiplayer) return;
+  // A completion that can do nothing has still cost its city the production: that goes back as Gold, at the rate the
+  // same thing is sold for (np-core.js completionOutcome), and its owner is told.
+  const cityID = data.cityID || null;
   const founding = kindByFoundProject(safe(() => GameInfo.Projects.lookup(data.projectType).ProjectType, null));
   if (founding) {
-    const cityID = data.cityID;
-    if (!cityID || settlementHasKind(cityID, founding.key)) { log(`Found ${founding.key} completed with one already there`); return; }
-    const f = startFounding(founding, cityID.owner, cityID, "project");
-    if (f && isLocal(f.owner)) setTimeout(() => offerFounding(f.id), 1500);
+    const out = completionOutcome({ project: "found", settlement: !!cityID,
+      hasKind: !!cityID && settlementHasKind(cityID, founding.key), price: cityID ? foundPrice(cityID, founding) : 0 });
+    if (out.act !== "found") {
+      log(`Found ${founding.key} completed with nothing to found (${out.why})`);
+      if (out.act === "refund") refund(cityID.owner, out.gold, out.why, { kind: founding.key, name: nameOfCity(cityID) });
+      return;
+    }
+    const f = startFounding(founding, cityID.owner, cityID, "project", out.gold);
+    if (f && isLocal(f.owner)) later(`offer:${f.owner}`, () => offerFounding(f.id), 1500);
     return;
   }
   const kind = kindByProject(safe(() => GameInfo.Projects.lookup(data.projectType).ProjectType, null));
   if (!kind) return;
   const anchor = safe(() => idx(data.location), -1);
-  const find = () => { const a = parkAtAnchor(anchor); return a && kindOf(a) === kind ? a : parkOfCity(data.cityID, kind.key); };
+  const find = () => { const a = parkAtAnchor(anchor); return a && kindOf(a) === kind ? a : parkOfCity(cityID, kind.key); };
   let park = find();
   if (!park) { sweep("project"); park = find(); }
-  if (!park) { log(`Expand National Park completed at plot ${anchor} with no park there`); return; }
-  if (isFull(park)) { log(`park ${park.id} is at its full size; the expansion adds nothing`); return; }
+  const out = completionOutcome({ project: "expand", settlement: !!cityID, park: !!park, full: isFull(park),
+    price: cityID ? expansionPrice(cityID, kind) : 0 });
+  if (out.act !== "expand") {
+    log(park ? `park ${park.id} is at its full size; the expansion adds nothing` : `Expand National Park completed at plot ${anchor} with no park there`);
+    if (out.act === "refund") refund(cityID.owner, out.gold, out.why, { kind: kind.key, name: nameOfCity(cityID), park: park ? displayName(park) : "" });
+    return;
+  }
   park.pending = (park.pending || 0) + tilesPerExpansion();
   save();
   log(`park ${park.id} "${displayName(park)}" may take ${park.pending} tile(s)`);
@@ -381,29 +552,23 @@ function buyExpansion(park) {
   if (!park || !isLocal(owner) || state.multiplayer) return "LOC_NP_BUY_NONE";
   if (isFull(park)) return "LOC_NP_BUY_FULL";
   const price = expansionPrice(settlementOf(park), kindOf(park));
-  const balance = () => safe(() => Players.get(owner).Treasury.goldBalance, 0);
-  // The Gold leaves the treasury a few seconds after the call, so a second purchase in that window
-  // counts what is still on its way out.
-  const gold = balance();
-  if (gold - state.spending < price) return "LOC_NP_BUY_GOLD";
-  state.spending += price;
-  safe(() => Players.grantYield(owner, YieldTypes.YIELD_GOLD, -price));
-  until(() => balance() <= gold - price + 0.5, 10000).then(() => { state.spending = Math.max(0, state.spending - price); });
+  if (!charge(owner, price)) return "LOC_NP_BUY_GOLD";
   park.pending = (park.pending || 0) + tilesPerExpansion();
   save();
   log(`park ${park.id}: expansion bought for ${price} Gold; ${park.pending} tile(s) to take`);
   if (!eligibleTiles(park).length) setTimeout(() => noticeNoLand(park), 300);
-  else setTimeout(offerPicker, 300);
+  else later(`offer:${owner}`, () => offerPicker(owner), 300);
   return "";
 }
 
-/** Open the picker for the first local park with land to take, right after the player bought an expansion, retrying
- *  while a screen or another chooser is open. Otherwise the picker opens only from the Choose land prompt. */
-function offerPicker(tries = 0) {
-  clearTimeout(state.offerTimer);
-  const park = parks().find((p) => isLocal(p.owner) && p.pending > 0 && eligibleTiles(p).length);
+/** Open the picker for a player's first park with land to take, right after that player bought an expansion, retrying
+ *  while a screen or another chooser is open; it ends once another player is at the screen. Otherwise the picker opens
+ *  only from the Choose land prompt. */
+function offerPicker(owner = safe(() => GameContext.localPlayerID, -1), tries = 0) {
+  if (!isLocal(owner)) return;
+  const park = parks().find((p) => p.owner === owner && p.pending > 0 && eligibleTiles(p).length);
   if (!park || openPicker(park.id, "a Gold purchase")) return;
-  if (tries < 120) state.offerTimer = setTimeout(() => offerPicker(tries + 1), 2500);
+  if (tries < 120) later(`offer:${owner}`, () => offerPicker(owner, tries + 1), 2500);
 }
 
 // sweep
@@ -440,9 +605,14 @@ function sweep(reason) {
   // An AI's park picks its land when an expansion completes; one inherited from a human with tiles waiting picks now.
   for (const p of parks()) if (p.pending > 0 && !isHuman(p.owner) && !isIndependent(p.owner) && eligibleTiles(p).length) autoPick(p);
   if (reason === "turn") { growAiParks(); foundAiPass(); }
-  // A founding whose settlement is gone or changed hands is let go.
-  for (const f of [...foundings()]) if (!safe(() => Cities.get(f.city), null) || safe(() => Cities.get(f.city).owner, -1) !== f.owner) { dropFounding(f.id); log(`founding ${f.id} let go: its settlement changed hands`); }
+  // A founding whose settlement is gone or changed hands is let go, and what it cost goes back to its owner.
+  for (const f of [...foundings()]) settleFounding(f, reason);
   for (const f of foundings()) if (!isHuman(f.owner) && foundingTiles(f.city).length) autoFound(f);
+  if (reason === "turn" || reason === "load") {
+    const me = safe(() => GameContext.localPlayerID, -1);
+    if (reason === "turn") pruneQueues();
+    if (noticesFor(me).length) later(`notice:${me}`, () => deliverNotices(me), 500);
+  }
   for (const p of parks()) { const n = ensureMarkers(p); if (n) log(`park ${p.id}: ${n} land marker(s) placed`); }
   for (const p of parks()) {
     if (created.includes(p)) drawPark(p, [p.anchor]);
@@ -550,7 +720,8 @@ function stop() {
   state.wrappers = null;
   state.on = false;
   clearTimeout(state.sweepTimer);
-  clearTimeout(state.offerTimer);
+  for (const t of state.timers.values()) clearTimeout(t);
+  state.timers.clear();
   stopPrompt();
   clearAll();
   unregisterFromGeoLabels();
@@ -573,6 +744,11 @@ G[KEY] = {
   foundAiParks: () => { state.foundTurn = null; foundAiPass(); },
   foundings: () => foundings().map((f) => ({ ...f, tiles: foundingTiles(f.city).length })),
   buyFounding: (cityID, key = "park") => buyFounding(cityID, KINDS[key]),
+  // Probes only: give up a founding for its Gold, the refund notices waiting, a city's queued projects and its pruning.
+  cancelFounding, notices: () => notices().map((n) => ({ ...n })), queuedProjects, pruneQueue,
+  projectCompleted: (data) => onProjectCompleted(data),
+  // Probes only: a founding's pop-up and picker, as the purchase opens them.
+  offerFounding: (id) => offerFounding(id), openFoundingPicker: (id) => openFoundingPicker(id, "a probe"),
   foundingRefusal: (cityID, key = "park") => foundingRefusal(cityID, KINDS[key]),
   aiFacts: (id) => { const p = core.parkById(id); if (!p) return null; const f = { ...aiFacts(p), fund: p.aiFund || 0 }; return { ...f, step: aiSavingStep(f) }; },
   nativeCanStart: () => state.originals && { ops: state.originals.opsCan, cmds: state.originals.cmdCan },

@@ -226,6 +226,24 @@
         <Row Tag="LOC_NP_FOUND_NONE">
             <Text>This settlement owns no empty, Charming flat or hill tile right now. The new park waits until one is free.</Text>
         </Row>
+        <Row Tag="LOC_NP_FOUND_CANCEL">
+            <Text>Cancel it and take back {1_Gold} Gold</Text>
+        </Row>
+        <Row Tag="LOC_NP_REFUND_TITLE">
+            <Text>Gold returned</Text>
+        </Row>
+        <Row Tag="LOC_NP_REFUND_DUPLICATE">
+            <Text>This settlement already has a park of this kind, or one waiting for its land, so the finished project had nothing to found. Its cost has been returned: {1_Gold} [icon:YIELD_GOLD] Gold.</Text>
+        </Row>
+        <Row Tag="LOC_NP_REFUND_SETTLEMENT">
+            <Text>The settlement that was going to found this park is no longer yours, so the founding has been cancelled. Its cost has been returned: {1_Gold} [icon:YIELD_GOLD] Gold.</Text>
+        </Row>
+        <Row Tag="LOC_NP_REFUND_FULL">
+            <Text>This park is already at its full size, so the finished expansion added nothing. Its cost has been returned: {1_Gold} [icon:YIELD_GOLD] Gold.</Text>
+        </Row>
+        <Row Tag="LOC_NP_REFUND_NO_PARK">
+            <Text>This settlement no longer has a park to expand, so the finished expansion added nothing. Its cost has been returned: {1_Gold} [icon:YIELD_GOLD] Gold.</Text>
+        </Row>
         <Row Tag="LOC_NP_FOUND_PROMPT">
             <Text>{1_Settlement}: choose where to found the National Park</Text>
         </Row>

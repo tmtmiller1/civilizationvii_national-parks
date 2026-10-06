@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="ru_RU"><Text>{1_Settlement}: новая территория дикой природы</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="ru_RU"><Text>Щелкните по подсвеченной клетке, затем нажмите «Подтвердить».</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="ru_RU"><Text>В этом поселении сейчас нет пустой притягивающей равнинной или холмистой клетки. Новый парк подождет, пока такая освободится.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="ru_RU"><Text>Отменить и вернуть золото ({1_Gold})</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="ru_RU"><Text>Золото возвращено</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="ru_RU"><Text>В этом поселении уже есть парк такого вида или парк, ожидающий своей земли, поэтому завершенному проекту было нечего основывать. Его стоимость возвращена: {1_Gold} [icon:YIELD_GOLD] золота.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="ru_RU"><Text>Поселение, которое должно было основать этот парк, больше не принадлежит вам, поэтому основание отменено. Его стоимость возвращена: {1_Gold} [icon:YIELD_GOLD] золота.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="ru_RU"><Text>Этот парк уже достиг полного размера, поэтому завершенное расширение ничего не добавило. Его стоимость возвращена: {1_Gold} [icon:YIELD_GOLD] золота.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="ru_RU"><Text>В этом поселении больше нет парка, который можно расширить, поэтому завершенное расширение ничего не добавило. Его стоимость возвращена: {1_Gold} [icon:YIELD_GOLD] золота.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="ru_RU"><Text>{1_Settlement}: выберите, где основать национальный парк</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="ru_RU"><Text>{1_Settlement}: выберите, где основать территорию дикой природы</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="ru_RU"><Text>Национальный парк одобрен. Выберите пустую притягивающую клетку этого поселения, где его основать; позже он сможет разрастись на окрестные земли.</Text></Replace>

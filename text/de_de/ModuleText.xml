@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="de_DE"><Text>{1_Settlement}: neues Wildnisgebiet</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="de_DE"><Text>Klickt auf ein leuchtendes Geländefeld und dann auf Bestätigen.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="de_DE"><Text>Diese Siedlung besitzt derzeit kein leeres, charmantes Geländefeld mit ebenem Gelände oder Hügel. Der neue Park wartet, bis eines frei ist.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="de_DE"><Text>Aufgeben und {1_Gold} Gold zurückerhalten</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="de_DE"><Text>Gold zurückerstattet</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="de_DE"><Text>Diese Siedlung hat bereits einen Park dieser Art oder einen, der auf sein Land wartet; das abgeschlossene Projekt konnte daher nichts gründen. Seine Kosten wurden zurückerstattet: {1_Gold} [icon:YIELD_GOLD] Gold.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="de_DE"><Text>Die Siedlung, die diesen Park gründen sollte, gehört nicht mehr Euch; die Gründung wurde daher aufgehoben. Ihre Kosten wurden zurückerstattet: {1_Gold} [icon:YIELD_GOLD] Gold.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="de_DE"><Text>Dieser Park hat bereits seine volle Größe; die abgeschlossene Erweiterung hat daher nichts hinzugefügt. Ihre Kosten wurden zurückerstattet: {1_Gold} [icon:YIELD_GOLD] Gold.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="de_DE"><Text>Diese Siedlung hat keinen Park mehr, der erweitert werden könnte; die abgeschlossene Erweiterung hat daher nichts hinzugefügt. Ihre Kosten wurden zurückerstattet: {1_Gold} [icon:YIELD_GOLD] Gold.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="de_DE"><Text>{1_Settlement}: Wählt, wo der Nationalpark gegründet wird</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="de_DE"><Text>{1_Settlement}: Wählt, wo das Wildnisgebiet gegründet wird</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="de_DE"><Text>Der Nationalpark wurde genehmigt. Wählt ein leeres, charmantes Feld dieser Siedlung, auf dem er gegründet wird; später kann er über das umliegende Land wachsen.</Text></Replace>

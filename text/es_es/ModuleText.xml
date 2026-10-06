@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="es_ES"><Text>{1_Settlement}: nueva Área silvestre</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="es_ES"><Text>Haz clic en una casilla iluminada y después en Confirmar.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="es_ES"><Text>Este asentamiento no tiene ahora ninguna casilla llana o de colina vacía con Atractivo Encantador. El nuevo parque espera hasta que haya una libre.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="es_ES"><Text>Cancelarla y recuperar {1_Gold} de Oro</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="es_ES"><Text>Oro devuelto</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="es_ES"><Text>Este asentamiento ya tiene un parque de este tipo, o uno a la espera de su terreno, así que el proyecto terminado no tenía nada que fundar. Se ha devuelto su coste: {1_Gold} [icon:YIELD_GOLD] de Oro.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="es_ES"><Text>El asentamiento que iba a fundar este parque ya no es tuyo, así que la fundación se ha cancelado. Se ha devuelto su coste: {1_Gold} [icon:YIELD_GOLD] de Oro.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="es_ES"><Text>Este parque ya tiene su tamaño máximo, así que la ampliación terminada no ha añadido nada. Se ha devuelto su coste: {1_Gold} [icon:YIELD_GOLD] de Oro.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="es_ES"><Text>Este asentamiento ya no tiene ningún parque que ampliar, así que la ampliación terminada no ha añadido nada. Se ha devuelto su coste: {1_Gold} [icon:YIELD_GOLD] de Oro.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="es_ES"><Text>{1_Settlement}: elige dónde fundar el parque nacional</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="es_ES"><Text>{1_Settlement}: elige dónde fundar el área silvestre</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="es_ES"><Text>El parque nacional ha sido aprobado. Elige una casilla vacía de Atractivo Encantador de este asentamiento donde fundarlo; más adelante podrá extenderse por la tierra que lo rodea.</Text></Replace>

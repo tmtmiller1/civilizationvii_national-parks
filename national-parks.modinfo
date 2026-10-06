@@ -7,7 +7,7 @@
 		<Package>NationalPark</Package>
 		<PackageSortIndex>1000</PackageSortIndex>
 		<ShowInBrowser>1</ShowInBrowser>
-		<Version>1.0.4</Version>
+		<Version>1.1.0</Version>
 	</Properties>
 	<Dependencies>
 		<Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME"/>
@@ -107,7 +107,7 @@
 					<Item>ui/np-purchase.js</Item>
 					<Item>ui/np-names.js</Item>
 					<Item>ui/np-wildlife.js</Item>
-					<Item>ui/np-scene.js</Item>
+					<Item>ui/np-plan.js</Item>
 					<Item>ui/np-lens.js</Item>
 					<Item>ui/np-settings.js</Item>
 					<Item>ui/np-options.js</Item>
@@ -171,7 +171,7 @@
 					<Item>ui/np-purchase.js</Item>
 					<Item>ui/np-names.js</Item>
 					<Item>ui/np-wildlife.js</Item>
-					<Item>ui/np-scene.js</Item>
+					<Item>ui/np-plan.js</Item>
 					<Item>ui/np-lens.js</Item>
 					<Item>ui/np-settings.js</Item>
 					<Item>ui/np-options.js</Item>

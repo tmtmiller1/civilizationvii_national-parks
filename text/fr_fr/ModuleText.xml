@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="fr_FR"><Text>{1_Settlement} : nouvelle zone de nature sauvage</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="fr_FR"><Text>Cliquez sur une case éclairée, puis sur Confirmer.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="fr_FR"><Text>Cette colonie ne possède actuellement aucune case plate ou de colline vide d'attrait charmant. Le nouveau parc attend qu'une case se libère.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="fr_FR"><Text>L'annuler et récupérer {1_Gold} Or</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="fr_FR"><Text>Or restitué</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="fr_FR"><Text>Cette colonie possède déjà un parc de ce type, ou un parc en attente de sa case ; le projet achevé n'avait donc rien à fonder. Son coût vous a été restitué : {1_Gold} [icon:YIELD_GOLD] Or.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="fr_FR"><Text>La colonie qui devait fonder ce parc ne vous appartient plus ; la fondation a donc été annulée. Son coût vous a été restitué : {1_Gold} [icon:YIELD_GOLD] Or.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="fr_FR"><Text>Ce parc a déjà atteint sa taille maximale ; l'agrandissement achevé n'a donc rien ajouté. Son coût vous a été restitué : {1_Gold} [icon:YIELD_GOLD] Or.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="fr_FR"><Text>Cette colonie n'a plus de parc à agrandir ; l'agrandissement achevé n'a donc rien ajouté. Son coût vous a été restitué : {1_Gold} [icon:YIELD_GOLD] Or.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="fr_FR"><Text>{1_Settlement} : choisissez où fonder le parc national</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="fr_FR"><Text>{1_Settlement} : choisissez où fonder la zone de nature sauvage</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="fr_FR"><Text>Le parc national a été approuvé. Choisissez une case vide d'attrait charmant de cette colonie où le fonder ; il pourra plus tard s'étendre sur les terres alentour.</Text></Replace>

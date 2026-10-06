@@ -162,6 +162,7 @@ export function resourceAt(i) {
 }
 /** The rural improvements on a plot that a park would strip: every improvement but the park's own. */
 export function strippableAt(i) {
+  if (isStrewnResource(i)) return [];   // the tile is left as it stands (STREWN_RESOURCES)
   return constructiblesAt(i).filter((c) => isRuralImprovement(c.type));
 }
 export function hasResource(i) {
@@ -180,6 +181,17 @@ export function isMarkerType(type) { return MARKER_TYPES.has(type); }
 /** Improvements a park keeps where they stand: an Expedition Base lets a mountain or wonder be worked, and a park
  *  allows it (such a tile carries no marker). Both names are the Expedition Base in the Modern database. */
 export const KEPT_IMPROVEMENTS = new Set(["IMPROVEMENT_EXPEDITION_BASE", "IMPROVEMENT_MOUNTAIN"]);
+/**
+ * Resources the game draws by strewing pieces over the tile itself, which nothing but the game can put back once a
+ * district hides them (np-plan.js RESOURCE_MODELS has the rest, whose model a script can place). A tile with one of
+ * these joins a park as a wonder's Expedition Base does: it keeps whatever stands on it, gets no district and no
+ * marker, and so looks exactly as the game draws it, paying its own yields instead of the park's (owner's rule,
+ * 2026-10-05).
+ */
+export const STREWN_RESOURCES = new Set(["RESOURCE_TEA", "RESOURCE_COTTON", "RESOURCE_CITRUS", "RESOURCE_SUGAR", "RESOURCE_JADE",
+  "RESOURCE_NITER", "RESOURCE_SALT", "RESOURCE_RUBIES", "RESOURCE_IVORY", "RESOURCE_HORSES", "RESOURCE_WOOL", "RESOURCE_HIDES",
+  "RESOURCE_FURS", "RESOURCE_TRUFFLES", "RESOURCE_CLOVES", "RESOURCE_LAPIS_LAZULI", "RESOURCE_NICKEL"]);
+export function isStrewnResource(i) { return STREWN_RESOURCES.has(resourceAt(i).replace(/_DISTANT_LANDS$/, "")); }
 /** What may stand on park land: the park's markers and a kept improvement. */
 export function isParkCompatible(type) { return isMarkerType(type) || KEPT_IMPROVEMENTS.has(type); }
 /** Constructibles that are not the park's own markers: what would make a tile someone else's. */
@@ -292,18 +304,122 @@ export function markerFor(park) { return landMarker(kindOf(park), parkLevel(park
 // places an improvement only on a tile that already carries a rural district, and never on a bare one, so a park
 // could only replace a farm. A completed or bought founding is recorded here and the park is
 // placed by script on the empty tile its owner chooses (np-picker.js), or an AI's best one.
-// Record: { id, kind, owner, city: ComponentID, made }
+// Record: { id, kind, owner, city: ComponentID, made, paid, by, name, asked }
+//   paid   the Gold the founding cost its owner: the price of a purchase, or a completed project's production at the
+//          purchase rate. What goes back if the founding ends without a park. Absent in older saves (foundingRefund).
+//   by     "gold" or "project"
+//   name   the settlement's name as the game holds it, for a notice once the settlement is gone
+//   asked  the turn its owner was last told it has no land (foundingFate); absent until then
 
 export function foundings() { const s = load(); if (!Array.isArray(s.foundings)) s.foundings = []; return s.foundings; }
 export function foundingById(id) { return foundings().find((f) => f.id === id) || null; }
-export function addFounding(kind, owner, city) {
+export function addFounding(kind, owner, city, cost = {}) {
   const s = load();
   const f = { id: s.nextId++, kind, owner, city: { owner: city.owner, id: city.id, type: city.type }, made: safe(() => Game.turn, 0) };
+  if (cost.paid > 0) { f.paid = Math.round(cost.paid); f.by = cost.by || "gold"; }
+  if (cost.name) f.name = String(cost.name);
   foundings().push(f);
   save();
   return f;
 }
 export function dropFounding(id) { const s = load(); s.foundings = foundings().filter((f) => f.id !== id); save(); }
+
+/** Pure: the Gold a founding gives back, what its record says was paid, or `price` (the price now) for an older
+ *  save's record, which holds no figure. */
+export function foundingRefund(f, price = 0) {
+  const paid = Number(f && f.paid);
+  return Math.max(0, Math.round(paid > 0 ? paid : Number(price) || 0));
+}
+
+/** Turns between reminders that a founding still has no land to stand on. */
+export const FOUNDING_ASK_TURNS = 10;
+
+/**
+ * What becomes of a founding still waiting for its tile (pure). Facts: settlement (it stands and is still its owner's),
+ * ownerAlive, human, tiles (how many tiles it could be founded on now), turn, asked (the turn its owner was last told
+ * it has no land; null when never), paid, price (see foundingRefund), readOnly (a network game).
+ * Returns { act, why, gold }:
+ *   "keep"    it waits (an AI's with land is placed by the sweep)
+ *   "refund"  it ends and `gold` goes back to its owner: the settlement is gone or changed hands ("settlement"), or
+ *             an AI's has no land left ("no-land"; a human decides that for themselves, see "ask")
+ *   "ask"     a human's has no land and its owner was never told, or not for FOUNDING_ASK_TURNS: they are told, and
+ *             may give it up for the Gold
+ *   "drop"    it ends with nothing to give back: its owner is out of the game, or the game is a network game, where
+ *             nothing is written
+ */
+export function foundingFate(f) {
+  const gold = foundingRefund(f, f.price);
+  if (!f.settlement) {
+    if (f.readOnly) return { act: "drop", why: "settlement", gold: 0 };
+    if (!f.ownerAlive) return { act: "drop", why: "owner", gold: 0 };
+    return gold > 0 ? { act: "refund", why: "settlement", gold } : { act: "drop", why: "settlement", gold: 0 };
+  }
+  if (f.readOnly || f.tiles > 0) return { act: "keep", why: "", gold: 0 };
+  if (!f.human) return gold > 0 ? { act: "refund", why: "no-land", gold } : { act: "drop", why: "no-land", gold: 0 };
+  // Never told yet, or a turn counter below the one recorded (a new age's): the reminder is due.
+  const due = f.asked == null || f.turn - f.asked >= FOUNDING_ASK_TURNS || f.turn < f.asked;
+  return { act: due ? "ask" : "keep", why: "no-land", gold };
+}
+
+/**
+ * What a completed Found or Expand project does (pure). Facts: project ("found" or "expand"), settlement (the
+ * completion names one, so there is someone to pay), hasKind (found: the settlement already holds that kind of park,
+ * or one waiting for its tile), park and full (expand: its park was found, and is at its full size), price (the
+ * project's cost at the purchase rate, what the same thing costs in Gold).
+ * Returns { act, why, gold }: "found" or "expand" when it does what it was built for (`gold` is then what a founding
+ * records as paid); "refund" when it can do nothing and its cost goes back as `gold` ("duplicate", "full", "no-park");
+ * "drop" only when no settlement is named and so no one can be paid.
+ */
+export function completionOutcome(f) {
+  const gold = Math.max(0, Math.round(Number(f.price) || 0));
+  const back = (why) => (f.settlement && gold > 0 ? { act: "refund", why, gold } : { act: "drop", why, gold: 0 });
+  if (f.project === "found") {
+    if (!f.settlement) return { act: "drop", why: "no-settlement", gold: 0 };
+    return f.hasKind ? back("duplicate") : { act: "found", why: "", gold };
+  }
+  if (!f.park) return back("no-park");
+  if (f.full) return back("full");
+  return { act: "expand", why: "", gold: 0 };
+}
+
+/**
+ * Which entries of a settlement's build queue can no longer do anything (pure): a Found project where the settlement
+ * has that kind of park or one waiting for its tile, any second copy of a Found project, and an Expand project for a
+ * park at its full size. `queue` lists each entry's project type in queue order (null for anything else); `has(key)`
+ * and `full(key)` answer for a kind's key. Returns the entries' positions, last first, so that taking one out leaves
+ * the positions before it naming the same entries.
+ */
+export function staleQueueEntries(queue, has, full) {
+  const out = [];
+  for (const k of Object.values(KINDS)) {
+    let one = !!has(k.key);
+    const done = !!full(k.key);
+    queue.forEach((type, i) => {
+      if (type === k.found) { if (one) out.push(i); one = true; }
+      else if (type === k.project && done) out.push(i);
+    });
+  }
+  return out.sort((a, b) => b - a);
+}
+
+// notices: Gold given back, waiting to be told
+//
+// A refund can land while its owner is not the player at the screen (a hotseat seat's settlement falls on another
+// seat's turn), and a pop-up raised then would be read by the wrong player. So each is recorded in the save's record
+// and shown to its owner on their own turn (np-main.js deliverNotices), across a save and reload too.
+// Record: { id, owner, why, gold, kind, name, park }: `why` as completionOutcome and foundingFate give it, `name` the
+// settlement's name, `park` the park's.
+
+export function notices() { const s = load(); if (!Array.isArray(s.notices)) s.notices = []; return s.notices; }
+export function noticesFor(owner) { return notices().filter((n) => n.owner === owner); }
+export function addNotice(n) {
+  const s = load();
+  const row = { ...n, id: s.nextId++ };
+  notices().push(row);
+  save();
+  return row;
+}
+export function dropNotice(id) { const s = load(); s.notices = notices().filter((n) => n.id !== id); save(); }
 /** Whether a settlement holds a park of `kind`, or has one paid for and waiting for its tile. */
 export function settlementHasKind(city, kind) {
   if (!city) return false;
@@ -577,7 +693,7 @@ async function markTile(park, i, city) {
   // placeMarker already left it: a marker created there replaced the improvement in place (one improvement per plot)
   // and the citizen who worked it was lost (two AI cities lost a citizen
   // each when their park took a worked mountain, IMPROVEMENT_MOUNTAIN, through addTile).
-  if (constructiblesAt(i).some((c) => KEPT_IMPROVEMENTS.has(c.type))) return true;
+  if (constructiblesAt(i).some((c) => KEPT_IMPROVEMENTS.has(c.type)) || isStrewnResource(i)) return true;
   const want = parkDistrictKind(i), have = districtKind(i);
   if ((have === "rural" || have === "wild") && have !== want) {
     // Park land sits on a wilderness district, not a rural one: the game offers a rural tile beside a city's urban core
@@ -620,7 +736,7 @@ async function removeDistrict(park, i, city, owner) {
  *  none, nor does a tile holding a kept improvement (an Expedition Base). Returns true when a sequence was started. */
 export function placeMarker(park, i) {
   if (readOnly || !park || i === park.anchor || ownerOf(i) !== park.owner || isSettling(i) || isIndependent(park.owner)) return false;
-  if ((failures.get(i) || 0) >= MAX_TRIES) return false;
+  if ((failures.get(i) || 0) >= MAX_TRIES || isStrewnResource(i)) return false;
   const plot = readPlot(i);
   if (plot.stray || plot.items.some((c) => isParkCompatible(c.type))) return false;
   const city = tileCityOf(i);

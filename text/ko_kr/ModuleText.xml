@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="ko_KR"><Text>{1_Settlement}: 새 원생지역</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="ko_KR"><Text>빛나는 타일을 클릭한 뒤 확정을 누르세요.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="ko_KR"><Text>지금 이 정착지에는 빈 멋진 매력도 평지 또는 언덕 타일이 없습니다. 타일이 빌 때까지 새 공원이 대기합니다.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="ko_KR"><Text>취소하고 금 {1_Gold} 돌려받기</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="ko_KR"><Text>금 반환</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="ko_KR"><Text>이 정착지에는 이미 같은 종류의 공원이 있거나 땅을 기다리는 공원이 있어, 완료된 프로젝트로 설립할 것이 없었습니다. 비용이 반환되었습니다: {1_Gold} [icon:YIELD_GOLD] 금.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="ko_KR"><Text>이 공원을 설립하려던 정착지가 더 이상 당신의 것이 아니어서 설립이 취소되었습니다. 비용이 반환되었습니다: {1_Gold} [icon:YIELD_GOLD] 금.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="ko_KR"><Text>이 공원은 이미 최대 크기여서, 완료된 확장으로 추가된 것이 없습니다. 비용이 반환되었습니다: {1_Gold} [icon:YIELD_GOLD] 금.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="ko_KR"><Text>이 정착지에는 확장할 공원이 더 이상 없어, 완료된 확장으로 추가된 것이 없습니다. 비용이 반환되었습니다: {1_Gold} [icon:YIELD_GOLD] 금.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="ko_KR"><Text>{1_Settlement}: 국립공원을 설립할 곳을 고르세요</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="ko_KR"><Text>{1_Settlement}: 원생지역을 설립할 곳을 고르세요</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="ko_KR"><Text>국립공원 설립이 승인되었습니다. 이 정착지가 소유한 빈 멋진 매력도 타일을 골라 설립할 곳을 정하세요. 나중에 주변 땅으로 넓힐 수 있습니다.</Text></Replace>

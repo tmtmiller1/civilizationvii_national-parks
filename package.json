@@ -1,10 +1,10 @@
 {
   "name": "national-parks",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check ui/np-purchase.js ui/np-core.js ui/np-draw.js ui/np-names.js ui/np-main.js ui/np-picker.js ui/np-wildlife.js ui/np-scene.js ui/np-lens.js ui/np-settings.js ui/np-options.js",
+    "check": "node --check ui/np-purchase.js ui/np-core.js ui/np-draw.js ui/np-names.js ui/np-main.js ui/np-picker.js ui/np-wildlife.js ui/np-plan.js ui/np-lens.js ui/np-settings.js ui/np-options.js",
     "test": "node --test tests/*.test.mjs",
     "verify": "npm run check && npm run test"
   }

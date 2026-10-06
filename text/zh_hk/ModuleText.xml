@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="zh_Hant_HK"><Text>{1_Settlement}：新的荒野保護區</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="zh_Hant_HK"><Text>點擊一個亮起的格位，然後按下「確認」。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="zh_Hant_HK"><Text>此聚落目前沒有迷人的空置平坦或丘陵格位。新公園會保留，直到有格位空出為止。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="zh_Hant_HK"><Text>取消並取回{1_Gold}金幣</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="zh_Hant_HK"><Text>金幣已退還</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="zh_Hant_HK"><Text>此聚落已有一座同類公園，或有一座正在等待土地，因此完成的專案無可建立。其花費已退還：{1_Gold} [icon:YIELD_GOLD] 金幣。</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="zh_Hant_HK"><Text>原本要建立這座公園的聚落已不再屬於你，因此建立已取消。其花費已退還：{1_Gold} [icon:YIELD_GOLD] 金幣。</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="zh_Hant_HK"><Text>這座公園已達到上限，因此完成的擴展沒有增加任何格位。其花費已退還：{1_Gold} [icon:YIELD_GOLD] 金幣。</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="zh_Hant_HK"><Text>此聚落已沒有可擴展的公園，因此完成的擴展沒有增加任何格位。其花費已退還：{1_Gold} [icon:YIELD_GOLD] 金幣。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="zh_Hant_HK"><Text>{1_Settlement}：選擇國家公園的建立地點</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="zh_Hant_HK"><Text>{1_Settlement}：選擇荒野保護區的建立地點</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="zh_Hant_HK"><Text>國家公園已獲批准。請選擇該聚落擁有的一個迷人空置格位作為建立地點；之後它可以擴展到周圍的土地。</Text></Replace>

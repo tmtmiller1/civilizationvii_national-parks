@@ -88,10 +88,10 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_TITLE" Language="zh_Hans_CN"><Text>易主</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_PARA_1" Language="zh_Hans_CN"><Text>定居点被征服时，其公园会连同所有地块归新所有者所有。被其他玩家夺取的单个公园地块将脱离公园。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_TITLE" Language="zh_Hans_CN"><Text>公园外观</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>每座公园都根据其地形绘制：森林地块上布满树林，丘陵上有树木、岩石和石堆，湖泊和河流中有睡莲叶和芦苇，偶尔还有划艇；陆地边缘有低矮的石墙和几段栅栏，与开阔水域相接处有浮标。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="zh_Hans_CN"><Text>国家公园的建立地块上有管理员小屋和野餐亭，扩建后会出现木屋，丘陵上还有瞭望塔。荒野保护区没有任何建筑。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>每座公园都根据其地形作为一个整体来规划：树林布满森林地块，并向开阔地带逐渐稀疏，水岸和树林边缘有成片的树木，还有零星的灌木、岩石和芦苇；陆地边缘有低矮的石墙和几段栅栏，与开阔水域相接处有浮标。带有资源的地块外观一如往常。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="zh_Hans_CN"><Text>国家公园的建立地块上有管理员小屋和野餐亭，扩建后会出现露营地、木屋、另一座野餐亭和丘陵上的瞭望塔，它们都通过步道与管理员小屋相连。两类公园都会随着扩建获得纪念物：先是一座石堆，然后是一座方尖碑（荒野保护区则为支石墓），之后是第二座石堆。荒野保护区没有任何建筑，也没有步道。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_TITLE" Language="zh_Hans_CN"><Text>野生动物</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="zh_Hans_CN"><Text>每个地块都有相应的动物：野牛、马、鹿、驼鹿、骆驼、绵羊、羊驼、大象、狐狸、鹤和螃蟹，空中有飞鸟和蝴蝶，湖泊和河流中有鱼，海中有鱼群、珊瑚礁鱼，偶尔还有鲸鱼。相邻地块不会出现相同的兽群、鸟群或鱼。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="zh_Hans_CN"><Text>各片土地都有相应的动物：野牛、马、鹿、驼鹿、骆驼、绵羊、羊驼、大象、狐狸、鹤和螃蟹，空中有飞鸟和蝴蝶，湖泊和河流中有鱼，海中有鱼群、珊瑚礁鱼，偶尔还有鲸鱼。公园内每一片连续的同种生物群落都有自己的群居动物和鸟类，兽群会待在远离人和道路的开阔地带。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_TITLE" Language="zh_Hans_CN"><Text>边界</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_BORDER_PARA_1" Language="zh_Hans_CN"><Text>虚线精确标示出公园包含的地块：国家公园为绿色，荒野保护区为赭色。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_NAMES_TITLE" Language="zh_Hans_CN"><Text>名称</Text></Replace>

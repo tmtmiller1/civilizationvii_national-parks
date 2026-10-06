@@ -70,6 +70,12 @@
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="pt_BR"><Text>{1_Settlement}: nova Área Silvestre</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="pt_BR"><Text>Clique em um painel aceso e depois em Confirmar.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_NONE" Language="pt_BR"><Text>Este Assentamento não tem, no momento, nenhum painel plano ou acidentado vazio e Encantador. O novo parque espera até que um fique livre.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_CANCEL" Language="pt_BR"><Text>Cancelar e recuperar {1_Gold} de Ouro</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_TITLE" Language="pt_BR"><Text>Ouro devolvido</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="pt_BR"><Text>Este Assentamento já tem um parque deste tipo, ou um à espera do seu terreno, então o projeto concluído não tinha nada para fundar. O custo foi devolvido: {1_Gold} [icon:YIELD_GOLD] de Ouro.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="pt_BR"><Text>O Assentamento que ia fundar este parque não é mais seu, então a fundação foi cancelada. O custo foi devolvido: {1_Gold} [icon:YIELD_GOLD] de Ouro.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_FULL" Language="pt_BR"><Text>Este parque já está no tamanho máximo, então a expansão concluída não adicionou nada. O custo foi devolvido: {1_Gold} [icon:YIELD_GOLD] de Ouro.</Text></Replace>
+        <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="pt_BR"><Text>Este Assentamento não tem mais um parque para expandir, então a expansão concluída não adicionou nada. O custo foi devolvido: {1_Gold} [icon:YIELD_GOLD] de Ouro.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="pt_BR"><Text>{1_Settlement}: escolha onde fundar o Parque Nacional</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="pt_BR"><Text>{1_Settlement}: escolha onde fundar a Área Silvestre</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="pt_BR"><Text>O Parque Nacional foi aprovado. Escolha um painel vazio e Encantador deste Assentamento onde fundá-lo; depois ele poderá crescer pelas terras ao redor.</Text></Replace>

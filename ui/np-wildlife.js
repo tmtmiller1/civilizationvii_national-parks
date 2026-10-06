@@ -10,8 +10,8 @@
 //   Effects (VFX_Bird_*, VFX_Butterfly_*, VFX_Insect_*, VFX_Fish_Jump) animate on their own: flocks wheel
 //   overhead, butterflies flutter, a fish leaps now and then.
 //
-// Which tiles carry which animals is planned for the whole park (np-scene.js), so neighbors do not repeat; the
-// details on a tile are hashed from its plot, so a park keeps the same animals across reloads.
+// Which animals a park carries, and where each stands, is planned for the whole park (np-plan.js): a region has one
+// herd animal and one bird, and a herd keeps to open ground the plan reserved for it.
 "use strict";
 
 import { hash01 } from "./np-core.js";
@@ -24,26 +24,27 @@ import { hash01 } from "./np-core.js";
  * it) plus this. In pre-release builds every animal was lifted 8 + 24 x scale from zero, which floated them on low ground (the fox
  * on a shore, camels on a cliff's lip) and buried them on hills.
  */
-// Scales are set against the park's buildings (np-draw.js STATION), from the models' own heights (asset catalog,
-// 2026-10-04): an animal stands about two and a half times its true size beside a cabin, so it still shows at map zoom, and none
-// under two model units. At the first scales (0.4 to 0.5) an elk stood three times the height of a village cabin.
+// Scales are set against the park's buildings (np-plan.js), from the models' own heights (asset catalog, 2026-10-04).
+// At the first scales (0.4 to 0.5) an elk stood three times the height of a village cabin; at two and a half times
+// true size (0.2 to 0.3) the animals were lost at map zoom beside the game's own (watched 2026-10-05, cap57-plan1).
+// They stand between the two, about four times true size.
 const SPECIES = {
-  deer: ["Char_Deer", 0.2, 4, 1],
-  elk: ["CHAR_Elk", 0.22, 3, 1],
-  bison: ["Char_Bison_RES", 0.21, 5, 1],
-  horse: ["CHAR_Horse_RES", 0.21, 4, 1],
-  fox: ["CHAR_Fox", 0.3, 2, 1],
-  camel: ["CHAR_Camel", 0.26, 3, 1],
-  llama: ["CHAR_Llama_RES", 0.25, 3, 1],
-  sheep: ["Char_Sheep_RES", 0.26, 4, 1],
-  elephant: ["Char_Elephant_African_RES", 0.28, 3, 1],
-  crane: ["CHAR_Eurasian_Crane", 0.19, 3, 0.5],
-  crab: ["CHAR_Crab", 0.1, 3, 0.5],
-  // Rarer species, only in a Wilderness Area from 16 tiles (np-scene.js `rare`). Rigged as the deer is (catalog,
+  deer: ["Char_Deer", 0.3, 4, 1],
+  elk: ["CHAR_Elk", 0.33, 3, 1],
+  bison: ["Char_Bison_RES", 0.32, 5, 1],
+  horse: ["CHAR_Horse_RES", 0.32, 4, 1],
+  fox: ["CHAR_Fox", 0.45, 2, 1],
+  camel: ["CHAR_Camel", 0.39, 3, 1],
+  llama: ["CHAR_Llama_RES", 0.38, 3, 1],
+  sheep: ["Char_Sheep_RES", 0.39, 4, 1],
+  elephant: ["Char_Elephant_African_RES", 0.42, 3, 1],
+  crane: ["CHAR_Eurasian_Crane", 0.29, 3, 0.5],
+  crab: ["CHAR_Crab", 0.15, 3, 0.5],
+  // Rarer species, only in a Wilderness Area from 16 tiles (np-plan.js). Rigged as the deer is (catalog,
   // 2026-10-04).
-  goat: ["Char_Goat", 0.21, 3, 1],
-  giraffe: ["Char_Giraffe01", 0.2, 3, 1],
-  turtle: ["CHAR_Turtle", 0.26, 2, 0.5],
+  goat: ["Char_Goat", 0.32, 3, 1],
+  giraffe: ["Char_Giraffe01", 0.3, 3, 1],
+  turtle: ["CHAR_Turtle", 0.39, 2, 0.5],
 };
 /** The rarer species a Wilderness Area gains from 16 tiles, by the land: goats on hills, giraffes on open tropical
  *  and plains land, turtles on a shore. */
@@ -83,7 +84,7 @@ const REEF_FISH = ["VFX_SwimmingFish_ReefNeedle", "VFX_SwimingFish_Clown"];
 const LAKE_FISH = "VFX_SwimmingFish_Lake";
 const WHALE = "VFX_Water_Splash_Whale";
 
-/** The pools np-scene.js plans a park's wildlife from. */
+/** The pools np-plan.js plans a park's wildlife from. */
 export const FAUNA_POOLS = {
   biomes: { ...FAUNA, default: DEFAULT_FAUNA },
   coastAir: COAST_AIR,
@@ -95,56 +96,14 @@ export const FAUNA_POOLS = {
 };
 
 /**
- * What lives on one tile: [{ kind: "animal" | "vfx", asset, dx, dy, z, scale, angle }]. `land` describes the tile:
- * { biome, water, lake, river, coast, hill, mountain, wonder, wooded, anchor, shore, level } where `shore` is the ring
- * direction (degrees) of a land neighbor for a water tile, or null. `slot` is the tile's entry in the park's plan
- * (np-scene.js): which herd, flock, fish or shore animal it carries, if any. Where on the tile, how many, and at
- * what size and heading come from the tile's own hash. Pure, so it can be tested without the engine.
+ * One rigged animal of species `name`: { kind, asset, z, scale, angle, max }, its size varied a little by the
+ * identity of the group it belongs to (`id`) and its place in it (`k`). Where it stands is the plan's to say
+ * (np-plan.js). `max` is the largest group the species appears in.
  */
-export function wildlifeFor(t, land, slot = {}) {
-  const h = (salt) => hash01(t, 200 + salt);
-  const jit = (salt, r) => (h(salt) - 0.5) * r;
-  const out = [];
-  const vfx = (asset, dx, dy) => out.push({ kind: "vfx", asset, dx, dy, z: 0 });
-  const animal = (name, dx, dy, k, heading = null) => {
-    const [asset, scale] = SPECIES[name];
-    const s = scale * (0.85 + h(40 + k) * 0.3);
-    out.push({ kind: "animal", asset, dx, dy, z: liftFor(name), scale: s, angle: Math.floor(heading != null ? (heading + 360) % 360 : h(50 + k) * 360) });
-  };
-  const group = (name, max, cx, cy, extra = 0) => {
-    const n = 1 + Math.floor(h(2) * h(3) * max) + extra;   // mostly singles and pairs, the odd larger group
-    // A herd on the move, not a ring round its leader: strung out along one line, each a little to a side, all
-    // headed much the same way.
-    const way = h(33) * Math.PI * 2, heading = h(34) * 360;
-    let along = 0;
-    for (let k = 0; k < n; k++) {
-      const side = (h(20 + k) - 0.5) * 0.1;
-      animal(name, cx + Math.cos(way) * along - Math.sin(way) * side, cy + Math.sin(way) * along + Math.cos(way) * side, k, heading + (h(60 + k) - 0.5) * 50);
-      along += 0.07 + h(10 + k) * 0.06;
-    }
-  };
-  const shoreAt = (r) => {
-    const a = (land.shore + (h(34) - 0.5) * 50) * Math.PI / 180;
-    return [Math.cos(a) * r, Math.sin(a) * r];
-  };
-  if (slot.air) vfx(slot.air, jit(35, 0.35), jit(36, 0.35));
-  if (slot.school) vfx(slot.school, jit(26, 0.35), jit(27, 0.35));
-  if (slot.reef && land.shore != null) vfx(slot.reef, ...shoreAt(0.18 + h(29) * 0.1));
-  if (slot.whale) vfx(slot.whale, jit(31, 0.25), jit(32, 0.25));
-  if (slot.lakeFish) vfx(slot.lakeFish, jit(22, 0.35), jit(23, 0.35));
-  if (slot.leap) vfx(slot.leap, jit(3, 0.35), jit(4, 0.35));
-  if (slot.wader && land.shore != null) group(slot.wader, 2, ...shoreAt(0.3 + h(37) * 0.08));
-  if (slot.climber) group(slot.climber, 2, jit(38, 0.25), jit(39, 0.25));
-  if (slot.herd) {
-    const off = land.anchor ? [-0.05, 0.2] : [jit(11, 0.35), jit(12, 0.35)];
-    // A herd grows by one at the 16-tile level and one more at 24 (land.level, np-core.js milestoneLevel).
-    group(slot.herd, land.anchor ? 2 : SPECIES[slot.herd][2], off[0], off[1], Math.max(0, (land.level || 0) - 1));
-  }
-  // A second, different kind now and then: a fox at the edge of a herd, a crane in the grass.
-  if (slot.stray) animal(slot.stray, jit(16, 0.5), jit(17, 0.5), 9);
-  // A rarer species (a Wilderness Area from 16 tiles): a small group of its own, on the shore for a turtle.
-  if (slot.rare) group(slot.rare, SPECIES[slot.rare][2], ...(slot.rare === "turtle" && land.shore != null ? shoreAt(0.3) : [jit(18, 0.4), jit(19, 0.4)]));
-  return out;
+export function animalAt(name, id, k, heading) {
+  const [asset, scale, max] = SPECIES[name];
+  return { kind: "animal", asset, z: liftFor(name), scale: scale * (0.85 + hash01(id, 240 + k) * 0.3),
+    angle: Math.floor(((heading % 360) + 360) % 360), max };
 }
 
 export const _testing = { SPECIES, FAUNA };

@@ -161,7 +161,9 @@ every row the shared files reference exists.
   destroyed first and the marker placed on the rural district that stays. An **Expedition Base**
   (`IMPROVEMENT_EXPEDITION_BASE`, and `IMPROVEMENT_MOUNTAIN`, the same thing on a mountain) is park-compatible: a tile
   holding one joins without a question, keeps it, and carries no marker, so it pays its own worked yields instead of
-  the park's (watched: a wonder tile with a base joined, kept it, and kept its 3 Culture). Every path that marks a
+  the park's (watched: a wonder tile with a base joined, kept it, and kept its 3 Culture). From 1.1.0 a tile with a
+  resource the game draws by strewing (`STREWN_RESOURCES`) is treated the same way, improvement and all, so that it
+  looks as the game draws it (see "The look"). Every path that marks a
   tile checks this (`markTile`): a tile joined through `addTile` once got a marker anyway, which replaced a worked
   mountain's `IMPROVEMENT_MOUNTAIN` in place and cost its city the citizen who worked it (found 2026-10-04, crash
   soaks `nai9-trace`, `nai10-trace`: two AI cities lost one each when their parks took worked mountains; fixed and
@@ -280,6 +282,30 @@ every row the shared files reference exists.
   everything is drawn. Watched: v0.2.0 cleared and re-added 45 models at a turn start with nothing changed; now 0;
   revealing one tile of an AI park in fog redrew that park alone and drew the tile.
 
+- **Nothing paid for is lost.** A founding's record holds what it cost (`paid`: the Gold price of a purchase, or a
+  completed project's production at the purchase rate, 4 Gold a point) and how (`by`). A Found project is refused while
+  one is in the settlement's build queue, and a queued project that can no longer do anything (the founding was bought
+  for Gold meanwhile, a second copy, an Expand for a park at its full size) is taken out with the game's own queue
+  edit, the request its build queue panel sends (`model-build-queue.js` `cancelItem`: BUILD with `InsertMode`
+  RemoveAt): at once on a purchase, and at the start of the player's turn (`pruneQueue`, `staleQueueEntries`). Only
+  the player at the screen's own queues, never after the turn is sent. Production already in a removed entry is not
+  paid back: whether the engine keeps it is not known. A completion that still arrives with nothing to do is paid back
+  in Gold at the same rate (`completionOutcome`: a duplicate founding, a full park, no park), and a founding whose
+  settlement is razed or changes hands before its park is placed gives back what it cost (`foundingFate`); an older
+  save's record, which holds no figure, gives the price now. An AI gets the Gold; a human also gets a notice, kept in
+  the save's record (`notices`) and shown on that player's own turn, so a hotseat seat never reads another's. A
+  founding with no empty, Charming tile waits: its owner is told at the next turn start and every 10 turns
+  (`FOUNDING_ASK_TURNS`), and may cancel it for what it cost; an AI's is refunded at once. A network game moves no Gold
+  and writes nothing, as before. Gold on its way out of a treasury and pop-ups waiting for a clear screen are tracked
+  per player. Status: unit-tested (`np-founding.test.mjs`), not watched in game; the queue edit and a pending founding
+  across an age transition are the open items. Watched 2026-10-05 (crash soak `nref1`, two-seat hotseat, Modern): a
+  second Found completion returned 1,072 Gold to its player's treasury and its notice was shown once the screen was
+  clear; a founding whose second town was destroyed from the script was dropped and its 900 Gold returned, its notice
+  held in the record for the next clear screen. The founding pop-up was offered and the founding picker opened from
+  it, but the harness's own picker calls did not complete the founding and its turn passing failed, so founding and
+  expansion in hotseat remain not watched for 1.1.0; the queue edit could not be reached (the Found project cannot be
+  queued in a Modern start whose civic is not done).
+
 ## The look
 
 The improvement has no model of its own, so everything is drawn by script, as Canals draws its canals. Offsets use
@@ -317,42 +343,44 @@ to 0.46 along an arm is at the tile's edge.
   their own color when placed by script; the grassland, tundra, tropical and generic sets draw navy blue, so every
   other biome uses the gray plains stone. `BIN_Boulder_*` drew near-black against the rubble and is not used. Hashed
   from plot and direction, so an edge looks the same after a reload.
-- **Spread, not repeated.** Chosen tile by tile, the accents repeated: two lake tiles side by side both had both
-  lily pads and a cattail at the same size and angle, and neighboring meadows the same wheeling flock. The accents
-  are now planned for the park as a whole (`planScene` in `ui/np-scene.js`, pure and tested): each (a herd, a stray,
-  climbers, a flock overhead, a school of fish, reef fish, a lake's fish, a leaping fish, waders, reeds, lily pads,
-  a rowboat, a cairn, hill stones, an understory, a trail, the tree stand's shape and its main tree) goes on a share
-  of the tiles that can take it, never on two neighboring tiles (a rowboat or a whale never within two, and at
-  most two a park), and each tile takes the variant least used within two tiles. Scale, heading, position and count
-  still vary per tile. Tiles are taken in hashed order, so a park that grows keeps most of its existing accents.
 - **Buoys.** `PROP_MOD_Harbor_Buoy` at scale 1.6 on about half the edges where park water meets open water outside
   the park. Subtle at map zoom; the water gets no walls.
-- **Dressing,** per tile by biome: a stand of trees in one of four shapes (a loose ring round a center tree, a
-  clump beside a clearing, two or three spread over a meadow, a tight grove), mostly of the tile's main kind
-  (`BIN_FOL_<Biome>_Trees_*`, birch groves in grassland and tundra, elms on the plains), a flowering accent
-  (`BIN_FOL_Urban_Tree_Hero_A`) about a third of the time outside desert and tundra; on the tiles the plan picks, an
-  understory bin (in the desert, or its rock scatter), a dirt trail leaning toward the founding tile, one of four
-  stone arrangements on a hill (`BIN_Boulder_C`, `BIN_Boulder_B`, or two or three loose rocks of the local stone),
-  a cairn (`PROP_CairnRock_Stack`) on a hill, mountain or wooded tile. A lake tile the plan picks gets one to three
-  rafts of one lily pad kind (`FOL_LilyPad_Triple_Flower`, `_Double_Flower`); a lake or river shore tile one to three
-  clumps of reeds (`FOL_Cattail_A`) of differing height along the shore; a rowboat (`PAC_HWI_Palace_RowBoat`) goes
-  on at most two water tiles. The wonder gets nothing. A wooded tile (a vegetated feature or mangrove, `isWooded`)
-  is filled edge to edge by `forestCover`: about 30 of its biome's trees on a jittered lattice 0.17 apart out to the
-  hex edge, with some understory, so woods run on across tile edges. The game draws no vegetation on a plot that holds
-  a district: a rainforest park tile drew as bare grass with its marker, with an artless building in its place, and
-  with nothing on its wilderness district, and drew its rainforest once the district was removed (watched 2026-10-01,
-  same camera; a Llamas resource's own art had first been mistaken for the forest). Park land needs its district, so
-  the woods are the mod's to draw. Until 1.2.0 a wooded tile got a clump of five or six trees at its center.
-- **Campsites.** On about one open, flat National Park tile in twelve (not the founding tile, the lookout, woods, a
-  minor river, which runs through its tile's middle, or a tile with a feature model), two or three of the woodcutter's
-  purple ridge tents (`PROP_Tent_GEN_Sleeper_Standard_C`, the one beside its fire) at 0.6 to 0.7, set around a burning
-  fire pit (`PROP_Fire_Pit` at 0.45) and facing it. The tents take the owner's colors through `tintColor1` and
-  `tintColor2`, as the woodcutter's do. The camp is a clearing: the tile's trees keep to one side and the camp sits
-  0.18 out on the other. Auditioned 2026-10-03 beside the game's own woodcutter (crash soak npcamp5). The round camp
-  tents (`BIN_Tents_Camp_Sm`, `_Med`) and the slanted sleeper tent (`PROP_CON_Tent_GEN_Sleeper_Slanted_A`) were tried
-  first and dropped; `PROP_BonFire` and `PROP_KettleFire` are not models, and `Camp_Tent_Single`, `_Light` and
-  `_Heavy` give no handle. Wilderness Areas have none.
-- **Wildlife** (`ui/np-wildlife.js`), all of it moving. Rigged animals, chosen per biome and weighted: plains bison,
+- **Everything else on the land** (buildings, footpaths, monuments, trees, shrubs, rocks, reeds, where the animals
+  stand, and what each size level adds) is placed by the park's plan: see "The composition" below. Until 1.1.0 each
+  tile ran its own recipe (a stand of trees in one of four shapes, a camp or cabin village by the tile's hash, accents
+  shared out by `planScene` so that neighbors differed, woods on a jittered lattice), and each flaw was patched by
+  hand. What those passes learned about the game's art still holds and is kept here:
+  - The game draws no vegetation on a plot that holds a district: a rainforest park tile drew as bare grass with its
+    marker, and drew its rainforest once the district was removed (watched 2026-10-01, same camera). Park land needs
+    its district, so its woods are the mod's to draw. Marsh, rainforest and mangrove come back from the feature's own
+    model (`FEATURE_MODELS`); forest and taiga only in part, so they get the plan's woods as well; savanna woodland's
+    and sagebrush's models draw nothing visible (crash soaks npa1, npt1, npt2, 2026-10-02).
+  - A tile with a resource is to look as the game draws it (owner's rule, 2026-10-05). The district hides a resource's
+    art as it hides vegetation (watched 2026-10-05, `cap57-plan3`: resource tiles in a desert park drew as bare
+    sand under their icons). For most resources the plan puts back the tile's feature model and the model named after
+    the resource (`RESOURCE_SILVER`; watched drawing the game's ore outcrops, `cap57-plan4`), and nothing of the
+    park's. Seventeen have no such model: the game strews their pieces over the tile itself (`Clutter_RES_<Name>`),
+    which a script cannot ask for (`RESOURCE_TEA` placed on a tea tile drew nothing, `cap57-plan5`), and laying the
+    pieces by hand was an approximation the owner ruled out. A tile with one of those (tea, cotton, citrus, sugar,
+    jade, niter, salt, rubies, ivory, horses, wool, hides, furs, truffles, cloves, lapis lazuli, nickel:
+    `STREWN_RESOURCES` in np-core.js) joins the park as an Expedition Base's tile does: it keeps whatever stands on
+    it, gets no district and no marker, pays its own yields instead of the park's, and the plan places nothing on it,
+    so the game goes on drawing it unchanged (watched 2026-10-06, `cap57-plan8`: tea, niter, ivory and furs tiles in
+    the parks carried no district and no marker, and the ivory tile drew the game's own elephants at the game's own
+    size; 10 of 10 checks over five biomes). The founding tile keeps its station.
+  - Tents: the woodcutter's ridge tent (`PROP_Tent_GEN_Sleeper_Standard_C`), tinted in the owner's colors through
+    `tintColor1` and `tintColor2`, round a burning `PROP_Fire_Pit`. The round camp tents and the slanted sleeper tent
+    were tried and dropped; `PROP_BonFire` and `PROP_KettleFire` are not models; `IMP_Campfire` draws its light as a
+    tall pale column. At the woodcutter's size the tents went unseen at play zoom (`ncamp1`).
+  - Monuments: `PROP_CairnBase`, `NAF_EGY_CityHall_Obelisk` and `ANT_EEU_Monument_Rock_Structure` read at play zoom
+    (`naud1`); the city monuments looked urban, and statues, flagpoles and cairn gates were too small. A group on the
+    founding tile was tried first; spread over the park they read better.
+  - Birch groves and the plains clusters are a whole grove in one model: a stand takes one at most (`GROVES`).
+    `FOL_Flowers_Small_*` read as loud yellow blots and are not used. `BIN_FOL_Grass_SM` drew navy blue.
+  - More trees with a Wilderness Area's level crowded into each other (`nshow-exp`): it grows by swapping a tree for a
+    giant at 24 tiles and by wildlife, never by adding trees.
+- **Wildlife** (`ui/np-wildlife.js` for the species, `ui/np-plan.js` for where they stand), all of it moving. A region
+  has one herd animal and one bird. Rigged animals, by biome and weighted: plains bison,
   horses, deer and foxes; grassland deer, horses, elk and foxes; tundra elk, deer and foxes; desert camels and foxes;
   tropical deer, elephants and cranes; sheep, llamas and camels on hills; llamas on mountains; cranes on lake and
   river shores; crabs on the coast. Sparse on purpose (watched 2026-09-29): about four tiles in ten have any, mostly
@@ -377,62 +405,11 @@ to 0.46 along an arm is at the tile's edge.
   order gave wrong readings: the captures had slipped by a tile.
   Under `PlacementMode.TERRAIN` these models sink by an amount that grows with scale, so each is lifted by 8 + 24 x
   scale (watched: 0.5 needs about 20).
-- **Buildings.** The founding tile carries the warden's lodge, a log cabin (`IMP_Camp_BldA` at 0.75), an open picnic
-  shelter (`PROP_Pasture_ANT_BldB` at 0.7) and the park sign, with trees and a trail. Elsewhere, one draw per tile
-  (`hash01(t, 70)`) gives open, flat land a cabin village (about one tile in sixteen) or a campsite (one in twelve),
-  and any other non-wooded tile now and then a lone picnic shelter or clapboard ranger house (`PROP_MOD_Farm_BldC`) at
-  0.38 to 0.55 scale. A cabin village is three or four log cabins (`IMP_Camp_BldA`) in two loose rows facing each
-  other across a curving dirt trail, cabins and trees taking turns along each row (cabin, tree, cabin on one side;
-  tree, cabin, tree on the other), as in the lodges of the American parks (a ring round a clearing read as a circle of
-  houses, and bare rows as a housing tract); the rows' trees are the tile's only trees, and it has no grass or
-  understory. Cabins are 0.29 to 0.34 scale. On every tile, trees, shrubs and tufts inside a built piece's room are
-  dropped (`keepClear`, `solidSpots`: cabins and shelters by their scale, tents, fire pits, towers, the sign,
-  monuments), and an animal that would stand in one is not placed; an offline audit of 23,040 dressed tiles (every
-  level, both kinds, five biomes) found no built piece overlapping another and no plant inside one. Until 1.2.0 one
-  tile in six got a single cabin, shelter or ranger house at 0.5 to 0.66. The Menagerie shed and arch were dropped as
-  tent-like. A Wilderness Area has none of these: its founding tile gets a tree stand in place of the lodge and
-  shelter, and it has no cabins and no lookout tower. Its walls, trees, wildlife and hawk are the park's.
-- **Campsite.** Two or three ridge tents (`PROP_Tent_GEN_Sleeper_Standard_C` at 1.1 to 1.25, tinted in the owner's
-  colours) round a burning `PROP_Fire_Pit` at 0.7, on a clearing with no grass tufts or understory. At the woodcutter's
-  size (0.6) the tents were drawn but went unseen at play zoom among the tile's shrubs (crash soak `ncamp1`: same-camera
-  captures with the park drawn and cleared); larger, on a clearing, they read as a campsite (`naud1`).
-- **Lookout and hawk.** `Camp_Lookout_Tower_Bin` at scale 0.5 on one hill once the park has three tiles, and the
-  `VFX_Bird_Hawk_C3` effect circling the first mountain, else the lookout, else the founding tile.
-- **Size levels.** As a park reaches 8, 16 and 24 of its own tiles (the same levels that raise its yields), it draws
-  richer, and steps back down with its land. Each level only adds to the one below, on tiles taken in a fixed order by
-  hash, so stepping down takes exactly that away and a reload draws the same. The level is part of the redraw
-  signature (`drawSignature`), so crossing a threshold redraws the park.
-  - Level sites (`levelSites`): one per level, two per level from 13 tiles, on open flat land the base drawing left
-    bare, never two side by side. A National Park's carry a campsite, a cabin village and a lone shelter in turn; a
-    Wilderness Area's a thicket: the tile's own stand with a thick understory under it.
-  - A National Park raises one more lookout tower per level on another hill, never beside a tower (`lookoutTiles`).
-  - A Wilderness Area grows by swapping and by wildlife, never by more trees (wildflower clumps from 8 tiles were tried and
-    removed in 1.0.3: they read as loud yellow blots); from 16 rarer species join where the land suits
-    them (the planner's `rare` accent, `rareFor`: goats on hills, giraffes on tropical and plains land, turtles on a
-    shore); at 24 a third of its stands have one tree swapped for a giant (`oldGrowth`: a coast redwood, or a flowering
-    tree in the tropics). Its open tiles also get more grass tufts per level and more of them undergrowth. Never more
-    trees:
-    extra trees, a second lattice of woods on wooded tiles and four-tree thickets crowded into each other
-    (`nshow-exp`, 2026-10-04).
-  - Both kinds carry more strays, climbing animals and waders (`LEVEL_BOOST` in `np-scene.js`; an accent kept off
-    neighbouring tiles cannot pass about a third of the land), and herds grow by one at 16 tiles and one more at 24.
-    Flocks overhead do not grow with the level, and a park carries at most two of any one kind (`perVariant`): a
-    desert's or tundra's two kinds both circle, and a full park was crowded with them.
-  - Monuments around the park (`monumentSites`): stone cairns (`PROP_CairnBase`) on open land from 8 tiles, obelisks
-    (`NAF_EGY_CityHall_Obelisk`) in a National Park or dolmens of standing stones (`ANT_EEU_Monument_Rock_Structure`)
-    in a Wilderness Area from 16, and more of both at 24 (about one cairn per six tiles and one obelisk per eight,
-    plus one of each per twelve at 24). Each tile's kind and the order tiles are taken in are fixed by hash and spaced
-    once for the 24-tile counts, so a higher level only adds and stepping down takes away; never on two neighbouring
-    tiles, the founding tile, or a camp, village, shelter or tower; the tile's trees and tufts around the monument are
-    left out. Auditioned at scale 1 beside the game's other monuments (`naud1`): these read at play zoom; the city
-    monuments (`BIN_Monument`, `ANT_HWI_Monument`, `EAS_HAN_Monument`) looked urban, and the statues, flagpole, cairn
-    stack and cairn gates were too small or sank into the rock. A group on the founding tile came first (cairn,
-    obelisk, then a lion-capital pillar or a plain column between two obelisks: `nbioq`, `nlv4-park`); spread over the
-    park they read better, and no central piece fit (`naud2-statues`, `naud3-columns`).
-  Watched 2026-10-04: crash soaks `nlv2-park` and `nlv2-wild` (one park of each kind grown to 7, 8, 16 and 24 tiles and
-  let go to 23, same views at each step, redrawn at each level; a Wilderness Area drew 35 pieces at 7 tiles, 55 at 8,
-  292 at 24 and 228 back at 23), `nlv2-park-re` and `nlv2-wild-re` (drawn at the saved level after a reload), and
-  `nbioq` (the monument at each level for both kinds).
+- **Hawk.** The `VFX_Bird_Hawk_C3` effect circles the first mountain, else the first lookout, else the founding tile,
+  once the park has three tiles.
+- **Size levels.** A park's level (8, 16 and 24 of its own tiles, the same levels that raise its yields) is part of
+  the redraw signature (`drawSignature`), so crossing a threshold redraws the park; what each level adds is the plan's
+  budgets ("The composition", "Budgets").
 - **Growth.** New land's wall runs appear one after another, 110 ms apart, each with
   `VFX_Dust_In_Place_SquadCom_Tan`; its dressing follows.
 
@@ -445,6 +422,160 @@ fence), `IMP_Grove` (an untextured white mesh), `BIN_Menagerie_Animals_HOT`, `BI
 (`All_Deer01`, `All_Bison01`, `All_Elk01`), the `BIN_RES_*` herd layouts and the `AnimalResource_*` models never
 move (frame-difference tested). `NAM_SWN_Menagerie_Fence` draws a good
 stone-and-timber fence but reads as a paddock; the dry-stone wall suits a park better.
+
+## The composition
+
+From 1.1.0 a park is planned as a whole before any tile is dressed (`ui/np-plan.js`, pure and tested). A tile no
+longer runs a recipe of its own: it draws the part of the park's plan that falls on it. The walls, the border and the
+buoys above are unchanged; everything under "Dressing", "Campsites", "Buildings", "Wildlife" and "Size levels" above
+that says where a thing stands is replaced by this section.
+
+The rule the plan is held to: where a thing stands follows from the park's structure, the terrain, or something
+already placed. No placement is decided mainly by a recipe run per tile, a hash of the tile, a list of fixed offsets,
+a lattice, an equal step of angle or distance, or a cloud of random spots. A hash only breaks ties and adds small
+variation, and each hash is taken from the identity of the thing it belongs to (the park's founding tile, a region, a
+feature, a tile), never from a running sequence, so adding a monument or a far tile moves nothing elsewhere.
+
+```
+terrain (the map: biome, hills, water, rivers, woods, wetland)
+   ↓
+park plan: positions, regions and their character, fields, budgets
+   ↓
+destinations → path graph → routes on the ground
+   ↓
+built things and their settings (lodge, village, camp, shelter, lookout, monuments), keep-outs, corridors
+   ↓
+vegetation (woods, stands, shrub and rock patches, groundcover), parted by the corridors and openings
+   ↓
+wildlife, on the open ground that is left
+   ↓
+per tile: the pieces of all of the above that fall inside the tile's hex
+```
+
+### The plan
+
+`parkPlan(tiles, anchor, { level, buildings, map })` returns one object a test can print:
+
+| Field | What it holds |
+| --- | --- |
+| `pos` | each tile's place in park coordinates (the founding tile at 0, 0; one tile across is 1), found by walking the rings |
+| `facts` | each tile's land: biome, hill, sea, lake, navigable river, minor river, mountain, wonder, woods, wetland, feature model |
+| `regions`, `character` | region of each walkable tile (one biome in one connected piece, named by its first-taken tile), and per region one tree kind, a base density, a grain (the direction its stands run), one herd animal, one bird |
+| `steps` | walking distance of each tile from the lodge |
+| `corner` | the visitors' corner: the walkable tiles within three steps of the lodge |
+| `budgets` | how many structures, lookouts, monuments, herds, flocks and patches the park may carry at its size and level |
+| `destinations` | what a footpath goes to: `{ id, kind, tile, at }` for the village, camp, shelter, lookouts, monuments and a water's edge |
+| `paths` | one connected graph: per destination the tiles its route crosses and the route as a line in park coordinates |
+| `built` | every built piece with its place, and the pieces of its setting |
+| `keepOut` | circles and corridors nothing may be planted in, and the tiles nothing may be built on |
+| `herds`, `quiet` | where each herd keeps to, and the tiles deliberately left alone |
+| `pieces` | per tile, the finished list `[asset, dx, dy, scale, angle]`; `wild` per tile, the animals |
+
+Fields are functions of a point in park coordinates, each derived from park-wide sources and so continuous across
+tile edges: `water(p)` (nearness to sea, lake, river and wetland), `people(p)` (nearness to the lodge and what is
+built), `path(p)` (distance to the nearest footpath), `wood(p)` (inside or near the park's woods), `open(p)` (ground
+the plan keeps open for a herd), `rough(p)` (hills and the foot of mountains). Tree density at a point is
+
+```
+density = region's base + 0.45 water + 0.55 wood − 0.7 people − 0.8 open, held to 0..1, and 0 in a corridor or opening
+```
+
+### Order of placement
+
+1. **Destinations.** Structures are chosen from the corner, lookouts from hills, monuments from the land beyond the
+   corner, and one water's edge where a lake, river or coast lies within the corner. Each is the best of its
+   candidates by score (below). Each list is taken in a fixed order, so a higher level keeps what a lower one had.
+2. **Path graph.** Every destination is joined to the lodge along a tree of least-cost ways over walkable land (flat
+   open ground cheapest, then woods, hills, a minor river's crossing dearest; wetland and water not crossed). The ways
+   share their trunk, so the graph is connected by construction and adding a destination adds only its branch. A
+   Wilderness Area has no footpaths.
+3. **Routes.** A route passes each tile at that tile's own waypoint (shared by every route through it, so branches
+   join there), set off from the tile's middle away from water and toward the previous and next tiles, and is
+   smoothed into a curve. A route ends at its destination's foot, to one side of it, not at the tile's middle.
+4. **People's things.** A village's cabins gather round a small green beside its path's end, each set off one
+   already built at its own bearing and distance and turned toward the green (cabins along the path read as a row). A
+   camp's fire is at the path's end with the tents in a crescent on the far side. A shelter
+   stands beside its path. A lookout stands at the water's side of its tile where it has one, looking out over the sea,
+   a lake or a cliff (the owner liked the lookouts and asked for them along cliffs and the ocean, 2026-10-05). Each
+   monument gets a setting (below).
+5. **Corridors and openings.** A strip along each route and a round opening at each destination are closed to trees,
+   and shrubs thin beside them. This is what lets a path read where its decal does not show.
+6. **Decals,** end to end along each route: the dirt path decal on grass. On sand it is faint and on snow it is not
+   seen at all (watched 2026-10-05, `cap57-plan3`; edging the trail with small stones did not carry it, `cap57-plan4`),
+   so in desert and tundra the trail is the game's gravel road strip (`BIN_TER_Decal_Road_CP_Straight_Short_A`) drawn
+   narrow, at 0.5. Auditioned on snow at 1.1 with four other road pieces (`cap57-plan5`): all read clearly as a grey
+   strip. Watched at 0.5 on sand (`cap57-plan6`) and on snow (`cap57-plan8`, the tundra park overview: a pale
+   grey track from the lodge to the camp). Stone waymarks (`PROP_CairnRock_Stack`) stand at the trail's bends and forks there as well.
+7. **Vegetation.** Woods fill wooded tiles by growth from tree to tree, thinning toward open land and parting at a
+   corridor. On open land a stand grows only at a local high point of the density field, from its origin along the
+   contour, a dense core thinning to a fringe. Shrubs, rocks, reeds and groundcover are patches (below).
+8. **Wildlife.** A herd keeps to a local best of the herd score among its region's open tiles, strung out toward
+   water. Animals are placed on ground the earlier steps left open, so none is moved or dropped afterwards.
+
+### Rules by kind
+
+- **Structural.** One visitors' corner. One connected path graph. One tree kind, one herd animal and one bird per
+  region. A wood thins toward a meadow. A patch grows from an origin with a dense core, a sparse fringe, one dominant
+  direction and gaps. One focal thing (lodge, village, camp, lookout, monument) per tile and none on the tile next to
+  another.
+- **Invariants,** prevented by geometry and checked over many generated parks: on a tile with a resource only what
+  the game itself draws there, its feature's model and the resource's own (`RESOURCE_<NAME>`, `resourceModel`), and
+  nothing at all where the game strews the resource itself (`STREWN_RESOURCES`), the founding tile's station apart;
+  nothing built on sea, lake, navigable river, mountain, wonder or
+  wetland; nothing on a minor river's course: the course is taken to run from its tile's middle to the middle of
+  each edge shared with more river or open water (`riverSeg`), built pieces keep 0.14 from it, plants 0.12, animals
+  and a footpath's bare earth 0.1, so things stand beside a river (a camp or a monument on its bank, a herd grazing
+  it, a path that stops at each bank) and never in it; no tree in
+  a built piece's room, a corridor or an opening; no tree between the lodge and the viewer; no animal within a
+  village's, camp's or lodge's ground, on a path or in a tree.
+- **Preferences,** scored, never written as exclusions:
+
+| Thing | Scores up | Scores down |
+| --- | --- | --- |
+| Village, camp, shelter | near the lodge, flat open ground, water nearby (camp), a wood's edge (camp) | hills, woods |
+| Lookout | a cliff over the sea (most), any sea coast, a cliff, a lake shore, a hill, land falling away round it | another focal thing within two tiles |
+| Monument | a hill or a mountain's foot, three or four steps from the lodge, open ground, the region's rocks | woods, nearness to the lodge, another focal thing within two tiles |
+| Stand of trees | density at its origin | (density already carries people, paths and open ground) |
+| Shrub patch | a stand's or wood's edge, water, part tree cover | the middle of open ground, a path |
+| Rock patch | hills, a mountain's foot, desert | flat wet ground |
+| Herd | open ground, water within two tiles, the region's habitat, distance from people | a corridor, buildings, woods |
+
+### Settings
+
+A monument, a cairn and a Wilderness Area's dolmen stand on rough ground where the park has any, at the end of a
+footpath in a National Park where one can reach it (land no path reaches can still carry one), with trees held back to
+an opening round them. The foot is grounded with what the region
+already has: a few of its rocks close against one side and trailing off, low scrub at the fringe, and trodden earth
+(the path decal) at the base. The cairn mound is drawn at 0.3 (about 4.5 model units tall, below a cabin's 5; at 0.85
+to 1.05 it stood 13 to 16, taller than the warden's lodge at 9.5). The obelisk (13 tall as modelled) is drawn at 0.6 and
+the dolmen (17.8) at 0.4. Animals stand at about four times true size (`SPECIES`): at two and a half times they were
+lost at map zoom beside the game's own (watched 2026-10-05, `cap57-plan1`).
+
+### Budgets
+
+Set per park from its tile count `n` and level, never per tile, and growing slower than the land:
+
+| Thing | Count |
+| --- | --- |
+| Structures (village, camp, shelter in that order) | 1 from 3 tiles, plus 1 per level, at most 4 |
+| Lookouts | 1 from 3 tiles, 2 from level 1, 3 at level 3, where the park has a coast, a cliff or a hill for each |
+| Monuments | 0, 1, 2, 3 at levels 0 to 3 (cairn, then obelisk or dolmen, then a second cairn) |
+| Herds | 1 + floor(sqrt(n) / 1.6): 3 at 12 tiles, 4 at 24; the best ground first, on neighboring tiles only when the open land is too little to keep them apart |
+| Flocks overhead | 1, 2 from 12 tiles, 3 from 24 |
+| Shrub and rock patches per region | 1 + floor(open tiles / 5) |
+
+A budgeted list is ranked by score, so when a park grows the lowest-ranked item can change, and a monument can move
+to better ground a new tile offers; everything unbudgeted
+(trees, paths, built things already chosen) stays where it was.
+
+### Retired
+
+`treeStand`, `leanStand`, `spillTrees`, `parkFabric`, `trailPieces`, `forestCover`, `gameScatter` and its spot list,
+`meadow` and its spot list, `wetCover`, `monumentSites`, `monumentCounts`, `levelSites`, `sitesPerLevel`, `baseSite`,
+`siteMap`, `monumentMap`, `fabricFor`, `cabinCluster`, `campsite`, `keepClear`, `clearOf`, `settleAnimals`,
+`coverSpots`, `spaced`, `oneGrove`, the hill stones and cairn accents, and `planScene`'s land accents (`herd`,
+`stray`, `under`, `trail`, `grove`, `stand`, `cairn`, `stones`). `np-scene.js` is removed: the water and air accents
+are planned in `np-plan.js` with the rest.
 
 ## Pop-ups
 
