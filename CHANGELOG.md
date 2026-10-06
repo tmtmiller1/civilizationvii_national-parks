@@ -3,6 +3,13 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
+## [1.1.1] - 2026-10-06
+
+- Every tile with a resource now looks exactly as the game draws it. In 1.1.0 the park put the resource's own model
+  back on most resource tiles, which restored silver's ore but not coffee's bushes; now any resource tile joins the park
+  as a tile with an Expedition Base does: it keeps its improvement, carries no park marker, pays its own yields
+  instead of the park's, and the park draws nothing on it.
+
 ## [1.1.0] - 2026-10-05
 
 - A park is now planned as a whole before any of it is drawn, and each tile draws its part of that plan. Footpaths
@@ -16,7 +23,6 @@ semantic versioning.
   never on a tile a river crosses, with rocks and low scrub at its foot and the trees held back round it. The cairn
   is drawn at about a third of its old size, in scale with the cabins.
 - Herds keep to open ground the park leaves for them, away from the lodge, the cabins, the tents and the paths.
-- On sand and snow, where a footpath's bare earth is hard to see, small stone waymarks stand along it.
 - Lookout towers stand where there is something to look out over: on a cliff above the sea first, then along the
   coast, on a cliff, by a lake or on a hill, at the water's side of the tile. A large park by the sea can carry three.
 - Nothing stands in a river. Camps, monuments, lookouts and trees keep to its banks, herds graze beside it, and a

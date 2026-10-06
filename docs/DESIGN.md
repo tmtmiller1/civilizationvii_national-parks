@@ -162,8 +162,8 @@ every row the shared files reference exists.
   (`IMPROVEMENT_EXPEDITION_BASE`, and `IMPROVEMENT_MOUNTAIN`, the same thing on a mountain) is park-compatible: a tile
   holding one joins without a question, keeps it, and carries no marker, so it pays its own worked yields instead of
   the park's (watched: a wonder tile with a base joined, kept it, and kept its 3 Culture). From 1.1.0 a tile with a
-  resource the game draws by strewing (`STREWN_RESOURCES`) is treated the same way, improvement and all, so that it
-  looks as the game draws it (see "The look"). Every path that marks a
+  resource is treated the same way, improvement and all, so that it looks exactly as the game draws it (see "The
+  look"). Every path that marks a
   tile checks this (`markTile`): a tile joined through `addTile` once got a marker anyway, which replaced a worked
   mountain's `IMPROVEMENT_MOUNTAIN` in place and cost its city the citizen who worked it (found 2026-10-04, crash
   soaks `nai9-trace`, `nai10-trace`: two AI cities lost one each when their parks took worked mountains; fixed and
@@ -355,19 +355,19 @@ to 0.46 along an arm is at the tile's edge.
     its district, so its woods are the mod's to draw. Marsh, rainforest and mangrove come back from the feature's own
     model (`FEATURE_MODELS`); forest and taiga only in part, so they get the plan's woods as well; savanna woodland's
     and sagebrush's models draw nothing visible (crash soaks npa1, npt1, npt2, 2026-10-02).
-  - A tile with a resource is to look as the game draws it (owner's rule, 2026-10-05). The district hides a resource's
-    art as it hides vegetation (watched 2026-10-05, `cap57-plan3`: resource tiles in a desert park drew as bare
-    sand under their icons). For most resources the plan puts back the tile's feature model and the model named after
-    the resource (`RESOURCE_SILVER`; watched drawing the game's ore outcrops, `cap57-plan4`), and nothing of the
-    park's. Seventeen have no such model: the game strews their pieces over the tile itself (`Clutter_RES_<Name>`),
-    which a script cannot ask for (`RESOURCE_TEA` placed on a tea tile drew nothing, `cap57-plan5`), and laying the
-    pieces by hand was an approximation the owner ruled out. A tile with one of those (tea, cotton, citrus, sugar,
-    jade, niter, salt, rubies, ivory, horses, wool, hides, furs, truffles, cloves, lapis lazuli, nickel:
-    `STREWN_RESOURCES` in np-core.js) joins the park as an Expedition Base's tile does: it keeps whatever stands on
-    it, gets no district and no marker, pays its own yields instead of the park's, and the plan places nothing on it,
-    so the game goes on drawing it unchanged (watched 2026-10-06, `cap57-plan8`: tea, niter, ivory and furs tiles in
-    the parks carried no district and no marker, and the ivory tile drew the game's own elephants at the game's own
-    size; 10 of 10 checks over five biomes). The founding tile keeps its station.
+  - A tile with a resource is to look exactly as the game draws it (owner's rule, 2026-10-05). The district hides a
+    resource's art as it hides vegetation (watched 2026-10-05, `cap57-plan3`: resource tiles in a desert park drew as
+    bare sand under their icons). Putting the art back by script was tried and does not do it: the model named after
+    the resource drew silver's ore outcrops (`cap57-plan4`) but nothing for coffee (`cap57-plan8`, the tropical
+    wilderness resource view) or tea (`cap57-plan5`), and many resources are strewn over the tile by the game
+    (`Clutter_RES_<Name>`) with no model to place; laying their pieces by hand was an approximation the owner ruled
+    out. So every tile with a resource joins a park as an Expedition Base's tile does (`isStrewnResource`,
+    np-core.js): it keeps whatever stands on it, gets no district and no marker, pays its own yields instead of the
+    park's, and the plan places nothing on it, so the game goes on drawing it unchanged. Watched for tea, niter,
+    ivory and furs on 2026-10-06 (`cap57-plan8`: no district, no marker, the game's own elephants on the ivory tile);
+    the rule over every resource watched 2026-10-06 (`cap57-plan9`: 29 resource tiles in five biomes, no district, no
+    marker, nothing of the park's; the game drew its own coffee bushes inside the tropical wilderness). The founding
+    tile keeps its station.
   - Tents: the woodcutter's ridge tent (`PROP_Tent_GEN_Sleeper_Standard_C`), tinted in the owner's colors through
     `tintColor1` and `tintColor2`, round a burning `PROP_Fire_Pit`. The round camp tents and the slanted sleeper tent
     were tried and dropped; `PROP_BonFire` and `PROP_KettleFire` are not models; `IMP_Campfire` draws its light as a
@@ -504,8 +504,9 @@ density = region's base + 0.45 water + 0.55 wood − 0.7 people − 0.8 open, he
    seen at all (watched 2026-10-05, `cap57-plan3`; edging the trail with small stones did not carry it, `cap57-plan4`),
    so in desert and tundra the trail is the game's gravel road strip (`BIN_TER_Decal_Road_CP_Straight_Short_A`) drawn
    narrow, at 0.5. Auditioned on snow at 1.1 with four other road pieces (`cap57-plan5`): all read clearly as a grey
-   strip. Watched at 0.5 on sand (`cap57-plan6`) and on snow (`cap57-plan8`, the tundra park overview: a pale
-   grey track from the lodge to the camp). Stone waymarks (`PROP_CairnRock_Stack`) stand at the trail's bends and forks there as well.
+   strip. Watched at 0.5 on sand (`cap57-plan6`) and on snow (`cap57-plan8`, the tundra park overview: a pale grey
+   track from the lodge to the camp). Stone waymarks (`PROP_CairnRock_Stack`) stand at the trail's bends and forks
+   there as well.
 7. **Vegetation.** Woods fill wooded tiles by growth from tree to tree, thinning toward open land and parting at a
    corridor. On open land a stand grows only at a local high point of the density field, from its origin along the
    contour, a dense core thinning to a fringe. Shrubs, rocks, reeds and groundcover are patches (below).
@@ -518,9 +519,8 @@ density = region's base + 0.45 water + 0.55 wood − 0.7 people − 0.8 open, he
   region. A wood thins toward a meadow. A patch grows from an origin with a dense core, a sparse fringe, one dominant
   direction and gaps. One focal thing (lodge, village, camp, lookout, monument) per tile and none on the tile next to
   another.
-- **Invariants,** prevented by geometry and checked over many generated parks: on a tile with a resource only what
-  the game itself draws there, its feature's model and the resource's own (`RESOURCE_<NAME>`, `resourceModel`), and
-  nothing at all where the game strews the resource itself (`STREWN_RESOURCES`), the founding tile's station apart;
+- **Invariants,** prevented by geometry and checked over many generated parks: nothing at all on a tile with a
+  resource, the founding tile's station apart;
   nothing built on sea, lake, navigable river, mountain, wonder or
   wetland; nothing on a minor river's course: the course is taken to run from its tile's middle to the middle of
   each edge shared with more river or open water (`riverSeg`), built pieces keep 0.14 from it, plants 0.12, animals

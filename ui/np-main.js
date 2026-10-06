@@ -42,7 +42,7 @@ import { openPicker, openFoundingPicker, offerFoundingDialog, chooseTile, confir
 
 const G = globalThis;
 const KEY = "__towerNationalPark";
-const VERSION = "1.1.0";
+const VERSION = "1.1.1";
 const SETTLE_MS = 600;
 const EVENT_SETTLE_MS = 1500;
 // A park piece landing is drawn sooner, so new park land is not left bare while the dressing waits (about 2 s before).

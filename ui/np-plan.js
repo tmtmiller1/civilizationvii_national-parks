@@ -70,33 +70,9 @@ export function oldGrowth(biome) {
   return null;
 }
 const OLD_GROWTH_SHARE = 0.3;
-/**
- * The game's own model of a resource, named after it: the game hides it, like a tile's vegetation, under the district
- * park land needs, so the park puts it back. Found by name in the asset catalog (1.5.0); a resource with no model of
- * that name (the game draws those another way) gets nothing.
- */
-export const RESOURCE_MODELS = new Set(["RESOURCE_CAMELS", "RESOURCE_CLAY", "RESOURCE_COAL", "RESOURCE_COCOA", "RESOURCE_COFFEE",
-  "RESOURCE_COWRIE", "RESOURCE_CRABS", "RESOURCE_DATES", "RESOURCE_DATES_WET", "RESOURCE_DYES", "RESOURCE_FISH", "RESOURCE_FLAX",
-  "RESOURCE_GOLD", "RESOURCE_GYPSUM", "RESOURCE_GYPSUM_MOUNTAIN", "RESOURCE_HARDWOOD", "RESOURCE_INCENSE", "RESOURCE_IRON",
-  "RESOURCE_KAOLIN", "RESOURCE_LIMESTONE", "RESOURCE_LLAMAS", "RESOURCE_MANGOS", "RESOURCE_MARBLE", "RESOURCE_OIL", "RESOURCE_PEARLS",
-  "RESOURCE_PITCH", "RESOURCE_QUININE", "RESOURCE_RICE", "RESOURCE_RUBBER", "RESOURCE_SILK", "RESOURCE_SILVER", "RESOURCE_SPICES",
-  "RESOURCE_TIN", "RESOURCE_TOBACCO", "RESOURCE_TURTLES", "RESOURCE_WHALES", "RESOURCE_WILD_GAME", "RESOURCE_WINE"]);
-/**
- * Resources whose model of that name is empty: the game strews their pieces over the tile itself (`Clutter_RES_*`),
- * which a script cannot ask for (watched 2026-10-05, cap57-plan5: RESOURCE_TEA placed on a tea tile drew nothing).
- * Such a tile gets no district and no marker (np-core.js STREWN_RESOURCES), so the game goes on drawing it, and the
- * plan places nothing at all on it, not even its feature.
- */
 /** The gravel strip the game lays for a road, drawn narrow: a trail that shows on sand and on snow, where the dirt
  *  path's decal does not (audition on snow, cap57-plan5, 2026-10-05: every road piece read clearly at 1.1). */
 export const GRAVEL = "BIN_TER_Decal_Road_CP_Straight_Short_A";
-/** The model for a resource on land `f`: its mountain or wetland form where the game has one; a Distant Lands resource
- *  takes its homeland twin's. "" when the game has no model of that name (cloves, lapis lazuli, nickel). */
-export function resourceModel(type, f) {
-  const base = type.replace(/_DISTANT_LANDS$/, "");
-  const variant = f.mountain ? base + "_MOUNTAIN" : f.wet ? base + "_WET" : "";
-  return RESOURCE_MODELS.has(variant) ? variant : RESOURCE_MODELS.has(base) ? base : "";
-}
 const ROCK_SHAPES = "ABCDE";
 /** A loose rock of the local stone: only the plains (gray) and desert (red-brown) sets draw in their own color. */
 function localRock(id, salt, biome) {
@@ -172,11 +148,12 @@ export function parkPlan(tiles, anchor, { level = 0, buildings = true, map }) {
     const f = { biome: map.biome(t), hill: !!map.hill(t), sea: !!map.sea(t), lake: !!map.lake(t), nav: !!map.nav(t),
       river: !!map.river(t), mountain: !!map.mountain(t), wonder: !!map.wonder(t), wooded: !!map.wooded(t), wet: !!map.wet(t),
       feature, model, alone: MODEL_ALONE.has(model), inPark: inPark.has(t), cliff: !!(map.cliff && map.cliff(t)),
-      // A tile with a resource is drawn as the game draws it: its own vegetation and the resource's own model, and
-      // nothing of the park's (the founding tile's station apart, which the park cannot do without).
+      // A tile with a resource is left to the game to draw (the founding tile's station apart, which the park cannot
+      // do without).
       resource: !!(map.resource && map.resource(t)) && !(t === anchor && buildings),
       resourceType: String((map.resource && map.resource(t)) || "") };
-    f.native = f.resource && !RESOURCE_MODELS.has(f.resourceType.replace(/_DISTANT_LANDS$/, ""));
+    // Every resource tile is left to the game (np-core.js isStrewnResource): no district, nothing placed.
+    f.native = f.resource;
     f.water = f.sea || f.lake || f.nav;
     f.walk = !f.water && !f.mountain && !f.wonder;
     f.cover = f.walk && !f.resource && !f.alone && !f.wet && (f.wooded || feature === "FEATURE_SAGEBRUSH_STEPPE");
@@ -880,12 +857,6 @@ export function parkPlan(tiles, anchor, { level = 0, buildings = true, map }) {
     pieces.get(t).push(out);
   };
   for (const e of plants) drop(e.slice(0, 5));
-  for (const t of tiles) {
-    const f = F(t);
-    if (!f.resource) continue;
-    const m = resourceModel(f.resourceType, f);
-    if (m) pieces.get(t).push([m, 0, 0, 1, 0]);
-  }
   // A footpath fords a river: its bare earth stops at each bank.
   for (const e of [...decals, ...accents]) { const t = tileAt([e[1], e[2]]); if (t >= 0 && (e[0] === ROWBOAT || (F(t).walk && riverDist([e[1], e[2]]) >= 0.1))) drop(e); }
   for (const e of built) drop(e);

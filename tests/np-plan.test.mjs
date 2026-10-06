@@ -91,12 +91,10 @@ test("plan: no invariant is broken in any generated park", () => {
         here.slice(0, k).forEach((o) => assert.ok(Math.hypot(o.dx - w.dx, o.dy - w.dy) >= 0.07 - 1e-9, `${tag}: two animals in one spot`));
       });
     }
-    // A tile with a resource is left as the game draws it (the founding tile keeps its station).
+    // A tile with a resource is left entirely to the game (the founding tile keeps its station).
     for (const t of plan.tiles) if (plan.facts.get(t).resource) {
       resources++;
-      for (const e of plan.pieces.get(t)) assert.match(e[0], /^(FEATURE_|RESOURCE_)/, `${tag}: ${e[0]} drawn on resource tile ${t}`);
-      if (plan.facts.get(t).resourceType === "RESOURCE_GOLD") assert.ok(plan.pieces.get(t).some((e) => e[0] === "RESOURCE_GOLD"), `${tag}: the resource's own model is missing`);
-      if (plan.facts.get(t).resourceType === "RESOURCE_SALT") assert.equal(plan.pieces.get(t).length, 0, `${tag}: something drawn on a strewn resource's tile`);
+      assert.equal(plan.pieces.get(t).length, 0, `${tag}: something drawn on resource tile ${t}`);
       assert.equal(plan.wild.get(t).length, 0, `${tag}: wildlife on resource tile ${t}`);
     }
     for (const t of plan.focal.keys()) for (const n of ring(t)) assert.ok(n === plan.anchor || t === plan.anchor || !plan.focal.has(n), `${tag}: two focal things side by side`);

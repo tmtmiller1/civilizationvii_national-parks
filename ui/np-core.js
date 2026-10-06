@@ -162,7 +162,7 @@ export function resourceAt(i) {
 }
 /** The rural improvements on a plot that a park would strip: every improvement but the park's own. */
 export function strippableAt(i) {
-  if (isStrewnResource(i)) return [];   // the tile is left as it stands (STREWN_RESOURCES)
+  if (isStrewnResource(i)) return [];   // a resource tile is left as it stands
   return constructiblesAt(i).filter((c) => isRuralImprovement(c.type));
 }
 export function hasResource(i) {
@@ -182,16 +182,13 @@ export function isMarkerType(type) { return MARKER_TYPES.has(type); }
  *  allows it (such a tile carries no marker). Both names are the Expedition Base in the Modern database. */
 export const KEPT_IMPROVEMENTS = new Set(["IMPROVEMENT_EXPEDITION_BASE", "IMPROVEMENT_MOUNTAIN"]);
 /**
- * Resources the game draws by strewing pieces over the tile itself, which nothing but the game can put back once a
- * district hides them (np-plan.js RESOURCE_MODELS has the rest, whose model a script can place). A tile with one of
- * these joins a park as a wonder's Expedition Base does: it keeps whatever stands on it, gets no district and no
- * marker, and so looks exactly as the game draws it, paying its own yields instead of the park's (owner's rule,
- * 2026-10-05).
+ * A tile with a resource must look exactly as the game draws it (owner's rule, 2026-10-05). The district park land
+ * sits on hides the resource's art as it hides vegetation, and placing the model named after the resource puts back
+ * only some of it (silver's ore drew, coffee's bushes did not; many resources are strewn over the tile by the game
+ * and have no model to place at all). So a tile with any resource joins a park as a wonder's Expedition Base does:
+ * it keeps whatever stands on it, gets no district and no marker, and pays its own yields instead of the park's.
  */
-export const STREWN_RESOURCES = new Set(["RESOURCE_TEA", "RESOURCE_COTTON", "RESOURCE_CITRUS", "RESOURCE_SUGAR", "RESOURCE_JADE",
-  "RESOURCE_NITER", "RESOURCE_SALT", "RESOURCE_RUBIES", "RESOURCE_IVORY", "RESOURCE_HORSES", "RESOURCE_WOOL", "RESOURCE_HIDES",
-  "RESOURCE_FURS", "RESOURCE_TRUFFLES", "RESOURCE_CLOVES", "RESOURCE_LAPIS_LAZULI", "RESOURCE_NICKEL"]);
-export function isStrewnResource(i) { return STREWN_RESOURCES.has(resourceAt(i).replace(/_DISTANT_LANDS$/, "")); }
+export function isStrewnResource(i) { return hasResource(i); }
 /** What may stand on park land: the park's markers and a kept improvement. */
 export function isParkCompatible(type) { return isMarkerType(type) || KEPT_IMPROVEMENTS.has(type); }
 /** Constructibles that are not the park's own markers: what would make a tile someone else's. */

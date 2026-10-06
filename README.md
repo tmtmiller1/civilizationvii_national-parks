@@ -40,10 +40,8 @@ forests, lakes, rivers, the sea, natural wonders and open country.
   park grows over can be any it may take, and a tile whose appeal later falls stays in the park.
 - **What a park can take.** Any rural land you own beside the park: open land, forest, mountains, lakes, rivers, the
   open sea and natural wonders. Resources come with the land: a tile with a resource joins without a question and its
-  resource stays collected, the park taking over from the plantation, camp or fishing boat that harvested it; a tile
-  with tea, cotton, citrus, sugar, jade, niter, salt, rubies, ivory, horses, wool, hides, furs, truffles, cloves,
-  lapis lazuli or nickel keeps its improvement instead and pays its own yields, not the park's, so that it looks as
-  the game draws it. A tile
+  resource stays collected: the tile keeps its plantation, camp or fishing boat and pays its own yields, not the
+  park's, so that it looks exactly as the game draws it. A tile
   with a farm or other improvement and no resource joins after you confirm; the improvement is removed, and the
   citizen who worked it comes back as new population for you to place. An Expedition Base stays where it is and keeps
   working its mountain or wonder. Urban districts and buildings are never taken.
