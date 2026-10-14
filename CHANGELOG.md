@@ -3,6 +3,11 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
+## [1.1.3] - 2026-10-14
+
+- The license now says that Civilization VII and its art and data belong to Firaxis and 2K. The mod itself plays
+  exactly as in 1.1.2: the only code change takes out a helper and an import that nothing used.
+
 ## [1.1.2] - 2026-10-07
 
 - Settings kept after a restart. Civilization VII reads back only the first entry in its mod storage, whichever one
