@@ -64,7 +64,6 @@ export function orderBases(adjacentWonders, near, fallback) {
   return out;
 }
 
-/** Natural wonders beside the founding tile, from the map. */
 function adjacentWonderNames(park) {
   const out = [];
   for (const t of [park.anchor, ...ringOf(park.anchor)]) {

@@ -90,7 +90,6 @@ const clamp01 = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
 const rot = (deg, x, y) => { const a = deg * Math.PI / 180; return [x * Math.cos(a) - y * Math.sin(a), x * Math.sin(a) + y * Math.cos(a)]; };
 const deg = (v) => Math.floor(((v % 360) + 360) % 360);
 const edgeId = (a, b) => (Math.min(a, b) * 7919 + Math.max(a, b)) | 0;
-/** Distance from p to the segment a-b. */
 function segDist(p, a, b) {
   const vx = b[0] - a[0], vy = b[1] - a[1], l2 = vx * vx + vy * vy;
   const u = l2 ? clamp01(((p[0] - a[0]) * vx + (p[1] - a[1]) * vy) / l2) : 0;
