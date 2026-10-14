@@ -28,7 +28,7 @@ import { InputHandlerState } from "/core/ui/input/input-support.js";
 import ViewManager from "/core/ui/views/view-manager.js";
 import { safe, log, idx, locOf, ringOf, parks, parkById, eligibleTiles, canJoin, allParkTiles, addTile, displayName,
   connectedSelection, room, limits, save, joinFacts, needsConfirm, settlementOf, kindOf, foundings, foundingById,
-  foundingTiles, foundPark, KINDS }
+  foundingTiles, foundPark }
   from "./np-core.js";
 import { drawPark } from "./np-draw.js";
 import { refreshGeoLabels, hasGeoRename, openRename, generateName } from "./np-names.js";

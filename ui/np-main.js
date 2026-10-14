@@ -68,7 +68,6 @@ function later(key, fn, ms) {
 
 // placement
 
-function isParkType(raw) { return raw != null && state.parkKeys.has(raw); }
 function plotOfArgs(args) {
   if (!args || args.X == null || args.Y == null || args.X < 0 || args.Y < 0) return -1;
   return safe(() => idx({ x: args.X, y: args.Y }), -1);
