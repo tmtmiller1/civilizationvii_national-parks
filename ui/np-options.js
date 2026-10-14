@@ -18,7 +18,6 @@ if (!CategoryData[CategoryType.Mods]) {
   CategoryData[CategoryType.Mods] = { title: "LOC_UI_CONTENT_MGR_SUBTITLE", description: "LOC_UI_CONTENT_MGR_SUBTITLE_DESCRIPTION" };
 }
 
-/** Tell the running game, if any, that an option changed. */
 function applyLive() { safe(() => window.__towerNationalPark && window.__towerNationalPark.applySettings()); }
 
 /**

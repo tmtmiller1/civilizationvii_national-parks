@@ -99,7 +99,6 @@ let layer = null;
 let faint = null;    // the wash, shown with the Options marks on
 let pending = null;
 
-/** Repaint the shading on the map: the wash, and the lens if it is showing. */
 function repaint() {
   if (!layer) return;
   if (getMarks()) { if (!faint) faint = new ParkShading("NationalParkWash", FAINT_COLORS); faint.paint(); }
