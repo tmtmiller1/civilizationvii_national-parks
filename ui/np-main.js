@@ -93,7 +93,6 @@ function civicDone(owner, kind) {
   return !!safe(() => Players.get(owner).Culture.isNodeUnlocked(row.ProgressionTreeNodeType), false);
 }
 
-/** The kind a Found project request is for, or null. */
 function foundKindOf(type, args) {
   if (type !== CityOperationTypes.BUILD || !args || args.ProjectType == null) return null;
   return state.foundKeys.get(args.ProjectType) || null;
@@ -145,7 +144,6 @@ function queuedProjects(cityID) {
   });
 }
 
-/** Whether a settlement's build queue already holds a kind's Found project. */
 function foundQueued(cityID, kind) { return queuedProjects(cityID).includes(kind.found); }
 
 /**

@@ -653,7 +653,6 @@ let buyHandler = null;
 /** np-main.js hands over the purchase itself: (park) => "" on success, or a reason's text tag. */
 export function setBuyHandler(fn) { buyHandler = fn; }
 
-/** The local player's parks in the selected settlement: at most one of each kind. */
 function selectedParks() {
   const cid = safe(() => UI.Player.getHeadSelectedCity(), null);
   if (!cid || cid.id == null) return [];
