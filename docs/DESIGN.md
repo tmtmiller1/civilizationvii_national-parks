@@ -777,7 +777,7 @@ Watched 2026-09-30, late (seed 4242, Modern, lab games, Geographic Labels 1.6.1 
   spelling.
 
 - **Translations.** Eleven languages besides English (the ten Demographics ships, and Traditional Chinese,
-  `zh_Hant_HK`), machine-translated by one agent per language from a shared brief, using the game's own terms from its
+  `zh_Hant_HK`), using the game's own terms from its
   l10n files (`devtools/gen-glossary.py`). Every folder passes `devtools/check-locale.mjs` and `tests/i18n.test.mjs`
   (same tags, Language, placeholders, icons, markup; registered in the modinfo). Watched in Japanese (DisplayLanguage
   ja_JP): the mod's text and the Civilopedia drew, and `plural other?...;` with no `1?` form rendered for 1 and for 3.
