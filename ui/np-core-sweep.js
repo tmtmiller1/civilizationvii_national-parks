@@ -218,11 +218,18 @@ function rewildFounding(park) {
  * leaves the park instead. If it is the founding tile, the park's founding improvement moves to
  * another of its tiles (moveFounding); with none to take it the park is dissolved, as it is once its founding tile
  * belongs to no one. A full park's unused tiles lapse. Tiles the mod is
- * still writing to, and plots that cannot be read, are left for a later sweep. A park whose founding never landed
- * returns "unlanded", and np-main.js hands it back to its founding (returnFounding). Returns "dissolved", "unlanded",
- * "changed" or "".
+ * still writing to, and plots that cannot be read, are left for a later sweep. A park whose founding never landed, or
+ * that would end before it first stood (carriesFounding: built over, or its founding tile gone to another player or
+ * to no one), returns "unlanded", and np-main.js hands it back to its founding (returnFounding). Returns "dissolved",
+ * "unlanded", "changed" or "".
  */
 export function reconcile(park) {
+  const carrying = carriesFounding(park);
+  const r = carrying && ownerOf(park.anchor) !== park.owner ? unowned(park) : reconcileMap(park);
+  return r === "dissolved" && carrying ? "unlanded" : r;
+}
+
+function reconcileMap(park) {
   const owner = ownerOf(park.anchor);
   if (owner === -1) return unowned(park);
   const moved = followOwner(park, owner);
@@ -231,6 +238,20 @@ export function reconcile(park) {
   if (FOUNDING_ENDS[founding]) return FOUNDING_ENDS[founding];
   const land = reconcileLand(park);
   return moved || founding === "restored" || land ? "changed" : "";
+}
+
+/**
+ * Whether the park still carries the founding it was made from, so its owner hasn't had the park yet: its improvement
+ * has never stood. A park whose improvement stands now is its founding's for good. Such a park that would end (its
+ * tile built over, gone to another player, or no one's) hands back its founding instead (returnFounding), so the Gold
+ * isn't lost on a park its owner never had.
+ */
+function carriesFounding(park) {
+  if (!park.founding || readOnly) return false;
+  const type = kindOf(park).improvement;
+  if (!readPlot(park.anchor).items.some((c) => c.type === type && c.complete)) return true;
+  landed(park);
+  return false;
 }
 
 /** While the founding tile is being rebuilt its plot is briefly unowned (a district's removal releases it); otherwise

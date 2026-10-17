@@ -100,3 +100,86 @@ test("unlanded: a park that lands late after all is the founding's; no second pa
   assert.ok(!core.foundings().some((w) => w.name === "Antium"), "and the waiting founding is used up by it");
   assert.deepEqual(grants(from), [], "no Gold moves");
 });
+
+// Something else takes the tile before the park first stands (lab4-N: France built a Museum on 47,25 between the
+// second and third misses). The player didn't get the park, so the founding waits again with what it cost.
+const takeTile = (i, owner) => { eng.district(i, "DISTRICT_URBAN", owner); eng.build(i, "BUILDING_MUSEUM", owner); };
+
+test("taken: a human's founding whose tile is built on before the park stands waits again, with what it cost", async () => {
+  for (const x of [2, 3, 4]) eng.setPlot(at(22, x), { owner: 0, city: 3 });
+  const bad = at(22, 2), home = { owner: 0, id: 3, type: 1 };
+  refuseImprovement(bad);
+  const f = core.addFounding("park", 0, home, { paid: 1600, by: "gold", name: "Neapolis" });
+  const from = eng.trace.length;
+  assert.ok(core.foundPark(f, bad));
+  await settle();
+  await turns(1);
+  assert.ok(core.parks().some((p) => p.anchor === bad), "still trying after one miss");
+  takeTile(bad, 0);
+  fire("ConstructibleAddedToMap", { constructibleType: "BUILDING_MUSEUM", location: core.locOf(bad) });
+  await settle();
+  await turns(1);
+  assert.ok(!core.parks().some((p) => p.anchor === bad), "no park on the taken tile");
+  const back = core.foundings().filter((w) => w.name === "Neapolis");
+  assert.equal(back.length, 1, "the founding waits again");
+  assert.equal(back[0].paid, 1600, "with what it cost");
+  assert.deepEqual(eng.typesAt(bad), ["BUILDING_MUSEUM"], "the building stays");
+  assert.ok(!core.foundingTiles(home).includes(bad), "the taken tile isn't offered");
+  assert.ok(core.foundingTiles(home).length > 0, "the others are");
+  assert.deepEqual(grants(from), [], "no Gold moves: the founding still holds it");
+  assert.equal(logs(from, /dissolved/).length, 0, "not dissolved");
+  assert.ok(core.notices().some((n) => n.owner === 0 && n.why === "not-landed")
+    || logs(from, /not-landed/).length, "the player is told");
+});
+
+test("taken: an AI's founding whose tile is built on before the park stands places itself elsewhere", async () => {
+  for (const x of [2, 3, 4]) eng.setPlot(at(26, x), { owner: 3, city: 1 });
+  const bad = at(26, 2);
+  refuseAll(bad);
+  const f = core.addFounding("park", 3, city(3), { paid: 900, by: "gold", name: "City 3-1" });
+  const from = eng.trace.length;
+  core.foundPark(f, bad);
+  await settle();
+  await turns(1);
+  takeTile(bad, 3);
+  await turns(2);
+  const mine = core.parks().filter((p) => p.owner === 3);
+  assert.equal(mine.length, 1, "one park");
+  assert.notEqual(mine[0].anchor, bad, "on another tile");
+  assert.deepEqual(eng.typesAt(mine[0].anchor), [PARK], "standing");
+  assert.equal(core.foundings().filter((w) => w.owner === 3).length, 0, "the founding is spent");
+  assert.deepEqual(grants(from).filter(([, o, , n]) => o === 3 && n > 0), [], "nothing refunded on top");
+});
+
+test("taken: a founding tile that passes to another player before the park stands gives the founding back", async () => {
+  for (const x of [2, 3, 4]) eng.setPlot(at(30, x), { owner: 0, city: 4 });
+  const bad = at(30, 2), home = { owner: 0, id: 4, type: 1 };
+  refuseImprovement(bad);
+  const f = core.addFounding("park", 0, home, { paid: 1600, by: "gold", name: "Capua" });
+  core.foundPark(f, bad);
+  await settle();
+  await turns(1);
+  eng.setPlot(bad, { owner: 4, city: 1 });
+  await turns(1);
+  assert.ok(!core.parks().some((p) => p.anchor === bad), "the new owner doesn't get a park the player paid for");
+  const back = core.foundings().filter((w) => w.name === "Capua");
+  assert.equal(back.length, 1, "the founding waits again");
+  assert.equal(back[0].owner, 0, "its owner's");
+  assert.equal(back[0].paid, 1600, "with what it cost");
+});
+
+test("taken: a park that stood and is then built over is dissolved as before, with no founding back", async () => {
+  for (const x of [2]) eng.setPlot(at(34, x), { owner: 0, city: 5 });
+  const tile = at(34, 2), home = { owner: 0, id: 5, type: 1 };
+  const f = core.addFounding("park", 0, home, { paid: 1600, by: "gold", name: "Ostia" });
+  const park = core.foundPark(f, tile);
+  await settle();
+  await turns(1);
+  assert.deepEqual(eng.typesAt(tile), [PARK], "it stood");
+  assert.ok(!park.founding, "and is its founding's for good");
+  const from = eng.trace.length;
+  eng.district(tile, "DISTRICT_URBAN", 0); eng.build(tile, "BUILDING_MUSEUM", 0);
+  await turns(1);
+  assert.equal(logs(from, new RegExp(`park ${park.id} dissolved`)).length, 1, "dissolved");
+  assert.ok(!core.foundings().some((w) => w.name === "Ostia"), "no founding comes back");
+});

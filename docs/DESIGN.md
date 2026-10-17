@@ -357,7 +357,33 @@ every row the shared files reference exists.
   on plot 2542; the park is that founding's", one park, no founding left, Gold unchanged, the same a turn later. An
   AI's (Paris, player 5, a founding added for it): placed on 47,25, the same three misses, returned, and in the same
   sweep "park 4: founded on plot 1901 (51,25)", which stood (rural district and park improvement) with no Gold back.
-  The vanilla side isn't watched.
+  The vanilla side was watched the same day (`lab4-N`, run `2026-10-17T15-36-09`, Modern 9001, `--setup fast`,
+  National Parks alone with Aging Warehouses and Settlement Limit switched off in the registry, 1600x900 windowed),
+  with the same probe. A human's: the founding bought at Roma (1,600 Gold) and placed through Choose land on 26,34;
+  "(1 of 3)" to "(3 of 3)" over four turns, then "park 2: its founding never landed on plot 2542; founding 3 waits for
+  land again". `parks()` empty, 26,34 bare, the founding waiting with `paid` 1600 and `lostAt` 2542, Gold moving only
+  by the turn's income (20,422, 20,455, 20,466). The notice came up once the Advisor Council pop-up was cleared, reading
+  "The game couldn't place this park on the tile you chose, so the founding is waiting for its land again. Choose
+  another tile from Choose land; what you paid still counts toward it." Choose land opened the picker on 3 tiles, 26,34
+  left out. With the wrap lifted, a rural district and the park improvement put on 26,34 by script: "founding 3: its
+  park landed late on plot 2542; the park is that founding's", one park, no founding left, Gold unchanged, and the
+  same a turn later. An AI's, through `NP.core.addFounding`: Silla's at Seorabeol placed on 55,37, three misses,
+  returned as founding 10, and in the same sweep "park 11: founded on plot 3020 (60,40)". Park 11 missed once on its
+  own (the wrap didn't touch that plot), was put back by the next sweep, and stood with its rural district and park
+  improvement; Silla's Gold moved by its own spending and income, with no refund. Captures in
+  `working_screenshots/national-parks-never-lands-alone/`.
+  Found on the way, the first AI try (France at Paris, park 7 on 47,25): after the second miss France built a Museum
+  in an urban district on that tile, and the sweep logged "park 7 dissolved: its founding improvement is gone". The
+  park went, and so did the founding it carried: nothing waited for land and no Gold came back. `reconcileAll` takes
+  the "dissolved" path (`dissolve` in `ui/np-main.js`) before `unlandedOutcome` is asked, so a park still carrying
+  its founding loses it when something else takes the tile before the park first stands. A human who builds on the
+  chosen tile in that window would lose the 1,600 Gold the same way. The owner's decision (2026-10-17): a founding's
+  Gold is never lost on a park its owner didn't get. A park still carrying its founding that would end (its founding
+  tile built over with no other tile to move to, gone to another player, or no one's) now goes through
+  `returnFounding` and the same notice instead of `dissolve` (`carriesFounding` in `reconcile`); a founding whose
+  settlement is gone or changed hands is refunded at once with that notice rather than the not-landed one. A park
+  whose improvement has stood ends as before. Unit-tested (`tests/np-unlanded.test.mjs`, the "taken" cases), not
+  watched in game yet.
 
 ## The look
 
@@ -986,7 +1012,11 @@ Watched 2026-09-30, late (seed 4242, Modern, lab games, Geographic Labels 1.6.1 
   Japanese and German on 2026-10-15 from the released copy, overnight L2 and L3), and the resource under a founding
   tile with National Parks alone. That resource was watched 2026-10-17 on the usual set (Modern 9001): Horses set on
   an empty Charming tile, a park founded on it through `foundPark`, and a turn later its town listed Horses among its
-  resources, while Horses on a bare tile of another town weren't collected.
+  resources, while Horses on a bare tile of another town weren't collected. With National Parks alone on 2026-10-17
+  (`lab4-N`, Modern 9001, every other mod off): Horses set on 30,37, an empty tile of Roma, a park founded on it
+  through `foundPark` ("park 15: founded on plot 2768"), and a turn later Roma's local resources listed Horses
+  beside its Hardwood, Niter and two Whales. Roma was the player's only settlement, so the other-town control wasn't
+  repeated on this side.
 
 - **The transition suite rebuilt (2026-10-17, crash soak, seed 9001, short-age probe, every other mod off).**
   `npw-game.js` had become a fence audition on 10-02, so the 38-check suite behind `npw4` was rebuilt from that run's

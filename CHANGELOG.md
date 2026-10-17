@@ -3,7 +3,7 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
-## [Unreleased]
+## [1.2.0] - 2026-10-17
 
 - Walls and fences now run along a park's border, and inside it only round the warden's station at its entrance. A
   wall between two of the park's own tiles, out in the middle of it, read as a maze. A Wilderness Area has no station,
@@ -18,6 +18,17 @@ semantic versioning.
   built it again lost it again, all game long. Now it stays, the same as when the tile joins.
 - When the game won't let a park take an improvement off its land, the park tries three times and then leaves it
   until the game is loaded again, as it already did for its other repairs. One long AI game had logged 808 tries.
+- A park you'd bought but not yet placed could go missing if the age changed while Autoplay was running. Autoplay
+  treats you as an AI, so the mod placed your park for you, and the game then ignored the request. Parks now wait
+  until Autoplay stops, and your founding is still waiting for you to choose its land when you take over.
+- If the game won't place a new park on the tile you chose, the mod tries three times and then gives the founding
+  back: it waits for land again with what you paid for it, a notice says what happened, and Choose land offers you
+  other tiles. An AI's founding finds another tile by itself. If the park does turn up on the first tile later, it
+  counts as that founding, so you don't end up with a second park or a refund on top.
+- A park you paid for whose tile something else is built on before the park appears now goes back to waiting with
+  what you paid, the same way: you're told, and Choose land offers you other tiles. The same happens if that tile
+  passes to another player first; if the settlement itself is lost, you get the Gold back. A park that has already
+  appeared on the map ends as before.
 
 ## [1.1.3] - 2026-10-14
 
