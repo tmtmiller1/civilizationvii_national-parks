@@ -236,7 +236,7 @@ test("notices: kept per player, so one seat's refund is never another's", () => 
 
 test("refund notices: every reason a human can be told has its text", async () => {
   const fs = await import("node:fs");
-  const picker = fs.readFileSync("ui/np-picker.js", "utf8");
+  const picker = fs.readFileSync("ui/np-picker-notices.js", "utf8");
   const table = picker.match(/const REFUND_BODY = \{([\s\S]*?)\};/)[1];
   const whys = [...table.matchAll(/"?([a-z-]+)"?: "LOC_/g)].map((m) => m[1]).sort();
   const told = new Set();

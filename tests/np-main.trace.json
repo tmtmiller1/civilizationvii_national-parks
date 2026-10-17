@@ -1,0 +1,1772 @@
+{
+ "start": {
+  "trace": [
+   [
+    "log",
+    "tile picker registered"
+   ],
+   [
+    "log",
+    "v1.1.3 active: parks founded on empty land and grown with Expand National Park"
+   ]
+  ],
+  "draws": {
+   "count": {},
+   "digest": "4f53cda18c2baa0c"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 4,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 62,
+    "tiles": [
+     62,
+     63
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "aiFund": 120
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   }
+  ],
+  "foundings": [
+   {
+    "id": 2,
+    "kind": "park",
+    "owner": 2,
+    "city": {
+     "owner": 2,
+     "id": 1,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 300,
+    "by": "gold",
+    "name": "City 2-1"
+   },
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town"
+   }
+  ],
+  "status": {
+   "on": true,
+   "multiplayer": false,
+   "hooks": 4,
+   "parks": 3,
+   "aiRuns": 0
+  }
+ },
+ "the load sweep": {
+  "trace": [
+   [
+    "log",
+    "lens registration failed: TypeError: LensManager.registerLensLayer is not a function"
+   ],
+   [
+    "grant",
+    1,
+    "YIELD_GOLD",
+    120
+   ],
+   [
+    "log",
+    "park 4 dissolved: its founding improvement is gone"
+   ],
+   [
+    "log",
+    "park 5: reverting IMPROVEMENT_FARM on plot 76"
+   ],
+   [
+    "log",
+    "named park 6: \"\" (map only, 0 candidates)"
+   ],
+   [
+    "log",
+    "AI park 1 took 2 tile(s)"
+   ],
+   [
+    "log",
+    "park 7: founded on plot 38 (2,3)"
+   ],
+   [
+    "log",
+    "named park 7: \"\" (map only, 0 candidates)"
+   ],
+   [
+    "log",
+    "sweep (load): 4 park(s), 1 new"
+   ],
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "CONSTRUCTIBLE",
+    11,
+    -1
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    38
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK",
+    38
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    27
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    27
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    28
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    28
+   ],
+   [
+    "population",
+    0,
+    1
+   ],
+   [
+    "log",
+    "plot 76: 1 citizen(s) of the removed improvement returned as new population"
+   ]
+  ],
+  "draws": {
+   "count": {
+    "addPlotOverlay": 2,
+    "clear": 24,
+    "addBorderOverlay": 4,
+    "setPlotGroups": 6,
+    "addModelAtPlot": 332,
+    "addVFXAtPlot": 11,
+    "clearAll": 1
+   },
+   "digest": "11f19ea61471e78c"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ]
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ]
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town"
+   }
+  ]
+ },
+ "a turn": {
+  "trace": [
+   [
+    "grant",
+    1,
+    "YIELD_GOLD",
+    -400
+   ],
+   [
+    "log",
+    "AI park 1: expansion bought for 400 Gold (gain 9/turn, pays back in 22 turns)"
+   ],
+   [
+    "log",
+    "AI park 1 took 1 tile(s)"
+   ],
+   [
+    "grant",
+    2,
+    "YIELD_GOLD",
+    -400
+   ],
+   [
+    "log",
+    "AI park 7: expansion bought for 400 Gold (gain 9/turn, pays back in 22 turns)"
+   ],
+   [
+    "log",
+    "AI park 7 took 1 tile(s)"
+   ],
+   [
+    "grant",
+    1,
+    "YIELD_GOLD",
+    -400
+   ],
+   [
+    "log",
+    "founding 8: wilderness for 1:1 (gold, 400 Gold)"
+   ],
+   [
+    "log",
+    "park 9: founded on plot 87 (3,7)"
+   ],
+   [
+    "log",
+    "named park 9: \"\" (map only, 0 candidates)"
+   ],
+   [
+    "CityOperations",
+    "BUILD",
+    {
+     "InsertMode": "RemoveAt",
+     "QueueLocation": 0
+    }
+   ],
+   [
+    "log",
+    "build queue of 1: PROJECT_FOUND_NATIONAL_PARK at 0 removed; it could no longer do anything"
+   ],
+   [
+    "log",
+    "sweep (turn): 5 park(s)"
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    87
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_WILDERNESS_AREA",
+    87
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    29
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    29
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    39
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    39
+   ],
+   [
+    "log",
+    "dialog: DialogBoxManager.createDialog_MultiOption unavailable"
+   ]
+  ],
+  "draws": {
+   "count": {
+    "clear": 16,
+    "setPlotGroups": 3,
+    "addModelAtPlot": 241,
+    "addVFXAtPlot": 19,
+    "addBorderOverlay": 1,
+    "clearAll": 1
+   },
+   "digest": "821645b8011a3c3e"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 9,
+    "kind": "wilderness",
+    "owner": 1,
+    "anchor": 87,
+    "tiles": [
+     87
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     87
+    ]
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town",
+    "asked": 1
+   }
+  ]
+ },
+ "a park piece lands": {
+  "trace": [
+   [
+    "log",
+    "sweep (changed): 5 park(s)"
+   ]
+  ],
+  "draws": {
+   "count": {},
+   "digest": "4f53cda18c2baa0c"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 9,
+    "kind": "wilderness",
+    "owner": 1,
+    "anchor": 87,
+    "tiles": [
+     87
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     87
+    ]
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town",
+    "asked": 1
+   }
+  ]
+ },
+ "an Expand project completes": {
+  "trace": [
+   [
+    "log",
+    "park 5 \"\" may take 3 tile(s)"
+   ]
+  ],
+  "draws": {
+   "count": {},
+   "digest": "4f53cda18c2baa0c"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 3,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 9,
+    "kind": "wilderness",
+    "owner": 1,
+    "anchor": 87,
+    "tiles": [
+     87
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     87
+    ]
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town",
+    "asked": 1
+   }
+  ]
+ },
+ "a Found project completes": {
+  "trace": [
+   [
+    "log",
+    "founding 10: wilderness for 0:1 (project, 400 Gold)"
+   ]
+  ],
+  "draws": {
+   "count": {},
+   "digest": "4f53cda18c2baa0c"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 3,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 9,
+    "kind": "wilderness",
+    "owner": 1,
+    "anchor": 87,
+    "tiles": [
+     87
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     87
+    ]
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town",
+    "asked": 1
+   },
+   {
+    "id": 10,
+    "kind": "wilderness",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 1,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 400,
+    "by": "project",
+    "name": "City 0-1"
+   }
+  ]
+ },
+ "a founding bought where there's a park": {
+  "trace": [],
+  "draws": {
+   "count": {},
+   "digest": "4f53cda18c2baa0c"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 3,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 9,
+    "kind": "wilderness",
+    "owner": 1,
+    "anchor": 87,
+    "tiles": [
+     87
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     87
+    ]
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town",
+    "asked": 1
+   },
+   {
+    "id": 10,
+    "kind": "wilderness",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 1,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 400,
+    "by": "project",
+    "name": "City 0-1"
+   }
+  ],
+  "bought": "LOC_NP_BUY_NONE"
+ },
+ "an Expand project completes for a full park": {
+  "trace": [
+   [
+    "log",
+    "park 5 is at its full size; the expansion adds nothing"
+   ],
+   [
+    "grant",
+    0,
+    "YIELD_GOLD",
+    400
+   ],
+   [
+    "log",
+    "400 Gold returned to player 0 (full)"
+   ]
+  ],
+  "draws": {
+   "count": {},
+   "digest": "4f53cda18c2baa0c"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 3,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 9,
+    "kind": "wilderness",
+    "owner": 1,
+    "anchor": 87,
+    "tiles": [
+     87
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     87
+    ]
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town",
+    "asked": 1
+   },
+   {
+    "id": 10,
+    "kind": "wilderness",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 1,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 400,
+    "by": "project",
+    "name": "City 0-1"
+   }
+  ]
+ },
+ "placement on park land": {
+  "trace": [
+   [
+    "log",
+    "request refused at 3,6: LOC_NP_TILE_IS_PARKLAND"
+   ],
+   [
+    "CityOperations",
+    "BUILD",
+    {
+     "X": 9,
+     "Y": 9,
+     "ConstructibleType": "BUILDING_GRANARY"
+    }
+   ]
+  ],
+  "draws": {
+   "count": {},
+   "digest": "4f53cda18c2baa0c"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 3,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 9,
+    "kind": "wilderness",
+    "owner": 1,
+    "anchor": 87,
+    "tiles": [
+     87
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     87
+    ]
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town",
+    "asked": 1
+   },
+   {
+    "id": 10,
+    "kind": "wilderness",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 1,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 400,
+    "by": "project",
+    "name": "City 0-1"
+   }
+  ],
+  "checks": {
+   "build": {
+    "Success": false,
+    "Plots": [],
+    "ExpandUrbanPlots": [],
+    "FailureReasons": [
+     "LOC_NP_TILE_IS_PARKLAND"
+    ]
+   },
+   "found": {
+    "Success": false,
+    "Requirements": {
+     "MeetsRequirements": false
+    }
+   },
+   "purchase": {
+    "Success": false,
+    "Plots": [],
+    "ExpandUrbanPlots": [],
+    "FailureReasons": [
+     "LOC_NP_TILE_IS_PARKLAND"
+    ]
+   }
+  }
+ },
+ "a turn when the AIs are short of Gold": {
+  "trace": [
+   [
+    "log",
+    "plot 77: marker belongs to no park; removed"
+   ],
+   [
+    "grant",
+    1,
+    "YIELD_GOLD",
+    -8
+   ],
+   [
+    "log",
+    "AI park 9: 8 Gold set aside for an expansion (8 of 400)"
+   ],
+   [
+    "CityOperations",
+    "BUILD",
+    {
+     "InsertMode": "RemoveAt",
+     "QueueLocation": 0
+    }
+   ],
+   [
+    "log",
+    "build queue of 1: PROJECT_FOUND_NATIONAL_PARK at 0 removed; it could no longer do anything"
+   ],
+   [
+    "log",
+    "sweep (turn): 5 park(s)"
+   ],
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "CONSTRUCTIBLE",
+    24,
+    -1
+   ]
+  ],
+  "draws": {
+   "count": {},
+   "digest": "4f53cda18c2baa0c"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 3,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 9,
+    "kind": "wilderness",
+    "owner": 1,
+    "anchor": 87,
+    "tiles": [
+     87
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     87
+    ],
+    "aiFund": 8
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town",
+    "asked": 1
+   },
+   {
+    "id": 10,
+    "kind": "wilderness",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 1,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 400,
+    "by": "project",
+    "name": "City 0-1"
+   }
+  ]
+ },
+ "a turn at war": {
+  "trace": [
+   [
+    "grant",
+    1,
+    "YIELD_GOLD",
+    8
+   ],
+   [
+    "log",
+    "AI park 9: 8 Gold set aside returned (at war)"
+   ],
+   [
+    "CityOperations",
+    "BUILD",
+    {
+     "InsertMode": "RemoveAt",
+     "QueueLocation": 0
+    }
+   ],
+   [
+    "log",
+    "build queue of 1: PROJECT_FOUND_NATIONAL_PARK at 0 removed; it could no longer do anything"
+   ],
+   [
+    "log",
+    "sweep (turn): 5 park(s)"
+   ]
+  ],
+  "draws": {
+   "count": {},
+   "digest": "4f53cda18c2baa0c"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 3,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 9,
+    "kind": "wilderness",
+    "owner": 1,
+    "anchor": 87,
+    "tiles": [
+     87
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     87
+    ],
+    "aiFund": 0
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town",
+    "asked": 1
+   },
+   {
+    "id": 10,
+    "kind": "wilderness",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 1,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 400,
+    "by": "project",
+    "name": "City 0-1"
+   }
+  ]
+ },
+ "stop": {
+  "trace": [
+   [
+    "log",
+    "drawings cleared"
+   ]
+  ],
+  "draws": {
+   "count": {
+    "clear": 25,
+    "destroy": 20,
+    "clearAll": 1
+   },
+   "digest": "58407a61d69a2438"
+  },
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 1,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27,
+     28,
+     29
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     27,
+     28,
+     29
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75,
+     76
+    ],
+    "pending": 3,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   },
+   {
+    "id": 7,
+    "kind": "park",
+    "owner": 2,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39
+    ],
+    "pending": 2,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     38,
+     39
+    ],
+    "aiFund": 0
+   },
+   {
+    "id": 9,
+    "kind": "wilderness",
+    "owner": 1,
+    "anchor": 87,
+    "tiles": [
+     87
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     87
+    ],
+    "aiFund": 0
+   }
+  ],
+  "foundings": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 7,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 250,
+    "by": "gold",
+    "name": "Lost Town",
+    "asked": 1
+   },
+   {
+    "id": 10,
+    "kind": "wilderness",
+    "owner": 0,
+    "city": {
+     "owner": 0,
+     "id": 1,
+     "type": 1
+    },
+    "made": 1,
+    "paid": 400,
+    "by": "project",
+    "name": "City 0-1"
+   }
+  ],
+  "stopped": "off",
+  "listeners": 0
+ }
+}

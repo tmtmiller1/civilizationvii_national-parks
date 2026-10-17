@@ -63,18 +63,15 @@ export default [
       globals: { ...ENGINE_GLOBALS, ...BROWSER_GLOBALS }
     },
     rules: {
-      // Size and shape rules only warn here. `parkPlan` builds the whole park plan in one pass and
-      // np-plan.js, np-core.js and np-main.js are past 500 lines; splitting them is a refactor that has
-      // to be watched in game, not a lint fix.
-      // TODO: refactor np-plan.js first, then raise these back to "error" to match the other tower mods.
-      complexity: ["warn", 10],
+      // Size and shape rules are errors, as in the other tower mods.
+      complexity: ["error", 10],
       "max-lines-per-function": [
-        "warn",
+        "error",
         { max: 50, skipBlankLines: true, skipComments: true, IIFEs: true }
       ],
-      "max-lines": ["warn", { max: 500, skipBlankLines: true, skipComments: true }],
+      "max-lines": ["error", { max: 500, skipBlankLines: true, skipComments: true }],
       "max-len": [
-        "warn",
+        "error",
         {
           code: 120,
           ignoreUrls: true,
@@ -83,9 +80,9 @@ export default [
           ignoreRegExpLiterals: true
         }
       ],
-      "max-params": ["warn", 5],
-      "max-depth": ["warn", 4],
-      "max-statements": ["warn", 18],
+      "max-params": ["error", 5],
+      "max-depth": ["error", 4],
+      "max-statements": ["error", 18],
       // the rest are errors, as in the other tower mods
       "no-undef": "error",
       "no-unused-vars": [

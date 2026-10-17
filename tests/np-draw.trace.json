@@ -1,0 +1,544 @@
+{
+ "a three-tile park": {
+  "result": true,
+  "count": {
+   "clear": 4,
+   "addBorderOverlay": 1,
+   "setPlotGroups": 1,
+   "addModelAtPlot": 109,
+   "addVFXAtPlot": 2,
+   "setState": 2
+  },
+  "digest": "92db497d9619d782",
+  "first": [
+   [
+    "NationalPark_walls_1",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_dress_1",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_wild_1",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders",
+    "addBorderOverlay",
+    [
+     {
+      "style": "CultureBorder_CityState_Open",
+      "primaryColor": {
+       "x": 0.35,
+       "y": 0.75,
+       "z": 0.3,
+       "w": 1
+      },
+      "secondaryColor": {
+       "x": 0.1,
+       "y": 0.3,
+       "z": 0.1,
+       "w": 1
+      }
+     }
+    ]
+   ],
+   [
+    "NationalParkBorders/border",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders/border",
+    "setPlotGroups",
+    [
+     [
+      26,
+      27,
+      28
+     ],
+     0
+    ]
+   ]
+  ]
+ },
+ "a wilderness area": {
+  "result": true,
+  "count": {
+   "clear": 4,
+   "addBorderOverlay": 1,
+   "setPlotGroups": 1,
+   "addModelAtPlot": 118,
+   "addVFXAtPlot": 2,
+   "setState": 4
+  },
+  "digest": "824581943d9050a8",
+  "first": [
+   [
+    "NationalPark_walls_2",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_dress_2",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_wild_2",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders",
+    "addBorderOverlay",
+    [
+     {
+      "style": "CultureBorder_CityState_Open",
+      "primaryColor": {
+       "x": 0.8,
+       "y": 0.42,
+       "z": 0.08,
+       "w": 1
+      },
+      "secondaryColor": {
+       "x": 0.35,
+       "y": 0.16,
+       "z": 0.02,
+       "w": 1
+      }
+     }
+    ]
+   ],
+   [
+    "NationalParkBorders/border",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders/border",
+    "setPlotGroups",
+    [
+     [
+      74,
+      75,
+      76,
+      77
+     ],
+     0
+    ]
+   ]
+  ]
+ },
+ "a park on hills beside a mountain": {
+  "result": true,
+  "count": {
+   "clear": 4,
+   "addBorderOverlay": 1,
+   "setPlotGroups": 1,
+   "addModelAtPlot": 121,
+   "addVFXAtPlot": 2,
+   "setState": 2
+  },
+  "digest": "4c8864b76cc489b6",
+  "first": [
+   [
+    "NationalPark_walls_3",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_dress_3",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_wild_3",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders",
+    "addBorderOverlay",
+    [
+     {
+      "style": "CultureBorder_CityState_Open",
+      "primaryColor": {
+       "x": 0.35,
+       "y": 0.75,
+       "z": 0.3,
+       "w": 1
+      },
+      "secondaryColor": {
+       "x": 0.1,
+       "y": 0.3,
+       "z": 0.1,
+       "w": 1
+      }
+     }
+    ]
+   ],
+   [
+    "NationalParkBorders/border",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders/border",
+    "setPlotGroups",
+    [
+     [
+      123,
+      124,
+      125
+     ],
+     0
+    ]
+   ]
+  ]
+ },
+ "a park holding a mountain": {
+  "result": true,
+  "count": {
+   "clear": 4,
+   "addBorderOverlay": 1,
+   "setPlotGroups": 1,
+   "addModelAtPlot": 88,
+   "addVFXAtPlot": 2,
+   "setState": 4
+  },
+  "digest": "50c3421800c1d377",
+  "first": [
+   [
+    "NationalPark_walls_4",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_dress_4",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_wild_4",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders",
+    "addBorderOverlay",
+    [
+     {
+      "style": "CultureBorder_CityState_Open",
+      "primaryColor": {
+       "x": 0.35,
+       "y": 0.75,
+       "z": 0.3,
+       "w": 1
+      },
+      "secondaryColor": {
+       "x": 0.1,
+       "y": 0.3,
+       "z": 0.1,
+       "w": 1
+      }
+     }
+    ]
+   ],
+   [
+    "NationalParkBorders/border",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders/border",
+    "setPlotGroups",
+    [
+     [
+      171,
+      172,
+      173
+     ],
+     0
+    ]
+   ]
+  ]
+ },
+ "a coastal park with water": {
+  "result": true,
+  "count": {
+   "clear": 4,
+   "addBorderOverlay": 1,
+   "setPlotGroups": 1,
+   "addModelAtPlot": 71,
+   "addVFXAtPlot": 4,
+   "setState": 2
+  },
+  "digest": "40419f3aa25d0d2a",
+  "first": [
+   [
+    "NationalPark_walls_5",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_dress_5",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_wild_5",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders",
+    "addBorderOverlay",
+    [
+     {
+      "style": "CultureBorder_CityState_Open",
+      "primaryColor": {
+       "x": 0.35,
+       "y": 0.75,
+       "z": 0.3,
+       "w": 1
+      },
+      "secondaryColor": {
+       "x": 0.1,
+       "y": 0.3,
+       "z": 0.1,
+       "w": 1
+      }
+     }
+    ]
+   ],
+   [
+    "NationalParkBorders/border",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders/border",
+    "setPlotGroups",
+    [
+     [
+      219,
+      220,
+      221,
+      222
+     ],
+     0
+    ]
+   ]
+  ]
+ },
+ "an eight-tile park": {
+  "result": true,
+  "count": {
+   "clear": 4,
+   "addBorderOverlay": 1,
+   "setPlotGroups": 1,
+   "addModelAtPlot": 258,
+   "addVFXAtPlot": 2,
+   "setState": 4
+  },
+  "digest": "69abeebc1a4e2bea",
+  "first": [
+   [
+    "NationalPark_walls_6",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_dress_6",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_wild_6",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders",
+    "addBorderOverlay",
+    [
+     {
+      "style": "CultureBorder_CityState_Open",
+      "primaryColor": {
+       "x": 0.35,
+       "y": 0.75,
+       "z": 0.3,
+       "w": 1
+      },
+      "secondaryColor": {
+       "x": 0.1,
+       "y": 0.3,
+       "z": 0.1,
+       "w": 1
+      }
+     }
+    ]
+   ],
+   [
+    "NationalParkBorders/border",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders/border",
+    "setPlotGroups",
+    [
+     [
+      265,
+      266,
+      267,
+      268,
+      269,
+      270,
+      271,
+      272
+     ],
+     0
+    ]
+   ]
+  ]
+ },
+ "a park growing: new land drawn in turn": {
+  "result": true,
+  "count": {
+   "clear": 9,
+   "addBorderOverlay": 1,
+   "setPlotGroups": 2,
+   "addModelAtPlot": 276,
+   "addVFXAtPlot": 13,
+   "setState": 6
+  },
+  "digest": "14e791fd81e09be1",
+  "first": [
+   [
+    "NationalPark_walls_7",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_dress_7",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_wild_7",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders",
+    "addBorderOverlay",
+    [
+     {
+      "style": "CultureBorder_CityState_Open",
+      "primaryColor": {
+       "x": 0.35,
+       "y": 0.75,
+       "z": 0.3,
+       "w": 1
+      },
+      "secondaryColor": {
+       "x": 0.1,
+       "y": 0.3,
+       "z": 0.1,
+       "w": 1
+      }
+     }
+    ]
+   ],
+   [
+    "NationalParkBorders/border",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders/border",
+    "setPlotGroups",
+    [
+     [
+      314,
+      315,
+      316
+     ],
+     0
+    ]
+   ]
+  ]
+ },
+ "a park redrawn, then cleared": {
+  "result": false,
+  "count": {
+   "clear": 13,
+   "addBorderOverlay": 1,
+   "setPlotGroups": 2,
+   "addModelAtPlot": 128,
+   "addVFXAtPlot": 2,
+   "destroy": 4
+  },
+  "digest": "b50cdb3ff0b65309",
+  "first": [
+   [
+    "NationalPark_walls_8",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_dress_8",
+    "clear",
+    []
+   ],
+   [
+    "NationalPark_wild_8",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders",
+    "addBorderOverlay",
+    [
+     {
+      "style": "CultureBorder_CityState_Open",
+      "primaryColor": {
+       "x": 0.35,
+       "y": 0.75,
+       "z": 0.3,
+       "w": 1
+      },
+      "secondaryColor": {
+       "x": 0.1,
+       "y": 0.3,
+       "z": 0.1,
+       "w": 1
+      }
+     }
+    ]
+   ],
+   [
+    "NationalParkBorders/border",
+    "clear",
+    []
+   ],
+   [
+    "NationalParkBorders/border",
+    "setPlotGroups",
+    [
+     [
+      386,
+      387
+     ],
+     0
+    ]
+   ]
+  ]
+ }
+}

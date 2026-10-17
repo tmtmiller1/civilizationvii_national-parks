@@ -1,0 +1,693 @@
+{
+ "markers for bare land: district then marker": {
+  "result": 2,
+  "trace": [
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    15
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    15
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    16
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    16
+   ]
+  ],
+  "parks": [
+   {
+    "id": 1,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 14,
+    "tiles": [
+     14,
+     15,
+     16
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     15,
+     16
+    ]
+   }
+  ],
+  "plots": [
+   [
+    14,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ],
+   [
+    15,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ],
+   [
+    16,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ]
+  ]
+ },
+ "a marker on land that has a district": {
+  "result": true,
+  "trace": [
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    27
+   ]
+  ],
+  "parks": [
+   {
+    "id": 2,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 26,
+    "tiles": [
+     26,
+     27
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   }
+  ],
+  "plots": [
+   [
+    26,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ],
+   [
+    27,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ]
+  ]
+ },
+ "no marker on a resource tile, a kept improvement, or another's land": {
+  "result": [
+   false,
+   false,
+   false
+  ],
+  "trace": [],
+  "parks": [
+   {
+    "id": 3,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 38,
+    "tiles": [
+     38,
+     39,
+     40,
+     41
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   }
+  ],
+  "plots": [
+   [
+    38,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ],
+   [
+    39,
+    0,
+    "",
+    ""
+   ],
+   [
+    40,
+    0,
+    "",
+    "IMPROVEMENT_EXPEDITION_BASE"
+   ],
+   [
+    41,
+    1,
+    "",
+    ""
+   ]
+  ]
+ },
+ "a marker that never lands: three tries, then none": {
+  "result": [
+   true,
+   true,
+   true,
+   false,
+   false
+  ],
+  "trace": [
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    51
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    51
+   ],
+   [
+    "refused",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    51
+   ],
+   [
+    "refused",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ],
+   [
+    "log",
+    "park 4: plot 51: marker did not land (1 of 3)"
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    51
+   ],
+   [
+    "refused",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ],
+   [
+    "log",
+    "park 4: plot 51: marker did not land (2 of 3)"
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    51
+   ],
+   [
+    "refused",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ],
+   [
+    "log",
+    "park 4: plot 51: marker did not land (3 of 3)"
+   ]
+  ],
+  "parks": [
+   {
+    "id": 4,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 50,
+    "tiles": [
+     50,
+     51
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     51
+    ]
+   }
+  ],
+  "plots": [
+   [
+    50,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ],
+   [
+    51,
+    0,
+    "DISTRICT_RURAL",
+    ""
+   ]
+  ]
+ },
+ "a tile added from the picker: farm stripped, marker on": {
+  "result": true,
+  "trace": [
+   [
+    "log",
+    "park 5: stripping IMPROVEMENT_FARM from plot 64"
+   ],
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "CONSTRUCTIBLE",
+    22,
+    -1
+   ],
+   [
+    "population",
+    0,
+    1
+   ],
+   [
+    "log",
+    "plot 64: 1 citizen(s) of the removed improvement returned as new population"
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    64
+   ]
+  ],
+  "parks": [
+   {
+    "id": 5,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 62,
+    "tiles": [
+     62,
+     63,
+     64
+    ],
+    "pending": 1,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   }
+  ],
+  "plots": [
+   [
+    62,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ],
+   [
+    63,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ],
+   [
+    64,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ]
+  ]
+ },
+ "a tile that may not be added": {
+  "result": false,
+  "trace": [],
+  "parks": [
+   {
+    "id": 6,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 74,
+    "tiles": [
+     74,
+     75
+    ],
+    "pending": 1,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   }
+  ],
+  "plots": [
+   [
+    74,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ],
+   [
+    75,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ],
+   [
+    76,
+    1,
+    "",
+    ""
+   ]
+  ]
+ },
+ "a founding placed on empty land": {
+  "result": 8,
+  "trace": [
+   [
+    "log",
+    "park 8: founded on plot 86 (2,7)"
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    86
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK",
+    86
+   ]
+  ],
+  "parks": [
+   {
+    "id": 8,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 86,
+    "tiles": [
+     86
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     86
+    ]
+   }
+  ],
+  "plots": [
+   [
+    86,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ]
+  ]
+ },
+ "a founding refused on land that is built on": {
+  "result": null,
+  "trace": [],
+  "parks": [],
+  "plots": [
+   [
+    98,
+    0,
+    "",
+    "IMPROVEMENT_FARM"
+   ]
+  ]
+ },
+ "a park dissolved: markers off, its districts down, plots bought back": {
+  "result": "undefined",
+  "trace": [
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "CONSTRUCTIBLE",
+    34,
+    -1
+   ],
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "CONSTRUCTIBLE",
+    36,
+    -1
+   ],
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "DISTRICT",
+    33,
+    -1
+   ],
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "DISTRICT",
+    35,
+    -1
+   ],
+   [
+    "buy",
+    111
+   ],
+   [
+    "buy",
+    112
+   ]
+  ],
+  "parks": [],
+  "plots": [
+   [
+    110,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ],
+   [
+    111,
+    0,
+    "",
+    ""
+   ],
+   [
+    112,
+    0,
+    "",
+    ""
+   ]
+  ]
+ },
+ "a released tile with the owner's farm keeps its district": {
+  "result": "kept-district",
+  "trace": [
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "CONSTRUCTIBLE",
+    40,
+    -1
+   ]
+  ],
+  "parks": [
+   {
+    "id": 11,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 122,
+    "tiles": [
+     122,
+     123
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1,
+    "districts": [
+     122
+    ]
+   }
+  ],
+  "plots": [
+   [
+    122,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ],
+   [
+    123,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_FARM"
+   ]
+  ]
+ },
+ "markers no park holds are taken off": {
+  "result": 1,
+  "trace": [
+   [
+    "log",
+    "plot 135: marker belongs to no park; removed"
+   ],
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "CONSTRUCTIBLE",
+    43,
+    -1
+   ]
+  ],
+  "parks": [],
+  "plots": [
+   [
+    135,
+    0,
+    "DISTRICT_RURAL",
+    ""
+   ],
+   [
+    136,
+    9,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ]
+  ]
+ },
+ "empty wilderness districts no park holds are taken down": {
+  "result": 1,
+  "trace": [
+   [
+    "log",
+    "plot 147: an empty wilderness district no park holds; removed"
+   ],
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "DISTRICT",
+    46,
+    -1
+   ],
+   [
+    "buy",
+    147
+   ]
+  ],
+  "parks": [],
+  "plots": [
+   [
+    147,
+    0,
+    "",
+    ""
+   ]
+  ]
+ },
+ "the map scan": {
+  "result": {
+   "anchors": [
+    158
+   ],
+   "markers": [
+    159,
+    160
+   ],
+   "wilds": [
+    163
+   ]
+  },
+  "trace": [],
+  "parks": [
+   {
+    "id": 12,
+    "kind": "park",
+    "owner": 0,
+    "anchor": 158,
+    "tiles": [
+     158,
+     159,
+     160
+    ],
+    "pending": 0,
+    "autoName": "",
+    "customName": "",
+    "founded": 1
+   }
+  ],
+  "plots": [
+   [
+    158,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ],
+   [
+    159,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ],
+   [
+    160,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK_LAND"
+   ],
+   [
+    163,
+    0,
+    "DISTRICT_WILDERNESS",
+    ""
+   ],
+   [
+    164,
+    9,
+    "DISTRICT_WILDERNESS",
+    ""
+   ],
+   [
+    165,
+    0,
+    "DISTRICT_RURAL",
+    ""
+   ]
+  ]
+ }
+}

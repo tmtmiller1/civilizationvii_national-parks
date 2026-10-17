@@ -17,12 +17,12 @@
 import { hash01 } from "./np-core.js";
 
 /**
- * Rigged species: asset, scale, the largest group it appears in, and how far above the ground it stands. A rigged
- * model is placed at an absolute height, not on the ground as static models are: at one lift the same horse floated
- * on low ground and sank on a hill, and at the ground's height plus a constant it stood on both (2026-10-03, crash soak
- * npz10, npz11, flat tile and hill in one frame). So an animal is set at the ground's height under it (np-draw.js reads
- * it) plus this. In pre-release builds every animal was lifted 8 + 24 x scale from zero, which floated them on low ground (the fox
- * on a shore, camels on a cliff's lip) and buried them on hills.
+ * Rigged species: asset, scale, the largest group it appears in, and how far above the ground it stands. A rigged model
+ * is placed at an absolute height, not on the ground as static models are: at one lift the same horse floated on low
+ * ground and sank on a hill, and at the ground's height plus a constant it stood on both (2026-10-03, crash soak npz10,
+ * npz11, flat tile and hill in one frame). So an animal is set at the ground's height under it (np-draw.js reads it)
+ * plus this. In pre-release builds every animal was lifted 8 + 24 x scale from zero, which floated them on low ground
+ * (the fox on a shore, camels on a cliff's lip) and buried them on hills.
  */
 // Scales are set against the park's buildings (np-plan.js), from the models' own heights (asset catalog, 2026-10-04).
 // At the first scales (0.4 to 0.5) an elk stood three times the height of a village cabin; at two and a half times
@@ -46,12 +46,13 @@ const SPECIES = {
   giraffe: ["Char_Giraffe01", 0.3, 3, 1],
   turtle: ["CHAR_Turtle", 0.39, 2, 0.5],
 };
-/** The rarer species a Wilderness Area gains from 16 tiles, by the land: goats on hills, giraffes on open tropical
- *  and plains land, turtles on a shore. */
+/** The rarer species a Wilderness Area gains from 16 tiles, by the land: goats on hills, giraffes on the plains,
+ *  elephants in the tropics (giraffes keep to open savanna, not jungle), turtles on a shore. */
 export function rareFor(f) {
   if (f.shore != null && (f.lake || f.coast || f.river)) return ["turtle"];
   if (f.hill || f.mountain) return ["goat"];
-  if (f.biome === "BIOME_TROPICAL" || f.biome === "BIOME_PLAINS") return ["giraffe"];
+  if (f.biome === "BIOME_PLAINS") return ["giraffe"];
+  if (f.biome === "BIOME_TROPICAL") return ["elephant"];
   return [];
 }
 

@@ -3,6 +3,22 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
+## [Unreleased]
+
+- Walls and fences now run along a park's border, and inside it only round the warden's station at its entrance. A
+  wall between two of the park's own tiles, out in the middle of it, read as a maze. A Wilderness Area has no station,
+  so it has walls on its border only.
+- Cold seas look cold. Reef fish keep to warm water; on a coast from 40 degrees of latitude toward either pole you'll
+  see crabs at the waterline, sponges on the sea floor and more whales out at sea instead.
+- A tropical Wilderness Area's rarer animals are elephants now, not giraffes, which keep to the plains.
+- No change in game from the rest of this release's work: the mod's largest files are split into smaller ones, each
+  part tested on its own against what the old code did, step for step.
+- A resource tile in a park keeps the camp, mine or woodcutter its owner builds there. Since 1.1.1 a resource tile
+  has joined a park with its harvester standing, but the park's upkeep took off one built afterwards, and an AI that
+  built it again lost it again, all game long. Now it stays, the same as when the tile joins.
+- When the game won't let a park take an improvement off its land, the park tries three times and then leaves it
+  until the game is loaded again, as it already did for its other repairs. One long AI game had logged 808 tries.
+
 ## [1.1.3] - 2026-10-14
 
 - The license now says that Civilization VII and its art and data belong to Firaxis and 2K. The mod itself plays

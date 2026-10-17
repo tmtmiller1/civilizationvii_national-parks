@@ -1,12 +1,12 @@
 // np-lens.js - National Parks: the Parks and Wilderness lens.
 //
 // A lens in the game's lens menu that shades every revealed tile of every park: National Parks in green, Wilderness
-// Areas in ocher (the color of their border, and clear of the yellows the game's own lenses use). The founding tile
-// is shaded a little deeper so each park's center reads. Outside the lens every park carries a lighter wash of the same
+// Areas in ocher (the color of their border, and clear of the yellows the game's own lenses use). The founding tile is
+// shaded a little deeper so each park's center reads. Outside the lens every park carries a lighter wash of the same
 // colors (FAINT_COLORS) with its dashed border, both shown or hidden by one option (np-settings.js getMarks): where a
-// park's edge runs along a civilization's border, the game's culture border draws over the park's dashed line
-// (priority 5 against 1), and the wash still shows the park's land, at any zoom. Display only. Registered when np-main.js imports it, in the
-// game's HUD scope, the way Cultural Diffusion registers its pressure lens.
+// park's edge runs along a civilization's border, the game's culture border draws over the park's dashed line (priority
+// 5 against 1), and the wash still shows the park's land, at any zoom. Display only. Registered when np-main.js imports
+// it, in the game's HUD scope, the way Cultural Diffusion registers its pressure lens.
 "use strict";
 
 import { safe, log, locOf, parks, isRevealed, kindOf } from "./np-core.js";
@@ -40,18 +40,20 @@ export const FAINT_COLORS = {
 export function lensBatches(list, { kindKey = (p) => kindOf(p).key, revealed = isRevealed, loc = locOf,
   palette = LENS_COLORS } = {}) {
   const groups = new Map();
-  for (const p of list) {
-    const colors = palette[kindKey(p)] || palette.park;
-    for (const t of p.tiles) {
-      if (!revealed(t)) continue;
-      const role = t === p.anchor ? "anchor" : "land";
-      const key = kindKey(p) + ":" + role;
-      if (!groups.has(key)) groups.set(key, { fill: colors[role], plots: [] });
-      const l = loc(t);
-      groups.get(key).plots.push({ x: l.x, y: l.y });
-    }
-  }
+  for (const p of list) addPark(groups, p, { kindKey, revealed, loc, colors: palette[kindKey(p)] || palette.park });
   return [...groups.values()];
+}
+
+/** A park's revealed tiles into the batch for its kind and each tile's role (founding tile or land). */
+function addPark(groups, p, { kindKey, revealed, loc, colors }) {
+  for (const t of p.tiles) {
+    if (!revealed(t)) continue;
+    const role = t === p.anchor ? "anchor" : "land";
+    const key = kindKey(p) + ":" + role;
+    if (!groups.has(key)) groups.set(key, { fill: colors[role], plots: [] });
+    const l = loc(t);
+    groups.get(key).plots.push({ x: l.x, y: l.y });
+  }
 }
 
 /** One overlay of park shading: `paint()` draws every park, `clear()` removes it. */

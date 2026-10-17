@@ -67,7 +67,8 @@ forests, lakes, rivers, the sea, natural wonders and open country.
   and horses on the plains, elk in the tundra, camels
   in the desert, elephants and cranes in the jungle, sheep and llamas on the hills, deer and foxes almost anywhere,
   cranes on the shores and crabs on the coast. Overhead, birds and butterflies; in lakes, leaping and swimming fish;
-  at sea, gulls, schools of fish, reef fish along the shore and now and then a whale.
+  at sea, gulls, schools of fish and now and then a whale, with reef fish along a warm shore and crabs and sponges
+  along a cold one.
 - **See them all at a glance.** The **Parks and Wilderness** lens in the lens menu shades every park tile you can
   see: National Parks in green, Wilderness Areas in ocher, the founding tile a little deeper.
 - **Named for its place.** A new park is named after a natural wonder beside it: "Uluru National Park", "Redwood
@@ -90,9 +91,9 @@ the IUCN categories, and websites for further reading.
 ## Translations
 
 The game text and the Civilopedia are in English, German, Spanish, French, Italian, Japanese, Korean, Polish, Portuguese
-(Brazil), Russian, and Simplified and Traditional Chinese, the game's own languages. The translations are machine
-translations that use the game's own words for its terms; corrections from native speakers are welcome. To fix or add a
-language, see [`text/README.md`](text/README.md).
+(Brazil), Russian, and Simplified and Traditional Chinese, the game's own languages. The translations use the game's own
+words for its terms; corrections from native speakers are welcome. To fix or add a language, see
+[`text/README.md`](text/README.md).
 
 ## Options
 
@@ -148,12 +149,13 @@ the equivalent Mods folder on your platform, then enable it in-game.
 
 ## Compatibility
 
-- Touches no base-game files. Adds two improvements, four land markers (valid for every resource, so park land keeps
-  its resources), two projects, one modifier, unlocks on two civics, and icons.
-- Placement rules are added to the game's own placement check and removed cleanly, so other mods that change
-  placement keep working.
-- Park land pays the park's yields only: yields another mod adds to a park tile itself are set aside along with the
-  tile's natural ones. Yields a mod adds to a settlement as a whole are untouched.
+- Doesn't change any base-game files. Adds two improvements, ten land markers (five for each kind: the plain one, one
+  for each size level, and one kept so older saves load; each is valid for every resource, so park land keeps its
+  resources), two projects, one modifier, unlocks on two civics, and icons.
+- The park's placement rules sit on top of the game's own placement check and hand everything else on to it, so other
+  mods that change placement keep working.
+- Park land keeps its own yields and adds the park's on top, so yields another mod gives a park tile stay with it, and
+  so do yields a mod adds to a settlement as a whole.
 - Suggested with [Cultural Diffusion](https://github.com/tmtmiller1/civilizationvii-cultural-diffusion): a park grows
   only into
   land its settlement owns, and Cultural Diffusion's spreading borders give it more land to grow into.

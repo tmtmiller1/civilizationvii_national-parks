@@ -85,17 +85,19 @@ function addRows(panel, items) {
   const gold = safe(() => Players.get(GameContext.localPlayerID).Treasury.goldBalance, 0);
   const rows = parksOf(cityId).map((park) => rowFor(park, gold));
   for (const kind of Object.values(KINDS)) rows.push(foundRowFor(cityId, kind, gold));
-  for (const row of rows) {
-    if (!row) continue;
-    const there = items.projects.find((it) => it.type === row.type);
-    if (purchase) { if (!there) items.projects.push(row); continue; }
-    if (!there) continue;
-    there.purchaseCost = row.cost;
-    there.purchaseDisabled = row.disabled;
-    there.purchaseInsufficientFunds = row.insufficientFunds;
-    there.purchaseError = row.error;
-  }
+  for (const row of rows) if (row) mergeRow(items, row, purchase);
   return items;
+}
+
+/** A purchase list gets the row once; a pill-style panel's own row of the project gets the row's price and state. */
+function mergeRow(items, row, purchase) {
+  const there = items.projects.find((it) => it.type === row.type);
+  if (purchase) { if (!there) items.projects.push(row); return; }
+  if (!there) return;
+  there.purchaseCost = row.cost;
+  there.purchaseDisabled = row.disabled;
+  there.purchaseInsufficientFunds = row.insufficientFunds;
+  there.purchaseError = row.error;
 }
 
 function accessor(obj, name) {
@@ -104,6 +106,14 @@ function accessor(obj, name) {
     if (d) return d;
   }
   return null;
+}
+
+/** After a purchase from the list: refused (logged), or done, with the game's purchase sound and the city closed. */
+function bought(why, what) {
+  if (why) { log(`purchase list: ${what} refused (${why})`); return; }
+  safe(() => Audio.playSound("data-audio-city-purchase-activate", "city-actions"));
+  safe(() => UI.Player.deselectAllCities());
+  safe(() => InterfaceMode.switchToDefault());
 }
 
 class ParkPurchaseDecorator {
@@ -123,21 +133,10 @@ class ParkPurchaseDecorator {
     panel.doOrConfirmConstruction = function (category, type, ...rest) {
       const purchase = rest[1] === true || safe(() => this.isPurchase, false);
       const fk = found && purchase ? kindByFoundProject(type) : null;
-      if (fk) {
-        const why = found.buy(safe(() => this.cityID, null), fk);
-        if (why) { log(`purchase list: founding refused (${why})`); return; }
-        safe(() => Audio.playSound("data-audio-city-purchase-activate", "city-actions"));
-        safe(() => UI.Player.deselectAllCities());
-        safe(() => InterfaceMode.switchToDefault());
-        return;
-      }
+      if (fk) { bought(found.buy(safe(() => this.cityID, null), fk), "founding"); return; }
       const park = buy && purchase ? parkForRow(safe(() => this.cityID, null), type) : null;
       if (!park) return choose.call(this, category, type, ...rest);
-      const why = buy(park);
-      if (why) { log(`purchase list: expansion refused (${why})`); return; }
-      safe(() => Audio.playSound("data-audio-city-purchase-activate", "city-actions"));
-      safe(() => UI.Player.deselectAllCities());
-      safe(() => InterfaceMode.switchToDefault());
+      bought(buy(park), "expansion");
     };
   }
 

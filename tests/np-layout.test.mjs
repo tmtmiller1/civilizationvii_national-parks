@@ -11,7 +11,7 @@ const ring = (p) => [p + 1, p + 10, p + 9, p - 1, p - 10, p - 9];
 
 test("walls: only on outer edges, never against impassable land, some edges left open", () => {
   const tiles = [50, 51];
-  const edges = wallEdges(tiles, ring, (i) => i === 60, 0.58, 0);
+  const edges = wallEdges(tiles, ring, (i) => i === 60, { share: 0.58, innerShare: 0 });
   const inPark = new Set(tiles);
   for (const e of edges) {
     const n = ring(e.plot)[e.dir];
@@ -22,25 +22,10 @@ test("walls: only on outer edges, never against impassable land, some edges left
   assert.ok(edges.length > 0 && edges.length < outer.length, `expected a broken wall, got ${edges.length}/${outer.length}`);
 });
 
-test("walls: some edges between the park's own tiles, fewer than on its border, each once", () => {
-  const tiles = [];
-  for (let r = 2; r < 8; r++) for (let c = 2; c < 8; c++) tiles.push(r * 10 + c);
-  const inPark = new Set(tiles);
-  const edges = wallEdges(tiles, ring, () => false);
-  const inner = edges.filter((e) => e.inner), outer = edges.filter((e) => !e.inner);
-  for (const e of inner) assert.ok(inPark.has(ring(e.plot)[e.dir]) && e.plot < ring(e.plot)[e.dir], "an inner wall off the park or counted twice");
-  for (const e of outer) assert.ok(!inPark.has(ring(e.plot)[e.dir]), "a border wall inside the park");
-  const innerAll = tiles.flatMap((t) => ring(t).filter((n) => inPark.has(n) && t < n)).length;
-  const outerAll = tiles.flatMap((t) => ring(t).filter((n) => !inPark.has(n))).length;
-  assert.ok(inner.length > 0 && inner.length / innerAll < 0.4, `inner ${inner.length}/${innerAll}`);
-  assert.ok(outer.length / outerAll > 0.85, `outer ${outer.length}/${outerAll}`);
-  assert.equal(wallEdges(tiles, ring, () => false, 1, 0).filter((e) => e.inner).length, 0, "innerShare 0 walls no inner edge");
-});
-
 test("walls: a stone wall at a mountain's foot where the border meets one, from either side", () => {
   const mtn = (i) => i === 52 || i === 41;      // 52 outside the park, 41 inside it
   const imp = (i) => mtn(i) || i === 60;        // 60: water outside
-  const edges = wallEdges([40, 41, 50, 51], ring, imp, 1, 0, mtn);
+  const edges = wallEdges([40, 41, 50, 51], ring, imp, { share: 1, innerShare: 0, mountain: mtn });
   const foot = edges.filter((e) => e.foot);
   assert.ok(foot.some((e) => e.plot === 51 && ring(51)[e.dir] === 52), "park land facing a mountain outside");
   assert.ok(foot.some((e) => e.plot === 41 && !imp(ring(41)[e.dir])), "a park mountain facing open land outside");
@@ -60,7 +45,7 @@ test("walls: a stone wall at a mountain's foot where the border meets one, from 
   // Lone park tiles far apart, every neighbour a mountain: each direction faces a mountain equally often.
   const many = Array.from({ length: 400 }, (_x, k) => 1000 + k * 100);
   const park = new Set(many), isM = (i) => !park.has(i);
-  const foots = wallEdges(many, ring, isM, 1, 0, isM).filter((e) => e.foot);
+  const foots = wallEdges(many, ring, isM, { share: 1, innerShare: 0, mountain: isM }).filter((e) => e.foot);
   const byDir = (ds) => foots.filter((e) => ds.includes(e.dir)).length;
   assert.ok(MOUNTAIN_EW_SHARE < 1 && byDir([0, 3]) < byDir([1, 4]), `east-west ${byDir([0, 3])} vs diagonal ${byDir([1, 4])}`);
   assert.ok(runs.every((p) => Math.abs(p.dx * Math.cos(Math.PI * armAngle(0) / 180) + p.dy * Math.sin(Math.PI * armAngle(0) / 180) - 0.52) < 0.01), "just outside the edge");
@@ -74,9 +59,9 @@ test("walls: the same park always gets the same gaps", () => {
 });
 
 test("walls: all edges at share 1, none at share 0, none on an impassable tile", () => {
-  assert.equal(wallEdges([5], ring, () => false, 1).length, 6);
-  assert.equal(wallEdges([5], ring, () => false, 0).length, 0);
-  assert.equal(wallEdges([5], ring, (i) => i === 5, 1).length, 0);
+  assert.equal(wallEdges([5], ring, () => false, { share: 1 }).length, 6);
+  assert.equal(wallEdges([5], ring, () => false, { share: 0 }).length, 0);
+  assert.equal(wallEdges([5], ring, (i) => i === 5, { share: 1 }).length, 0);
 });
 
 test("hash01 is stable and in [0, 1)", () => {
@@ -148,7 +133,7 @@ test("wall pieces: composed along the edge band, mixed, both faces, stable", () 
 test("wall pieces: hills, mountains and wonders get dry stone only", () => {
   for (const biome of ["BIOME_GRASSLAND", "BIOME_DESERT", "BIOME_TUNDRA"]) {
     for (let plot = 0; plot < 120; plot++) for (let dir = 0; dir < 6; dir++) {
-      const pieces = wallPieces(plot, dir, biome, undefined, undefined, "rough");
+      const pieces = wallPieces(plot, dir, biome, { ground: "rough" });
       assert.ok(pieces.length >= 1, "an edge has pieces");
       assert.ok(!pieces.some((p) => /Fence/.test(p.asset) && !/RockFence/.test(p.asset)), `${pieces.map((p) => p.asset).join(",")}: no fence on rough ground`);
       assert.ok(!pieces.some((p) => /FenceBit|FenceDoor/.test(p.asset)), "no split rail on rough ground");

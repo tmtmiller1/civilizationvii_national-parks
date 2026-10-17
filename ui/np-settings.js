@@ -65,8 +65,8 @@ function persist() {
 
 /**
  * Whether parks are marked on the map at all times, whatever the lens: their dashed border and a light shading of their
- * land. On unless the player turns it off. (In pre-release builds the option was `overlay`, off by default, and shaded park
- * land as strongly as the lens; a saved `overlay` is ignored, so no one loses the border.)
+ * land. On unless the player turns it off. (In pre-release builds the option was `overlay`, off by default, and shaded
+ * park land as strongly as the lens; a saved `overlay` is ignored, so no one loses the border.)
  */
 export function getMarks() { return settings().marks !== false; }
 export function setMarks(on) { return set("marks", !!on); }

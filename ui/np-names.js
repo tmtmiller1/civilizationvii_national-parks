@@ -60,7 +60,8 @@ export function chooseName(bases, taken, format = (b) => b + " National Park", o
  *  own fallbacks, each once. Pure. */
 export function orderBases(adjacentWonders, near, fallback) {
   const out = [];
-  for (const n of [...(adjacentWonders || []), ...(near || []), ...(fallback || [])]) if (n && !out.includes(n)) out.push(n);
+  for (const n of [...(adjacentWonders || []), ...(near || []), ...(fallback || [])])
+    if (n && !out.includes(n)) out.push(n);
   return out;
 }
 

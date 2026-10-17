@@ -100,17 +100,30 @@ export function decisionFrame(view, choices) {
   const frame = document.createElement("fxs-modal-frame");
   frame.classList.add("screen-dialog-box__dialog-wrapper");
   frame.style.pointerEvents = "auto";
+  frame.appendChild(decisionHeader(view));
+  frame.appendChild(decisionBody(view));
+  if (view.quote) frame.appendChild(quoteBlock(view.quote));
+  frame.appendChild(choiceColumn(choices));
+  return frame;
+}
+
+function decisionHeader(view) {
   const header = document.createElement("fxs-header");
   header.setAttribute("filigree-style", "h2");
   header.setAttribute("title", view.title || "");
   header.classList.add("font-title-xl");
-  frame.appendChild(header);
+  return header;
+}
+
+function decisionBody(view) {
   const body = document.createElement("div");
   body.classList.add("font-body", "text-base", "text-center", "py-3\\.5", "pointer-events-auto");
   body.innerHTML = safe(() => Locale.stylize(composeBody(view)), null) || composeBody(view);
-  frame.appendChild(body);
-  if (view.quote) frame.appendChild(quoteBlock(view.quote));
-  // A plain centred column: the game's button group spaces its buttons sideways, which set the second one off-centre.
+  return body;
+}
+
+/** A plain centred column: the game's button group spaces its buttons sideways, which set the second one off-centre. */
+function choiceColumn(choices) {
   const group = document.createElement("div");
   group.classList.add("flex", "flex-col", "items-center", "self-center", "px-8", "pb-2");
   for (const c of choices) {
@@ -125,19 +138,18 @@ export function decisionFrame(view, choices) {
     btn.addEventListener("click", run);
     group.appendChild(btn);
   }
-  frame.appendChild(group);
-  return frame;
+  return group;
 }
 
 /**
  * The game's modal frame for the mod's overlays (the picker's banner, the Choose land prompt, the rename box), in the
- * same form as the decisions: an optional filigreed title, then rows added by the caller. Returns { frame, header, add }
- * where `add(kind, html)` appends a centred text row ("eyebrow" for the category line, "text" for a body line) and
+ * same form as the decisions: an optional filigreed title, then rows added by the caller. Returns { frame, header, add
+ * } where `add(kind, html)` appends a centred text row ("eyebrow" for the category line, "text" for a body line) and
  * returns it, and `setTitle(text)` changes the title.
  */
 export function overlayFrame(title, { compact = false } = {}) {
-  // Both sizes are the game's modal frame with its filigreed title, as the decisions have; compact (the picker's banner,
-  // the Choose land prompt) is the small version: tighter padding, the h4 filigree, smaller rows.
+  // Both sizes are the game's modal frame with its filigreed title, as the decisions have; compact (the picker's
+  // banner, the Choose land prompt) is the small version: tighter padding, the h4 filigree, smaller rows.
   const frame = document.createElement("fxs-modal-frame");
   frame.classList.add("screen-dialog-box__dialog-wrapper");
   frame.style.pointerEvents = "auto";
@@ -178,21 +190,21 @@ let decoratorReady = false;
 class NpQuoteDecorator {
   constructor(val) { this.dialog = val; }
   beforeAttach() {}
-  afterAttach() {
-    safe(() => {
-      const root = this.dialog && this.dialog.Root;
-      const title = root && root.getAttribute ? root.getAttribute("title") || "" : "";
-      if (!title || !pendingQuotes.has(title)) return;
-      const quote = pendingQuotes.get(title);
-      pendingQuotes.delete(title);
-      const body = root.querySelector(".font-body.text-base");
-      const host = body && body.parentElement ? body.parentElement : root.querySelector(".screen-dialog-box__dialog-wrapper");
-      if (host) host.insertBefore(quoteBlock(quote), body ? body.nextSibling : null);
-    });
-  }
+  afterAttach() { safe(() => addPendingQuote(this.dialog && this.dialog.Root)); }
   beforeDetach() {}
   afterDetach() {}
 }
+/** The quote waiting for a dialog of this title, set under its body text. */
+function addPendingQuote(root) {
+  const title = root && root.getAttribute ? root.getAttribute("title") || "" : "";
+  if (!title || !pendingQuotes.has(title)) return;
+  const quote = pendingQuotes.get(title);
+  pendingQuotes.delete(title);
+  const body = root.querySelector(".font-body.text-base");
+  const host = body && body.parentElement ? body.parentElement : root.querySelector(".screen-dialog-box__dialog-wrapper");
+  if (host) host.insertBefore(quoteBlock(quote), body ? body.nextSibling : null);
+}
+
 function installDecorator() {
   if (decoratorReady) return;
   safe(() => {

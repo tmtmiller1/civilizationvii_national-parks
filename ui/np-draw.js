@@ -42,7 +42,8 @@ const WOOD_SECTIONS = [["PROP_GEN_FenceBit_A", 0.1, 90, 5], ["PROP_GEN_FenceBit_
 // The gates lie along an edge with no turn (npo4; a quarter turn stood them across it).
 const WOOD_GATES = [["PROP_Pasture_FenceDoor_Closed", 0.09, 0], ["PROP_Pasture_FenceDoor_Open", 0.09, 0]];
 const GATE_SHARE = 0.3;           // open-ground fenced edges with a gate somewhere along them
-const FENCED_EDGE_SHARE = 0.75;  // open-ground edges that are mostly fence; the rest are stone with a short fence now and then
+// open-ground edges that are mostly fence; the rest are stone with a short fence now and then
+const FENCED_EDGE_SHARE = 0.75;
 const WALL_SHARE = 0.96;          // share of eligible outer edges that get walling
 const INNER_WALL_SHARE = 0.05;    // share of edges between two of the park's own tiles that get walling (0.25 read as
                                   // walls across the middle of a park, 2026-10-04)
@@ -83,31 +84,43 @@ function along(deg, x, y) {
  * get a stone wall at the mountain's foot instead (`foot`, mountainWallPieces): when the mountain lies outside, and
  * when the park holds the mountain and passable land lies outside. All chosen per edge, so the pattern is stable.
  */
-export function wallEdges(tiles, ringFn = ringOf, impassable = isImpassableEdgeTile, share = WALL_SHARE,
-  innerShare = INNER_WALL_SHARE, mountain = (i) => safe(() => isMountain(i) && !isWonder(i), false)) {
-  const inPark = new Set(tiles);
-  const footShare = (d) => share * (isEastWest(d) ? MOUNTAIN_EW_SHARE : 1);
+export function wallEdges(tiles, ringFn = ringOf, impassable = isImpassableEdgeTile, opts = {}) {
+  const c = { inPark: new Set(tiles), impassable, ...wallOptions(opts) };
+  const { mountain } = c;
   const out = [];
   for (const t of tiles) {
     const blocked = impassable(t);
     if (blocked && !mountain(t)) continue;
     ringFn(t).forEach((n, dir) => {
-      if (blocked) {
-        // A mountain of the park: a wall at its foot where passable land lies outside.
-        if (n >= 0 && !inPark.has(n) && !impassable(n) && hash01(t, 231 + dir) < footShare(dir))
-          out.push({ plot: t, dir, inner: false, foot: true });
-        return;
-      }
-      if (impassable(n)) {
-        if (n >= 0 && !inPark.has(n) && mountain(n) && hash01(t, 231 + dir) < footShare(dir))
-          out.push({ plot: t, dir, inner: false, foot: true });
-        return;
-      }
-      if (!inPark.has(n)) { if (hash01(t, 31 + dir) < share) out.push({ plot: t, dir, inner: false, foot: false }); return; }
-      if (t < n && hash01(t, 131 + dir) < innerShare) out.push({ plot: t, dir, inner: true, foot: false });
+      const w = edgeWall(c, t, n, dir, blocked);
+      if (w) out.push(w);
     });
   }
   return out;
+}
+
+/** wallEdges' options with their defaults: the shares, the park's entrance (its founding tile when it has a warden's
+ *  station, else -1) and what counts as a mountain. */
+function wallOptions({ share = WALL_SHARE, innerShare = INNER_WALL_SHARE, entrance = -1,
+  mountain = (i) => safe(() => isMountain(i) && !isWonder(i), false) }) {
+  return { share, innerShare, entrance, mountain, footShare: (d) => share * (isEastWest(d) ? MOUNTAIN_EW_SHARE : 1) };
+}
+
+/** The wall on the edge from park tile t toward n (direction `dir`), or null. */
+function edgeWall(c, t, n, dir, blocked) {
+  // A mountain of the park: a wall at its foot where passable land lies outside.
+  if (blocked) return footWall(c, t, n, dir, () => !c.impassable(n));
+  if (c.impassable(n)) return footWall(c, t, n, dir, () => c.mountain(n));
+  if (!c.inPark.has(n)) return hash01(t, 31 + dir) < c.share ? { plot: t, dir, inner: false, foot: false } : null;
+  // Inside the park a wall stands only at its entrance, round the warden's station; elsewhere it read as a maze.
+  if (t > n || (t !== c.entrance && n !== c.entrance)) return null;
+  return hash01(t, 131 + dir) < c.innerShare ? { plot: t, dir, inner: true, foot: false } : null;
+}
+
+/** A wall at a mountain's foot on the edge toward n, outside the park, where `outside()` holds; or null. */
+function footWall(c, t, n, dir, outside) {
+  if (!(n >= 0 && !c.inPark.has(n) && outside())) return null;
+  return hash01(t, 231 + dir) < c.footShare(dir) ? { plot: t, dir, inner: false, foot: true } : null;
 }
 
 /** Water edges of a park that meet open water outside it: [{ plot, dir }], thinned to BUOY_SHARE. */
@@ -158,9 +171,9 @@ function pickKind(kit, u) {
 
 /**
  * The wall where a park's border meets a mountain: grey dry-stone runs (WALL) laid end to end along the edge, each
- * turned a little, standing on the flat just outside the mountain's tile edge, where the mountain's rock meets the land.
- * `r` is measured from `plot`'s center: 0.52 from a park mountain's center (just past its edge), 0.40 from a park tile
- * facing a mountain outside (the same line, seen from the flat side). Pure and hashed from the plot and direction.
+ * turned a little, standing on the flat just outside the mountain's tile edge, where the mountain's rock meets the
+ * land. `r` is measured from `plot`'s center: 0.52 from a park mountain's center (just past its edge), 0.40 from a park
+ * tile facing a mountain outside (the same line, seen from the flat side). Pure and hashed from the plot and direction.
  *
  * Auditioned 2026-10-04 (crash soaks nscreev, nscreew): rubble and the biome's wall kit vanished against the rock (a
  * desert edge is mostly red rubble), pieces at the tile edge sank into the mountain model, which spreads past its hex,
@@ -206,99 +219,144 @@ export function mountainWallPieces(plot, dir, r = MOUNTAIN_WALL_R.mountain, ends
  * distance from the tile center and `half` half its usable length, in Canals' offset units. Pure and hashed from
  * the plot and direction, so an edge looks the same after a reload.
  */
-export function wallPieces(plot, dir, biome = "BIOME_GRASSLAND", r = 0.46, half = 0.24, ground = "open") {
+export function wallPieces(plot, dir, biome = "BIOME_GRASSLAND", { r = 0.46, half = 0.24, ground = "open" } = {}) {
+  const e = wallEdge(plot, dir, biome, { r, half, ground });
+  return e.fenced ? fencedEdge(e) : stoneEdge(e);
+}
+
+/** What every piece of one edge reads: its kit, its hash sequence `h`, `at` for offsets along it, and the pieces so
+ *  far. */
+function wallEdge(plot, dir, biome, { r, half, ground }) {
   const base = WALL_KITS[biome] || DEFAULT_WALL_KIT;
   // On open ground (fields, forest) an edge is mostly wood fence with stone here and there, or stone with a short fence
   // now and then; on rough ground (hills, mountains, wonders) it is dry stone only.
   const rough = ground === "rough";
   const fenced = !rough && hash01(plot, 140 + dir) < FENCED_EDGE_SHARE;
-  const kit = { ...base, fence: rough ? 0 : 1 };
   let salt = 0;
-  const h = () => hash01(plot, 60 + dir * 64 + salt++);
   const d = armAngle(dir);
   const a = d * Math.PI / 180;
-  const at = (t, depth) => ({ dx: depth * Math.cos(a) - t * Math.sin(a), dy: depth * Math.sin(a) + t * Math.cos(a) });
-  const out = [];
-  // Lay wood sections end to end from t until `to`; returns where the last one ended. One gate at most per edge.
-  let gated = !fenced || h() >= GATE_SHARE;
-  const gateAt = -half + 0.08 + h() * (2 * half - 0.16);
-  const wood = (t, to) => {
-    while (t < to - 0.03) {
-      let piece;
-      if (!gated && t >= gateAt) { piece = WOOD_GATES[h() < 0.7 ? 0 : 1]; gated = true; }
-      else {
-        let x = h() * WOOD_SECTIONS.reduce((n, w) => n + w[3], 0);
-        piece = WOOD_SECTIONS.find((w) => (x -= w[3]) < 0) || WOOD_SECTIONS[0];
-      }
-      const [asset, len, turn] = piece;
-      const sc = 0.95 + h() * 0.1;
-      // Sections overlap a little at the posts, so a run reads as one fence (nsh1 showed gaps at the full length).
-      const span = len * sc * 0.92;
-      out.push({ asset, ...at(Math.min(t + span / 2, to), r + (h() - 0.5) * 0.01), z: 0, scale: sc,
-        angle: (d + turn + (h() < 0.5 ? 0 : 180) + (h() - 0.5) * 4 + 360) % 360 });
-      t += span;
-      // Now and then a post leans out of line or a shrub grows at the foot of the fence.
-      if (h() < 0.12) out.push({ asset: kit.shrubAsset, ...at(Math.min(t, to), r - 0.025), z: 0, scale: 0.6 + h() * 0.3, angle: Math.floor(h() * 360) });
-    }
-    return t;
-  };
-  if (fenced) {
-    // A fenced edge: split rail end to end, broken once in a while by a bush grown into the line. A stone there drew
-    // tan against tropical grass beside the map's own gray rocks (showcase nsh4-s4242).
-    let t = -half + h() * 0.02;
-    while (t < half - 0.03) {
-      const to = Math.min(half, t + 0.14 + h() * 0.3);
-      t = wood(t, to);
-      if (t < half - 0.05 && h() < 0.3) {
-        out.push({ asset: kit.shrubAsset, ...at(t + 0.03, r + (h() - 0.5) * 0.02), z: 0, scale: 0.8 + h() * 0.4, angle: Math.floor(h() * 360) });
-        t += 0.06;
-      }
-    }
-    return out;
+  const e = { r, half, d, fenced, kit: { ...base, fence: rough ? 0 : 1 }, out: [],
+    h: () => hash01(plot, 60 + dir * 64 + salt++),
+    at: (t, depth) => ({ dx: depth * Math.cos(a) - t * Math.sin(a), dy: depth * Math.sin(a) + t * Math.cos(a) }) };
+  // One gate at most per edge.
+  e.gated = !fenced || e.h() >= GATE_SHARE;
+  e.gateAt = -half + 0.08 + e.h() * (2 * half - 0.16);
+  return e;
+}
+
+/** Lay wood sections end to end from t until `to`; returns where the last one ended. */
+function layWood(e, t, to) {
+  const { h, at, out, kit, r, d } = e;
+  while (t < to - 0.03) {
+    const [asset, len, turn] = woodPiece(e, t);
+    const sc = 0.95 + h() * 0.1;
+    // Sections overlap a little at the posts, so a run reads as one fence (nsh1 showed gaps at the full length).
+    const span = len * sc * 0.92;
+    out.push({ asset, ...at(Math.min(t + span / 2, to), r + (h() - 0.5) * 0.01), z: 0, scale: sc,
+      angle: (d + turn + (h() < 0.5 ? 0 : 180) + (h() - 0.5) * 4 + 360) % 360 });
+    t += span;
+    // Now and then a post leans out of line or a shrub grows at the foot of the fence.
+    if (h() < 0.12) out.push({ asset: kit.shrubAsset, ...at(Math.min(t, to), r - 0.025), z: 0, scale: 0.6 + h() * 0.3,
+      angle: Math.floor(h() * 360) });
   }
-  let t = -half + h() * 0.04;
-  let last = "";
-  for (let guard = 0; t < half && guard < 12; guard++) {
-    let kind = pickKind(kit, h());
-    if (kind === last && kind !== "run") kind = "run";          // no two boulders or gaps in a row
-    if (guard === 0 && kind !== "rubble" && !(fenced && kind === "fence")) kind = "run";   // stone first, or a fence
-    const scale = kind === "run" ? 0.7 + h() * 0.5 : kind === "boulder" ? 0.22 + h() * 0.14 : kind === "shrub" ? 0.8 + h() * 0.4
-      : kind === "fence" ? 1 + h() * 0.5 : 1;
-    const span = SPAN[kind] * (kind === "run" || kind === "fence" ? scale : kind === "rubble" ? 0.8 + h() * 0.4 : 1);
-    const mid = Math.min(t + span / 2, half);
-    const depth = r + (h() - 0.5) * 0.05;
-    if (kind === "rubble") {
-      // Three to five loose rocks, each a different shape and size, jostled out of line.
-      const n = 3 + Math.floor(h() * 3);
-      for (let k = 0; k < n; k++) {
-        const tt = Math.min(t + (k + 0.5) * span / n + (h() - 0.5) * 0.02, half);
-        out.push({ asset: kit.rock + "_Rough_Rock_Rounded_" + RUBBLE_SHAPES[Math.floor(h() * 5)], ...at(tt, depth + (h() - 0.5) * 0.03),
-          z: 0, scale: 0.24 + h() * 0.14, angle: Math.floor(h() * 360) });
-      }
-    } else if (kind === "run") {
-      const flip = h() < 0.5 ? 90 : 270;
-      out.push({ asset: WALL, ...at(mid, depth), z: 0, scale, angle: (d + flip + (h() - 0.5) * 20 + 360) % 360 });
-    } else if (kind === "fence") {
-      // A short stretch of split rail between the stone.
-      t = wood(t, Math.min(half, t + span));
-      last = kind;
-      continue;
-    } else if (kind === "boulder") {
-      // A big stone of the local rock set into the line (the BIN_Boulder meshes drew near-black against it).
-      out.push({ asset: kit.rock + "_Rough_Rock_Rounded_" + RUBBLE_SHAPES[Math.floor(h() * 5)], ...at(mid, depth), z: 0,
-        scale: 0.42 + h() * 0.14, angle: Math.floor(h() * 360) });
-    } else if (kind === "shrub") {
-      out.push({ asset: kit.shrubAsset, ...at(mid, depth - 0.02), z: 0, scale, angle: Math.floor(h() * 360) });
-    } else if (h() < 0.5) {
-      // A gap, with a stone fallen out of the wall toward the park side.
-      out.push({ asset: kit.rock + "_Rough_Rock_Rounded_" + RUBBLE_SHAPES[Math.floor(h() * 5)], ...at(mid, depth - 0.04 - h() * 0.03),
-        z: 0, scale: 0.26 + h() * 0.1, angle: Math.floor(h() * 360) });
+  return t;
+}
+
+/** The next wood piece at t: the edge's gate once it is reached, else a section by weight. */
+function woodPiece(e, t) {
+  if (!e.gated && t >= e.gateAt) {
+    const gate = WOOD_GATES[e.h() < 0.7 ? 0 : 1];
+    e.gated = true;
+    return gate;
+  }
+  let x = e.h() * WOOD_SECTIONS.reduce((n, w) => n + w[3], 0);
+  return WOOD_SECTIONS.find((w) => (x -= w[3]) < 0) || WOOD_SECTIONS[0];
+}
+
+/** A fenced edge: split rail end to end, broken once in a while by a bush grown into the line. A stone there drew tan
+ *  against tropical grass beside the map's own gray rocks (showcase nsh4-s4242). */
+function fencedEdge(e) {
+  const { h, at, out, kit, r, half } = e;
+  let t = -half + h() * 0.02;
+  while (t < half - 0.03) {
+    const to = Math.min(half, t + 0.14 + h() * 0.3);
+    t = layWood(e, t, to);
+    if (t < half - 0.05 && h() < 0.3) {
+      out.push({ asset: kit.shrubAsset, ...at(t + 0.03, r + (h() - 0.5) * 0.02), z: 0, scale: 0.8 + h() * 0.4,
+        angle: Math.floor(h() * 360) });
+      t += 0.06;
     }
-    t += span + (kind === "run" ? h() * 0.025 : 0);
-    last = kind;
   }
   return out;
 }
+
+/** A stone edge: runs, rubble, boulders, shrubs, gaps and short stretches of fence, walking along it. */
+function stoneEdge(e) {
+  let t = -e.half + e.h() * 0.04;
+  let last = "";
+  for (let guard = 0; t < e.half && guard < 12; guard++) {
+    const kind = stoneKind(e, last, guard);
+    t = layStone(e, kind, t);
+    last = kind;
+  }
+  return e.out;
+}
+
+function stoneKind(e, last, guard) {
+  let kind = pickKind(e.kit, e.h());
+  if (kind === last && kind !== "run") kind = "run";          // no two boulders or gaps in a row
+  if (guard === 0 && kind !== "rubble" && !(e.fenced && kind === "fence")) kind = "run";   // stone first, or a fence
+  return kind;
+}
+
+function stoneScale(kind, h) {
+  return kind === "run" ? 0.7 + h() * 0.5 : kind === "boulder" ? 0.22 + h() * 0.14 : kind === "shrub" ? 0.8 + h() * 0.4
+    : kind === "fence" ? 1 + h() * 0.5 : 1;
+}
+
+/** Lay one piece of a stone edge at t; returns where the next one starts. */
+function layStone(e, kind, t) {
+  const { h, r, half } = e;
+  const scale = stoneScale(kind, h);
+  const span = SPAN[kind] * (kind === "run" || kind === "fence" ? scale : kind === "rubble" ? 0.8 + h() * 0.4 : 1);
+  const mid = Math.min(t + span / 2, half);
+  const depth = r + (h() - 0.5) * 0.05;
+  // A short stretch of split rail between the stone.
+  if (kind === "fence") return layWood(e, t, Math.min(half, t + span));
+  STONES[kind](e, { t, span, mid, depth, scale });
+  return t + (span + (kind === "run" ? h() * 0.025 : 0));
+}
+
+const rockOf = (e) => e.kit.rock + "_Rough_Rock_Rounded_" + RUBBLE_SHAPES[Math.floor(e.h() * 5)];
+const STONES = {
+  // Three to five loose rocks, each a different shape and size, jostled out of line.
+  rubble(e, { t, span, depth }) {
+    const n = 3 + Math.floor(e.h() * 3);
+    for (let k = 0; k < n; k++) {
+      const tt = Math.min(t + (k + 0.5) * span / n + (e.h() - 0.5) * 0.02, e.half);
+      e.out.push({ asset: rockOf(e), ...e.at(tt, depth + (e.h() - 0.5) * 0.03),
+        z: 0, scale: 0.24 + e.h() * 0.14, angle: Math.floor(e.h() * 360) });
+    }
+  },
+  run(e, { mid, depth, scale }) {
+    const flip = e.h() < 0.5 ? 90 : 270;
+    e.out.push({ asset: WALL, ...e.at(mid, depth), z: 0, scale, angle: (e.d + flip + (e.h() - 0.5) * 20 + 360) % 360 });
+  },
+  // A big stone of the local rock set into the line (the BIN_Boulder meshes drew near-black against it).
+  boulder(e, { mid, depth }) {
+    e.out.push({ asset: rockOf(e), ...e.at(mid, depth), z: 0, scale: 0.42 + e.h() * 0.14,
+      angle: Math.floor(e.h() * 360) });
+  },
+  shrub(e, { mid, depth, scale }) {
+    e.out.push({ asset: e.kit.shrubAsset, ...e.at(mid, depth - 0.02), z: 0, scale, angle: Math.floor(e.h() * 360) });
+  },
+  // A gap, with a stone fallen out of the wall toward the park side.
+  gap(e, { mid, depth }) {
+    if (e.h() >= 0.5) return;
+    e.out.push({ asset: rockOf(e), ...e.at(mid, depth - 0.04 - e.h() * 0.03), z: 0, scale: 0.26 + e.h() * 0.1,
+      angle: Math.floor(e.h() * 360) });
+  },
+};
 
 /** The tile the hawk circles once a park has three tiles: the first mountain, else the lookout, else the
  *  founding tile. -1 for a smaller park. */
@@ -312,8 +370,8 @@ export function hawkTile(tiles, anchor, lookout, mountain = isMountain) {
  * Features the game draws from a model named after the feature itself, which the park can place back on its tile: the
  * game hides a plot's own vegetation under any district, park land included. Watched 2026-10-02 (crash soak npa1,
  * same-camera captures): marsh, rainforest and mangrove came back as the game draws them; forest and taiga only in part
- * (the game scatters more trees around them), so those also get the park's woods (forestCover); savanna woodland's model
- * drew nothing visible. Found by name in the game's asset archive (StandardAsset*.blp).
+ * (the game scatters more trees around them), so those also get the park's woods (forestCover); savanna woodland's
+ * model drew nothing visible. Found by name in the game's asset archive (StandardAsset*.blp).
  */
 export const FEATURE_MODELS = new Set(["FEATURE_FOREST", "FEATURE_RAINFOREST", "FEATURE_SAGEBRUSH_STEPPE",
   "FEATURE_SAVANNA_WOODLAND", "FEATURE_TAIGA", "FEATURE_MANGROVE", "FEATURE_MARSH", "FEATURE_OASIS", "FEATURE_TUNDRA_BOG",
@@ -362,7 +420,7 @@ const generations = new Map(); // park id -> generation; kept after clearPark so
 function nextGeneration(id) { const n = (generations.get(id) || 0) + 1; generations.set(id, n); return n; }
 function isCurrent(id, n) { return generations.get(id) === n; }
 
-function place(group, asset, plot, off, scale, angle, tint = null) {
+function place(group, asset, plot, off, { scale, angle, tint = null }) {
   const l = locOf(plot);
   const opts = { placement: PlacementMode.TERRAIN, followTerrain: true, needsShadows: true, scale, angle };
   if (tint) { opts.tintColor1 = tint[0]; opts.tintColor2 = tint[1]; }
@@ -370,7 +428,8 @@ function place(group, asset, plot, off, scale, angle, tint = null) {
 }
 /** A player's colours as the game tints its own pieces with them (leader-model-manager.js), or null. */
 function ownerTint(player) {
-  const c1 = safe(() => UI.Player.getPrimaryColorValueAsHex(player), null), c2 = safe(() => UI.Player.getSecondaryColorValueAsHex(player), null);
+  const c1 = safe(() => UI.Player.getPrimaryColorValueAsHex(player), null),
+    c2 = safe(() => UI.Player.getSecondaryColorValueAsHex(player), null);
   return c1 == null || c2 == null ? null : [c1, c2];
 }
 
@@ -392,7 +451,11 @@ function drawBorder(park) {
   if (!borderGroup) borderGroup = safe(() => WorldUI.createOverlayGroup("NationalParkBorders", 1), null);
   if (!borderGroup) return;
   let b = borders.get(park.id);
-  if (!b) { b = safe(() => borderGroup.addBorderOverlay(kindOf(park).buildings ? BORDER_STYLE : WILD_BORDER_STYLE), null); if (!b) return; borders.set(park.id, b); }
+  if (!b) {
+    b = safe(() => borderGroup.addBorderOverlay(kindOf(park).buildings ? BORDER_STYLE : WILD_BORDER_STYLE), null);
+    if (!b) return;
+    borders.set(park.id, b);
+  }
   safe(() => b.clear());
   // The border shows with the Options marks (np-settings.js getMarks), as the wash does (np-lens.js).
   const shown = getMarks() ? park.tiles.filter(isRevealed) : [];
@@ -415,22 +478,30 @@ function wallRun(g, e) {
     const pair = [isMountain(nb[(md + 5) % 6]), isMountain(nb[(md + 1) % 6])];
     return isMountain(e.plot) ? pair : [pair[1], pair[0]];
   };
-  const pieces = e.foot ? mountainWallPieces(e.plot, e.dir, isMountain(e.plot) ? MOUNTAIN_WALL_R.mountain : MOUNTAIN_WALL_R.land, footEnds())
-    : wallPieces(e.plot, e.dir, biomeOf(e.plot), undefined, undefined, groundOf(e.plot));
-  for (const p of pieces) place(g.walls, p.asset, e.plot, { x: p.dx, y: p.dy, z: p.z }, p.scale, p.angle);
+  const pieces = e.foot
+    ? mountainWallPieces(e.plot, e.dir, isMountain(e.plot) ? MOUNTAIN_WALL_R.mountain : MOUNTAIN_WALL_R.land,
+      footEnds())
+    : wallPieces(e.plot, e.dir, biomeOf(e.plot), { ground: groundOf(e.plot) });
+  for (const p of pieces) place(g.walls, p.asset, e.plot, { x: p.dx, y: p.dy, z: p.z },
+    { scale: p.scale, angle: p.angle });
 }
 
 function buoy(g, e) {
   const p = along(armAngle(e.dir), 0.44, (hash01(e.plot, 58 + e.dir) - 0.5) * 0.2);
-  place(g.walls, BUOY, e.plot, p, 1.6, 0);
+  place(g.walls, BUOY, e.plot, p, { scale: 1.6, angle: 0 });
 }
 
 /** The land as np-plan.js reads it, from the map. */
 export const LIVE_MAP = {
   ring: ringOf, biome: biomeOf, feature: featureOf, model: featureModel, hill: (t) => terrainOf(t) === "TERRAIN_HILL",
-  sea: (t) => isWater(t) && !isLake(t), lake: isLake, nav: isNavRiver, river: isRiver, mountain: isMountain, wonder: isWonder,
+  sea: (t) => isWater(t) && !isLake(t), lake: isLake, nav: isNavRiver, river: isRiver, mountain: isMountain,
+  wonder: isWonder,
   wooded: isWooded, wet: isWet, resource: resourceAt,
-  cliff: (t) => { const l = locOf(t); return [0, 1, 2, 3, 4, 5].some((d) => safe(() => GameplayMap.isCliffCrossing(l.x, l.y, d), false)); },
+  lat: (t) => { const l = locOf(t); return safe(() => GameplayMap.getPlotLatitude(l.x, l.y), 0); },
+  cliff: (t) => {
+    const l = locOf(t);
+    return [0, 1, 2, 3, 4, 5].some((d) => safe(() => GameplayMap.isCliffCrossing(l.x, l.y, d), false));
+  },
 };
 /** A park's plan (np-plan.js) at its present size. */
 export function planFor(park) {
@@ -450,7 +521,8 @@ const TILE_WORLD = 64;
 /** The ground's height at offset (dx, dy) on plot l, in world units, or 0 if it cannot be read. On a water tile the
  *  water's surface where it lies higher, so a crane at the shore or a crab stands on the water, not the bed. */
 function groundAt(l, dx, dy, wet = false) {
-  const read = (mode) => safe(() => WorldUI.getPlotLocation({ x: l.x, y: l.y }, { x: dx * TILE_WORLD, y: dy * TILE_WORLD, z: 0 }, mode).z, null);
+  const read = (mode) => safe(() => WorldUI.getPlotLocation({ x: l.x, y: l.y },
+    { x: dx * TILE_WORLD, y: dy * TILE_WORLD, z: 0 }, mode).z, null);
   const land = read(PlacementMode.TERRAIN) ?? 0;
   if (!wet) return land;
   const water = read(PlacementMode.WATER);
@@ -467,7 +539,8 @@ function populateTile(g, t, plan) {
     // A rigged animal is placed at an absolute height: set it on the ground under it (np-wildlife.js SPECIES).
     const z = groundAt(l, w.dx, w.dy, wet) + w.z;
     const h = safe(() => g.wild.addModelAtPlot(w.asset, { i: l.x, j: l.y }, { x: w.dx, y: w.dy, z },
-      { placement: PlacementMode.TERRAIN, followTerrain: true, needsShadows: true, scale: w.scale, angle: w.angle }), null);
+      { placement: PlacementMode.TERRAIN, followTerrain: true, needsShadows: true, scale: w.scale, angle: w.angle }),
+      null);
     if (h) handles.push(h);
   }
   return handles;
@@ -477,44 +550,76 @@ function populateTile(g, t, plan) {
  *  owner's colours, as the woodcutter's tents take them. */
 function dressTile(g, t, ctx) {
   for (const [asset, dx, dy, scale, angle, tint] of ctx.plan.pieces.get(t) || []) {
-    place(g.dress, asset, t, { x: dx, y: dy, z: 0 }, scale, angle, tint === "owner" ? ownerTint(ctx.owner) : null);
+    place(g.dress, asset, t, { x: dx, y: dy, z: 0 }, { scale, angle, tint: tint === "owner" ? ownerTint(ctx.owner) : null });
   }
-  if (t === ctx.hawk) { const l = locOf(t); safe(() => g.dress.addVFXAtPlot(HAWK, { x: l.x, y: l.y }, { x: 0, y: 0, z: 0 })); }
+  if (t === ctx.hawk) {
+    const l = locOf(t);
+    safe(() => g.dress.addVFXAtPlot(HAWK, { x: l.x, y: l.y }, { x: 0, y: 0, z: 0 }));
+  }
 }
+
+/** Whether the game's drawing API is there (it isn't under the tests or before the map loads). */
+function canDraw() { return typeof WorldUI !== "undefined" && typeof PlacementMode !== "undefined"; }
 
 /**
  * Draw a park. `fresh` lists tiles just added: their walls and dressing appear one after another with dust, and
  * everything else is drawn at once.
  */
 export function drawPark(park, fresh = []) {
-  if (typeof WorldUI === "undefined" || typeof PlacementMode === "undefined") return false;
+  if (!canDraw()) return false;
   const g = groupsFor(park.id);
   if (!g.walls || !g.dress) return false;
   const gen = nextGeneration(park.id);
+  startDrawing(park, g);
+  const freshSet = new Set(fresh);
+  const ctx = dressingOf(park);
+  const later = drawWalls(park, g, freshSet);
+  for (const t of park.tiles) if (!freshSet.has(t) && isRevealed(t)) dressTile(g, t, ctx);
+  drawWildlife(park, g, ctx, gen);
+  if (later.length || freshSet.size) growIn(park, g, ctx, { later, fresh, gen });
+  refreshLens();
+  return true;
+}
+
+/** Clear the park's groups, note what this drawing shows, and draw its border. */
+function startDrawing(park, g) {
   safe(() => g.walls.clear()); safe(() => g.dress.clear()); safe(() => g.wild && g.wild.clear());
   const level = levelOf(park);
   drawn.set(park.id, drawSignature(park, isRevealed, level));
   drawBorder(park);
-  const freshSet = new Set(fresh);
+}
+
+/** The park's plan and what dressing a tile reads with it: its owner, and the tile the hawk circles. */
+function dressingOf(park) {
   const plan = safe(() => planFor(park), null);
   if (!plan) { log(`park ${park.id}: no plan, dressing skipped`); }
   const lookout = plan ? (plan.destinations.find((d) => d.kind === "lookout") || { tile: -1 }).tile : -1;
-  const ctx = { plan: plan || { pieces: new Map(), wild: new Map() }, owner: park.owner, hawk: hawkTile(park.tiles, park.anchor, lookout) };
-  const edges = wallEdges(park.tiles).filter((e) => isRevealed(e.plot));
+  return { plan: plan || { pieces: new Map(), wild: new Map() }, owner: park.owner,
+    hawk: hawkTile(park.tiles, park.anchor, lookout) };
+}
+
+/** The revealed wall runs and buoys. Runs on new land are held back for the growth; returns those edges. */
+function drawWalls(park, g, freshSet) {
+  const entrance = kindOf(park).buildings ? park.anchor : -1;
+  const edges = wallEdges(park.tiles, ringOf, isImpassableEdgeTile, { entrance }).filter((e) => isRevealed(e.plot));
   const later = [];
   for (const e of edges) {
     if (freshSet.has(e.plot)) later.push(e);
     else wallRun(g, e);
   }
   for (const e of buoyEdges(park.tiles)) if (isRevealed(e.plot)) buoy(g, e);
-  for (const t of park.tiles) if (!freshSet.has(t) && isRevealed(t)) dressTile(g, t, ctx);
-  if (g.wild) {
-    const handles = [];
-    for (const t of park.tiles) if (isRevealed(t)) handles.push(...populateTile(g, t, ctx.plan));
-    wakeAnimals(handles, park.id, gen);
-  }
-  if (!later.length && !freshSet.size) { refreshLens(); return true; }
-  // The growth: wall runs rise one by one with a puff of dust, then the new land is dressed.
+  return later;
+}
+
+function drawWildlife(park, g, ctx, gen) {
+  if (!g.wild) return;
+  const handles = [];
+  for (const t of park.tiles) if (isRevealed(t)) handles.push(...populateTile(g, t, ctx.plan));
+  wakeAnimals(handles, park.id, gen);
+}
+
+/** The growth: wall runs rise one by one with a puff of dust, then the new land is dressed. */
+function growIn(park, g, ctx, { later, fresh, gen }) {
   later.forEach((e, k) => setTimeout(() => {
     if (!isCurrent(park.id, gen)) return;
     wallRun(g, e);
@@ -522,10 +627,10 @@ export function drawPark(park, fresh = []) {
     safe(() => g.fx.addVFXAtPlot(DUST, { x: l.x, y: l.y }, along(armAngle(e.dir), 0.46, 0)));
   }, k * STAGGER_MS));
   const done = later.length * STAGGER_MS + 150;
-  setTimeout(() => { if (isCurrent(park.id, gen)) for (const t of fresh) if (isRevealed(t)) dressTile(g, t, ctx); }, done);
+  setTimeout(() => {
+    if (isCurrent(park.id, gen)) for (const t of fresh) if (isRevealed(t)) dressTile(g, t, ctx);
+  }, done);
   setTimeout(() => { if (isCurrent(park.id, gen)) safe(() => g.fx.clear()); }, done + 3000);
-  refreshLens();
-  return true;
 }
 
 export function clearPark(id) {

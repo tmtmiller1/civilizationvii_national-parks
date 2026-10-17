@@ -1,10 +1,12 @@
 # National Parks: design and decisions
 
-Status: v1.0.0, the first public release (2026-10-04), built and watched in seeded lab games on 1.5.0, 2026-09-27 to
-2026-10-04, in the Exploration and Modern Ages. The version numbers below (1.0.0 to 1.2.0 before the release) name
-pre-release development builds; the released 1.0.0 is all of them. Screenshots in `docs/screenshots/` date from the
-first build and predate the size levels, monuments and shading. What was watched and what was not is listed under
-"Verification". The reevaluation that led here is `reevaluation-2026-09-27.md`.
+Status: 1.1.3, released 2026-10-14; the first public release was 1.0.0 on 2026-10-04. Built and watched in seeded lab
+games on 1.5.0 from 2026-09-27, in the Exploration and Modern Ages. The development builds before the first release
+are called dev 0.2.0 to dev 1.2.0 below, so they aren't mixed up with the releases that share their numbers; the
+released 1.0.0 holds all of them, and a version with no "dev" in front is a release. The README screenshots in
+`docs/screenshots/` were taken from 2026-09-30 to 2026-10-03 and show the look from before 1.0.3 and 1.1.0. What was
+watched and what wasn't is listed under "Verification". The reevaluation that led here is
+`reevaluation-2026-09-27.md`.
 
 ## The idea
 
@@ -41,7 +43,7 @@ every row the shared files reference exists.
 | Founding | `PROJECT_FOUND_NATIONAL_PARK` / `PROJECT_FOUND_WILDERNESS_AREA` (city project) or a Gold row in the purchase list (city or town); a completion records a founding, placed on the empty tile its owner picks; gated through the wrapped `.canStart` (civic, one of each kind, an empty tile) | `data/national-parks-<age>.xml`, `ui/np-main.js`, `ui/np-purchase.js`, `ui/np-picker.js` |
 | Growth | `PROJECT_EXPAND_NATIONAL_PARK` / `PROJECT_EXPAND_WILDERNESS_AREA`, repeatable, `CityOnly`, `PrereqConstructible` = the founding improvement, `RequiresUnlock` false; or bought for Gold from the mod; an AI's park saves for and buys one when it pays back | `data/national-parks-*.xml`, `ui/np-main.js` `buyExpansion`, `growAiParks`, `ui/np-core.js` `aiSavingStep` |
 | Appeal | the founding gate only: the game's `GameplayMap.getAppeal` against its Charming threshold from `GlobalParameters` | `ui/np-core.js` `charmingAt`, `foundable` |
-| Yield per tile | one land marker per kind, `IMPROVEMENT_NATIONAL_PARK_LAND` (+1 Culture +1 Happiness) and `IMPROVEMENT_WILDERNESS_AREA_LAND` (+3 Influence), placed by script on a `DISTRICT_RURAL` (the engine's own improvement on it taken off), the payout as the marker's own `Constructible_YieldChanges` on top of the tile's own yields; `_WILD` markers from 1.2.0 saves are swapped for `_LAND`; `MOD_NP_NO_NATURAL_YIELD` survives as a 0% no-op for 1.1.0 saves | `data/national-parks-land.xml`, `-gameeffects.xml`, `ui/np-core.js` `remark` |
+| Yield per tile | one land marker per kind, `IMPROVEMENT_NATIONAL_PARK_LAND` (+1 Culture +1 Happiness) and `IMPROVEMENT_WILDERNESS_AREA_LAND` (+3 Influence), placed by script on a `DISTRICT_RURAL` (the engine's own improvement on it taken off), the payout as the marker's own `Constructible_YieldChanges` on top of the tile's own yields; `_WILD` markers from dev 1.2.0 saves are swapped for `_LAND`; `MOD_NP_NO_NATURAL_YIELD` survives as a 0% no-op for dev 1.1.0 saves | `data/national-parks-land.xml`, `-gameeffects.xml`, `ui/np-core.js` `remark` |
 | Size bonus | the land marker's level variants `IMPROVEMENT_NATIONAL_PARK_LAND_8` / `_16` / `_24` (and `IMPROVEMENT_WILDERNESS_AREA_LAND_`), swapped in place on every tile of a park as its own land crosses 8, 16 and 24 tiles | `data/national-parks-land.xml`, `ui/np-core.js` `parkLevel`, `markerFor`, `remark` |
 | Choosing land | `INTERFACEMODE_NP_ADD_TILES`, a `ChoosePlotInterfaceMode`: click to select, Confirm, Done or Later; the mod's own OK / Cancel box for a costly tile | `ui/np-picker.js` |
 | Buying an expansion | a row in the production panel's purchase list (`Controls.decorate` on `panel-production-chooser`), or a Gold pill on a pill-style replacement panel | `ui/np-purchase.js` |
@@ -75,8 +77,8 @@ every row the shared files reference exists.
   offers an improvement only on a tile already carrying a rural district (a farm the park would replace), and never on a
   bare one, even with `CanBuildOnNonDistrict` (offered, never placed), and not on a resource tile without a
   `Constructible_ValidResources` row, which in turn makes it resource-only (watched 2026-10-02; engine-closed.md). Until
-  1.2.0 the founding improvement was built directly and narrowed to wonder-adjacent tiles; from 1.2.0 until the appeal
-  gate, any empty tile qualified.
+  dev 1.2.0 the founding improvement was built directly and narrowed to wonder-adjacent tiles; from dev 1.2.0 until the
+  appeal gate, any empty tile qualified.
 - **Appeal.** Appeal is the founding gate and nothing else. A tile's appeal is the game's: the sum of its six
   neighbours' `Terrains.Appeal` and `Features.Appeal` (mountain, coast and navigable river 1; forest, rainforest, taiga,
   savanna woodland and sagebrush steppe 1; a natural wonder 6), the tile's own terrain and feature left out except a
@@ -110,10 +112,10 @@ every row the shared files reference exists.
   row, and its `doOrConfirmConstruction` sends a choice of that row to `buyExpansion`, which takes the Gold
   (`Players.grantYield(pid, YIELD_GOLD, -N)`), adds the age's tiles, closes the panel and opens the picker. A
   replacement panel that shows a city's purchases as Gold pills on its production rows (keyed on `purchaseCost`,
-  chosen with `doOrConfirmConstruction(..., isPurchase = true)`) gets the price as a pill on the city's Expand row;
-  not watched. Watched 2026-10-01 in the base panel: the row listed at 1,200, grayed with "Full (24 tiles)." for a
-  full park; a choice took 1,200 Gold, granted 3 tiles, closed the panel and opened the picker. Until 1.2.0 a panel at
-  the top of the screen sold the expansion.
+  chosen with `doOrConfirmConstruction(..., isPurchase = true)`) gets the price as a pill on the city's Expand row
+  (watched 2026-10-01 with `drongos-compact-production`, under "Verification"). Watched 2026-10-01 in the base panel:
+  the row listed at 1,200, grayed with "Full (24 tiles)." for a full park; a choice took 1,200 Gold, granted 3 tiles,
+  closed the panel and opened the picker. Until dev 1.2.0 a panel at the top of the screen sold the expansion.
 - **Cost.** Flat: 300 production, or the Gold price above. No cost progression applies to a project on 1.5.0 anyway
   (see `engine-closed.md`).
 - **Choosing land.** When an expansion completes, the local player's tiles wait and a "Choose land" prompt at the top of
@@ -170,7 +172,7 @@ every row the shared files reference exists.
   watched in `nai11-fix`, no citizen lost).
 - **Yield.** Every tile but the founding one and an Expedition Base's gets its kind's land marker: +1 Culture and +1
   Happiness in a National Park, +3 Influence in a Wilderness Area, whatever the tile; its appeal does not change it.
-  Parks from 1.2.0 carry `_LAND` and `_WILD` markers (plain ground; a wonder, mountain, water or feature, which paid
+  Parks from dev 1.2.0 carry `_LAND` and `_WILD` markers (plain ground; a wonder, mountain, water or feature, which paid
   +2/+1 and +3 Influence); `_WILD` stays in the database so those saves load, and the sweep swaps each for `_LAND`
   (`remark`; the swap watched in crash soak `npap1` from a planted old marker). A park's yields grow with its size
   through its tiles and the size bonus below. An AI weighs a tile by the same payout at its level (`landPayout`,
@@ -179,14 +181,15 @@ every row the shared files reference exists.
   wonder for a park; +4 Influence and +10 Influence per wonder for a wilderness area). The payout is the marker's own
   `Constructible_YieldChanges`, so it sits on the tile and the yields layer shows it there. A marker needs a district
   under it and the settlement that holds the tile as `Parent` (both belong to that settlement, so a tile taken from a
-  neighbouring settlement pays that one); the tile then counts as worked land with no population spent, and from 1.2.0
-  it keeps its own yields alongside the park's (watched 2026-10-01: a rainforest tile kept 1 Food, 3 Production and 1
-  Science and showed +2 Culture +1 Happiness on top; removing its marker took exactly 2 Culture and 1 Happiness off the
-  city). Until 1.2.0 every marker carried `MOD_NP_NO_NATURAL_YIELD`, a -100% `EFFECT_PLOT_ADJUST_YIELD` on its plot, so
-  park land paid only the park's yields. A saved game keeps that modifier on the plot after the marker and the district
-  are gone (watched 2026-10-01: a 1.1.0 tile still read 0 Food and Production with a new marker on a new district and no
-  such modifier in the database), so the id is defined again as a 0% no-op, which gave the old tiles their yields back
-  on load (watched). A new `UpdateDatabase` file is read only at launch, from the modinfo; a reload does not pick it up.
+  neighbouring settlement pays that one); the tile then counts as worked land with no population spent, and from dev
+  1.2.0 it keeps its own yields alongside the park's (watched 2026-10-01: a rainforest tile kept 1 Food, 3 Production
+  and 1 Science and showed +2 Culture +1 Happiness on top; removing its marker took exactly 2 Culture and 1 Happiness
+  off the city). Until dev 1.2.0 every marker carried `MOD_NP_NO_NATURAL_YIELD`, a -100% `EFFECT_PLOT_ADJUST_YIELD` on
+  its plot, so park land paid only the park's yields. A saved game keeps that modifier on the plot after the marker and
+  the district are gone (watched 2026-10-01: a dev 1.1.0 tile still read 0 Food and Production with a new marker on a
+  new district and no such modifier in the database), so the id is defined again as a 0% no-op, which gave the old tiles
+  their yields back on load (watched). A new `UpdateDatabase` file is read only at launch, from the modinfo; a reload
+  does not pick it up.
 - **Size bonus.** Each park reaches levels at 8, 16 and 24 of its own tiles (founding tile included), and every tile
   of that park then pays more: a National Park tile +2 Culture +1 Happiness at 8, +2/+2 at 16, +3/+2 at 24; a
   Wilderness Area tile +4, +5, then +6 Influence. Parks level apart: the owner's other parks, of either kind, do not
@@ -214,7 +217,7 @@ every row the shared files reference exists.
   used to read it as the owner's build and drop the tile, and the late marker then landed outside any park (watched:
   an orphan marker on 58,23). Now a tile the mod is writing to is left alone by the sweep (`settle` / `isSettling`),
   and a late marker re-checks that the tile is still the park's. A tile holding only a marker may rejoin a park.
-- **Protection (1.2.0, superseded the same day by "Tiles keep their look").** Park land cannot be developed, and the
+- **Protection (dev 1.2.0, superseded the same day by "Tiles keep their look").** Park land cannot be developed, and the
   game itself holds every player to that, the AI included. The
   game offers a rural tile beside a settlement's urban core to its buildings (`ExpandUrbanPlots`), park tiles and the
   founding tile with them (watched 2026-10-01: a Grocer was offered the founding tile and three marked park tiles;
@@ -223,12 +226,12 @@ every row the shared files reference exists.
   marked tile moved onto one dropped out of the Grocer's offers; with every park tile moved, no building of either
   park's settlement was offered any park tile; a city with a citizen to place was offered only tiles outside the
   park). So park land sits on a wilderness district: `markTile` replaces a rural district (the owner's, or one from
-  1.1.0) with one, `removeDistrict` buying the released plot back, and `rewildFounding` does the same for a founding
+  dev 1.1.0) with one, `removeDistrict` buying the released plot back, and `rewildFounding` does the same for a founding
   tile once its park is founded; the park improvements list `DISTRICT_WILDERNESS` as valid. Older saves are moved over
   at the first sweep (watched: every tile but an Expedition Base's mountain, which keeps its rural district, and both
   founding tiles). The players are also held by the placement hook ("This tile is protected land of a National Park or
   Wilderness Area."). A rural improvement found on park land is still removed and the marker put back, now a safety
-  net only (no reverts in AI turns since 1.1.0). Taking a rural improvement off costs its settlement the citizen it
+  net only (no reverts in AI turns since dev 1.1.0). Taking a rural improvement off costs its settlement the citizen it
   housed (`DESTROY_ELEMENT` takes one population with it, `engine-closed.md`), so `stripImprovements` measures the
   population before and after and returns each point lost with `city.addRuralPopulation(1)`, as Build Wonders Over
   Antiquated Buildings does: the player places it from the game's Grow City prompt (watched 2026-10-01: a woodcutter
@@ -240,7 +243,7 @@ every row the shared files reference exists.
   wonder-adjacent tile and kept its name and every other tile).
 - **Leaving a park.** Once a plot has changed hands, the ids read on it can resolve against the new owner's own
   objects elsewhere: a park tile bought by an AI city read as that AI's sawmill and urban district eight tiles away,
-  and v0.2.0's release destroyed that district and bought the plot back (watched 2026-09-29). So every read goes
+  and dev 0.2.0's release destroyed that district and bought the plot back (watched 2026-09-29). So every read goes
   through `readPlot`, which drops any object whose location is not the plot, and a tile is let go by its record:
   on land the park's owner no longer holds, the tile and its district are only forgotten (watched: the AI kept the
   plot and its districts were untouched); on the owner's land (a dissolving park) its marker is taken off, and the
@@ -266,7 +269,7 @@ every row the shared files reference exists.
   (`wetCover`) for oasis and watering hole. The cost of the rural district: the game offers an AI's
   buildings a rural tile beside its city centre, park land included, and that tile then leaves the park (a founding
   tile moves, `moveFounding`); every player's own builds and growth are refused park land by the placement hook. Parks
-  from 1.2.0 (wilderness districts) are rebuilt on rural districts at the first sweep after loading.
+  from dev 1.2.0 (wilderness districts) are rebuilt on rural districts at the first sweep after loading.
 - **An independent power's park is left to the game.** A settlement that passes to an independent power is taken
   apart by the game, a few districts a turn, until its land is released (watched 2026-10-02). The mod writes nothing
   on such a park's land: no marker, no restored founding tile, no release, no orphan removal, no AI growth. A tile
@@ -279,7 +282,7 @@ every row the shared files reference exists.
   follows its founding tile's owner; land lost is let go; improvements are reverted; missing markers are placed; a
   park whose founding tile belongs to no one is dissolved. A park is redrawn only when its record changed or its
   signature (owner, tiles, which tiles the local player has revealed) differs from its last drawing; on load
-  everything is drawn. Watched: v0.2.0 cleared and re-added 45 models at a turn start with nothing changed; now 0;
+  everything is drawn. Watched: dev 0.2.0 cleared and re-added 45 models at a turn start with nothing changed; now 0;
   revealing one tile of an AI park in fog redrew that park alone and drew the tile.
 
 - **Nothing paid for is lost.** A founding's record holds what it cost (`paid`: the Gold price of a purchase, or a
@@ -321,8 +324,11 @@ to 0.46 along an arm is at the tile's edge.
   drew pale pink), and the first choice, a sand tone, came out near white on tundra and plains; ocher reads as ocher
   (watched 2026-09-30). The line shows only where the park's edge is not also the settlement's border, which draws
   over it.
-- **Walls.** On about 96% of the outer edges between passable land (80% until 1.2.0), and on one in twenty of the
-  edges between two of the park's own tiles (a quarter read as walls across the park's middle); none on or facing
+- **Walls.** On about 96% of the outer edges between passable land (80% until dev 1.2.0). Inside the park, only round
+  its entrance: one in twenty of the founding tile's edges in a National Park, none in a Wilderness Area, which has no
+  warden's station (`wallEdges` `entrance`, 2026-10-16, the owner's call: walls and fences between the park's own tiles
+  read as a maze. Until then one in twenty of every inner edge had one, and a quarter read as walls across the park's
+  middle). None on or facing
   water, a navigable river or a natural wonder. Where the border meets a mountain, from either side, the wall is grey
   dry-stone runs end to end on the flat just outside the mountain's tile edge (`mountainWallPieces`): the biome's kit
   and rubble vanished against the rock, pieces at the tile edge sank into the mountain model, which spreads past its
@@ -338,7 +344,7 @@ to 0.46 along an arm is at the tile's edge.
   overlapping a little at the posts; A and B lie across the tile at angle 0 and C along it; the gates are
   `PROP_Pasture_FenceDoor_Closed` and `_Open` (measured and watched 2026-10-02, crash soak npr, nsh1, nsh2). The
   numbered `FenceBit` names are parts of the three, not models of their own, and the pasture's
-  `IMP_Pasture_Fence_Spline_*` and `BIN_SPLN_*` sets draw nothing when placed. Until 1.2.0 the fence was
+  `IMP_Pasture_Fence_Spline_*` and `BIN_SPLN_*` sets draw nothing when placed. Until dev 1.2.0 the fence was
   `NAM_SWN_Menagerie_Fence` on three edges in ten, whatever the ground. Only the plains and desert rock sets draw in
   their own color when placed by script; the grassland, tundra, tropical and generic sets draw navy blue, so every
   other biome uses the gray plains stone. `BIN_Boulder_*` drew near-black against the rubble and is not used. Hashed
@@ -379,16 +385,23 @@ to 0.46 along an arm is at the tile's edge.
     `FOL_Flowers_Small_*` read as loud yellow blots and are not used. `BIN_FOL_Grass_SM` drew navy blue.
   - More trees with a Wilderness Area's level crowded into each other (`nshow-exp`): it grows by swapping a tree for a
     giant at 24 tiles and by wildlife, never by adding trees.
-- **Wildlife** (`ui/np-wildlife.js` for the species, `ui/np-plan.js` for where they stand), all of it moving. A region
-  has one herd animal and one bird. Rigged animals, by biome and weighted: plains bison,
+- **Wildlife** (`ui/np-wildlife.js` for the species, `ui/np-plan-wildlife.js` for where they stand), all of it moving. A
+  region has one herd animal and one bird. Rigged animals, by biome and weighted: plains bison,
   horses, deer and foxes; grassland deer, horses, elk and foxes; tundra elk, deer and foxes; desert camels and foxes;
   tropical deer, elephants and cranes; sheep, llamas and camels on hills; llamas on mountains; cranes on lake and
   river shores; crabs on the coast. Sparse on purpose (watched 2026-09-29): about four tiles in ten have any, mostly
   singles and pairs, now and then a second kind; birds on three tiles in ten. Overhead, by biome: sparrows, doves,
   parrots, ravens, circling flocks, butterflies and flies; gulls over coast; leaping fish in lakes and rivers. On water,
   by effects: schools of tuna on about half the sea tiles (`VFX_SwimmingFish_Tuna02` / `03`), reef fish on shore tiles
-  (`VFX_SwimmingFish_ReefNeedle`, `VFX_SwimingFish_Clown`), a whale's splash now and then away from shore
-  (`VFX_Water_Splash_Whale`), swimming fish in lakes (`VFX_SwimmingFish_Lake`). Auditioned 2026-09-29:
+  of a warm sea (`VFX_SwimmingFish_ReefNeedle`, `VFX_SwimingFish_Clown`), a whale's splash now and then away from shore
+  (`VFX_Water_Splash_Whale`), swimming fish in lakes (`VFX_SwimmingFish_Lake`). A sea is cold from 40 degrees of
+  latitude (`GameplayMap.getPlotLatitude`, `coldWater` in `ui/np-plan-kit.js`; past the game's desert band, 33 to 44):
+  there a shore has two or three crabs where a warm one has its reef, a bed of sponges lies on the floor off it, and a
+  sea that is mostly cold has a whale from two sea tiles and two from six (2026-10-16, the owner's call: no tropical
+  fish near the poles). The game ships no sponge; the arctic corals `FOL_Arctic_Coral_C`, `_D` and `_E` are the
+  nearest look (asset catalog), not yet watched placed by script. A Wilderness Area's rarer animals, from 16 tiles
+  (`rareFor`): goats on hills and mountains, giraffes on the plains, elephants in the tropics (giraffes until
+  2026-10-16, the owner's call: giraffes keep to open savanna), turtles on a shore. Auditioned 2026-09-29:
   `VFX_Water_Whale_Spout` draws nothing, and the seaweed and ocean-surf effects did not show at map zoom. All of it is
   small at map zoom. A
   rigged model drawn by a model group stands frozen in its bind pose until its state is set to `IDLE`, which only
@@ -400,7 +413,7 @@ to 0.46 along an arm is at the tile's edge.
   PlacementMode.TERRAIN)` (offset in world units, 64 to a tile; on a water tile the higher of that and
   `PlacementMode.WATER`), plus 1 (crane and crab 0.5); every species stood at -1 to +5 on both tiles. Static models
   need nothing of the kind: posts and rocks lowered by the ground's fall from the tile's center sank (npq). Until
-  1.2.0 every animal was lifted 8 + 24 x scale from zero, which floated them on low ground (a fox on a shore, camels
+  dev 1.2.0 every animal was lifted 8 + 24 x scale from zero, which floated them on low ground (a fox on a shore, camels
   on a cliff's lip) and buried them on hills. Earlier passes that matched one capture per species to its tile by
   order gave wrong readings: the captures had slipped by a tile.
   Under `PlacementMode.TERRAIN` these models sink by an amount that grows with scale, so each is lifted by 8 + 24 x
@@ -425,10 +438,51 @@ stone-and-timber fence but reads as a paddock; the dry-stone wall suits a park b
 
 ## The composition
 
-From 1.1.0 a park is planned as a whole before any tile is dressed (`ui/np-plan.js`, pure and tested). A tile no
-longer runs a recipe of its own: it draws the part of the park's plan that falls on it. The walls, the border and the
-buoys above are unchanged; everything under "Dressing", "Campsites", "Buildings", "Wildlife" and "Size levels" above
-that says where a thing stands is replaced by this section.
+From 1.1.0 a park is planned as a whole before any tile is dressed (`parkPlan` in `ui/np-plan.js`, pure and tested).
+A tile no longer runs a recipe of its own: it draws the part of the park's plan that falls on it. The walls, the
+border and the buoys above are unchanged; everything under "Dressing", "Campsites", "Buildings", "Wildlife" and "Size
+levels" above that says where a thing stands is replaced by this section.
+
+The code follows the steps below, one function each, every step reading what the steps before it left on a shared
+context and adding its own: the land, regions and fields in `np-plan.js`; destinations and routes in
+`np-plan-routes.js`; people's things and monuments in `np-plan-built.js`; corridors and decals in
+`np-plan-corridors.js`; vegetation in `np-plan-vegetation.js`; wildlife in `np-plan-wildlife.js`, whose herds' ground
+is reserved before anything is planted. The art, the hex geometry and the budgets they share are in `np-plan-kit.js`.
+`tests/np-plan-snapshot.test.mjs` pins the whole plan for 704 parks to the last bit, so a change to this code that
+should move nothing can be shown to move nothing.
+
+The rest of the mod is split the same way (2026-10-16), each file under 500 lines with no import going in a circle.
+`np-core.js` re-exports, under the names the rest of the mod imports, `np-core-base.js` (the kinds, what may stand on
+park land, size levels, the network-game switch), `-map.js` (map reads), `-registry.js` (the records in the save),
+`-writes.js` (the write sequences, markers and districts), `-rules.js` (founding and joining rules, the AI's
+purchases) and `-sweep.js` (`reconcile` and the map scans). `np-main.js` keeps the start, the sweep and the global
+handle, with `np-main-state.js`, `-founding.js`, `-ai.js` and `-guard.js` (the wrapped placement queries) under it;
+`np-picker.js` keeps the tile picker, with `np-picker-kit.js` and `-rename.js` under it and `-notices.js` and
+`-prompt.js` over it. What each map-writing path does is pinned on a fake engine (`tests/fake-engine.mjs`):
+`np-reconcile-trace`, `np-writes-trace`, `np-draw-trace` and `np-main-trace` record every request, log line, drawing
+call and record change in order, and `np-sweep.test.mjs` holds the sweep's revert rules. `np-main-trace` loads
+`np-main.js` with the game's own UI modules stood in for (`tests/game-modules-loader.mjs`). The split moved nothing:
+every trace and the snapshot stayed identical, the placement guards answered 766,080 generated queries the same, and
+`wallPieces` drew 1,008,000 edges the same to the last bit. In game on the split build (`tower_mods/_np_refactor`,
+seed 9001, other mods off), crash soak `nrf-x` passed 54 of 54 and `nlook` (`nrf-look`, Modern) 89 of 89, every check
+and park line the same as the split plan's run that morning, its 78 views differing only where wind, water and animals
+move (`working_screenshots/national-parks-split/refactor/`). The age transitions and hotseat are owed
+(`tools/crash-soak/np-refactor-soaks-night.sh`, on the watch list).
+
+Watched in game, 2026-10-16 on 1.5.0: the split draws the same parks as the single `np-plan.js` it replaced. Two
+launches of `tools/crash-soak/nlook-game.js` (seed 9001, Modern, every other mod off), first with `HEAD`'s copy
+(`npsplit-before`), then with the split (`npsplit-after`), each grew and captured a National Park and a Wilderness
+Area in all five biomes from the same camera spots. Every park line in the two logs is the same (destinations,
+herds, views, resource and river tiles), and 74 views were compared with a structural diff; captures, diffs and
+edge maps are in `working_screenshots/national-parks-split/`. The differences are clouds, wind in the trees, water and
+animals, and one camera that came to rest closer (the grassland wilderness overview, same pieces by eye). On one
+tundra coast tile four trees stood in the same places but drew as different trees, yellow over wildflowers then
+green over shrubs. Offline, 16,000 plans (200 lands, sizes 1 to 30, every level, both kinds) came out identical
+from both copies, asset names included, so the game chose that look, not the plan (`engine-closed.md`, "The same
+foliage asset at the same spot"). The tropical wilderness overview of the first game wasn't captured. In the first
+game the four "Later" checks failed because the picker hadn't opened when the probe chose a tile; they passed in
+the second game (89 of 89) and on 2026-10-06, and the picker code is the same in both copies, which points to the
+probe's timing (not tested).
 
 The rule the plan is held to: where a thing stands follows from the park's structure, the terrain, or something
 already placed. No placement is decided mainly by a recipe run per tile, a hash of the tile, a list of fixed offsets,
@@ -575,7 +629,7 @@ to better ground a new tile offers; everything unbudgeted
 `siteMap`, `monumentMap`, `fabricFor`, `cabinCluster`, `campsite`, `keepClear`, `clearOf`, `settleAnimals`,
 `coverSpots`, `spaced`, `oneGrove`, the hill stones and cairn accents, and `planScene`'s land accents (`herd`,
 `stray`, `under`, `trail`, `grove`, `stand`, `cairn`, `stones`). `np-scene.js` is removed: the water and air accents
-are planned in `np-plan.js` with the rest.
+are planned with the rest (`np-plan-vegetation.js`, `np-plan-wildlife.js`).
 
 ## Pop-ups
 
@@ -637,8 +691,8 @@ that drops the project's cost to 1 (`devtools/np-cheap-project-probe`):
   so the unlock rows are what gates it.
 - **Civic gate, Exploration.** A fresh Exploration game compiled the rows with `Age="AGE_EXPLORATION"`, the unlock
   rows point at Society, the project carries the Exploration text, `tilesPerExpansion()` reads 1, and the park is
-  refused with Society locked. Not watched: completing Society and founding there. (The age transition with parks on
-  the map is under "Crash soak" below.)
+  refused with Society locked. Completing Society and founding there were watched on 2026-10-02 (`npe1`-`npe11` and
+  `npf2`, below). The age transition with parks on the map is under "Crash soak" below.
 - **Expansion count.** A completion in the Modern Age gave 3 tiles.
 - **Markers and yields.** With a district made first and `Parent` set, markers landed on Uluru, a navigable river
   and a rainforest tile, and the city's Culture and Happiness rose by each marker's amount plus the tile's own
@@ -660,7 +714,7 @@ that drops the project's cost to 1 (`devtools/np-cheap-project-probe`):
   the same day.
 
 Watched on 1.5.0, 2026-09-29, in lab games on the Tower Bench (seed 4242, Modern, then Exploration with no
-Geographic Labels loaded), every item first reproduced on v0.2.0 and then watched fixed; the details are in "Rules"
+Geographic Labels loaded), every item first reproduced on dev 0.2.0 and then watched fixed; the details are in "Rules"
 and "Names" above. The captures of that round were evidence, not shipped; `docs/screenshots/` holds the release set.
 
 - **Towns, yields, resources, naming, full size, flips, builds, redraws**: see "Rules" and "Names".
@@ -707,7 +761,7 @@ Watched 2026-09-29, second round (seed 4242, Modern, lab games, release build wi
   after the seat passed and player 1 started their turn, the picker opened for player 1's park, and a tile joined
   with a marker owned by player 1.
 - **Network game.** Not reached: a LAN game hosted from script refused its map size ("Map Size Unsupported") and the
-  retries returned to the main menu; one attempt ended in the known load-transition crash (`0x21081fc`). Since 1.1.0
+  retries returned to the main menu; one attempt ended in the known load-transition crash (`0x21081fc`). Since dev 1.1.0
   the network mode is read-only (`setReadOnly`: no map write, no save write; parks read from the map, drawn, shaded
   and named; Expand refused). Watched in a single-player game switched into that mode (`simulateNetworkGame`, crash
   soak step M): zero writes, the save's record unchanged, every park drawn, Expand and buying refused, a park founded
@@ -785,12 +839,12 @@ Watched 2026-09-30, late (seed 4242, Modern, lab games, Geographic Labels 1.6.1 
 - **Crash soak (2026-10-01, `civilization_vii_mods/tools/crash-soak`, seed 9001, every other mod off).** Two drawings
   of one park 0.5 s apart crashed the game (native, AppHost thread): the first drawing's animal wake-up read a model
   the second had freed. With the draw generation in `np-draw.js` the same test runs on. A tile taken from a
-  neighbouring settlement now carries a district and a marker of that settlement, and a 1.0.0 tile (both filed with
+  neighbouring settlement now carries a district and a marker of that settlement, and a dev 1.0.0 tile (both filed with
   the founding settlement) is rebuilt for its own settlement at the next sweep. That settlement built a Brickyard on
   such a tile (an urban district of its own); a Bazaar on the founding tile dissolved the park and left no stray
   district; save and reload and the Exploration to Modern transition kept every park district with its own
   settlement. 25 AI turns in all, no crash.
-- **1.1.0 suite (2026-10-01, same harness).** Growth never offers park land (the marker counts as an improvement):
+- **dev 1.1.0 suite (2026-10-01, same harness).** Growth never offers park land (the marker counts as an improvement):
   candidates of every settlement held none, and over 20 AI turns AI cities grew by 7 with no park tile touched, so
   the strip-and-revert path is a safety net only. With every write a read-back sequence, the full run passed 54/54
   (a marker on land no park holds removed at the next scan; an AI park given 2 waiting tiles took them; the network
@@ -800,31 +854,31 @@ Watched 2026-09-30, late (seed 4242, Modern, lab games, Geographic Labels 1.6.1 
   6 seat turns clean. When the game shows the Start Turn curtain first, the picker waits behind it; a script cannot
   press that button.
 
-- **1.2.0 suite (2026-10-01, Tower Bench lab, seed 4242, Modern, save `NP-final-suite`; screenshots of the game
-  window).** Every item is under "Rules" and "The look": tiles keep their yields, 1.1.0 saves get theirs back, park
+- **dev 1.2.0 suite (2026-10-01, Tower Bench lab, seed 4242, Modern, save `NP-final-suite`; screenshots of the game
+  window).** Every item is under "Rules" and "The look": tiles keep their yields, dev 1.1.0 saves get theirs back, park
   land on wilderness districts offered to no building or growth, the founding tile moved when built over, the
   citizen of a stripped woodcutter returned, the purchase-list row and its purchase, the picker waiting for Choose
   land, an AI park buying an expansion, and woods filling the forest tiles. Three AI turns and a save and reload
   afterwards: no crash, no failed step, both parks unchanged.
 
-- **1.2.0 transitions, conquest, hotseat and a replacement panel (2026-10-01).** Crash soak `npw` (seed 9001, short-age
-  probe, every other mod off): both parks crossed Exploration to Modern with every tile on a wilderness district of its
-  own city and its marker, no building offered park land before or after, and a building forced onto a founding tile
-  in the Modern Age moved the park (58 of 59 checks; the conquest could not be staged in a fresh game, where the leaders
-  had not met and script-placed units did not land in their land). Hotseat `npwhs3` (two human seats, nobody at the
-  Mac): 43 of 43, the picker never opened by itself, each seat's Choose land prompt named its park, and the AI pass ran
-  once per game turn ([[2,1],[3,1],[4,1]]); the first run's failure was a person pressing Start Turn and Choose land
-  during it (`openPicker` now logs where it was opened from). In a lab game with `drongos-compact-production` on, the
-  Expand row carried a 1,200 Gold pill; pressing it bought the expansion (2,012 to 812 Gold), left the build queue
-  empty and opened the picker. Conquest, lab (save `NP-ai-decide2`, park met, Line Infantry, war, damage): the town
-  holding an AI park fell; the park followed the conqueror with its name, its tiles in the town on wilderness
-  districts filed with the conqueror's settlement, every piece the conqueror's. Its two tiles in another of the AI's
-  settlements left the park and kept an empty wilderness district, dead land for their owner; `removeOrphanWilds` now
-  takes such a district away at the full scan and buys the plot back (watched: both tiles bare, still the AI's).
-  The removals seen with the mod switched off were traced on 2026-10-02 (crash soak `npd1`-`npd3`, save `NP-conquest`,
-  every other mod off). Neither was aimed at park land. The conquered town was retaken by its old owner (player 4):
-  in a capture the game removes every constructible of the town and adds it back under the new owner in the same
-  moment, City Hall, Granary and mines as well as the park, and the park followed player 4. The independent power's
+- **dev 1.2.0 transitions, conquest, hotseat and a replacement panel (2026-10-01).** Crash soak `npw` (seed 9001,
+  short-age probe, every other mod off): both parks crossed Exploration to Modern with every tile on a wilderness
+  district of its own city and its marker, no building offered park land before or after, and a building forced onto a
+  founding tile in the Modern Age moved the park (58 of 59 checks; the conquest could not be staged in a fresh game,
+  where the leaders had not met and script-placed units did not land in their land). Hotseat `npwhs3` (two human seats,
+  nobody at the Mac): 43 of 43, the picker never opened by itself, each seat's Choose land prompt named its park, and
+  the AI pass ran once per game turn ([[2,1],[3,1],[4,1]]); the first run's failure was a person pressing Start Turn and
+  Choose land during it (`openPicker` now logs where it was opened from). In a lab game with
+  `drongos-compact-production` on, the Expand row carried a 1,200 Gold pill; pressing it bought the expansion (2,012 to
+  812 Gold), left the build queue empty and opened the picker. Conquest, lab (save `NP-ai-decide2`, park met, Line
+  Infantry, war, damage): the town holding an AI park fell; the park followed the conqueror with its name, its tiles in
+  the town on wilderness districts filed with the conqueror's settlement, every piece the conqueror's. Its two tiles in
+  another of the AI's settlements left the park and kept an empty wilderness district, dead land for their owner;
+  `removeOrphanWilds` now takes such a district away at the full scan and buys the plot back (watched: both tiles bare,
+  still the AI's). The removals seen with the mod switched off were traced on 2026-10-02 (crash soak `npd1`-`npd3`, save
+  `NP-conquest`, every other mod off). Neither was aimed at park land. The conquered town was retaken by its old owner
+  (player 4): in a capture the game removes every constructible of the town and adds it back under the new owner in the
+  same moment, City Hall, Granary and mines as well as the park, and the park followed player 4. The independent power's
   settlement (one the player had founded, now held by the independent) was being taken apart by the game: in the
   independent's turn three districts went each turn, improvement and district together, then its Palace, and its land
   was released. Rural districts went the same way (two park tiles rebuilt on `DISTRICT_RURAL` were removed in the same
@@ -869,8 +923,17 @@ Watched 2026-09-30, late (seed 4242, Modern, lab games, Geographic Labels 1.6.1 
   then grew by a Gold expansion (20 of 20). Mountains: a mountain on a wilderness district was drawn as flat grassland
   (`npm3`, the user's report); moved to a rural district by the sweep it stood as a mountain again, kept its marker, and a
   mountain joining fresh got a rural district, its marker, and paid (+2 Culture, +3 Happiness to the town; 20 of 20).
-  A marker with no district was refused by the engine (`npm4`). Not watched yet: an AI founding on its own; the Found
-  text in languages other than English; the resource under a founding tile collected (no empty resource tile came up).
+  A marker with no district was refused by the engine (`npm4`). An AI founding on its own was watched 2026-10-16 (overnight soak `S12c`, usual set, the installed 1.1.2, seed 9001,
+  one-turn Autoplay from Exploration turn 1 through 461 game turns into Modern): AI 3 had a park by Exploration turn
+  121, AIs 4 and 2 founded theirs in Modern by turns 51 and 61; by Modern turn 346 only AI 3's was left (what ended the
+  others wasn't read). The same game showed a fault: 808 "revert did not land" lines, one tile (park 4, plot 1162)
+  tried 259 times though the line reads "of 3". `revertTile` and its caller in the sweep (`ui/np-core.js:961`,
+  `:1142`) check `isSettling` but not `MAX_TRIES`, so a revert the engine won't take is sent again on every sweep for
+  the rest of the game. Fixed offline 2026-10-16 (`tests/np-sweep.test.mjs`, not watched yet): 8 of the 12 plots held a
+  resource's own harvester (camp, woodcutter, mine, fishing boat), which a resource tile keeps (`isStrewnResource`),
+  so the sweep now leaves it; the others stop after `MAX_TRIES`. Not watched yet: the Found
+  text drawn in the production list in a language other than English (its name and description were read composed in
+  Japanese and German on 2026-10-15 from the released copy, overnight L2 and L3); the resource under a founding tile collected (no empty resource tile came up).
 
 Not watched, by design: an AI building Expand National Park as a production item. The game gives projects no AI
 weighting (no AiLists system for them; none queued it in 35 watched turns), so an AI buys its expansions with Gold

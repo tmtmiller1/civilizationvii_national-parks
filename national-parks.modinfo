@@ -103,15 +103,35 @@
 				</UIScripts>
 				<ImportFiles>
 					<Item>ui/np-main.js</Item>
+					<Item>ui/np-main-state.js</Item>
+					<Item>ui/np-main-founding.js</Item>
+					<Item>ui/np-main-ai.js</Item>
+					<Item>ui/np-main-guard.js</Item>
 					<Item>ui/np-core.js</Item>
+					<Item>ui/np-core-base.js</Item>
+					<Item>ui/np-core-map.js</Item>
+					<Item>ui/np-core-registry.js</Item>
+					<Item>ui/np-core-writes.js</Item>
+					<Item>ui/np-core-rules.js</Item>
+					<Item>ui/np-core-sweep.js</Item>
 					<Item>ui/np-draw.js</Item>
 					<Item>ui/np-picker.js</Item>
+					<Item>ui/np-picker-kit.js</Item>
+					<Item>ui/np-picker-rename.js</Item>
+					<Item>ui/np-picker-notices.js</Item>
+					<Item>ui/np-picker-prompt.js</Item>
 					<Item>ui/np-dialog.js</Item>
 					<Item>ui/np-quotes.js</Item>
 					<Item>ui/np-purchase.js</Item>
 					<Item>ui/np-names.js</Item>
 					<Item>ui/np-wildlife.js</Item>
 					<Item>ui/np-plan.js</Item>
+					<Item>ui/np-plan-kit.js</Item>
+					<Item>ui/np-plan-routes.js</Item>
+					<Item>ui/np-plan-built.js</Item>
+					<Item>ui/np-plan-corridors.js</Item>
+					<Item>ui/np-plan-vegetation.js</Item>
+					<Item>ui/np-plan-wildlife.js</Item>
 					<Item>ui/np-lens.js</Item>
 					<Item>ui/np-settings.js</Item>
 					<Item>ui/np-options.js</Item>
@@ -169,15 +189,35 @@
 				</UIScripts>
 				<ImportFiles>
 					<Item>ui/np-main.js</Item>
+					<Item>ui/np-main-state.js</Item>
+					<Item>ui/np-main-founding.js</Item>
+					<Item>ui/np-main-ai.js</Item>
+					<Item>ui/np-main-guard.js</Item>
 					<Item>ui/np-core.js</Item>
+					<Item>ui/np-core-base.js</Item>
+					<Item>ui/np-core-map.js</Item>
+					<Item>ui/np-core-registry.js</Item>
+					<Item>ui/np-core-writes.js</Item>
+					<Item>ui/np-core-rules.js</Item>
+					<Item>ui/np-core-sweep.js</Item>
 					<Item>ui/np-draw.js</Item>
 					<Item>ui/np-picker.js</Item>
+					<Item>ui/np-picker-kit.js</Item>
+					<Item>ui/np-picker-rename.js</Item>
+					<Item>ui/np-picker-notices.js</Item>
+					<Item>ui/np-picker-prompt.js</Item>
 					<Item>ui/np-dialog.js</Item>
 					<Item>ui/np-quotes.js</Item>
 					<Item>ui/np-purchase.js</Item>
 					<Item>ui/np-names.js</Item>
 					<Item>ui/np-wildlife.js</Item>
 					<Item>ui/np-plan.js</Item>
+					<Item>ui/np-plan-kit.js</Item>
+					<Item>ui/np-plan-routes.js</Item>
+					<Item>ui/np-plan-built.js</Item>
+					<Item>ui/np-plan-corridors.js</Item>
+					<Item>ui/np-plan-vegetation.js</Item>
+					<Item>ui/np-plan-wildlife.js</Item>
 					<Item>ui/np-lens.js</Item>
 					<Item>ui/np-settings.js</Item>
 					<Item>ui/np-options.js</Item>
