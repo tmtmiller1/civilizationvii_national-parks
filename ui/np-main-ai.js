@@ -108,9 +108,9 @@ export function growAiParks() {
   for (const park of parks()) if (weighsExpansion(park)) expansionTurn(park);
 }
 
-/** An AI's park with room and no land waiting weighs an expansion each turn. */
+/** An AI's park with room and no land waiting weighs an expansion each turn, once its founding improvement stands. */
 function weighsExpansion(park) {
-  return !(isHuman(park.owner) || isIndependent(park.owner) || isFull(park) || park.pending > 0);
+  return !(isHuman(park.owner) || isIndependent(park.owner) || isFull(park) || park.pending > 0 || park.founding);
 }
 
 /** One turn of an AI's park saving for an expansion, and buying it once the fund covers the price. */

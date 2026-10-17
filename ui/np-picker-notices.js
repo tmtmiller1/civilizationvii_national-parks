@@ -49,7 +49,7 @@ export function noticeNoLand(park, founding = null, cancel = null) {
 
 /** The text of a refund notice, by why the Gold came back (np-core.js completionOutcome and foundingFate). */
 const REFUND_BODY = { duplicate: "LOC_NP_REFUND_DUPLICATE", settlement: "LOC_NP_REFUND_SETTLEMENT",
-  full: "LOC_NP_REFUND_FULL", "no-park": "LOC_NP_REFUND_NO_PARK" };
+  full: "LOC_NP_REFUND_FULL", "no-park": "LOC_NP_REFUND_NO_PARK", "not-landed": "LOC_NP_FOUND_NOT_LANDED" };
 
 /**
  * Tell the player that Gold came back and why: a notice record (np-core.js notices) shown in the form of the other
@@ -62,7 +62,7 @@ export function noticeRefund(n) {
   if (!body) { log(`notice ${n && n.id}: no text for "${n && n.why}"`); return true; }
   if (!screensClear() || !safe(() => InterfaceMode.isInDefaultMode(), false)) return false;
   const title = refundTitle(n);
-  log(`notice ${n.id}: ${n.gold} Gold returned (${n.why})`);
+  log(n.gold > 0 ? `notice ${n.id}: ${n.gold} Gold returned (${n.why})` : `notice ${n.id}: shown (${n.why})`);
   showDecision({ title: title || compose("LOC_NP_REFUND_TITLE"), ...eyebrowOf(n.kind), body: compose(body, n.gold),
     quote: quoteFor("NOLAND", `refund|${n.id}`) });
   return true;

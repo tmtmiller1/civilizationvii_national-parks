@@ -75,6 +75,7 @@
         <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="pt_BR"><Text>Este Assentamento já tem um parque deste tipo, ou um à espera do seu terreno, então o projeto concluído não tinha nada para fundar. O custo foi devolvido: {1_Gold} [icon:YIELD_GOLD] de Ouro.</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="pt_BR"><Text>O Assentamento que ia fundar este parque não é mais seu, então a fundação foi cancelada. O custo foi devolvido: {1_Gold} [icon:YIELD_GOLD] de Ouro.</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_FULL" Language="pt_BR"><Text>Este parque já está no tamanho máximo, então a expansão concluída não adicionou nada. O custo foi devolvido: {1_Gold} [icon:YIELD_GOLD] de Ouro.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NOT_LANDED" Language="pt_BR"><Text>O jogo não conseguiu colocar o parque no hexágono escolhido, então a fundação voltou a esperar pelas suas terras. Escolha outro hexágono em "Escolher terras"; o que você pagou continua valendo.</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="pt_BR"><Text>Este Assentamento não tem mais um parque para expandir, então a expansão concluída não adicionou nada. O custo foi devolvido: {1_Gold} [icon:YIELD_GOLD] de Ouro.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="pt_BR"><Text>{1_Settlement}: escolha onde fundar o Parque Nacional</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="pt_BR"><Text>{1_Settlement}: escolha onde fundar a Área Silvestre</Text></Replace>

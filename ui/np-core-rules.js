@@ -7,7 +7,8 @@ import { KINDS, isFull, isParkCompatible, isRuralImprovement, kindOf, landPayout
 import { charmingAt, districtKind, featureOf, hasDistrict, isLake, isMountain, isNavRiver, isWater, isWonder, locOf,
   ownerOf, readPlot, resourceAt, ringOf, sameCity, strippableAt, terrainOf, tileCityOf } from "./np-core-map.js";
 import { allParkTiles, save } from "./np-core-registry.js";
-import { failed, inSequence, isSettling, markTile, stillParkLand, stripImprovements } from "./np-core-writes.js";
+import { MAX_TRIES, failed, failures, inSequence, isSettling, markTile, stillParkLand,
+  stripImprovements } from "./np-core-writes.js";
 
 /**
  * The rule for a founding tile, on facts read from the map (pure): empty, Charming land the settlement itself holds.
@@ -29,7 +30,10 @@ function foundingGround(f) {
 /** The facts `foundable` reads, for plot i and the settlement `city`. */
 export function foundFacts(i, city, taken) {
   const plot = readPlot(i);
-  return { taken: taken.has(i) || isSettling(i), stray: plot.stray > 0, ownCity: sameCity(tileCityOf(i), city),
+  // A tile the game refused a founding's writes MAX_TRIES times this session isn't offered again until a reload.
+  const refused = (failures.get(i) || 0) >= MAX_TRIES;
+  return { taken: taken.has(i) || isSettling(i) || refused, stray: plot.stray > 0,
+    ownCity: sameCity(tileCityOf(i), city),
     water: isWater(i) || isLake(i) || isNavRiver(i), mountain: isMountain(i), wonder: isWonder(i),
     terrain: terrainOf(i),
     district: hasDistrict(i), items: plot.items.length, charming: charmingAt(i) };

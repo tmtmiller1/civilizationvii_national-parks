@@ -75,6 +75,7 @@
         <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="zh_Hans_CN"><Text>该定居点已有一座同类公园，或有一座正在等待土地，因此完成的项目无可建立。其花费已退还：{1_Gold} [icon:YIELD_GOLD] 金币。</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="zh_Hans_CN"><Text>原本要建立这座公园的定居点已不再属于你，因此建立已取消。其花费已退还：{1_Gold} [icon:YIELD_GOLD] 金币。</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_FULL" Language="zh_Hans_CN"><Text>这座公园已达到上限，因此完成的扩建没有增加任何地块。其花费已退还：{1_Gold} [icon:YIELD_GOLD] 金币。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NOT_LANDED" Language="zh_Hans_CN"><Text>游戏未能将公园放在所选地块上，因此这次建立重新等待选择土地。请通过“选择土地”另选一个地块；已支付的费用仍然有效。</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="zh_Hans_CN"><Text>该定居点已没有可扩建的公园，因此完成的扩建没有增加任何地块。其花费已退还：{1_Gold} [icon:YIELD_GOLD] 金币。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="zh_Hans_CN"><Text>{1_Settlement}：选择国家公园的建立地点</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="zh_Hans_CN"><Text>{1_Settlement}：选择荒野保护区的建立地点</Text></Replace>

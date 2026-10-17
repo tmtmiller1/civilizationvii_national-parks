@@ -75,6 +75,7 @@
         <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="fr_FR"><Text>Cette colonie possède déjà un parc de ce type, ou un parc en attente de sa case ; le projet achevé n'avait donc rien à fonder. Son coût vous a été restitué : {1_Gold} [icon:YIELD_GOLD] Or.</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="fr_FR"><Text>La colonie qui devait fonder ce parc ne vous appartient plus ; la fondation a donc été annulée. Son coût vous a été restitué : {1_Gold} [icon:YIELD_GOLD] Or.</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_FULL" Language="fr_FR"><Text>Ce parc a déjà atteint sa taille maximale ; l'agrandissement achevé n'a donc rien ajouté. Son coût vous a été restitué : {1_Gold} [icon:YIELD_GOLD] Or.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NOT_LANDED" Language="fr_FR"><Text>Le jeu n'a pas pu placer le parc sur la case choisie : la fondation attend donc de nouveau ses terres. Choisissez une autre case avec « Choisir des terres » ; ce que vous avez payé reste acquis.</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="fr_FR"><Text>Cette colonie n'a plus de parc à agrandir ; l'agrandissement achevé n'a donc rien ajouté. Son coût vous a été restitué : {1_Gold} [icon:YIELD_GOLD] Or.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="fr_FR"><Text>{1_Settlement} : choisissez où fonder le parc national</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="fr_FR"><Text>{1_Settlement} : choisissez où fonder la zone de nature sauvage</Text></Replace>

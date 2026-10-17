@@ -75,6 +75,7 @@
         <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="ru_RU"><Text>В этом поселении уже есть парк такого вида или парк, ожидающий своей земли, поэтому завершенному проекту было нечего основывать. Его стоимость возвращена: {1_Gold} [icon:YIELD_GOLD] золота.</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="ru_RU"><Text>Поселение, которое должно было основать этот парк, больше не принадлежит вам, поэтому основание отменено. Его стоимость возвращена: {1_Gold} [icon:YIELD_GOLD] золота.</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_FULL" Language="ru_RU"><Text>Этот парк уже достиг полного размера, поэтому завершенное расширение ничего не добавило. Его стоимость возвращена: {1_Gold} [icon:YIELD_GOLD] золота.</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NOT_LANDED" Language="ru_RU"><Text>Игре не удалось разместить парк на выбранной клетке, поэтому основание снова ждёт своей земли. Выберите другую клетку через «Выбрать землю»; уплаченное по-прежнему засчитано.</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="ru_RU"><Text>В этом поселении больше нет парка, который можно расширить, поэтому завершенное расширение ничего не добавило. Его стоимость возвращена: {1_Gold} [icon:YIELD_GOLD] золота.</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="ru_RU"><Text>{1_Settlement}: выберите, где основать национальный парк</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="ru_RU"><Text>{1_Settlement}: выберите, где основать территорию дикой природы</Text></Replace>

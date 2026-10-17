@@ -9,6 +9,7 @@
 //   districts the rural districts the mod made under its markers (destroyed when the park lets go of land its
 //            owner still holds, forgotten when the land passes to someone else)
 //   pending  tiles the owner may still add from completed expansions
+//   founding the founding a park was made from, until its improvement first stands (np-core-sweep.js returnFounding)
 "use strict";
 
 // The code is split by what it does; this file re-exports it under the names the rest of the mod imports.
@@ -24,12 +25,12 @@ export { idx, locOf, ringOf, terrainOf, biomeOf, featureOf, ownerOf, isWater, is
 export { load, save, resetCache, parks, parkById, parkAtAnchor, parkOfTile, displayName, allParkTiles, createPark,
   playerParkTiles, parkLevel, markerFor, foundings, foundingById, addFounding, dropFounding, foundingRefund,
   FOUNDING_ASK_TURNS, foundingFate, completionOutcome, staleQueueEntries, notices, noticesFor, addNotice, dropNotice,
-  settlementHasKind } from "./np-core-registry.js";
+  settlementHasKind, unlandedOutcome } from "./np-core-registry.js";
 export { dissolvePark, until, inSequence, isSettling, parkDistrictKind, placeMarker, releaseTile,
   ensureMarkers } from "./np-core-writes.js";
 export { foundable, foundFacts, foundingTiles, joinable, needsConfirm, joinFacts, canJoin, connectedSelection,
   eligibleTiles, addTile, aiTakes, GOLD_PER_PRODUCTION, expansionPrice, aiScore, AI_GOLD_PER_POINT, AI_PAYBACK_TURNS,
   AI_PAYBACK_TURNS_RICH, AI_RICH_MULTIPLE, AI_SAVE_SHARE, AI_RESERVE_SHARE, AI_RESERVE_TURNS, aiExpansionWorth,
   aiSavingStep, tileGain } from "./np-core-rules.js";
-export { newFoundingTile, foundPark, reconcile, scanMap, removeOrphanWilds, scanForParkImprovements,
-  orphanMarkerPlots, removeOrphanMarkers } from "./np-core-sweep.js";
+export { newFoundingTile, foundPark, returnFounding, takeLateLanding, reconcile, scanMap, removeOrphanWilds,
+  scanForParkImprovements, orphanMarkerPlots, removeOrphanMarkers } from "./np-core-sweep.js";

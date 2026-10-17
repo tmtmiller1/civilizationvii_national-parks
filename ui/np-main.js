@@ -29,7 +29,7 @@ import { KINDS, kindOf, kindByProject, kindByFoundProject, parkKindAt, tilesPerE
   parks, parkAtAnchor, createPark, dissolvePark, reconcile, eligibleTiles, aiSavingStep, save, displayName,
   ensureMarkers, isFull, expansionPrice, settlementOf, scanMap, removeOrphanMarkers, removeOrphanWilds, setReadOnly,
   isIndependent, foundings, settlementHasKind, foundingTiles, completionOutcome, notices, noticesFor,
-  autoplaying } from "./np-core.js";
+  autoplaying, addNotice, returnFounding, takeLateLanding } from "./np-core.js";
 import { drawPark, clearPark, clearAll, isDrawnCurrent, refreshBorders } from "./np-draw.js";
 import { registerLens, applySettings } from "./np-lens.js";
 import { aiFacts, autoPick, foundAiPass, growAiParks } from "./np-main-ai.js";
@@ -203,6 +203,7 @@ function reconcileAll() {
   for (const p of [...parks()]) {
     const r = reconcile(p);
     if (r === "dissolved") dissolve(p, touched);
+    else if (r === "unlanded") unlanded(p, touched);
     else if (r === "changed") touched.add(p.id);
   }
   return touched;
@@ -215,11 +216,29 @@ function dissolve(p, touched) {
   clearPark(p.id); dissolvePark(p.id); touched.add(p.id); log(`park ${p.id} dissolved: its founding improvement is gone`);
 }
 
-/** Register the park improvements on the map that no park holds yet, each named. Returns the new parks. */
+/** A park whose founding never landed goes back to waiting for its land, with what it cost (np-core.js
+ *  returnFounding). A human is told and chooses again from the Choose land prompt; an AI's places itself on another
+ *  tile in this sweep (settleFoundings), or is refunded if it has none. */
+function unlanded(p, touched) {
+  if (p.aiFund > 0 && !isHuman(p.owner) && !state.multiplayer)
+    safe(() => Players.grantYield(p.owner, YieldTypes.YIELD_GOLD, p.aiFund));
+  clearPark(p.id);
+  const f = returnFounding(p);
+  touched.add(p.id);
+  if (!f) return;
+  log(`park ${p.id}: its founding never landed on plot ${p.anchor}; founding ${f.id} waits for land again`);
+  if (!isHuman(f.owner)) return;
+  addNotice({ owner: f.owner, why: "not-landed", gold: 0, kind: f.kind, name: f.name || "" });
+  later(`notice:${f.owner}`, () => deliverNotices(f.owner), 500);
+}
+
+/** Register the park improvements on the map that no park holds yet, each named. Returns the new parks. A founding's
+ *  improvement that lands after its park went back to waiting is that founding's (np-core.js takeLateLanding). */
 function registerNew(map, touched) {
   const created = [];
   for (const i of map.anchors) {
     if (parkAtAnchor(i)) continue;
+    takeLateLanding(i, ownerOf(i));
     const p = createPark(i, ownerOf(i), parkKindAt(i) || "park");
     p.autoName = generateName(p);
     created.push(p);

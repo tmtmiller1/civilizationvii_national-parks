@@ -72,6 +72,7 @@ export function markerFor(park) { return landMarker(kindOf(park), parkLevel(park
 //   by     "gold" or "project"
 //   name   the settlement's name as the game holds it, for a notice once the settlement is gone
 //   asked  the turn its owner was last told it has no land (foundingFate); absent until then
+//   lostAt the plot its park never landed on, when it went back to waiting (np-core-sweep.js takeLateLanding)
 
 export function foundings() { const s = load(); if (!Array.isArray(s.foundings)) s.foundings = []; return s.foundings; }
 export function foundingById(id) { return foundings().find((f) => f.id === id) || null; }
@@ -92,6 +93,18 @@ export function dropFounding(id) { const s = load(); s.foundings = foundings().f
 export function foundingRefund(f, price = 0) {
   const paid = Number(f && f.paid);
   return Math.max(0, Math.round(paid > 0 ? paid : Number(price) || 0));
+}
+
+/**
+ * Whether a park whose founding never landed goes back to being a waiting founding (pure). Facts: founding (the park
+ * still carries the founding it was made from, so its improvement has never stood), standing (it stands now), tries
+ * (failed writes on its tile this session), maxTries, settling (a write is in flight), autoplay, readOnly.
+ * Returns { act: "return", why: "not-landed" } once the tries have run out, else { act: "keep" }. Autoplay drops
+ * writes rather than refusing them and isn't counted, so it never ends a park.
+ */
+export function unlandedOutcome(f) {
+  if (!f.founding || f.standing || f.settling || f.autoplay || f.readOnly) return { act: "keep", why: "" };
+  return f.tries >= f.maxTries ? { act: "return", why: "not-landed" } : { act: "keep", why: "" };
 }
 
 /** Turns between reminders that a founding still has no land to stand on. */

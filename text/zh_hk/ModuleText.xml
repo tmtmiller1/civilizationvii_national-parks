@@ -75,6 +75,7 @@
         <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="zh_Hant_HK"><Text>此聚落已有一座同類公園，或有一座正在等待土地，因此完成的專案無可建立。其花費已退還：{1_Gold} [icon:YIELD_GOLD] 金幣。</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_SETTLEMENT" Language="zh_Hant_HK"><Text>原本要建立這座公園的聚落已不再屬於你，因此建立已取消。其花費已退還：{1_Gold} [icon:YIELD_GOLD] 金幣。</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_FULL" Language="zh_Hant_HK"><Text>這座公園已達到上限，因此完成的擴展沒有增加任何格位。其花費已退還：{1_Gold} [icon:YIELD_GOLD] 金幣。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NOT_LANDED" Language="zh_Hant_HK"><Text>遊戲未能將公園放在所選格位上，因此這次建立重新等待選擇土地。請透過「選擇土地」另選一個格位；已支付的費用仍然有效。</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="zh_Hant_HK"><Text>此聚落已沒有可擴展的公園，因此完成的擴展沒有增加任何格位。其花費已退還：{1_Gold} [icon:YIELD_GOLD] 金幣。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="zh_Hant_HK"><Text>{1_Settlement}：選擇國家公園的建立地點</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="zh_Hant_HK"><Text>{1_Settlement}：選擇荒野保護區的建立地點</Text></Replace>

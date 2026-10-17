@@ -2,12 +2,13 @@
 // that find park pieces no park holds.
 "use strict";
 
-import { KINDS, isFull, isMarkerType, isParkCompatible, isRuralImprovement, kindOf, log, readOnly,
+import { KINDS, autoplaying, isFull, isMarkerType, isParkCompatible, isRuralImprovement, kindOf, log, readOnly,
   safe } from "./np-core-base.js";
 import { cityIdOf, constructiblesAt, districtKind, hasDistrict, hasParkImprovement, idx, isIndependent, isMountain,
   isStrewnResource, isWater, isWonder, locOf, markersAt, ownerOf, readPlot, ringOf, sameCity, terrainOf,
   tileCityOf } from "./np-core-map.js";
-import { allParkTiles, createPark, dropFounding, parks, save } from "./np-core-registry.js";
+import { addFounding, allParkTiles, createPark, dropFounding, foundings, load, parks, save,
+  unlandedOutcome } from "./np-core-registry.js";
 import { MAX_TRIES, failed, failures, inSequence, isSettling, makeParkDistrict, markTile, misfiled, parkDistrictKind,
   rehome, releaseTile, remark, removeAll, removeDistrict, request, stillParkLand, stripImprovements,
   until } from "./np-core-writes.js";
@@ -108,6 +109,9 @@ export function foundPark(founding, i) {
   dropFounding(founding.id);
   const park = createPark(i, owner, kind.key);
   park.districts = [i];
+  // Kept until the park improvement stands, so a founding that never lands can go back to waiting (returnFounding).
+  park.founding = { kind: kind.key, owner, city: { ...city }, made: founding.made, paid: founding.paid, by: founding.by,
+    name: founding.name };
   save();
   const l = { ...locOf(i) };
   log(`park ${park.id}: founded on plot ${i} (${l.x},${l.y})`);
@@ -117,9 +121,57 @@ export function foundPark(founding, i) {
     if (!constructiblesAt(i).some((c) => c.type === type)) request("CREATE_ELEMENT", { Kind: "CONSTRUCTIBLE", Type: type, Location: l, Parent: city, Owner: owner });
     if (!(await until(() => constructiblesAt(i).some((c) => c.type === type)))) return failed(park, i, "park improvement");
     failures.delete(i);
+    landed(park);
     return true;
   });
   return park;
+}
+
+/** The park improvement stands: the park is its founding's for good. */
+function landed(park) {
+  if (!park.founding) return;
+  delete park.founding;
+  save();
+}
+
+/**
+ * A park whose founding never landed (unlandedOutcome) goes back to the founding it was made from, with what that
+ * cost: the record goes, the founding waits for its land again (np-main.js tells a human; an AI's places itself on
+ * another tile, or is refunded as any founding with no land), and what the tries left on the tile is taken off: a
+ * half-made park improvement, then the district made for it. Land it took meanwhile is let go as any park's is.
+ * The tile itself isn't offered again this session
+ * (foundFacts). Returns the new founding, or null.
+ */
+export function returnFounding(park) {
+  if (readOnly || !park || !park.founding) return null;
+  const was = park.founding, i = park.anchor, type = kindOf(park).improvement;
+  const made = !!(park.districts && park.districts.includes(i));
+  for (const t of park.tiles) if (t !== i) releaseTile(park, t);
+  const s = load();
+  s.parks = s.parks.filter((p) => p.id !== park.id);
+  const f = addFounding(was.kind, was.owner, was.city, { paid: was.paid, by: was.by, name: was.name });
+  if (was.made != null) f.made = was.made;
+  f.lostAt = i;
+  save();
+  const owner = park.owner, city = tileCityOf(i);
+  inSequence(i, async () => {
+    if (!(await removeAll(i, constructiblesAt(i).filter((c) => c.type === type)))) return false;
+    if (!made || !city || readPlot(i).items.length) return true;
+    return removeDistrict(null, i, city, owner);
+  });
+  return f;
+}
+
+/**
+ * A founding's park improvement that lands after its park went back to waiting: the waiting founding is used up by it,
+ * so the park is founded once and nothing is paid back. Returns the founding taken, or null.
+ */
+export function takeLateLanding(i, owner) {
+  const f = foundings().find((w) => w.lostAt === i && w.owner === owner);
+  if (!f) return null;
+  dropFounding(f.id);
+  log(`founding ${f.id}: its park landed late on plot ${i}; the park is that founding's`);
+  return f;
 }
 
 const rewilded = new Set();   // plots moved onto a wilderness district this session; one try each
@@ -166,7 +218,9 @@ function rewildFounding(park) {
  * leaves the park instead. If it is the founding tile, the park's founding improvement moves to
  * another of its tiles (moveFounding); with none to take it the park is dissolved, as it is once its founding tile
  * belongs to no one. A full park's unused tiles lapse. Tiles the mod is
- * still writing to, and plots that cannot be read, are left for a later sweep. Returns "dissolved", "changed" or "".
+ * still writing to, and plots that cannot be read, are left for a later sweep. A park whose founding never landed
+ * returns "unlanded", and np-main.js hands it back to its founding (returnFounding). Returns "dissolved", "unlanded",
+ * "changed" or "".
  */
 export function reconcile(park) {
   const owner = ownerOf(park.anchor);
@@ -199,7 +253,7 @@ function reconcileLand(park) {
 }
 
 /** What reconcile returns at once after the founding tile's step; "restored" and "" carry on to the land. */
-const FOUNDING_ENDS = { moved: "changed", rebuilt: "changed", dissolved: "dissolved" };
+const FOUNDING_ENDS = { moved: "changed", rebuilt: "changed", dissolved: "dissolved", unlanded: "unlanded" };
 
 /** The owner follows the founding tile. Gold an AI set aside for the park stays with the player that saved it; a new
  *  owner starts its own fund. Returns whether the owner changed. */
@@ -211,7 +265,8 @@ function followOwner(park, owner) {
 }
 
 /** The founding tile: built over (the park moves, or ends), on the wrong district (rebuilt), or farmed or missing its
- *  improvement (restored). Returns "moved", "dissolved", "rebuilt", "restored" or "". */
+ *  improvement (restored), or never landed (unlanded). Returns "moved", "dissolved", "rebuilt", "restored", "unlanded"
+ *  or "". */
 function reconcileFounding(park, owner) {
   const a = readPlot(park.anchor);
   if (a.stray) return "";
@@ -219,8 +274,17 @@ function reconcileFounding(park, owner) {
   const urban = districtKind(park.anchor) === "other" || a.items.some((c) => !own(c.type) && !isRuralImprovement(c.type));
   if (urban) return moveFounding(park) ? "moved" : "dissolved";
   const standing = a.items.some((c) => own(c.type) && c.complete);
+  if (neverLanded(park, standing)) return "unlanded";
   if (standing && districtKind(park.anchor) !== parkDistrictKind(park.anchor) && rewildFounding(park)) return "rebuilt";
   return restoreFounding(park, owner, a, standing) ? "restored" : "";
+}
+
+/** Whether the park's founding never landed and its tries have run out (unlandedOutcome); a park whose improvement
+ *  stands is its founding's for good. */
+function neverLanded(park, standing) {
+  if (standing) landed(park);
+  return unlandedOutcome({ founding: !!park.founding, standing, tries: failures.get(park.anchor) || 0,
+    maxTries: MAX_TRIES, settling: isSettling(park.anchor), autoplay: autoplaying(), readOnly }).act === "return";
 }
 
 /** A farm or the like put on the founding tile is stripped, and the park improvement put back if it went. */

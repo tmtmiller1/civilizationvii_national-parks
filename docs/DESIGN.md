@@ -327,7 +327,37 @@ every row the shared files reference exists.
   `Autoplay.returnAsPlayer` while Autoplay is on, and a write dropped under Autoplay isn't counted against
   `MAX_TRIES` (`failed`), so the next sweep puts the tile back (`tests/np-autoplay.test.mjs`). Watched the same day:
   a waiting founding of the human's stayed waiting through a sweep under Autoplay and three `lab drive` turns, with no
-  "did not land" line. A real age change with a waiting founding is still to watch.
+  "did not land" line. Watched across a real age change on 2026-10-17 (`lab3-A`, usual set, Exploration 9001, every
+  working tree deployed): a founding bought at Roma for 1,600 Gold at Exploration turn 10 and left unplaced stayed
+  waiting through 100 driven turns under one-turn Autoplay and the last 10 under `lab turns`; the age ended through
+  `lab age-change` with Autoplay off. At Modern turn 1 `foundings()` still listed it (9 tiles), `parks()` was empty,
+  the Choose land prompt read "Roma: new National Park ... Choose land", and no "did not land" line had been written.
+  Its button opened the picker ("founding picker opened from the Choose land button"); 24,38 chosen and confirmed: a
+  rural district and the park improvement at once, "park 2: founded on plot 2836 (24,38)", named "Willka Mayu
+  National Park", the founding used up, Gold unchanged. A turn later the park stood.
+  A founding whose park never lands for any other reason goes back to waiting (the owner's decision, 2026-10-17: the
+  player keeps what they paid and the settlement isn't held by a park that isn't on the map). A park carries the
+  founding it was made from (`park.founding`) until its improvement first stands. Once the game has refused its tile
+  `MAX_TRIES` times (`unlandedOutcome`; Autoplay's dropped writes don't count), the sweep takes the record off, takes
+  off what the tries left (a half-made improvement, then the district made for it), lets go any land it took, and puts
+  the founding back with its price, settlement and name (`returnFounding`). A human gets a notice ("The game couldn't
+  place this park on the tile you chose...") and chooses again from Choose land; an AI's places itself on another
+  tile in the same sweep, or is refunded as any founding with no land. The refused tile isn't offered for a founding
+  again that session (`foundFacts`). An AI doesn't buy expansions for a park until it stands. If the improvement lands
+  on the old tile late after all, the sweep registers that park and the waiting founding is used up by it
+  (`takeLateLanding`), so nothing is founded or paid twice. Parks from older saves carry no founding and are never
+  turned back. Unit-tested (`tests/np-unlanded.test.mjs`) and watched on the usual set on 2026-10-17 (`lab3-C1`,
+  `lab3-C2`, Modern 9001), with a probe wrapping `Game.PlayerOperations.sendRequest` to drop `CREATE_ELEMENT` on one
+  plot. A human's: a founding bought at Roma (1,600 Gold) and placed through Choose land on 26,34; "founding district
+  did not land (1 of 3)", "(2 of 3)", "(3 of 3)", then "park 2: its founding never landed on plot 2542; founding 3
+  waits for land again". `parks()` empty, 26,34 bare (no district, nothing on it), the founding waiting with `paid`
+  1600 and `lostAt` 2542, Gold moving only by the turn's income; the notice "The game couldn't place this park on the
+  tile you chose..." came up on the player's turn, and Choose land opened the picker on 3 tiles, 26,34 left out. With
+  the wrap lifted, a rural district and the park improvement put on 26,34 by script: "founding 3: its park landed late
+  on plot 2542; the park is that founding's", one park, no founding left, Gold unchanged, the same a turn later. An
+  AI's (Paris, player 5, a founding added for it): placed on 47,25, the same three misses, returned, and in the same
+  sweep "park 4: founded on plot 1901 (51,25)", which stood (rural district and park improvement) with no Gold back.
+  The vanilla side isn't watched.
 
 ## The look
 
@@ -957,6 +987,22 @@ Watched 2026-09-30, late (seed 4242, Modern, lab games, Geographic Labels 1.6.1 
   tile with National Parks alone. That resource was watched 2026-10-17 on the usual set (Modern 9001): Horses set on
   an empty Charming tile, a park founded on it through `foundPark`, and a turn later its town listed Horses among its
   resources, while Horses on a bare tile of another town weren't collected.
+
+- **The transition suite rebuilt (2026-10-17, crash soak, seed 9001, short-age probe, every other mod off).**
+  `npw-game.js` had become a fence audition on 10-02, so the 38-check suite behind `npw4` was rebuilt from that run's
+  log as `tools/crash-soak/npw-suite-game.js`. The build `npw4` ran (dev 1.2.0, park land on wilderness districts)
+  no longer exists, so the released 1.1.3 is the control: `npw-rel1` (1.1.3) and `nrf-w2` (the module split) both
+  read 37 of 44 and are the same line for line apart from times and ids. The seven failures are the checks for
+  wilderness districts (the releases use rural) and B-W2 (Bazaar, Stonecutter and Sawmill offered park land on 29,39,
+  30,38 and 30,37). Found in both: a Brickyard forced onto the founding tile 30,38 leaves the park improvement
+  standing beside it on the rural district, the park moves its founding, and by the end of the run 30,38 is a second
+  one-tile park (park 10). On 1.2.0's wilderness districts the building replaced the improvement. Whether that's
+  wanted is the owner's call. The two hotseat games (`nrf-whs`, `nrf-ref`) didn't start: the host joins its lobby and
+  the game then abandons it with "Map Size Unsupported" dialogs (`hsdiag1`).
+
+- **Canal tiles and Choose land (2026-10-17, `lab3-A`, usual set, Modern turn 1).** Of a waiting founding's 9 Choose
+  land tiles at Roma, none was one of the three canal tiles (two open canals and a Canal finished on the last
+  Exploration turn). One load order.
 
 Not watched, by design: an AI building Expand National Park as a production item. The game gives projects no AI
 weighting (no AiLists system for them; none queued it in 35 watched turns), so an AI buys its expansions with Gold

@@ -3,7 +3,8 @@ import assert from "node:assert/strict";
 
 import { foundable, isCharming, landPayout, landMarker, milestoneLevel, MILESTONES, KINDS, parkLevel, markerFor,
   foundingRefund, foundingFate, completionOutcome, staleQueueEntries, FOUNDING_ASK_TURNS, GOLD_PER_PRODUCTION,
-  addFounding, foundings, dropFounding, settlementHasKind, addNotice, noticesFor, dropNotice, notices, resetCache } from "../ui/np-core.js";
+  addFounding, foundings, dropFounding, settlementHasKind, addNotice, noticesFor, dropNotice, notices, resetCache,
+  unlandedOutcome } from "../ui/np-core.js";
 
 // Facts for an empty, Charming flat tile the founding settlement holds; each test changes one.
 const empty = (over = {}) => ({ taken: false, stray: false, ownCity: true, water: false, mountain: false, wonder: false,
@@ -242,5 +243,18 @@ test("refund notices: every reason a human can be told has its text", async () =
   const told = new Set();
   for (const f of [foundDone({ hasKind: true }), expandDone({ full: true }), expandDone({ park: false })]) told.add(completionOutcome(f).why);
   told.add(foundingFate(waiting({ settlement: false })).why);
+  told.add(unlandedOutcome({ founding: true, tries: 3, maxTries: 3 }).why);
   assert.deepEqual(whys, [...told].sort());
+});
+
+test("unlanded: a park goes back to its founding only once its tries have run out, never while it stands", () => {
+  const f = (over = {}) => ({ founding: true, standing: false, tries: 3, maxTries: 3, settling: false, autoplay: false,
+    readOnly: false, ...over });
+  assert.deepEqual(unlandedOutcome(f()), { act: "return", why: "not-landed" });
+  assert.equal(unlandedOutcome(f({ tries: 2 })).act, "keep", "tries left");
+  assert.equal(unlandedOutcome(f({ standing: true })).act, "keep", "it stands after all");
+  assert.equal(unlandedOutcome(f({ founding: false })).act, "keep", "a park that has stood, or an older save's");
+  assert.equal(unlandedOutcome(f({ settling: true })).act, "keep", "a write in flight");
+  assert.equal(unlandedOutcome(f({ autoplay: true })).act, "keep", "Autoplay drops writes; it doesn't refuse them");
+  assert.equal(unlandedOutcome(f({ readOnly: true })).act, "keep", "a network game writes nothing");
 });
