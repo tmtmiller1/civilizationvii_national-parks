@@ -10,7 +10,9 @@ const read = (p) => fs.readFileSync(root + p, "utf8");
 
 test("modinfo: every UI module a script imports is in ImportFiles for both ages, and every listed file exists", () => {
   const modinfo = read("national-parks.modinfo");
-  const groups = [...modinfo.matchAll(/<ActionGroup id="([^"]+)" scope="game"[\s\S]*?<\/ActionGroup>/g)];
+  // The history-corrections groups load text only.
+  const groups = [...modinfo.matchAll(/<ActionGroup id="([^"]+)" scope="game"[\s\S]*?<\/ActionGroup>/g)]
+    .filter(([, id]) => !id.startsWith("history-corrections-"));
   assert.equal(groups.length, 2, "an Exploration and a Modern action group");
   const imported = new Set();
   for (const f of fs.readdirSync(root + "ui").filter((x) => x.endsWith(".js"))) {
