@@ -15,7 +15,7 @@
 export { KINDS, kindOf, kindByImprovement, kindByProject, kindByFoundProject, PARK_TYPE, PARK_TYPES, PROJECT_TYPE,
   PROJECT_TYPES, MARKER_TYPES, tilesPerExpansion, MAX_PARK_TILES, limits, isFull, room, RING, safe, log,
   isMarkerType, KEPT_IMPROVEMENTS, isParkCompatible, MILESTONES, milestoneLevel, landMarker, setReadOnly, isReadOnly,
-  landPayout, isRuralImprovement, hash01 } from "./np-core-base.js";
+  landPayout, isRuralImprovement, hash01, autoplaying } from "./np-core-base.js";
 export { idx, locOf, ringOf, terrainOf, biomeOf, featureOf, ownerOf, isWater, isMountain, isLake, isRiver,
   isNavRiver, isRevealed, isWonder, readPlot, constructiblesAt, districtIdAt, hasDistrict, districtKind, resourceAt,
   strippableAt, hasResource, isOpenWater, hasParkImprovement, parkKindAt, isStrewnResource, foreignConstructiblesAt,

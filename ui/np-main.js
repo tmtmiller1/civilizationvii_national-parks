@@ -28,8 +28,8 @@ import * as draw from "./np-draw.js";
 import { KINDS, kindOf, kindByProject, kindByFoundProject, parkKindAt, tilesPerExpansion, safe, log, idx, ownerOf,
   parks, parkAtAnchor, createPark, dissolvePark, reconcile, eligibleTiles, aiSavingStep, save, displayName,
   ensureMarkers, isFull, expansionPrice, settlementOf, scanMap, removeOrphanMarkers, removeOrphanWilds, setReadOnly,
-  isIndependent, foundings, settlementHasKind, foundingTiles, completionOutcome, notices,
-  noticesFor } from "./np-core.js";
+  isIndependent, foundings, settlementHasKind, foundingTiles, completionOutcome, notices, noticesFor,
+  autoplaying } from "./np-core.js";
 import { drawPark, clearPark, clearAll, isDrawnCurrent, refreshBorders } from "./np-draw.js";
 import { registerLens, applySettings } from "./np-lens.js";
 import { aiFacts, autoPick, foundAiPass, growAiParks } from "./np-main-ai.js";
@@ -145,6 +145,8 @@ function offerPicker(owner = safe(() => GameContext.localPlayerID, -1), tries = 
  *  record changed or its drawing is out of date (new tiles, a new owner, fog lifted over it). */
 function sweep(reason) {
   if (!state.on) return;
+  reason = heldOrNow(reason);
+  if (!reason) return;
   const redrawAll = reason === "load" || reason === "manual";
   const touched = reconcileAll();
   // The whole map is read only when a new park may have appeared: on load, at turn start, and when a park improvement
@@ -163,6 +165,23 @@ function sweep(reason) {
   logSweep(reason, created);
 }
 const SCANNED = new Set(["turn", "park", "project"]);
+
+const AUTOPLAY_POLL_MS = 500;
+const REASON_RANK = ["changed", "project", "park", "turn", "manual", "load"];
+function widerReason(a, b) { return REASON_RANK.indexOf(b) > REASON_RANK.indexOf(a) ? b : a; }
+
+/** Autoplay drops every write and reads the human as an AI (np-core-base.js), so while it runs the widest sweep asked
+ *  for is kept and run once it has stopped. Returns the reason to sweep for now, or null while held. */
+function heldOrNow(reason) {
+  const wide = widerReason(reason, state.heldReason);
+  if (autoplaying()) {
+    state.heldReason = wide;
+    later("autoplay", () => sweep(wide), AUTOPLAY_POLL_MS);
+    return null;
+  }
+  state.heldReason = null;
+  return wide;
+}
 
 /** Save what changed, and after a full scan take off the park pieces no park holds. */
 function tidy(map, scan, touched) {

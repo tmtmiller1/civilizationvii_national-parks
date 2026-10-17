@@ -2,7 +2,7 @@
 // markers, and letting a tile go.
 "use strict";
 
-import { KEPT_IMPROVEMENTS, isMarkerType, isParkCompatible, isRuralImprovement, log, readOnly,
+import { KEPT_IMPROVEMENTS, autoplaying, isMarkerType, isParkCompatible, isRuralImprovement, log, readOnly,
   safe } from "./np-core-base.js";
 import { constructiblesAt, districtIdAt, districtKind, hasDistrict, isIndependent, isStrewnResource, locOf,
   markersAt, ownerOf, readPlot, sameCity, tileCityOf } from "./np-core-map.js";
@@ -27,8 +27,11 @@ export function dissolvePark(id) {
 // else is only forgotten. Requests go out as the local player naming the park's owner. The tile keeps its own yields
 // alongside the marker's.
 
+let autoplaySentAt = -Infinity;   // when a request last went out under Autoplay, which drops it
+
 export function request(kind, args) {
   if (readOnly) return null;
+  if (autoplaying()) autoplaySentAt = Date.now();
   return safe(() => Game.PlayerOperations.sendRequest(GameContext.localPlayerID, kind, args), null);
 }
 
@@ -71,6 +74,11 @@ export function inSequence(i, fn) {
 export function isSettling(i) { return chains.has(i); }
 
 export function failed(park, i, step) {
+  // A step sent under Autoplay was dropped, not refused: it isn't counted, and the next sweep tries the tile again.
+  if (autoplaying() || Date.now() - autoplaySentAt <= STEP_MS + 1000) {
+    log(`park ${park ? park.id : "-"}: plot ${i}: ${step} did not land (Autoplay was on; tried again later)`);
+    return false;
+  }
   failures.set(i, (failures.get(i) || 0) + 1);
   log(`park ${park ? park.id : "-"}: plot ${i}: ${step} did not land (${failures.get(i)} of ${MAX_TRIES})`);
   return false;

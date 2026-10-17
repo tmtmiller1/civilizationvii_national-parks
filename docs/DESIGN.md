@@ -307,7 +307,27 @@ every row the shared files reference exists.
   held in the record for the next clear screen. The founding pop-up was offered and the founding picker opened from
   it, but the harness's own picker calls did not complete the founding and its turn passing failed, so founding and
   expansion in hotseat remain not watched for 1.1.0; the queue edit could not be reached (the Found project cannot be
-  queued in a Modern start whose civic is not done).
+  queued in a Modern start whose civic is not done). The queue edit, watched 2026-10-16 (watch run 2 block 2 `w2b2-npq2`, usual set,
+  Exploration 9001, the staged module split): Society unlocked, the Found project queued with 140 of 400 production,
+  then bought through `buyFounding` for 1,600 Gold; within a second the log read "build queue of 65536:
+  PROJECT_FOUND_NATIONAL_PARK at 0 removed; it could no longer do anything" and the queue was empty. Gold fell by the
+  price alone, so the 140 production wasn't paid back. The game's own `PURCHASE` refuses the project, so the
+  production list's Found row is the only way to buy it. A pending founding across an age change (watch run 2 block 2 G6, usual set,
+  Exploration 9001 into Modern under one-turn Autoplay): bought at Roma and left unplaced in Exploration, it was placed
+  at Modern's start on 22,35 ("park 2: founded on plot 2612"), then the founding district and the park improvement
+  failed to land three times and the tile was restored each time; ten turns later the park record held one tile and
+  the map had nothing on it. The cause was Autoplay, not the tile or the age. Watched 2026-10-17 (lab game, usual set,
+  Modern 9001, no Natural History): a rural district and the park improvement sent together landed at once on 22,35
+  (Flat with Forest), on a taiga tile and on open flat land with Autoplay off, and didn't land on 22,35, 23,36 or 22,37
+  in two Autoplay turns, sent as -1 or as 0; with Autoplay off again they landed on the same tiles. While Autoplay
+  runs, `GameContext.localPlayerID` reads -1, `Players.get(0).isHuman` and `Configuration.getPlayer(0).isHuman` read
+  false, `Autoplay.returnAsPlayer` reads 0, and a Gold grant still goes through. So at Modern's start under `lab
+  drive` the load sweep took the human's founding for an AI's and placed it, and the game dropped every write. Now the
+  sweep waits while Autoplay runs and runs the widest sweep asked for once it stops (`heldOrNow`), `isHuman` counts
+  `Autoplay.returnAsPlayer` while Autoplay is on, and a write dropped under Autoplay isn't counted against
+  `MAX_TRIES` (`failed`), so the next sweep puts the tile back (`tests/np-autoplay.test.mjs`). Watched the same day:
+  a waiting founding of the human's stayed waiting through a sweep under Autoplay and three `lab drive` turns, with no
+  "did not land" line. A real age change with a waiting founding is still to watch.
 
 ## The look
 
@@ -933,7 +953,10 @@ Watched 2026-09-30, late (seed 4242, Modern, lab games, Geographic Labels 1.6.1 
   resource's own harvester (camp, woodcutter, mine, fishing boat), which a resource tile keeps (`isStrewnResource`),
   so the sweep now leaves it; the others stop after `MAX_TRIES`. Not watched yet: the Found
   text drawn in the production list in a language other than English (its name and description were read composed in
-  Japanese and German on 2026-10-15 from the released copy, overnight L2 and L3); the resource under a founding tile collected (no empty resource tile came up).
+  Japanese and German on 2026-10-15 from the released copy, overnight L2 and L3), and the resource under a founding
+  tile with National Parks alone. That resource was watched 2026-10-17 on the usual set (Modern 9001): Horses set on
+  an empty Charming tile, a park founded on it through `foundPark`, and a turn later its town listed Horses among its
+  resources, while Horses on a bare tile of another town weren't collected.
 
 Not watched, by design: an AI building Expand National Park as a production item. The game gives projects no AI
 weighting (no AiLists system for them; none queued it in 35 watched turns), so an AI buys its expansions with Gold

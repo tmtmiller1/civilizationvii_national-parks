@@ -2,7 +2,7 @@
 // is playing: the player at the screen, humans and AIs.
 "use strict";
 
-import { safe } from "./np-core.js";
+import { autoplaying, safe } from "./np-core.js";
 
 export const state = { originals: null, wrappers: null, listeners: [], multiplayer: false, parkKeys: new Set(),
   projectKeys: new Set(),
@@ -27,5 +27,9 @@ export function isAlive(owner) {
 
 export function isLocal(owner) { return owner === safe(() => GameContext.localPlayerID, -99); }
 
-/** A human's park waits for its owner to choose (in hotseat too, on that player's turn); an AI's is chosen for it. */
-export function isHuman(owner) { return !!safe(() => Players.get(owner).isHuman, false); }
+/** A human's park waits for its owner to choose (in hotseat too, on that player's turn); an AI's is chosen for it.
+ *  Under Autoplay the game reads the human as an AI; Autoplay.returnAsPlayer still names them. */
+export function isHuman(owner) {
+  if (safe(() => Players.get(owner).isHuman, false)) return true;
+  return autoplaying() && owner === safe(() => Autoplay.returnAsPlayer, -1);
+}

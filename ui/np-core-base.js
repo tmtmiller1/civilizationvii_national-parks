@@ -77,6 +77,11 @@ export let readOnly = false;
 export function setReadOnly(on) { readOnly = !!on; }
 export function isReadOnly() { return readOnly; }
 
+// While Autoplay runs (a tuner and test tool), the game carries out no CREATE_ELEMENT request and reads every seat as
+// an AI: GameContext.localPlayerID is -1 and Players.get(id).isHuman false, with Autoplay.returnAsPlayer naming the
+// human. Watched 2026-10-17 (Modern lab game, seed 9001; tests/np-autoplay.test.mjs). Gold grants still go through.
+export function autoplaying() { return !!safe(() => Autoplay.isActive, false); }
+
 /** A land marker's payout in yield points and its Happiness part at a size level (data/national-parks-land.xml): a
  *  National Park's +1/+1, +2/+1, +2/+2, +3/+2 Culture/Happiness; a Wilderness Area's +3 to +6 Influence. */
 const PARK_LEVELS = [[1, 1], [2, 1], [2, 2], [3, 2]];

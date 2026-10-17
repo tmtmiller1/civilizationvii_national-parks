@@ -6,6 +6,7 @@ const ENGINE_GLOBALS = {
   GameContext: "readonly",
   Online: "readonly",
   Players: "readonly",
+  Autoplay: "readonly",
   GameInfo: "readonly",
   GameplayMap: "readonly",
   Configuration: "readonly",
