@@ -3,8 +3,12 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
-## [Unreleased]
+## [1.2.1] - 2026-10-17
 
+- License: from this version the mod is under the Tower Mod License 1.0, in LICENSE. You can still play it, read the
+  code and change your own copy for your own games. Reuploading it, reusing its code in other projects and using it
+  to train AI need my written permission. Earlier versions stay under MIT, and `ui/settings-keeper.js` stays MIT so
+  other mods can keep embedding it.
 - Carries Civilopedia History Corrections. With Civilopedia Expanded: Independents on, six East Asian history pages
   in the Civilopedia (Goguryeo, the Oirat, two Ryukyu pages, Nanzhao and Balhae) give each side where historians in
   different countries disagree, and a few factual errors are fixed. With it off, the game's pages stay as they are.
