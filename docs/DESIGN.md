@@ -25,10 +25,14 @@ every code path through the `KINDS` table in `ui/np-core.js`; only the data rows
 
 Parks exist from the Exploration Age on and come into their own in the Modern Age:
 
-| Age | Civic | Tiles per expansion |
-| --- | --- | --- |
-| Exploration | Society (mid-tree, cost 1300) | 1 |
-| Modern | Natural History (first tier, cost 1600) | 3 |
+| Age | Civic | Tiles per founding | Tiles per expansion |
+| --- | --- | --- | --- |
+| Exploration | Society (mid-tree, cost 1300) | 4 | 1 |
+| Modern | Natural History (first tier, cost 1600) | 4 | 1 |
+
+Until 2026-10-25 a founding gave its 1 tile and an expansion cost 300 production for 1 tile in Exploration and 3 in
+Modern. The owner found 1,200 Gold a tile too high (2026-10-25): a founding now gives 4 tiles at its old price, and
+an expansion is 100 production (400 Gold) for 1 tile in both ages, Modern's old rate a tile.
 
 Each age's database gets the shared data plus its own file (`data/national-parks-exploration.xml`,
 `-modern.xml`) carrying the `Types`, `Constructibles`, `Projects` and `ProgressionTreeNodeUnlocks` rows, because a
@@ -63,22 +67,32 @@ every row the shared files reference exists.
 
 ## Rules
 
-- **Founding.** On any empty, Charming flat or hill tile the settlement owns (see "Appeal" below), in any ring (ring 4
-  and 5 with Cultural Diffusion): no district, improvement or building on it; a resource or a feature is fine, and the
-  resource stays collected. One of each kind per settlement (city or town), once the age's civic is done. A city runs
-  Found National Park (or Found Wilderness Area); a city or town buys it for Gold (4 per point of production) from its
-  purchase list. Either records a founding (`foundings` in the save's record) and the Choose land prompt opens the
-  picker on the settlement's empty, Charming tiles, which alone light up; Confirm places a rural district and the
-  founding improvement by script (`foundPark`). An AI founds once a turn with its own Gold (at peace, Gold coming in,
-  1.5x the price in hand) where a settlement holds empty land beside a natural wonder, the best such tile at once (every
-  tile beside a wonder reads 7 or more, so the gate never refuses it; among the candidates it takes the most appealing).
-  The project is hidden until the civic and once the settlement has that kind (or one waiting), grayed when no empty,
-  Charming tile is left; refused in network games, where nothing is written. Why not the engine's own placement: it
-  offers an improvement only on a tile already carrying a rural district (a farm the park would replace), and never on a
-  bare one, even with `CanBuildOnNonDistrict` (offered, never placed), and not on a resource tile without a
-  `Constructible_ValidResources` row, which in turn makes it resource-only (watched 2026-10-02; engine-closed.md). Until
-  dev 1.2.0 the founding improvement was built directly and narrowed to wonder-adjacent tiles; from dev 1.2.0 until the
-  appeal gate, any empty tile qualified.
+- **Founding.** On any empty, Charming flat or hill tile the settlement owns (see "Appeal" below), or any empty water
+  tile it owns (coast, lake or ocean, Charming or not: open water reads appeal 0, so the gate would shut every one; the
+  owner's decision, 2026-10-25), in any ring (ring 4 and 5 with Cultural Diffusion): no district, improvement or
+  building on it; a resource or a feature is fine, and the resource stays collected. A navigable river, a mountain and a
+  natural wonder can join a park but can't found one. A founding gives `FOUNDING_TILES` (4): the founding tile, and 3
+  left `pending` on the new park for its owner to choose next to it. A human's picker opens again on them once the
+  founding tile is confirmed (the Choose land prompt otherwise); an AI's park takes them in the first sweep after its
+  improvement stands (`pickAiLand` skips a park still carrying its founding, so a founding that goes back to waiting
+  finds its land bare). A National Park founded on water has its lodge, paths and wall gap on its nearest dry tile
+  without a resource (`lodgeTile` in `ui/np-plan.js`), and is planned without buildings while it has no such land. Not
+  watched in game (WATCH_LIST group 6): whether the engine places the park improvement on water through
+  `CREATE_ELEMENT`; `Constructible_ValidTerrains` lists `TERRAIN_COAST` and `TERRAIN_OCEAN` for it, and the land
+  markers, which list no terrain, already stand on water. One of each kind per settlement (city or town), once the age's
+  civic is done. A city runs Found National Park (or Found Wilderness Area); a city or town buys it for Gold (4 per
+  point of production) from its purchase list. Either records a founding (`foundings` in the save's record) and the
+  Choose land prompt opens the picker on the settlement's empty, Charming tiles, which alone light up; Confirm places a
+  rural district and the founding improvement by script (`foundPark`). An AI founds once a turn with its own Gold (at
+  peace, Gold coming in, 1.5x the price in hand) where a settlement holds empty land beside a natural wonder, the best
+  such tile at once (every tile beside a wonder reads 7 or more, so the gate never refuses it; among the candidates it
+  takes the most appealing). The project is hidden until the civic and once the settlement has that kind (or one
+  waiting), grayed when no empty, Charming tile is left; refused in network games, where nothing is written. Why not the
+  engine's own placement: it offers an improvement only on a tile already carrying a rural district (a farm the park
+  would replace), and never on a bare one, even with `CanBuildOnNonDistrict` (offered, never placed), and not on a
+  resource tile without a `Constructible_ValidResources` row, which in turn makes it resource-only (watched 2026-10-02;
+  engine-closed.md). Until dev 1.2.0 the founding improvement was built directly and narrowed to wonder-adjacent tiles;
+  from dev 1.2.0 until the appeal gate, any empty tile qualified.
 - **Appeal.** Appeal is the founding gate and nothing else. A tile's appeal is the game's: the sum of its six
   neighbours' `Terrains.Appeal` and `Features.Appeal` (mountain, coast and navigable river 1; forest, rainforest, taiga,
   savanna woodland and sagebrush steppe 1; a natural wonder 6), the tile's own terrain and feature left out except a
@@ -97,8 +111,8 @@ every row the shared files reference exists.
   paid a tundra park nearly three times as often at the top tier as a plains park. A park-only +1 on desert and plains
   closed most of that gap (it matched per-biome thresholds fitted on all three maps) but could not be explained beside
   the game's own numbers, so it was built, watched and dropped with the tiers.
-- **Growth by project.** A city runs Expand National Park; each completion gives the park its age's number of tiles
-  (1 Exploration, 3 Modern). The completion event's `location` is the park's founding tile. The project is
+- **Growth by project.** A city runs Expand National Park; each completion gives the park 1 tile, in either age (3 in
+  Modern until 2026-10-25). The completion event's `location` is the park's founding tile. The project is
   `CityOnly`: a town was offered it as a build only (not as a purchase or a town focus; watched 2026-09-29) and would
   take about 75 turns at a town's production, so towns do not list it. `RequiresUnlock` is false: with it true and a
   `KIND_PROJECT` unlock row on the civic, the project was never offered even after the civic completed (watched
@@ -106,18 +120,19 @@ every row the shared files reference exists.
   civic-gated, and the project needs the park.
 - **Growth by purchase.** The purchase list of a settlement with the player's park, town or city, carries an Expand
   National Park or Expand Wilderness Area row priced at 4 Gold per point of the project's production cost (the game's
-  own purchase rate: Jinja 50 : 200, Grocer 535 : 2140), 1,200 at Standard speed. The game cannot sell a project for
-  Gold (a `CanPurchase` project in its purchase list is only queued as a build, `production-chooser-helpers.js`
-  `Construct`), so `ui/np-purchase.js` decorates `panel-production-chooser`: its instance `items` accessor gains the
-  row, and its `doOrConfirmConstruction` sends a choice of that row to `buyExpansion`, which takes the Gold
-  (`Players.grantYield(pid, YIELD_GOLD, -N)`), adds the age's tiles, closes the panel and opens the picker. A
-  replacement panel that shows a city's purchases as Gold pills on its production rows (keyed on `purchaseCost`,
-  chosen with `doOrConfirmConstruction(..., isPurchase = true)`) gets the price as a pill on the city's Expand row
-  (watched 2026-10-01 with `drongos-compact-production`, under "Verification"). Watched 2026-10-01 in the base panel:
-  the row listed at 1,200, grayed with "Full (24 tiles)." for a full park; a choice took 1,200 Gold, granted 3 tiles,
-  closed the panel and opened the picker. Until dev 1.2.0 a panel at the top of the screen sold the expansion.
-- **Cost.** Flat: 300 production, or the Gold price above. No cost progression applies to a project on 1.5.0 anyway
-  (see `engine-closed.md`).
+  own purchase rate: Jinja 50 : 200, Grocer 535 : 2140), 400 at Standard speed (1,200 until 2026-10-25). The game cannot
+  sell a project for Gold (a `CanPurchase` project in its purchase list is only queued as a build,
+  `production-chooser-helpers.js` `Construct`), so `ui/np-purchase.js` decorates `panel-production-chooser`: its
+  instance `items` accessor gains the row, and its `doOrConfirmConstruction` sends a choice of that row to
+  `buyExpansion`, which takes the Gold (`Players.grantYield(pid, YIELD_GOLD, -N)`), adds the age's tiles, closes the
+  panel and opens the picker. A replacement panel that shows a city's purchases as Gold pills on its production rows
+  (keyed on `purchaseCost`, chosen with `doOrConfirmConstruction(..., isPurchase = true)`) gets the price as a pill on
+  the city's Expand row (watched 2026-10-01 with `drongos-compact-production`, under "Verification"). Watched 2026-10-01
+  in the base panel: the row listed at 1,200, grayed with "Full (24 tiles)." for a full park; a choice took 1,200 Gold,
+  granted 3 tiles, closed the panel and opened the picker. Until dev 1.2.0 a panel at the top of the screen sold the
+  expansion.
+- **Cost.** Flat: 100 production for an expansion, 400 for a founding, or the Gold price at 4 a point. No cost
+  progression applies to a project on 1.5.0 anyway (see `engine-closed.md`).
 - **Choosing land.** When an expansion completes, the local player's tiles wait and a "Choose land" prompt at the top of
   the screen opens the picker; it is not opened by itself over the start of a turn (watched 2026-10-01: after a turn the
   game stayed in its default mode with the prompt shown once the turn's dialogs closed). A Gold purchase opens the
@@ -176,9 +191,11 @@ every row the shared files reference exists.
   +2/+1 and +3 Influence); `_WILD` stays in the database so those saves load, and the sweep swaps each for `_LAND`
   (`remark`; the swap watched in crash soak `npap1` from a planted old marker). A park's yields grow with its size
   through its tiles and the size bonus below. An AI weighs a tile by the same payout at its level (`landPayout`,
-  `tileGain`). The
-  founding tile keeps its own improvement yields and wonder adjacency (+4 Happiness and +5 Happiness, +5 Culture per
-  wonder for a park; +4 Influence and +10 Influence per wonder for a wilderness area). The payout is the marker's own
+  `tileGain`). The founding tile keeps its own improvement yields and wonder adjacency: the land's base +1 Culture +1
+  Happiness (+3 Influence), so it shows the same icons as the rest of the park, and +4 Happiness (+4 Influence) on top,
+  with +5 Happiness and +5 Culture per wonder for a park and +10 Influence per wonder for a wilderness area. Until
+  2026-10-25 it paid only the +4, and read as the odd tile out (the owner's call). Its land share stays at the base
+  level: the size levels step up the markers only. The payout is the marker's own
   `Constructible_YieldChanges`, so it sits on the tile and the yields layer shows it there. A marker needs a district
   under it and the settlement that holds the tile as `Parent` (both belong to that settlement, so a tile taken from a
   neighbouring settlement pays that one); the tile then counts as worked land with no population spent, and from dev
@@ -425,8 +442,14 @@ to 0.46 along an arm is at the tile's edge.
   their own color when placed by script; the grassland, tundra, tropical and generic sets draw navy blue, so every
   other biome uses the gray plains stone. `BIN_Boulder_*` drew near-black against the rubble and is not used. Hashed
   from plot and direction, so an edge looks the same after a reload.
-- **Buoys.** `PROP_MOD_Harbor_Buoy` at scale 1.6 on about half the edges where park water meets open water outside
-  the park. Subtle at map zoom; the water gets no walls.
+- **Buoys.** `PROP_MOD_Harbor_Buoy` at scale 1.6, floating on the water's surface, on corners of the line where park
+  water meets open water outside the park (`buoyCorners`, `ui/np-buoys.js`). They mark how far the park reaches, not
+  its whole outline: the corners furthest from the park's middle go first, outward points ahead of notches, and a
+  corner within 5 outline steps of a buoy (`BUOY_GAP`) or short of 60% of the furthest corner's reach (`BUOY_REACH`)
+  gets none. A single tile gets 1, a line of 3 or 6 tiles 2 (its ends), a 7-tile flower 3, a 19-tile blob 5. A
+  corner touching land or the map's edge gets none. The owner's calls, 2026-10-25: corners rather than edge middles,
+  then fewer, since every other corner crowded a line of single tiles. Until then a buoy stood near the middle of
+  about half those edges, placed on the terrain, so over deep ocean it sat on the sea floor out of sight.
 - **Everything else on the land** (buildings, footpaths, monuments, trees, shrubs, rocks, reeds, where the animals
   stand, and what each size level adds) is placed by the park's plan: see "The composition" below. Until 1.1.0 each
   tile ran its own recipe (a stand of trees in one of four shapes, a camp or cabin village by the tile's hash, accents
@@ -1030,6 +1053,36 @@ Watched 2026-09-30, late (seed 4242, Modern, lab games, Geographic Labels 1.6.1 
   wanted is the owner's call. The two hotseat games (`nrf-whs`, `nrf-ref`) didn't start: the host joins its lobby and
   the game then abandons it with "Map Size Unsupported" dialogs (`hsdiag1`).
 
+- **Water foundings and 4-tile foundings (2026-10-25, lab run `2026-10-25T17-36-24`, usual set, Exploration 9001,
+  `--quick`, the local copy live and the Workshop copy off).** Society stepped to with Culture grants over 3 turns.
+  The compiled database read Found 400, Expand 100, and `TERRAIN_COAST`/`TERRAIN_OCEAN` beside flat and hill for the
+  park improvement. Roma's founding tiles were 16, 9 of them water (coast and lake), with 30,36 (a fishing boat) left
+  out. A National Park founding bought for 1,600 Gold was placed by the owner, playing in the same game, on the
+  coast/lake tile 25,39: the park improvement stood on the water and paid +4 Happiness, the picker opened again on
+  its own ("picker opened from founding", 3 to add), and 25,38, 26,38 and 26,39 joined (a woodcutter on 26,38
+  stripped after the question, its citizen returned). The plan put the lodge on 26,38, the only dry tile; the capture
+  shows the lodge there, buoys on the water's edge and nothing built on the water
+  (`working_screenshots/national-parks-water-founding/02-water-park-close.png`). One expansion bought from script
+  cost 400 Gold, the city project read 100, the picker opened from the purchase with 1 to add, and 27,39 joined. A
+  Wilderness Area founding (1,600 Gold) showed the new offer text (`03-wilderness-offer.png`); the owner founded it on
+  land at 25,37 and took two water tiles and one land tile. An AI founding added by script for player 1 was placed
+  on 60,34 and "AI park 6 took 3 tile(s)" followed a second later, after the improvement stood. Not reached: an
+  all-water National Park drawn without buildings, a Wilderness Area founded on water, Modern's 1-tile expansion, and
+  the vanilla side.
+
+- **Water foundings, second pass (2026-10-25, `devtools/bench/water-run.sh`, Modern 9001, `--quick`, a town placed
+  for a second settlement).** Usual set (`usual-modern`) and every other mod off (`vanilla-modern`), the same 43 of 44
+  each: Found 400 and Expand 100 in the database; water with a fishing boat or shipyard left out of the founding
+  tiles; an ocean tile (29,42, bought with the coast between) founded through the picker, the park improvement
+  standing on it, the picker opening again with 3, and the park kept all water: planned without buildings, nothing
+  built, no paths, no wall edges. Modern Expand: 100 production at Roma, 400 Gold, the picker opening by itself after
+  the purchase, 1 tile; a finished project 1 tile. A Wilderness Area founded on coast (26,40) standing. A National Park
+  on coast with land: its lodge on the flat tile beside it. An AI founding took no tiles while carrying its founding
+  and 4 once it stood. The one miss both times was the setup: the new town owns only its first ring, so the second
+  park found 1 free tile and its other 2 wait. Captures in `working_screenshots/national-parks-water-founding/`.
+  Found in the vanilla run: buoys over deep ocean, placed on the terrain, sat on the sea floor out of sight; they float
+  now (`place` with `surface`, as Dams does), watched in `10-buoys-floating.png`.
+
 - **Canal tiles and Choose land (2026-10-17, `lab3-A`, usual set, Modern turn 1).** Of a waiting founding's 9 Choose
   land tiles at Roma, none was one of the three canal tiles (two open canals and a Canal finished on the last
   Exploration turn). One load order.
@@ -1041,8 +1094,10 @@ instead (`growAiParks`), which is watched.
 ## Open questions
 
 - Visual joining of touching parks of one kind (one border, no walls between): shelved 2026-10-02.
-- Balance: 300 production or 1,200 Gold per expansion, +1 Culture +1 Happiness per park tile and +3 Influence per
-  wilderness tile, rising per tile at 8, 16 and 24 tiles, 1 and 3 tiles per completion, 24 tiles at most. A first draft.
+- Balance: 100 production or 400 Gold per 1-tile expansion, a 4-tile founding at 400 or 1,600, +1 Culture +1
+  Happiness per park tile and +3 Influence per wilderness tile, rising per tile at 8, 16 and 24 tiles, 24 tiles at
+  most. Set by the owner on 2026-10-25 from 300 or 1,200 per expansion; how fast an AI now grows its parks at the
+  lower price isn't measured yet.
 - The appeal bias by biome was measured on three Play Now maps at turn 1 only; it now affects only where a park may be
   founded.
 - Whether the AI should value Expand National Park; it gets no AI weighting and was not seen building it.

@@ -31,7 +31,7 @@ PAGES = [
     # The mod's own section
     (SECTION, "NP_OVERVIEW", "NP_START", "National Parks", [
         ("CONTENT", None, [
-            "Found a National Park on an empty, Charming tile a settlement owns, then expand it over the land around it: mountains, forests, lakes, rivers, the sea, natural wonders and open country. You choose which tiles it takes.",
+            "Found a National Park on an empty tile a settlement owns, Charming land or water, with 3 more tiles beside it, then expand it over the land around it: mountains, forests, lakes, rivers, the sea, natural wonders and open country. You choose which tiles it takes.",
             "Park tiles give [icon:YIELD_CULTURE] Culture and [icon:YIELD_HAPPINESS] Happiness on top of their own yields, and nothing can be built on them. Each park's tiles give more as the park grows. Each park is named after the place it protects and is drawn on the map with walls, trees and wildlife.",
         ]),
         ("KINDS", "Two Kinds", [
@@ -39,13 +39,13 @@ PAGES = [
             "[B]Wilderness Area[/B]: founded, expanded and protected the same way, but gives [icon:YIELD_DIPLOMACY] Influence. Has no buildings. A settlement can have one of each.",
         ]),
         ("WHERE", "How to Start", [
-            "[BLIST][LI]Found a National Park or Wilderness Area with the [B]Found National Park[/B] or [B]Found Wilderness Area[/B] project in a city, or buy one with Gold from any settlement's purchase list, then press [B]Choose land[/B] and pick an empty, Charming tile for it.[LI]Expand it with the [B]Expand National Park[/B] or [B]Expand Wilderness Area[/B] project in a city, or buy an expansion with Gold from the settlement's purchase list.[LI]Press [B]Choose land[/B] and pick the new tiles on the map.[LI]Turn on the [B]Parks and Wilderness[/B] lens to see every park.[/LIST]",
+            "[BLIST][LI]Found a National Park or Wilderness Area with the [B]Found National Park[/B] or [B]Found Wilderness Area[/B] project in a city, or buy one with Gold from any settlement's purchase list, then press [B]Choose land[/B] and pick an empty tile for it, Charming land or water, then 3 more tiles beside it.[LI]Expand it with the [B]Expand National Park[/B] or [B]Expand Wilderness Area[/B] project in a city, or buy an expansion with Gold from the settlement's purchase list.[LI]Press [B]Choose land[/B] and pick the new tiles on the map.[LI]Turn on the [B]Parks and Wilderness[/B] lens to see every park.[/LIST]",
         ]),
     ], ["NATIONAL_PARK", "WILDERNESS_AREA", "NATURAL_WONDER", "CONSERVATION"]),
 
     (SECTION, "NP_FAQ", "NP_START", "Questions", [
         ("NOFOUND", "Why can't I build a park?", [
-            "You need the Society civic in the Exploration Age or Natural History in the Modern Age, a settlement that doesn't already have a park of that kind, and an empty, Charming flat or hill tile it owns: no district, improvement or building on it. If the civic was researched before the mod was added to the game, the park is not offered.",
+            "You need the Society civic in the Exploration Age or Natural History in the Modern Age, a settlement that doesn't already have a park of that kind, and an empty tile it owns, either Charming flat or hill land or any water: no district, improvement or building on it. If the civic was researched before the mod was added to the game, the park is not offered.",
         ]),
         ("NOGROW", "Why won't my park grow?", [
             "A park only takes tiles its owner already owns, next to the park. If there are none when an expansion finishes, you're told, and the tiles wait until land is available. Parks stop at 24 tiles. Parks don't grow in network games.",
@@ -72,30 +72,30 @@ PAGES = [
 
     (SECTION, "NP_FOUNDING", "NP_GROW", "Founding a Park", [
         ("CONTENT", None, [
-            "A city founds a park with the [B]Found National Park[/B] or [B]Found Wilderness Area[/B] project; a city or town can also buy one with Gold from its purchase list. Then press [B]Choose land[/B] and pick an empty flat or hill tile the settlement owns, in any ring, that is Charming (see below): no district, improvement or building on it. A resource on it stays collected. Only those tiles light up in the picker. Each settlement can have one National Park and one Wilderness Area.",
+            "A city founds a park with the [B]Found National Park[/B] or [B]Found Wilderness Area[/B] project; a city or town can also buy one with Gold from its purchase list. Then press [B]Choose land[/B] and pick an empty tile the settlement owns, in any ring: Charming flat or hill land (see below), or any coast, lake or ocean tile. Nothing may stand on it: no district, improvement or building. A resource on it stays collected. Only those tiles light up in the picker. The picker then opens again for 3 more tiles beside it, so a new park starts with 4. A park founded on water can stay all water; a National Park founded there puts its lodge on the first land it takes. Each settlement can have one National Park and one Wilderness Area.",
         ]),
         ("CHARMING", "Charming Land", [
-            "A park is founded on Charming land: appeal 3 or more, as the game's appeal lens and tile tooltip show it. Appeal comes from the land around a tile: each neighboring mountain, coast, navigable river, forest, rainforest, taiga, savanna woodland or sagebrush steppe adds 1, and a neighboring natural wonder adds 6. Appeal matters only for the founding tile; the land a park grows over can be anything it may take, and a tile whose appeal later falls stays in the park.",
+            "A park founded on land needs Charming land: appeal 3 or more, as the game's appeal lens and tile tooltip show it. Appeal comes from the land around a tile: each neighboring mountain, coast, navigable river, forest, rainforest, taiga, savanna woodland or sagebrush steppe adds 1, and a neighboring natural wonder adds 6. Appeal matters only for the founding tile; the land a park grows over can be anything it may take, and a tile whose appeal later falls stays in the park. Water has no appeal of its own, so any empty water tile will do.",
         ]),
         ("UNLOCK", "Unlocking", [
             "Exploration Age: the [B]Society[/B] civic. Modern Age: the [B]Natural History[/B] civic. A park built in the Exploration Age carries into the Modern Age with all its tiles.",
         ]),
         ("REWARD", "The Founding Tile", [
-            "[B]National Park[/B]: +4 [icon:YIELD_HAPPINESS] Happiness, plus +5 [icon:YIELD_HAPPINESS] Happiness and +5 [icon:YIELD_CULTURE] Culture for each adjacent natural wonder.",
-            "[B]Wilderness Area[/B]: +4 [icon:YIELD_DIPLOMACY] Influence, plus +10 [icon:YIELD_DIPLOMACY] Influence for each adjacent natural wonder.",
+            "[B]National Park[/B]: +5 [icon:YIELD_HAPPINESS] Happiness and +1 [icon:YIELD_CULTURE] Culture (the park land's +1 and +1, and +4 Happiness of its own), plus +5 [icon:YIELD_HAPPINESS] Happiness and +5 [icon:YIELD_CULTURE] Culture for each adjacent natural wonder.",
+            "[B]Wilderness Area[/B]: +7 [icon:YIELD_DIPLOMACY] Influence (the area land's +3, and +4 of its own), plus +10 [icon:YIELD_DIPLOMACY] Influence for each adjacent natural wonder.",
             "Both cost 2 [icon:YIELD_GOLD] Gold per turn in maintenance.",
         ]),
     ], ["FOUNDING", "SOCIETY", "NATURAL_HISTORY"]),
 
     (SECTION, "NP_GROWTH", "NP_GROW", "Expanding a Park", [
         ("CONTENT", None, [
-            "Each expansion adds tiles next to the park: 1 tile in the Exploration Age, 3 in the Modern Age. The cost stays the same every time.",
+            "Each expansion adds 1 tile next to the park, in either age. The cost stays the same every time.",
         ]),
         ("PROJECT", "The Project", [
-            "A city with a park can run [B]Expand National Park[/B] or [B]Expand Wilderness Area[/B] as often as it likes, for 300 [icon:YIELD_PRODUCTION] Production each time.",
+            "A city with a park can run [B]Expand National Park[/B] or [B]Expand Wilderness Area[/B] as often as it likes, for 100 [icon:YIELD_PRODUCTION] Production each time.",
         ]),
         ("GOLD", "Buying with Gold", [
-            "Open the purchase list of any settlement with a park and buy [B]Expand National Park[/B] or [B]Expand Wilderness Area[/B]. It costs 1,200 [icon:YIELD_GOLD] Gold at Standard speed. Towns can't run projects, so this is how towns expand their parks.",
+            "Open the purchase list of any settlement with a park and buy [B]Expand National Park[/B] or [B]Expand Wilderness Area[/B]. It costs 400 [icon:YIELD_GOLD] Gold at Standard speed. Towns can't run projects, so this is how towns expand their parks.",
         ]),
         ("LIMIT", "Maximum Size", [
             "A park can have up to 24 tiles. When your selection fills it, the picker tells you, and any tiles left over from that expansion are lost.",
@@ -171,11 +171,11 @@ PAGES = [
 
     (SECTION, "NP_LOOK", "NP_WORLD", "How Parks Look", [
         ("CONTENT", None, [
-            "Each park is drawn to match its land: woods that fill its forest tiles, trees, rocks and cairns on hills, lily pads and reeds on lakes and rivers, the occasional rowboat, low stone walls with sections of fence along its land edges, and buoys where it meets open water.",
-            "A National Park has a warden's lodge and picnic shelter on its founding tile, cabins once it grows, and a lookout tower on a hill. A Wilderness Area has no buildings.",
+            "Each park is planned as one place to match its land: woods that fill its forest tiles and thin toward open ground, stands of trees along shores and the edges of woods, patches of shrubs, rocks and reeds, low stone walls with sections of fence along its land edges, and a few buoys marking how far it reaches into open water. A tile with a resource looks as it always does.",
+            "A National Park has a warden's lodge and picnic shelter on its founding tile and, as it grows, a camp, cabins, another shelter and lookout towers on hills, all joined to the lodge by footpaths. Both kinds gain monuments as they grow: a stone cairn, then an obelisk (a dolmen in a Wilderness Area), then a second cairn. A Wilderness Area has no buildings and no footpaths.",
         ]),
         ("WILDLIFE", "Wildlife", [
-            "Animals to suit each tile: bison, horses, deer, elk, camels, sheep, llamas, elephants, foxes, cranes and crabs, with birds and butterflies overhead, fish in lakes and rivers, and schools of fish, reef fish and the occasional whale at sea. Neighboring tiles never show the same herd, flock or fish.",
+            "Animals to suit the land: bison, horses, deer, elk, camels, sheep, llamas, elephants, foxes, cranes and crabs, with birds and butterflies overhead, fish in lakes and rivers, and schools of fish, reef fish and the occasional whale at sea. Each stretch of one biome in a park has its own herd animal and its own bird, and herds keep to open ground away from people and paths.",
         ]),
         ("BORDER", "Borders", [
             "A dashed line shows exactly which tiles are in the park: green for a National Park, ocher for a Wilderness Area.",

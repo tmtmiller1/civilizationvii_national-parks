@@ -2,8 +2,8 @@
 // that find park pieces no park holds.
 "use strict";
 
-import { KINDS, autoplaying, isFull, isMarkerType, isParkCompatible, isRuralImprovement, kindOf, log, readOnly,
-  safe } from "./np-core-base.js";
+import { FOUNDING_TILES, KINDS, autoplaying, isFull, isMarkerType, isParkCompatible, isRuralImprovement, kindOf, log,
+  readOnly, safe } from "./np-core-base.js";
 import { cityIdOf, constructiblesAt, districtKind, hasDistrict, hasParkImprovement, idx, isIndependent, isMountain,
   isStrewnResource, isWater, isWonder, locOf, markersAt, ownerOf, readPlot, ringOf, sameCity, terrainOf,
   tileCityOf } from "./np-core-map.js";
@@ -48,19 +48,19 @@ function restoreFoundingTile(park, rural, standing) {
 
 /**
  * A park tile that can carry the park's founding improvement in place of a founding tile built over: the owner's land
- * in the founding settlement, flat or hill, holding only the park's own marker. One beside a natural wonder comes
- * first, then the nearest to the old founding tile. Returns the plot, or -1.
+ * or water in the founding settlement, flat, hill, coast or ocean, holding only the park's own marker. One beside a
+ * natural wonder comes first, then land before water, then the nearest to the old founding tile. Returns the plot, or
+ * -1.
  */
 export function newFoundingTile(park, old, city) {
   const ok = park.tiles.filter((t) => {
-    if (t === old || isSettling(t) || ownerOf(t) !== park.owner || isWonder(t) || isWater(t)
-      || isMountain(t)) return false;
+    if (t === old || isSettling(t) || ownerOf(t) !== park.owner || isWonder(t) || isMountain(t)) return false;
     if (!sameCity(tileCityOf(t), city)) return false;
-    if (!["TERRAIN_FLAT", "TERRAIN_HILL"].includes(terrainOf(t))) return false;
+    if (!isWater(t) && !["TERRAIN_FLAT", "TERRAIN_HILL"].includes(terrainOf(t))) return false;
     const plot = readPlot(t);
     return !plot.stray && plot.items.every((c) => isMarkerType(c.type));
   });
-  const near = (t) => ringOf(t).some((n) => n >= 0 && isWonder(n)) ? 0 : 1;
+  const near = (t) => (ringOf(t).some((n) => n >= 0 && isWonder(n)) ? 0 : 2) + (isWater(t) ? 1 : 0);
   const dist = (t) => {
     const a = locOf(t), b = locOf(old);
     return safe(() => GameplayMap.getPlotDistance(a.x, a.y, b.x, b.y), 99);
@@ -98,9 +98,10 @@ function moveFounding(park) {
 
 /**
  * Found the park a founding paid for on plot i: the record is made at once (so the sweep does not take the plot for
- * someone else's), then a wilderness district and the founding improvement are placed by script for the settlement,
- * each read back before the next. On a resource tile the engine may drop the resource's own improvement onto a new
- * district (engine-closed.md, quarry on jade); that is taken off before the park goes on. Returns the park, or null.
+ * someone else's), with the rest of the founding's FOUNDING_TILES waiting for its owner to choose, then a wilderness
+ * district and the founding improvement are placed by script for the settlement, each read back before the next. On a
+ * resource tile the engine may drop the resource's own improvement onto a new district (engine-closed.md, quarry on
+ * jade); that is taken off before the park goes on. Returns the park, or null.
  */
 export function foundPark(founding, i) {
   if (readOnly || !founding || !foundable(foundFacts(i, founding.city, allParkTiles()))) return null;
@@ -109,6 +110,7 @@ export function foundPark(founding, i) {
   dropFounding(founding.id);
   const park = createPark(i, owner, kind.key);
   park.districts = [i];
+  park.pending = FOUNDING_TILES - 1;
   // Kept until the park improvement stands, so a founding that never lands can go back to waiting (returnFounding).
   park.founding = { kind: kind.key, owner, city: { ...city }, made: founding.made, paid: founding.paid, by: founding.by,
     name: founding.name };

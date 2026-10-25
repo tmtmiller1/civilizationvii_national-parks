@@ -1,26 +1,29 @@
 # National Parks
 
 National Parks and Wilderness Areas for Sid Meier's Civilization VII, from the Exploration Age on. Found one on an
-empty, Charming tile a city or town owns, then grow it tile by tile, choosing which wild land to protect: mountains,
-forests, lakes, rivers, the sea, natural wonders and open country.
+empty tile a city or town owns, Charming land or open water, with 3 more tiles beside it, then grow it tile by tile,
+choosing which wild land to protect: mountains, forests, lakes, rivers, the sea, natural wonders and open country.
 
 ![Uluru National Park](docs/screenshots/01-uluru-national-park.jpg)
 
 ## What it does
 
 - **Found a park.** A city runs **Found National Park**, or a city or town buys it for Gold from its purchase list,
-  once the Society civic (Exploration Age) or Natural History (Modern Age) is done. Then press **Choose land** and
-  pick an empty, Charming flat or hill tile the settlement owns, in any ring: nothing built on it, no farm, no
-  district. Only those tiles light up. A resource on it stays collected. The founding tile gives +4 Happiness, plus +5
-  Happiness and +5 Culture for each adjacent natural wonder. One per settlement.
+  once the Society civic (Exploration Age) or Natural History (Modern Age) is done. It costs 400 Production, or 1,600
+  Gold at Standard speed. Then press **Choose land** and pick an empty tile the settlement owns, in any ring: Charming
+  flat or hill land, or any coast, lake or ocean tile, with nothing built on it, no farm, no district. Only those
+  tiles light up. A resource on it stays collected. The picker then opens again for 3 more tiles beside it, so a new
+  park starts with 4. A park can be all water; a National Park founded on water puts its lodge on the first land it
+  takes. The founding tile pays what the rest of the park's land pays (+1 Culture, +1 Happiness) and +4 Happiness
+  more, plus +5 Happiness and +5 Culture for each adjacent natural wonder. One per settlement.
 - **Or leave it wild.** The Wilderness Area is the park's twin, founded and grown the same way and unlocked by the
-  same civics, but paid in Influence: +4 Influence, plus +10 Influence for each adjacent natural wonder. It has no
-  lodge, cabins or lookout, only the land and its wildlife, inside an ocher border. A settlement can have one National
-  Park and one Wilderness Area.
+  same civics, but paid in Influence: its founding tile gives +7 Influence (the land's +3 and +4 more), plus +10
+  Influence for each adjacent natural wonder. It has no lodge, cabins or lookout, only the land and its wildlife,
+  inside an ocher border. A settlement can have one National Park and one Wilderness Area.
 - **Grow it.** A city with a park can run **Expand National Park** (or **Expand Wilderness Area**), again and again,
-  always at the same cost. Any settlement with a park, town or city, can instead buy an expansion for Gold from its
-  purchase list, where Expand National Park and Expand Wilderness Area are listed with their price. Each expansion
-  adds land beside the park, 1 tile in the Exploration Age and 3 in the Modern Age.
+  always at the same cost: 100 Production. Any settlement with a park, town or city, can instead buy an expansion for
+  400 Gold from its purchase list, where Expand National Park and Expand Wilderness Area are listed with their price.
+  Each expansion adds 1 tile beside the park, in either age.
 - **Choose the land.** When an expansion completes, a Choose land button appears at the top of the screen; after
   buying one with Gold, the picker opens at once. The lit tiles on the map are the ones the park can take. Click tiles
   to select them, then Confirm. Done adds what you selected and ends the expansion; Later keeps the rest for another
@@ -51,18 +54,18 @@ forests, lakes, rivers, the sea, natural wonders and open country.
   improvement to another of its tiles, beside the natural wonder where it can.
 - **It looks like one place.** The park is planned as a whole and drawn from the game's own art, suited to its land.
   Footpaths run from the warden's lodge on the founding tile to a camp, a cabin village, a picnic shelter, the lookout
-  towers, the monuments and the water's edge, and join into one network; cabins stand beside their path and a camp
-  sits at its path's end. Woods fill the park's forest tiles and thin toward open ground, stands of trees gather along
-  shores and the edges of woods and run on across tile edges, and shrubs, rocks and reeds grow in patches. Herds keep to
-  open land the park leaves for them, away from people and paths. A park gains a little as it reaches 8, 16 and 24
-  tiles, never more of the same: at most four structures and two lookouts in a National Park, and up to three
-  monuments (a stone cairn, then an obelisk or, in a Wilderness Area, a dolmen, then a second cairn), each on rough
-  ground where the park has any, with rocks and low scrub at its foot. A Wilderness Area builds nothing; it gains rarer
-  wildlife and, at 24 tiles, old-growth giants. Land far from the paths is left to itself, and a tile with a resource
-  looks exactly as the game draws it. Low dry-stone walls, with stretches of stone-and-timber fence, run along most of
-  the park's land edges in broken, uneven runs, the way walls line a scenic parkway; water gets no walls, only a buoy
-  where the park's water meets the open sea. A dashed green border marks exactly which land is park, and new land
-  joins with its walls going up one run at a time.
+  towers, the monuments and the water's edge, and join into one network; cabins stand beside their path and a camp sits
+  at its path's end. Woods fill the park's forest tiles and thin toward open ground, stands of trees gather along shores
+  and the edges of woods and run on across tile edges, and shrubs, rocks and reeds grow in patches. Herds keep to open
+  land the park leaves for them, away from people and paths. A park gains a little as it reaches 8, 16 and 24 tiles,
+  never more of the same: at most four structures and two lookouts in a National Park, and up to three monuments (a
+  stone cairn, then an obelisk or, in a Wilderness Area, a dolmen, then a second cairn), each on rough ground where the
+  park has any, with rocks and low scrub at its foot. A Wilderness Area builds nothing; it gains rarer wildlife and, at
+  24 tiles, old-growth giants. Land far from the paths is left to itself, and a tile with a resource looks exactly as
+  the game draws it. Low dry-stone walls, with stretches of stone-and-timber fence, run along most of the park's land
+  edges in broken, uneven runs, the way walls line a scenic parkway; water gets no walls, only a few buoys floating at
+  the far corners of the park's water, marking how far it reaches into the open sea. A dashed green border marks exactly
+  which land is park, and new land joins with its walls going up one run at a time.
 - **It is alive.** Animated wildlife suited to the land, one herd animal and one bird to each stretch of a biome: bison
   and horses on the plains, elk in the tundra, camels
   in the desert, elephants and cranes in the jungle, sheep and llamas on the hills, deer and foxes almost anywhere,

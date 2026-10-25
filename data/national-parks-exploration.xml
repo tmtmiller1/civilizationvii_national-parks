@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Loaded first in its age: the types and rows everything else references.
-     Exploration Age: the park, the wilderness area and their projects exist from the Society civic (mid-tree). One tile per expansion. -->
+     Exploration Age: the park, the wilderness area and their projects exist from the Society civic (mid-tree). A founding
+     gives 4 tiles (the founding tile and 3 to choose), each expansion 1 tile for 100 production. -->
 <Database>
     <Types>
         <Row Type="IMPROVEMENT_NATIONAL_PARK" Kind="KIND_CONSTRUCTIBLE"/>
@@ -50,10 +51,10 @@
     </Constructibles>
     <Projects>
         <Row ProjectType="PROJECT_EXPAND_NATIONAL_PARK" Name="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME" ShortName="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME"
-             Description="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_EX" CityOnly="true" Cost="300"
+             Description="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_EX" CityOnly="true" Cost="100"
              PrereqConstructible="IMPROVEMENT_NATIONAL_PARK" RequiresUnlock="false"/>
         <Row ProjectType="PROJECT_EXPAND_WILDERNESS_AREA" Name="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME" ShortName="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME"
-             Description="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_EX" CityOnly="true" Cost="300"
+             Description="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_EX" CityOnly="true" Cost="100"
              PrereqConstructible="IMPROVEMENT_WILDERNESS_AREA" RequiresUnlock="false"/>
         <!-- Found: places nothing itself; the park goes on the empty tile its owner then chooses (ui/np-core.js foundPark).
              The civic gate, one of each kind per settlement and the empty-tile rule are applied by ui/np-main.js. -->

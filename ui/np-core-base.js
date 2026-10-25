@@ -33,10 +33,10 @@ export const PROJECT_TYPE = KINDS.park.project;
 export const PROJECT_TYPES = new Set(Object.values(KINDS).map((k) => k.project));
 /** Land markers: one per tile a park takes (never the founding tile). Each carries the tile's park yield. */
 export const MARKER_TYPES = new Set(Object.values(KINDS).flatMap((k) => [k.land, k.wild, ...k.landLevels]));
-export function tilesPerExpansion() {
-  const age = safe(() => String(GameInfo.Ages.lookup(Game.age).AgeType), "");
-  return age === "AGE_EXPLORATION" ? 1 : 3;
-}
+/** Tiles one expansion adds, in either age. */
+export function tilesPerExpansion() { return 1; }
+/** Tiles a founding gives: the founding tile, and the rest for its owner to choose next to it. */
+export const FOUNDING_TILES = 4;
 export const MAX_PARK_TILES = 24;
 /** The cap in force; a probe may lower it to see a full park without growing one to 24 tiles. */
 export const limits = { maxTiles: MAX_PARK_TILES };

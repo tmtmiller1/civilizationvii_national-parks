@@ -276,10 +276,31 @@ const STEPS = [placeTiles, findRegions, walkWays, landFields, chooseDestinations
  * feature(t), model(t), resource(t), cliff(t) }. Returns the plan (docs/DESIGN.md lists its fields).
  */
 export function parkPlan(tiles, anchor, { level = 0, buildings = true, map }) {
-  const ctx = { tiles, anchor, level, buildings, map };
+  const lodge = buildings ? lodgeTile(tiles, anchor, map) : anchor;
+  const ctx = { tiles, anchor: lodge >= 0 ? lodge : anchor, level, buildings: buildings && lodge >= 0, map };
   for (const step of STEPS) step(ctx);
   return pieceTiles(ctx);
 }
+
+/**
+ * The tile a National Park's lodge stands on, where its paths begin: the founding tile when it is land, else (a park
+ * founded on water) the park's land tile nearest it through the park, dry, open to walk and with no resource; -1 while
+ * the park has none, and it is planned without buildings until land joins. The plan's `anchor` is this tile.
+ */
+export function lodgeTile(tiles, anchor, map) {
+  if (!isWaterTile(map, anchor)) return anchor;
+  const inPark = new Set(tiles), seen = new Set([anchor]);
+  for (let q = 0, queue = [anchor]; q < queue.length; q++) {
+    const t = queue[q];
+    if (t !== anchor && lodgeGround(map, t)) return t;
+    for (const n of map.ring(t)) if (n >= 0 && inPark.has(n) && !seen.has(n)) { seen.add(n); queue.push(n); }
+  }
+  return -1;
+}
+const isWaterTile = (map, t) => !!(map.sea(t) || map.lake(t) || map.nav(t));
+/** Dry land open to walk, with no resource (a resource's tile is left to the game to draw). */
+const lodgeGround = (map, t) => !isWaterTile(map, t) && !map.mountain(t) && !map.wonder(t) && !map.wet(t)
+  && !(map.resource && map.resource(t));
 
 /** What falls inside each tile's hex, and the finished plan. */
 function pieceTiles(ctx) {

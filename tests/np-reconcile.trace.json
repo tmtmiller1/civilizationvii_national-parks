@@ -1342,5 +1342,55 @@
     "IMPROVEMENT_NATIONAL_PARK_LAND"
    ]
   ]
+ },
+ "founding tile built over, only water left: moved onto the water": {
+  "result": "changed",
+  "trace": [
+   [
+    "log",
+    "park 26: founding tile 314 built over; the park is now founded on 315"
+   ],
+   [
+    "request",
+    "DESTROY_ELEMENT",
+    "CONSTRUCTIBLE",
+    185,
+    -1
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK",
+    315
+   ]
+  ],
+  "park": {
+   "id": 26,
+   "kind": "park",
+   "owner": 0,
+   "anchor": 315,
+   "tiles": [
+    315
+   ],
+   "pending": 0,
+   "autoName": "",
+   "customName": "",
+   "founded": 1
+  },
+  "plots": [
+   [
+    314,
+    0,
+    "DISTRICT_RURAL",
+    "BUILDING_GRANARY+IMPROVEMENT_NATIONAL_PARK"
+   ],
+   [
+    315,
+    0,
+    "DISTRICT_RURAL",
+    "IMPROVEMENT_NATIONAL_PARK"
+   ]
+  ]
  }
 }

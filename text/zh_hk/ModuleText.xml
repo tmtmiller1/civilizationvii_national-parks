@@ -2,17 +2,17 @@
 <Database>
     <LocalizedText>
         <Replace Tag="LOC_MOD_NATIONAL_PARK_NAME" Language="zh_Hant_HK"><Text>國家公園</Text></Replace>
-        <Replace Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION" Language="zh_Hant_HK"><Text>從探索時代起加入國家公園與荒野保護區。在城市或城鎮擁有的迷人空置格位上建立一座，再逐格向周圍土地擴展：山地、森林、湖泊、河流、海洋與自然奇觀。國家公園提供文化值與幸福感，設有管理員小屋與木屋；荒野保護區提供影響力，沒有任何建築。每座公園達到8、16和24個格位時，該公園的每個格位都會提供更多收益。每座公園都會依其地形繪出圍牆、樹木與野生動物。可與 Geographic Labels 搭配使用。支援單人遊戲與熱座。</Text></Replace>
+        <Replace Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION" Language="zh_Hant_HK"><Text>從探索時代起加入國家公園與荒野保護區。在城市或城鎮擁有的空置格位上建立一座（迷人的土地或開闊水域），並在其周圍再選擇3個格位，然後逐格向周圍土地擴展：山地、森林、湖泊、河流、海洋與自然奇觀。國家公園提供文化值與幸福感，設有管理員小屋與木屋；荒野保護區提供影響力，沒有任何建築。每座公園達到8、16和24個格位時，該公園的每個格位都會提供更多收益。每座公園都會依其地形繪出圍牆、樹木與野生動物。可與 Geographic Labels 搭配使用。支援單人遊戲與熱座。</Text></Replace>
         <Replace Tag="LOC_BUILDING_NATIONAL_PARK_NAME" Language="zh_Hant_HK"><Text>國家公園</Text></Replace>
-        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION" Language="zh_Hant_HK"><Text>國家公園的起始格位，在「建立國家公園」完成後放置於你選擇的迷人空置格位上。+4[icon:YIELD_HAPPINESS]幸福感，每個相鄰的自然奇觀再+5[icon:YIELD_HAPPINESS]幸福感和+5[icon:YIELD_CULTURE]文化值。當該公園達到8、16和24個格位時，其土地會提供更多收益。可在城市中以「擴展國家公園」專案擴展，或在聚落的購買清單中以金幣購買一次擴展。於探索時代由「社會」市政解鎖，於近代由「自然歷史」市政解鎖。每個聚落限一座。</Text></Replace>
-        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP" Language="zh_Hant_HK"><Text>以「建立國家公園」建立，位於聚落擁有的迷人空置格位上。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION" Language="zh_Hant_HK"><Text>國家公園的起始格位，在「建立國家公園」完成後放置於你選擇的空置格位上：迷人的平坦或丘陵土地，或水域。+5[icon:YIELD_HAPPINESS]幸福感和+1文化值（公園土地的+1文化值和+1幸福感，加上起始格位的+4幸福感），每個相鄰的自然奇觀再+5[icon:YIELD_HAPPINESS]幸福感和+5[icon:YIELD_CULTURE]文化值。當該公園達到8、16和24個格位時，其土地會提供更多收益。可在城市中以「擴展國家公園」專案擴展，或在聚落的購買清單中以金幣購買一次擴展。於探索時代由「社會」市政解鎖，於近代由「自然歷史」市政解鎖。每個聚落限一座。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP" Language="zh_Hant_HK"><Text>以「建立國家公園」建立，位於聚落擁有的空置格位上：迷人的平坦或丘陵土地，或水域。</Text></Replace>
         <Replace Tag="LOC_NP_LAND_NAME" Language="zh_Hant_HK"><Text>國家公園土地</Text></Replace>
         <Replace Tag="LOC_NP_LAND_DESCRIPTION" Language="zh_Hant_HK"><Text>國家公園內的土地。在該格位自身的收益之外，額外提供+1[icon:YIELD_CULTURE]文化值和+1[icon:YIELD_HAPPINESS]幸福感，並隨其所屬公園的擴大而提高：達到8個格位時為+2[icon:YIELD_CULTURE]文化值，16個時為+2[icon:YIELD_CULTURE]和+2[icon:YIELD_HAPPINESS]，24個時為+3[icon:YIELD_CULTURE]和+2[icon:YIELD_HAPPINESS]。失去或被建造佔用的土地會從該公園的計數中扣除。資源仍會持續收集。此處無法建造任何東西。</Text></Replace>
         <Replace Tag="LOC_NP_WILD_NAME" Language="zh_Hant_HK"><Text>國家公園腹地</Text></Replace>
         <Replace Tag="LOC_NP_WILD_DESCRIPTION" Language="zh_Hant_HK"><Text>國家公園內的自然奇觀、山地、水域或森林格位。在該格位自身的收益之外，額外提供+2[icon:YIELD_CULTURE]文化值和+1[icon:YIELD_HAPPINESS]幸福感。資源仍會持續收集。此處無法建造任何東西。</Text></Replace>
         <Replace Tag="LOC_WILDERNESS_AREA_NAME" Language="zh_Hant_HK"><Text>荒野保護區</Text></Replace>
-        <Replace Tag="LOC_WILDERNESS_AREA_DESCRIPTION" Language="zh_Hant_HK"><Text>荒野保護區的起始格位，在「建立荒野保護區」完成後放置於你選擇的迷人空置格位上。+4[icon:YIELD_DIPLOMACY]影響力，每個相鄰的自然奇觀再+10[icon:YIELD_DIPLOMACY]影響力。當該保護區達到8、16和24個格位時，其土地會提供更多收益。可在城市中以「擴展荒野保護區」專案擴展，或在聚落的購買清單中以金幣購買一次擴展。沒有任何建築。於探索時代由「社會」市政解鎖，於近代由「自然歷史」市政解鎖。每個聚落限一座。</Text></Replace>
-        <Replace Tag="LOC_WILDERNESS_AREA_TOOLTIP" Language="zh_Hant_HK"><Text>以「建立荒野保護區」建立，位於聚落擁有的迷人空置格位上。</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_DESCRIPTION" Language="zh_Hant_HK"><Text>荒野保護區的起始格位，在「建立荒野保護區」完成後放置於你選擇的空置格位上：迷人的平坦或丘陵土地，或水域。+7[icon:YIELD_DIPLOMACY]影響力（保護區土地的+3，加上起始格位的+4），每個相鄰的自然奇觀再+10[icon:YIELD_DIPLOMACY]影響力。當該保護區達到8、16和24個格位時，其土地會提供更多收益。可在城市中以「擴展荒野保護區」專案擴展，或在聚落的購買清單中以金幣購買一次擴展。沒有任何建築。於探索時代由「社會」市政解鎖，於近代由「自然歷史」市政解鎖。每個聚落限一座。</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_TOOLTIP" Language="zh_Hant_HK"><Text>以「建立荒野保護區」建立，位於聚落擁有的空置格位上：迷人的平坦或丘陵土地，或水域。</Text></Replace>
         <Replace Tag="LOC_WA_LAND_NAME" Language="zh_Hant_HK"><Text>荒野保護區土地</Text></Replace>
         <Replace Tag="LOC_WA_LAND_DESCRIPTION" Language="zh_Hant_HK"><Text>荒野保護區內的土地。在該格位自身的收益之外，額外提供+3[icon:YIELD_DIPLOMACY]影響力，並隨其所屬保護區的擴大而提高：達到8個格位時為+4，16個時為+5，24個時為+6。失去或被建造佔用的土地會從該保護區的計數中扣除。資源仍會持續收集。此處無法建造任何東西。</Text></Replace>
         <Replace Tag="LOC_WA_WILD_NAME" Language="zh_Hant_HK"><Text>荒野保護區腹地</Text></Replace>
@@ -20,11 +20,11 @@
         <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME" Language="zh_Hant_HK"><Text>擴展荒野保護區</Text></Replace>
         <Replace Tag="LOC_WA_NAME_FORMAT" Language="zh_Hant_HK"><Text>{1_Name}荒野保護區</Text></Replace>
         <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_EX" Language="zh_Hant_HK"><Text>為此城市的荒野保護區增加1個相鄰格位。專案完成後，以「選擇土地」按鈕由你選擇：空曠土地、森林、山地、湖泊、河流、海洋或自然奇觀，只要是你擁有的格位即可。其上的鄉村改良設施會被移除；資源仍會持續收集。每個格位在自身的收益之外額外提供+3[icon:YIELD_DIPLOMACY]影響力；當該荒野保護區達到8、16和24個格位時，其每個格位依次提供+4、+5和+6。其上無法建造任何東西。最多24個格位。</Text></Replace>
-        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO" Language="zh_Hant_HK"><Text>為此城市的荒野保護區增加3個相鄰格位。專案完成後，以「選擇土地」按鈕由你選擇：空曠土地、森林、山地、湖泊、河流、海洋或自然奇觀，只要是你擁有的格位即可。其上的鄉村改良設施會被移除；資源仍會持續收集。每個格位在自身的收益之外額外提供+3[icon:YIELD_DIPLOMACY]影響力；當該荒野保護區達到8、16和24個格位時，其每個格位依次提供+4、+5和+6。其上無法建造任何東西。最多24個格位。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO" Language="zh_Hant_HK"><Text>為此城市的荒野保護區增加1個相鄰格位。專案完成後，以「選擇土地」按鈕由你選擇：空曠土地、森林、山地、湖泊、河流、海洋或自然奇觀，只要是你擁有的格位即可。其上的鄉村改良設施會被移除；資源仍會持續收集。每個格位在自身的收益之外額外提供+3[icon:YIELD_DIPLOMACY]影響力；當該荒野保護區達到8、16和24個格位時，其每個格位依次提供+4、+5和+6。其上無法建造任何東西。最多24個格位。</Text></Replace>
         <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME" Language="zh_Hant_HK"><Text>擴展國家公園</Text></Replace>
         <Replace Tag="LOC_NP_MULTIPLAYER" Language="zh_Hant_HK"><Text>在網路遊戲中，國家公園與荒野保護區無法擴展。</Text></Replace>
         <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_EX" Language="zh_Hant_HK"><Text>為此城市的國家公園增加1個相鄰格位。專案完成後，以「選擇土地」按鈕由你選擇：空曠土地、森林、山地、湖泊、河流、海洋或自然奇觀，只要是你擁有的格位即可。其上的鄉村改良設施會被移除；資源仍會持續收集。每個格位在自身的收益之外額外提供+1[icon:YIELD_CULTURE]文化值和+1[icon:YIELD_HAPPINESS]幸福感；當該國家公園達到8、16和24個格位時，其每個格位都會提供更多收益，最高可達+3[icon:YIELD_CULTURE]文化值和+2[icon:YIELD_HAPPINESS]幸福感。其上無法建造任何東西。最多24個格位。</Text></Replace>
-        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" Language="zh_Hant_HK"><Text>為此城市的國家公園增加3個相鄰格位。專案完成後，以「選擇土地」按鈕由你選擇：空曠土地、森林、山地、湖泊、河流、海洋或自然奇觀，只要是你擁有的格位即可。其上的鄉村改良設施會被移除；資源仍會持續收集。每個格位在自身的收益之外額外提供+1[icon:YIELD_CULTURE]文化值和+1[icon:YIELD_HAPPINESS]幸福感；當該國家公園達到8、16和24個格位時，其每個格位都會提供更多收益，最高可達+3[icon:YIELD_CULTURE]文化值和+2[icon:YIELD_HAPPINESS]幸福感。其上無法建造任何東西。最多24個格位。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" Language="zh_Hant_HK"><Text>為此城市的國家公園增加1個相鄰格位。專案完成後，以「選擇土地」按鈕由你選擇：空曠土地、森林、山地、湖泊、河流、海洋或自然奇觀，只要是你擁有的格位即可。其上的鄉村改良設施會被移除；資源仍會持續收集。每個格位在自身的收益之外額外提供+1[icon:YIELD_CULTURE]文化值和+1[icon:YIELD_HAPPINESS]幸福感；當該國家公園達到8、16和24個格位時，其每個格位都會提供更多收益，最高可達+3[icon:YIELD_CULTURE]文化值和+2[icon:YIELD_HAPPINESS]幸福感。其上無法建造任何東西。最多24個格位。</Text></Replace>
         <Replace Tag="LOC_NP_PARK_NAME_FORMAT" Language="zh_Hant_HK"><Text>{1_Name}國家公園</Text></Replace>
         <Replace Tag="LOC_NP_PARK_NAME_ORDINAL" Language="zh_Hant_HK"><Text>{1_Name} {2_Ordinal}</Text></Replace>
         <Replace Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK" Language="zh_Hant_HK"><Text>國家公園</Text></Replace>
@@ -62,14 +62,14 @@
         <Replace Tag="LOC_NP_PICKER_RENAME_TIP" Language="zh_Hant_HK"><Text>變更名稱</Text></Replace>
         <Replace Tag="LOC_NP_TILE_IS_PARKLAND" Language="zh_Hant_HK"><Text>此格位屬於國家公園或荒野保護區，無法在其上建造。</Text></Replace>
         <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_NAME" Language="zh_Hant_HK"><Text>建立國家公園</Text></Replace>
-        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION" Language="zh_Hant_HK"><Text>在此聚落建立一座國家公園。專案完成後，按下「選擇土地」，並挑選聚落擁有的一個迷人空置平坦或丘陵格位：其上不能有區域、改良設施或建築。其上的資源仍會持續收集。+4[icon:YIELD_HAPPINESS]幸福感，位於自然奇觀旁則更多。每個聚落限一座。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION" Language="zh_Hant_HK"><Text>在此聚落建立一座擁有4個格位的國家公園。專案完成後，按下「選擇土地」，並挑選建立公園的格位：聚落擁有的一個空置格位，可以是迷人的平坦或丘陵土地，也可以是任何水域（水岸、湖泊或海洋），其上不能有區域、改良設施或建築。接著在其旁邊再選擇3個格位。該格位上的資源仍會持續收集。+5[icon:YIELD_HAPPINESS]幸福感和+1文化值，位於自然奇觀旁則更多。每個聚落限一座。</Text></Replace>
         <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_NAME" Language="zh_Hant_HK"><Text>建立荒野保護區</Text></Replace>
-        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION" Language="zh_Hant_HK"><Text>在此聚落建立一座荒野保護區。專案完成後，按下「選擇土地」，並挑選聚落擁有的一個迷人空置平坦或丘陵格位：其上不能有區域、改良設施或建築。其上的資源仍會持續收集。+4[icon:YIELD_DIPLOMACY]影響力，位於自然奇觀旁則更多。每個聚落限一座。</Text></Replace>
-        <Replace Tag="LOC_NP_FOUND_NO_LAND" Language="zh_Hant_HK"><Text>此聚落沒有迷人的空置平坦或丘陵格位。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION" Language="zh_Hant_HK"><Text>在此聚落建立一座擁有4個格位的荒野保護區。專案完成後，按下「選擇土地」，並挑選建立保護區的格位：聚落擁有的一個空置格位，可以是迷人的平坦或丘陵土地，也可以是任何水域（水岸、湖泊或海洋），其上不能有區域、改良設施或建築。接著在其旁邊再選擇3個格位。該格位上的資源仍會持續收集。+7[icon:YIELD_DIPLOMACY]影響力，位於自然奇觀旁則更多。每個聚落限一座。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NO_LAND" Language="zh_Hant_HK"><Text>此聚落沒有空置的水域格位，也沒有迷人的空置平坦或丘陵格位。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_TITLE" Language="zh_Hant_HK"><Text>{1_Settlement}：新的國家公園</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="zh_Hant_HK"><Text>{1_Settlement}：新的荒野保護區</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="zh_Hant_HK"><Text>點擊一個亮起的格位，然後按下「確認」。</Text></Replace>
-        <Replace Tag="LOC_NP_FOUND_NONE" Language="zh_Hant_HK"><Text>此聚落目前沒有迷人的空置平坦或丘陵格位。新公園會保留，直到有格位空出為止。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NONE" Language="zh_Hant_HK"><Text>此聚落目前沒有空置的水域格位，也沒有迷人的空置平坦或丘陵格位。新公園會保留，直到有格位空出為止。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_CANCEL" Language="zh_Hant_HK"><Text>取消並取回{1_Gold}金幣</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_TITLE" Language="zh_Hant_HK"><Text>金幣已退還</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="zh_Hant_HK"><Text>此聚落已有一座同類公園，或有一座正在等待土地，因此完成的專案無可建立。其花費已退還：{1_Gold} [icon:YIELD_GOLD] 金幣。</Text></Replace>
@@ -79,8 +79,8 @@
         <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="zh_Hant_HK"><Text>此聚落已沒有可擴展的公園，因此完成的擴展沒有增加任何格位。其花費已退還：{1_Gold} [icon:YIELD_GOLD] 金幣。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="zh_Hant_HK"><Text>{1_Settlement}：選擇國家公園的建立地點</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="zh_Hant_HK"><Text>{1_Settlement}：選擇荒野保護區的建立地點</Text></Replace>
-        <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="zh_Hant_HK"><Text>國家公園已獲批准。請選擇該聚落擁有的一個迷人空置格位作為建立地點；之後它可以擴展到周圍的土地。</Text></Replace>
-        <Replace Tag="LOC_WA_FOUND_OFFER_BODY" Language="zh_Hant_HK"><Text>荒野保護區已獲批准。請選擇該聚落擁有的一個迷人空置格位作為建立地點；之後它可以擴展到周圍的荒野。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="zh_Hant_HK"><Text>國家公園已獲批准。請選擇該聚落擁有的一個空置格位作為建立地點（迷人的土地或水域），然後在其旁邊再選擇3個格位；之後它可以擴展到周圍的土地。</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_OFFER_BODY" Language="zh_Hant_HK"><Text>荒野保護區已獲批准。請選擇該聚落擁有的一個空置格位作為建立地點（迷人的土地或水域），然後在其旁邊再選擇3個格位；之後它可以擴展到周圍的荒野。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT_BUTTON_TIP" Language="zh_Hant_HK"><Text>選擇建立公園的格位</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_LATER_TIP" Language="zh_Hant_HK"><Text>將建立推遲到之後的回合；它會繼續等待</Text></Replace>
         <Replace Tag="LOC_NP_PROMPT_BODY" Language="zh_Hant_HK"><Text>還需為擴展選擇{1_Count}個{1_Count: plural 1?格位; other?格位;}</Text></Replace>

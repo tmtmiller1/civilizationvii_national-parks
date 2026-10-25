@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { hash01, connectedSelection } from "../ui/np-core.js";
-import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyEdges, hawkTile, armAngle } from "../ui/np-draw.js";
+import { wallEdges, wallPieces, mountainWallPieces, mountainWallSpan, MOUNTAIN_EW_SHARE, buoyCorners, hawkTile, armAngle } from "../ui/np-draw.js";
 import { baseNameOf, chooseName, rankCandidates } from "../ui/np-names.js";
 import { lensBatches, LENS_COLORS } from "../ui/np-lens.js";
 
@@ -141,20 +141,45 @@ test("wall pieces: hills, mountains and wonders get dry stone only", () => {
   }
 });
 
-test("buoys: only where park water meets open water outside the park, and not on every edge", () => {
-  const water = (i) => i >= 100;           // plots 100+ are water in this toy world
-  const tiles = [50, 110, 111];             // a land tile and two water tiles
-  const edges = buoyEdges(tiles, ring, water, 0.5);
-  const inPark = new Set(tiles);
-  for (const e of edges) {
-    assert.ok(water(e.plot), "a buoy on land");
-    const n = ring(e.plot)[e.dir];
-    assert.ok(water(n) && !inPark.has(n), "a buoy facing land or the park itself");
+// The three plots that meet at the corner of t between ring directions d and d + 1, as buoyCorners finds it.
+const cornerOf = (t, angle) => {
+  const d = [0, 1, 2, 3, 4, 5].find((k) => (armAngle(k) + 330) % 360 === angle);
+  return [t, ring(t)[d], ring(t)[(d + 1) % 6]];
+};
+
+test("buoys: on the far corners of the park's water outline, spaced out, never crowding it", () => {
+  const water = (i) => i >= 100;                       // plots 100+ are open water in this toy world
+  const flower = [155, ...ring(155)];                  // seven water tiles: an outline of 18 corners
+  const buoys = buoyCorners(flower, ring, water);
+  const inPark = new Set(flower);
+  assert.ok(buoys.length >= 3 && buoys.length <= 4, `a buoy at each far point of a compact park, not 9: ${buoys.length}`);
+  const keys = buoys.map((c) => cornerOf(c.plot, c.angle).sort((x, y) => x - y).join(","));
+  assert.equal(new Set(keys).size, keys.length, "one buoy a corner, though two park tiles share it");
+  for (const c of buoys) {
+    const three = cornerOf(c.plot, c.angle);
+    assert.ok(three.every(water), "a buoy at a corner touching land");
+    assert.equal(three.filter((t) => inPark.has(t)).length, 1, "a buoy at a notch rather than a point of the outline");
   }
-  assert.ok(edges.length > 0);
-  assert.equal(buoyEdges(tiles, ring, water, 0).length, 0);
-  assert.equal(buoyEdges([50], ring, water, 1).length, 0, "a land-only park has no buoys");
-  assert.deepEqual(edges, buoyEdges(tiles, ring, water, 0.5));
+  assert.deepEqual(buoys, buoyCorners(flower, ring, water), "the same buoys every time");
+});
+
+test("buoys: a line of single tiles is marked at its two ends, its long sides left clear", () => {
+  const water = (i) => i >= 100;
+  const line = [152, 153, 154, 155, 156, 157];         // six water tiles in a row, east to west
+  const buoys = buoyCorners(line, ring, water);
+  assert.equal(buoys.length, 2, `${buoys.length} buoys on a line of ${line.length}`);
+  const touches = (t) => buoys.some((c) => cornerOf(c.plot, c.angle).includes(t));
+  assert.ok(touches(152) && touches(157), "both ends marked");
+});
+
+test("buoys: none on land, none facing land, none for a land park", () => {
+  const water = (i) => i >= 100;
+  assert.deepEqual(buoyCorners([50, 51], ring, water), [], "a land-only park has no buoys");
+  // A water tile beside land: its corners touching plot 99 (land) get no buoy.
+  const buoys = buoyCorners([100, 110], ring, water);
+  for (const c of buoys) assert.ok(cornerOf(c.plot, c.angle).every(water), "a buoy at a corner touching land");
+  // Park water whose every neighbour is park or land: no open water, no buoys.
+  assert.deepEqual(buoyCorners([105], ring, (i) => i === 105), []);
 });
 
 test("hawk: none for a small park; a mountain first, then the lookout, then the founding tile", () => {

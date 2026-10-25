@@ -46,7 +46,7 @@ import { setPurchaseHandler } from "./np-purchase.js";
 
 const G = globalThis;
 const KEY = "__towerNationalPark";
-const VERSION = "1.1.3";
+const VERSION = "1.3.0";
 const SETTLE_MS = 600;
 const EVENT_SETTLE_MS = 1500;
 // A park piece landing is drawn sooner, so new park land is not left bare while the dressing waits (about 2 s before).
@@ -249,9 +249,11 @@ function registerNew(map, touched) {
   return created;
 }
 
-/** An AI's park picks its land when an expansion completes; one inherited from a human with tiles waiting picks now. */
+/** An AI's park picks its land when an expansion completes; one inherited from a human with tiles waiting picks now.
+ *  A new park's founding tiles wait until its improvement stands, so a founding that goes back to waiting finds its
+ *  land bare. */
 function pickAiLand() {
-  for (const p of parks()) if (p.pending > 0 && !isHuman(p.owner) && !isIndependent(p.owner)
+  for (const p of parks()) if (p.pending > 0 && !p.founding && !isHuman(p.owner) && !isIndependent(p.owner)
     && eligibleTiles(p).length) autoPick(p);
 }
 

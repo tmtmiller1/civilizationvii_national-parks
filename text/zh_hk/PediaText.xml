@@ -9,16 +9,16 @@
         <Replace Tag="LOC_PEDIA_NP_INTERFACE_TITLE" Language="zh_Hant_HK"><Text>視圖與選項</Text></Replace>
         <Replace Tag="LOC_PEDIA_NP_REAL_TITLE" Language="zh_Hant_HK"><Text>公園與荒野</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_TITLE" Language="zh_Hant_HK"><Text>國家公園</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>在聚落擁有的迷人空置格位上建立國家公園，然後向周圍的土地擴展：山地、森林、湖泊、河流、海洋、自然奇觀與空曠的原野。由你決定它要納入哪些格位。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>在聚落擁有的空置格位上建立國家公園（迷人的土地或水域），並在其旁邊再選擇3個格位，然後向周圍的土地擴展：山地、森林、湖泊、河流、海洋、自然奇觀與空曠的原野。由你決定它要納入哪些格位。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="zh_Hant_HK"><Text>公園格位會在其自身的收益之外，額外提供[icon:YIELD_CULTURE]文化值和[icon:YIELD_HAPPINESS]幸福感，且其上無法建造任何東西。每座公園的格位都會隨該公園的擴大而提供更多收益。每座公園都以其所保護的地點命名，並在地圖上繪出圍牆、樹木與野生動物。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_KINDS_TITLE" Language="zh_Hant_HK"><Text>兩種類型</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_KINDS_PARA_1" Language="zh_Hant_HK"><Text>[B]國家公園[/B]：提供[icon:YIELD_CULTURE]文化值和[icon:YIELD_HAPPINESS]幸福感。設有管理員小屋、木屋與瞭望塔。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_KINDS_PARA_2" Language="zh_Hant_HK"><Text>[B]荒野保護區[/B]：建立、擴展與保護的方式相同，但提供[icon:YIELD_DIPLOMACY]影響力。沒有任何建築。每個聚落可以各擁有一座。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_WHERE_TITLE" Language="zh_Hant_HK"><Text>如何開始</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]在城市中以[B]建立國家公園[/B]或[B]建立荒野保護區[/B]專案建立國家公園或荒野保護區，或在任何聚落的購買清單中以金幣購買，然後按下[B]選擇土地[/B]，挑選一個迷人空置格位。[LI]在城市中以[B]擴展國家公園[/B]或[B]擴展荒野保護區[/B]專案擴展，或在聚落的購買清單中以金幣購買一次擴展。[LI]按下[B]選擇土地[/B]，在地圖上挑選新的格位。[LI]開啟[B]公園與荒野[/B]視圖即可查看所有公園。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]在城市中以[B]建立國家公園[/B]或[B]建立荒野保護區[/B]專案建立國家公園或荒野保護區，或在任何聚落的購買清單中以金幣購買，然後按下[B]選擇土地[/B]，挑選一個空置格位（迷人的土地或水域），再在其旁邊挑選3個格位。[LI]在城市中以[B]擴展國家公園[/B]或[B]擴展荒野保護區[/B]專案擴展，或在聚落的購買清單中以金幣購買一次擴展。[LI]按下[B]選擇土地[/B]，在地圖上挑選新的格位。[LI]開啟[B]公園與荒野[/B]視圖即可查看所有公園。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_TITLE" Language="zh_Hant_HK"><Text>常見問題</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_TITLE" Language="zh_Hant_HK"><Text>為什麼我無法建造公園？</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_PARA_1" Language="zh_Hant_HK"><Text>你需要探索時代的「社會」市政或近代的「自然歷史」市政、一個尚未擁有該類型公園的聚落，以及一個該聚落擁有的空置平坦或丘陵格位，其魅力須為迷人或壯麗：其上不能有區域、改良設施或建築。若該市政是在模組加入遊戲之前研究完成的，則不會提供公園。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_PARA_1" Language="zh_Hant_HK"><Text>你需要探索時代的「社會」市政或近代的「自然歷史」市政、一個尚未擁有該類型公園的聚落，以及一個該聚落擁有的空置格位，可以是魅力為迷人或壯麗的平坦或丘陵格位，也可以是任何水域格位：其上不能有區域、改良設施或建築。若該市政是在模組加入遊戲之前研究完成的，則不會提供公園。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_TITLE" Language="zh_Hant_HK"><Text>為什麼我的公園無法擴展？</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="zh_Hant_HK"><Text>公園只會納入其擁有者已擁有、且與公園相鄰的格位。若擴展完成時沒有這樣的格位，你會收到通知，這些格位會保留到有可用的土地為止。公園最多24個格位。在網路遊戲中公園無法擴展。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_TITLE" Language="zh_Hant_HK"><Text>國家公園還是荒野保護區？</Text></Replace>
@@ -32,21 +32,21 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CREDITS_TITLE" Language="zh_Hant_HK"><Text>製作群</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_ABOUT_CHAPTER_CREDITS_PARA_1" Language="zh_Hant_HK"><Text>由 Tower 製作。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_TITLE" Language="zh_Hant_HK"><Text>建立公園</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>城市以[B]建立國家公園[/B]或[B]建立荒野保護區[/B]專案建立公園；城市或城鎮也可以在其購買清單中以金幣購買。然後按下[B]選擇土地[/B]，並挑選聚落擁有的一個空置平坦或丘陵格位，任何環數皆可，且須為迷人（見下文）：其上不能有區域、改良設施或建築。其上的資源仍會持續收集。選擇畫面中只有這些格位會亮起。每個聚落可以擁有一座國家公園與一座荒野保護區。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>城市以[B]建立國家公園[/B]或[B]建立荒野保護區[/B]專案建立公園；城市或城鎮也可以在其購買清單中以金幣購買。然後按下[B]選擇土地[/B]，並挑選聚落擁有的一個空置格位，任何環數皆可：迷人的平坦或丘陵土地（見下文），或任何水岸、湖泊或海洋格位。其上不能有任何東西：沒有區域、改良設施或建築。其上的資源仍會持續收集。選擇畫面中只有這些格位會亮起。接著選擇畫面會再次開啟，讓你在其旁邊再挑選3個格位，因此新公園一開始就有4個格位。建立在水域上的公園可以一直全是水域；建立在水域上的國家公園會把管理員小屋設在它納入的第一塊陸地上。每個聚落可以擁有一座國家公園與一座荒野保護區。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CHARMING_TITLE" Language="zh_Hant_HK"><Text>迷人土地</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CHARMING_PARA_1" Language="zh_Hant_HK"><Text>公園須建立在迷人的土地上：魅力為3或以上，以遊戲的魅力視圖與格位提示中顯示的數值為準。魅力來自格位周圍的土地：每個相鄰的山地、水岸、可航行河流、森林、雨林、北方針葉林、稀樹林草原或山艾樹草原各+1，相鄰的自然奇觀則+6。魅力只影響建立格位；公園擴展時可納入任何允許納入的土地，之後魅力下降的格位也仍會留在公園內。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_CHARMING_PARA_1" Language="zh_Hant_HK"><Text>建立在陸地上的公園須位於迷人的土地上：魅力為3或以上，以遊戲的魅力視圖與格位提示中顯示的數值為準。魅力來自格位周圍的土地：每個相鄰的山地、水岸、可航行河流、森林、雨林、北方針葉林、稀樹林草原或山艾樹草原各+1，相鄰的自然奇觀則+6。魅力只影響建立格位；公園擴展時可納入任何允許納入的土地，之後魅力下降的格位也仍會留在公園內。水域本身沒有魅力，因此任何空置的水域格位都可以。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_UNLOCK_TITLE" Language="zh_Hant_HK"><Text>解鎖</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_UNLOCK_PARA_1" Language="zh_Hant_HK"><Text>探索時代：[B]社會[/B]市政。近代：[B]自然歷史[/B]市政。在探索時代建造的公園會連同所有格位一起帶入近代。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_TITLE" Language="zh_Hant_HK"><Text>建立格位</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_1" Language="zh_Hant_HK"><Text>[B]國家公園[/B]：+4[icon:YIELD_HAPPINESS]幸福感，每個相鄰的自然奇觀再+5[icon:YIELD_HAPPINESS]幸福感和+5[icon:YIELD_CULTURE]文化值。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_2" Language="zh_Hant_HK"><Text>[B]荒野保護區[/B]：+4[icon:YIELD_DIPLOMACY]影響力，每個相鄰的自然奇觀再+10[icon:YIELD_DIPLOMACY]影響力。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_1" Language="zh_Hant_HK"><Text>[B]國家公園[/B]：+5[icon:YIELD_HAPPINESS]幸福感和+1[icon:YIELD_CULTURE]文化值（公園土地的+1和+1，加上自身的+4幸福感），每個相鄰的自然奇觀再+5[icon:YIELD_HAPPINESS]幸福感和+5[icon:YIELD_CULTURE]文化值。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_2" Language="zh_Hant_HK"><Text>[B]荒野保護區[/B]：+7[icon:YIELD_DIPLOMACY]影響力（保護區土地的+3，加上自身的+4），每個相鄰的自然奇觀再+10[icon:YIELD_DIPLOMACY]影響力。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FOUNDING_CHAPTER_REWARD_PARA_3" Language="zh_Hant_HK"><Text>兩者的維護費用皆為每回合2[icon:YIELD_GOLD]金幣。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_TITLE" Language="zh_Hant_HK"><Text>擴展公園</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>每次擴展都會在公園旁增加格位：探索時代1個格位，近代3個。每次的花費都相同。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>每次擴展都會在公園旁增加1個格位，兩個時代皆同。每次的花費都相同。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_PROJECT_TITLE" Language="zh_Hant_HK"><Text>專案</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_PROJECT_PARA_1" Language="zh_Hant_HK"><Text>擁有公園的城市可以不限次數執行[B]擴展國家公園[/B]或[B]擴展荒野保護區[/B]，每次需要300[icon:YIELD_PRODUCTION]生產力。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_PROJECT_PARA_1" Language="zh_Hant_HK"><Text>擁有公園的城市可以不限次數執行[B]擴展國家公園[/B]或[B]擴展荒野保護區[/B]，每次需要100[icon:YIELD_PRODUCTION]生產力。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_GOLD_TITLE" Language="zh_Hant_HK"><Text>以金幣購買</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_GOLD_PARA_1" Language="zh_Hant_HK"><Text>開啟任何擁有公園的聚落的購買清單，購買[B]擴展國家公園[/B]或[B]擴展荒野保護區[/B]。在標準遊戲速度下花費1,200[icon:YIELD_GOLD]金幣。城鎮無法執行專案，因此城鎮要以此方式擴展公園。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_GOLD_PARA_1" Language="zh_Hant_HK"><Text>開啟任何擁有公園的聚落的購買清單，購買[B]擴展國家公園[/B]或[B]擴展荒野保護區[/B]。在標準遊戲速度下花費400[icon:YIELD_GOLD]金幣。城鎮無法執行專案，因此城鎮要以此方式擴展公園。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_LIMIT_TITLE" Language="zh_Hant_HK"><Text>規模上限</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_GROWTH_CHAPTER_LIMIT_PARA_1" Language="zh_Hant_HK"><Text>一座公園最多可擁有24個格位。當你的選擇使公園達到上限時，選擇器會告知你，而該次擴展剩餘的格位將會失去。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_TITLE" Language="zh_Hant_HK"><Text>選擇格位</Text></Replace>
@@ -88,7 +88,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_TITLE" Language="zh_Hant_HK"><Text>易主</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PROTECT_CHAPTER_HANDS_PARA_1" Language="zh_Hant_HK"><Text>聚落被征服時，其公園會連同所有格位一起歸新擁有者所有。若單一公園格位被其他玩家奪取，該格位會脫離公園。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_TITLE" Language="zh_Hant_HK"><Text>公園的外觀</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>每座公園都會依其地形作為一個整體來規劃：林木佈滿森林格位，並向開闊地帶逐漸稀疏，水岸與林木邊緣有成片的樹木，還有零星的灌木、岩石與蘆葦；陸地邊緣有低矮石牆夾雜幾段籬笆，與開闊水域交界處則有浮標。有資源的格位外觀一如往常。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>每座公園都會依其地形作為一個整體來規劃：林木佈滿森林格位，並向開闊地帶逐漸稀疏，水岸與林木邊緣有成片的樹木，還有零星的灌木、岩石與蘆葦；陸地邊緣有低矮石牆夾雜幾段籬笆，另有幾個浮標標示公園延伸到開闊水域的範圍。有資源的格位外觀一如往常。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_CONTENT_PARA_2" Language="zh_Hant_HK"><Text>國家公園在建立格位上設有管理員小屋與野餐亭，擴展後會出現露營地、木屋、另一座野餐亭與丘陵上的瞭望塔，全部以步道與管理員小屋相連。兩類公園都會隨著擴展獲得紀念物：先是一座石堆，然後是一座方尖碑（荒野保護區則為支石墓），之後是第二座石堆。荒野保護區沒有任何建築，也沒有步道。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_TITLE" Language="zh_Hant_HK"><Text>野生動物</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_LOOK_CHAPTER_WILDLIFE_PARA_1" Language="zh_Hant_HK"><Text>各片土地都有合適的動物：野牛、馬、鹿、麋鹿、駱駝、綿羊、駱馬、大象、狐狸、鶴與螃蟹，天空有鳥與蝴蝶，湖泊與河流中有魚，海中則有魚群、珊瑚礁魚，偶爾還有鯨魚。公園內每一片連續的同種生物群落都有自己的群居動物與鳥類，獸群會留在遠離人與道路的開闊地帶。</Text></Replace>

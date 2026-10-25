@@ -205,7 +205,8 @@ class NpAddTilesMode extends ChoosePlotInterfaceMode {
 
   confirm() { return this.foundingId != null ? this.npFound() : this.npAddSelected(); }
 
-  /** A founding's park is placed on the selected tile, named and drawn, and the picker closes. */
+  /** A founding's park is placed on the selected tile, named and drawn, and the picker opens again on the land around
+   *  it for the rest of the founding's tiles (the Choose land prompt, if the map isn't free for it). */
   npFound() {
     const f = this.founding;
     if (!f || !this.selected.length) return false;
@@ -217,6 +218,7 @@ class NpAddTilesMode extends ChoosePlotInterfaceMode {
     drawPark(park, [park.anchor]);
     refreshGeoLabels();
     setTimeout(() => InterfaceMode.switchToDefault(), 0);
+    setTimeout(() => openPicker(park.id, "founding"), 250);
     return true;
   }
 

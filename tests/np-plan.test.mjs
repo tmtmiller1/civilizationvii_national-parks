@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { hash01 } from "../ui/np-core.js";
-import { parkPlan, describePlan, budgetsFor, GROVES, TRAIL, GRAVEL, WAYMARK, CABIN, CAMP_TENT, CAMP_FIRE, SHELTER, LOOKOUT, CAIRN_MOUND, OBELISK, DOLMEN, SIGN } from "../ui/np-plan.js";
+import { parkPlan, lodgeTile, describePlan, budgetsFor, GROVES, TRAIL, GRAVEL, WAYMARK, CABIN, CAMP_TENT, CAMP_FIRE, SHELTER, LOOKOUT, CAIRN_MOUND, OBELISK, DOLMEN, SIGN } from "../ui/np-plan.js";
 
 // A generated land on a hex sheet 40 wide: drifts of lake, mountain, hill, woods and wetland three tiles across, minor
 // rivers here and there. Stands in for the map, as the audit that caught the pond defect did.
@@ -229,4 +229,21 @@ test("plan: it can be printed", () => {
   const text = describePlan(plans[7].plan);
   assert.match(text, /park of 24 tiles/);
   assert.match(text, /region \d+/);
+});
+
+test("plan: a National Park founded on water has its lodge on its nearest dry land, and none while it has no land", () => {
+  // A row of sea tiles, then open land, then a resource tile: 0 1 2 sea, 3 resource, 4 open.
+  const base = world(1);
+  const kind = (t) => (t < 3 ? "sea" : t === 3 ? "res" : "open");
+  const map = { ...base, kind, sea: (t) => kind(t) === "sea", lake: () => false, nav: () => false, mountain: () => false,
+    wonder: () => false, wet: () => false, hill: () => false, wooded: () => false, feature: () => "", model: () => "",
+    river: () => false, cliff: () => false, resource: (t) => (kind(t) === "res" ? "RESOURCE_FISH" : "") };
+  assert.equal(lodgeTile([0, 1, 2, 3, 4], 0, map), 4, "past the water and the resource tile");
+  assert.equal(lodgeTile([4, 3, 2], 4, map), 4, "a land founding tile keeps its lodge");
+  assert.equal(lodgeTile([0, 1, 2], 0, map), -1, "an all-water park has no lodge");
+  const wet = parkPlan([0, 1, 2], 0, { level: 0, buildings: true, map });
+  assert.equal(wet.buildings, false, "and is planned without buildings");
+  const shore = parkPlan([0, 1, 2, 3, 4], 0, { level: 0, buildings: true, map });
+  assert.equal(shore.anchor, 4, "the plan's paths start at the lodge");
+  assert.ok(shore.built.some((e) => shore.tileAt([e[1], e[2]]) === 4), "something is built there");
 });

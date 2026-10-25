@@ -41,7 +41,7 @@ const CASES = {
   },
   "founding tile built over: the park moves": (r) => { const p = park(r, 3); eng.build(at(r, 2), "BUILDING_GRANARY"); return p; },
   "founding tile built over, nowhere to go: dissolved": (r) => {
-    const p = park(r, 2); eng.setPlot(at(r, 3), { terrain: "TERRAIN_COAST" }); eng.build(at(r, 2), "BUILDING_GRANARY"); return p;
+    const p = park(r, 2); eng.setPlot(at(r, 3), { terrain: "TERRAIN_MOUNTAIN" }); eng.build(at(r, 2), "BUILDING_GRANARY"); return p;
   },
   "founding tile on a wilderness district: rebuilt": (r) => { const p = park(r, 2); eng.district(at(r, 2), "DISTRICT_WILDERNESS"); return p; },
   "founding tile farmed: farm off": (r) => { const p = park(r, 2); eng.build(at(r, 2), "IMPROVEMENT_FARM"); return p; },
@@ -100,6 +100,9 @@ const CASES = {
     const p = park(r, 3); const t = at(r, 3);
     eng.district(t, "DISTRICT_URBAN"); p.districts = [p.anchor, t];
     return p;
+  },
+  "founding tile built over, only water left: moved onto the water": (r) => {
+    const p = park(r, 2); eng.setPlot(at(r, 3), { terrain: "TERRAIN_COAST" }); eng.build(at(r, 2), "BUILDING_GRANARY"); return p;
   },
 };
 

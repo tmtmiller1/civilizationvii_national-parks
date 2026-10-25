@@ -9,7 +9,7 @@
 //   walls     low dry-stone walls on most outer land edges, composed per edge from stone runs laid either way
 //             round, boulders, shrubs and fallen stones by biome: the walls along a scenic parkway, not a
 //             surveyed fence. Never on or facing water, a mountain or the wonder.
-//   buoys     where park water meets open water, a buoy now and then; water gets no walls
+//   buoys     on the far corners of the line where park water meets open water, spaced out; water gets no walls
 //   dressing  everything else on the land: the warden's station, a village, camp and shelter, lookouts, monuments,
 //   wildlife  footpaths, woods, stands, patches of shrub and rock, reeds, herds, birds and fish. All of it is planned
 //             for the park as a whole (np-plan.js) and a tile draws the part that falls on it. Nothing on the wonder.
@@ -26,7 +26,8 @@ import {
   safe, log, locOf, ringOf, terrainOf, biomeOf, featureOf, isMountain, isWater, isWonder, isLake, isNavRiver, isRiver,
   isImpassableEdgeTile, isRevealed, hash01, kindOf, parkLevel, parks, resourceAt,
 } from "./np-core.js";
-import { parkPlan } from "./np-plan.js";
+import { lodgeTile, parkPlan } from "./np-plan.js";
+import { CORNER_R, armAngle, buoyCorners } from "./np-buoys.js";
 import { refreshLens } from "./np-lens.js";
 import { getMarks } from "./np-settings.js";
 
@@ -48,7 +49,6 @@ const WALL_SHARE = 0.96;          // share of eligible outer edges that get wall
 const INNER_WALL_SHARE = 0.05;    // share of edges between two of the park's own tiles that get walling (0.25 read as
                                   // walls across the middle of a park, 2026-10-04)
 const BUOY = "PROP_MOD_Harbor_Buoy";
-const BUOY_SHARE = 0.5;
 const DUST = "VFX_Dust_In_Place_SquadCom_Tan";
 const STAGGER_MS = 110;
 
@@ -69,8 +69,7 @@ const WILD_BORDER_STYLE = {
   secondaryColor: { x: 0.35, y: 0.16, z: 0.02, w: 1 },
 };
 
-/** Screen angle of ring direction i (Canals: the arm points east at 0 and turns counter-clockwise). */
-export function armAngle(i) { return (360 - 60 * i) % 360; }
+export { armAngle, buoyCorners };
 function along(deg, x, y) {
   const a = deg * Math.PI / 180;
   return { x: x * Math.cos(a) - y * Math.sin(a), y: x * Math.sin(a) + y * Math.cos(a), z: 0 };
@@ -121,20 +120,6 @@ function edgeWall(c, t, n, dir, blocked) {
 function footWall(c, t, n, dir, outside) {
   if (!(n >= 0 && !c.inPark.has(n) && outside())) return null;
   return hash01(t, 231 + dir) < c.footShare(dir) ? { plot: t, dir, inner: false, foot: true } : null;
-}
-
-/** Water edges of a park that meet open water outside it: [{ plot, dir }], thinned to BUOY_SHARE. */
-export function buoyEdges(tiles, ringFn = ringOf, water = isWater, share = BUOY_SHARE) {
-  const inPark = new Set(tiles);
-  const out = [];
-  for (const t of tiles) {
-    if (!water(t)) continue;
-    ringFn(t).forEach((n, dir) => {
-      if (n < 0 || inPark.has(n) || !water(n)) return;
-      if (hash01(t, 41 + dir) < share) out.push({ plot: t, dir });
-    });
-  }
-  return out;
 }
 
 /**
@@ -420,9 +405,12 @@ const generations = new Map(); // park id -> generation; kept after clearPark so
 function nextGeneration(id) { const n = (generations.get(id) || 0) + 1; generations.set(id, n); return n; }
 function isCurrent(id, n) { return generations.get(id) === n; }
 
-function place(group, asset, plot, off, { scale, angle, tint = null }) {
+function place(group, asset, plot, off, { scale, angle, tint = null, surface = false }) {
   const l = locOf(plot);
-  const opts = { placement: PlacementMode.TERRAIN, followTerrain: true, needsShadows: true, scale, angle };
+  // `surface`: on the water's surface, as Dams floats its pieces; set on the terrain, a piece over deep ocean sits on
+  // the sea floor out of sight.
+  const opts = surface ? { placement: PlacementMode.WATER, followTerrain: false, needsShadows: true, scale, angle }
+    : { placement: PlacementMode.TERRAIN, followTerrain: true, needsShadows: true, scale, angle };
   if (tint) { opts.tintColor1 = tint[0]; opts.tintColor2 = tint[1]; }
   return safe(() => group.addModelAtPlot(asset, { i: l.x, j: l.y }, off, opts), null);
 }
@@ -486,9 +474,8 @@ function wallRun(g, e) {
     { scale: p.scale, angle: p.angle });
 }
 
-function buoy(g, e) {
-  const p = along(armAngle(e.dir), 0.44, (hash01(e.plot, 58 + e.dir) - 0.5) * 0.2);
-  place(g.walls, BUOY, e.plot, p, { scale: 1.6, angle: 0 });
+function buoy(g, c) {
+  place(g.walls, BUOY, c.plot, along(c.angle, CORNER_R, 0), { scale: 1.6, angle: 0, surface: true });
 }
 
 /** The land as np-plan.js reads it, from the map. */
@@ -600,14 +587,15 @@ function dressingOf(park) {
 
 /** The revealed wall runs and buoys. Runs on new land are held back for the growth; returns those edges. */
 function drawWalls(park, g, freshSet) {
-  const entrance = kindOf(park).buildings ? park.anchor : -1;
+  // The gap in the wall is at the lodge, which a park founded on water has on its first land.
+  const entrance = kindOf(park).buildings ? safe(() => lodgeTile(park.tiles, park.anchor, LIVE_MAP), -1) : -1;
   const edges = wallEdges(park.tiles, ringOf, isImpassableEdgeTile, { entrance }).filter((e) => isRevealed(e.plot));
   const later = [];
   for (const e of edges) {
     if (freshSet.has(e.plot)) later.push(e);
     else wallRun(g, e);
   }
-  for (const e of buoyEdges(park.tiles)) if (isRevealed(e.plot)) buoy(g, e);
+  for (const c of buoyCorners(park.tiles)) if (isRevealed(c.plot)) buoy(g, c);
   return later;
 }
 

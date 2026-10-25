@@ -26,8 +26,12 @@ test("founding: only the settlement's own land, not another park's, not unreadab
   assert.equal(foundable(empty({ stray: true })), false);
 });
 
-test("founding: not on water, a mountain or a natural wonder (they may join afterwards)", () => {
-  assert.equal(foundable(empty({ water: true })), false);
+test("founding: any empty water tile, Charming or not; not a mountain or a natural wonder (they may join afterwards)", () => {
+  assert.equal(foundable(empty({ water: true, terrain: "TERRAIN_COAST", charming: false })), true, "coast or lake");
+  assert.equal(foundable(empty({ water: true, terrain: "TERRAIN_OCEAN", charming: false })), true, "open ocean");
+  assert.equal(foundable(empty({ water: true, terrain: "TERRAIN_COAST", items: 1 })), false, "a fishing boat");
+  assert.equal(foundable(empty({ water: true, terrain: "TERRAIN_COAST", wonder: true })), false, "a water wonder");
+  assert.equal(foundable(empty({ terrain: "TERRAIN_NAVIGABLE_RIVER", charming: false })), false, "a navigable river");
   assert.equal(foundable(empty({ mountain: true })), false);
   assert.equal(foundable(empty({ wonder: true })), false);
   assert.equal(foundable(empty({ terrain: "TERRAIN_MOUNTAIN" })), false);

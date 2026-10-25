@@ -2,17 +2,17 @@
 <Database>
     <LocalizedText>
         <Replace Tag="LOC_MOD_NATIONAL_PARK_NAME" Language="zh_Hans_CN"><Text>国家公园</Text></Replace>
-        <Replace Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION" Language="zh_Hans_CN"><Text>从探索时代起加入国家公园和荒野保护区。在城市或城镇拥有的迷人空地块上建立公园，然后逐块向周围的土地扩建：山脉、森林、湖泊、河流、海洋以及自然奇观。国家公园提供文化值和幸福值，设有管理员小屋和木屋；荒野保护区提供影响力，没有任何建筑。每座公园达到8、16和24个地块时，该公园的每个地块都会提供更多产出。每座公园都会根据其地形绘制围墙、树木和野生动物。兼容 Geographic Labels。支持单人游戏和热座。</Text></Replace>
+        <Replace Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION" Language="zh_Hans_CN"><Text>从探索时代起加入国家公园和荒野保护区。在城市或城镇拥有的空地块上建立公园（迷人的土地或开阔水域），并在其周围再选择3个地块，然后逐块向周围的土地扩建：山脉、森林、湖泊、河流、海洋以及自然奇观。国家公园提供文化值和幸福值，设有管理员小屋和木屋；荒野保护区提供影响力，没有任何建筑。每座公园达到8、16和24个地块时，该公园的每个地块都会提供更多产出。每座公园都会根据其地形绘制围墙、树木和野生动物。兼容 Geographic Labels。支持单人游戏和热座。</Text></Replace>
         <Replace Tag="LOC_BUILDING_NATIONAL_PARK_NAME" Language="zh_Hans_CN"><Text>国家公园</Text></Replace>
-        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION" Language="zh_Hans_CN"><Text>国家公园的起始地块，位于“建立国家公园”完成后你所选择的迷人空地块上。+4 [icon:YIELD_HAPPINESS] 幸福值，每有1个相邻的自然奇观，额外+5 [icon:YIELD_HAPPINESS] 幸福值和+5 [icon:YIELD_CULTURE] 文化值。当该公园达到8、16和24个地块时，其土地会提供更多产出。可在城市中通过“扩建国家公园”项目扩建，或在定居点的购买列表中花费金币购买扩建。探索时代由“社会”解锁，近世时代由“自然历史”解锁。每个定居点限1座。</Text></Replace>
-        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP" Language="zh_Hans_CN"><Text>通过“建立国家公园”建在定居点拥有的迷人空地块上。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION" Language="zh_Hans_CN"><Text>国家公园的起始地块，位于“建立国家公园”完成后你所选择的空地块上：迷人的平坦或崎岖土地，或水域。+5 [icon:YIELD_HAPPINESS] 幸福值和+1文化值（公园土地的+1文化值和+1幸福值，加上起始地块的+4幸福值），每有1个相邻的自然奇观，额外+5 [icon:YIELD_HAPPINESS] 幸福值和+5 [icon:YIELD_CULTURE] 文化值。当该公园达到8、16和24个地块时，其土地会提供更多产出。可在城市中通过“扩建国家公园”项目扩建，或在定居点的购买列表中花费金币购买扩建。探索时代由“社会”解锁，近世时代由“自然历史”解锁。每个定居点限1座。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP" Language="zh_Hans_CN"><Text>通过“建立国家公园”建在定居点拥有的空地块上：迷人的平坦或崎岖土地，或水域。</Text></Replace>
         <Replace Tag="LOC_NP_LAND_NAME" Language="zh_Hans_CN"><Text>国家公园土地</Text></Replace>
         <Replace Tag="LOC_NP_LAND_DESCRIPTION" Language="zh_Hans_CN"><Text>国家公园内的土地。在该地块自身产出之外，额外提供+1 [icon:YIELD_CULTURE] 文化值和+1 [icon:YIELD_HAPPINESS] 幸福值，并随其所在公园的扩大而提高：达到8个地块时为+2 [icon:YIELD_CULTURE] 文化值，16个时为+2 [icon:YIELD_CULTURE] 和+2 [icon:YIELD_HAPPINESS]，24个时为+3 [icon:YIELD_CULTURE] 和+2 [icon:YIELD_HAPPINESS]。失去或被建造占用的土地会从该公园的计数中扣除。资源仍被收集。此处无法建造任何东西。</Text></Replace>
         <Replace Tag="LOC_NP_WILD_NAME" Language="zh_Hans_CN"><Text>国家公园腹地</Text></Replace>
         <Replace Tag="LOC_NP_WILD_DESCRIPTION" Language="zh_Hans_CN"><Text>国家公园内的自然奇观、山脉、水域或森林地块。在该地块自身产出之外，额外提供+2 [icon:YIELD_CULTURE] 文化值和+1 [icon:YIELD_HAPPINESS] 幸福值。资源仍被收集。此处无法建造任何东西。</Text></Replace>
         <Replace Tag="LOC_WILDERNESS_AREA_NAME" Language="zh_Hans_CN"><Text>荒野保护区</Text></Replace>
-        <Replace Tag="LOC_WILDERNESS_AREA_DESCRIPTION" Language="zh_Hans_CN"><Text>荒野保护区的起始地块，位于“建立荒野保护区”完成后你所选择的迷人空地块上。+4 [icon:YIELD_DIPLOMACY] 影响力，每有1个相邻的自然奇观，额外+10 [icon:YIELD_DIPLOMACY] 影响力。当该保护区达到8、16和24个地块时，其土地会提供更多产出。可在城市中通过“扩建荒野保护区”项目扩建，或在定居点的购买列表中花费金币购买扩建。没有任何建筑。探索时代由“社会”解锁，近世时代由“自然历史”解锁。每个定居点限1座。</Text></Replace>
-        <Replace Tag="LOC_WILDERNESS_AREA_TOOLTIP" Language="zh_Hans_CN"><Text>通过“建立荒野保护区”建在定居点拥有的迷人空地块上。</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_DESCRIPTION" Language="zh_Hans_CN"><Text>荒野保护区的起始地块，位于“建立荒野保护区”完成后你所选择的空地块上：迷人的平坦或崎岖土地，或水域。+7 [icon:YIELD_DIPLOMACY] 影响力（保护区土地的+3，加上起始地块的+4），每有1个相邻的自然奇观，额外+10 [icon:YIELD_DIPLOMACY] 影响力。当该保护区达到8、16和24个地块时，其土地会提供更多产出。可在城市中通过“扩建荒野保护区”项目扩建，或在定居点的购买列表中花费金币购买扩建。没有任何建筑。探索时代由“社会”解锁，近世时代由“自然历史”解锁。每个定居点限1座。</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_TOOLTIP" Language="zh_Hans_CN"><Text>通过“建立荒野保护区”建在定居点拥有的空地块上：迷人的平坦或崎岖土地，或水域。</Text></Replace>
         <Replace Tag="LOC_WA_LAND_NAME" Language="zh_Hans_CN"><Text>荒野保护区土地</Text></Replace>
         <Replace Tag="LOC_WA_LAND_DESCRIPTION" Language="zh_Hans_CN"><Text>荒野保护区内的土地。在该地块自身产出之外，额外提供+3 [icon:YIELD_DIPLOMACY] 影响力，并随其所在保护区的扩大而提高：达到8个地块时为+4，16个时为+5，24个时为+6。失去或被建造占用的土地会从该保护区的计数中扣除。资源仍被收集。此处无法建造任何东西。</Text></Replace>
         <Replace Tag="LOC_WA_WILD_NAME" Language="zh_Hans_CN"><Text>荒野保护区腹地</Text></Replace>
@@ -20,11 +20,11 @@
         <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME" Language="zh_Hans_CN"><Text>扩建荒野保护区</Text></Replace>
         <Replace Tag="LOC_WA_NAME_FORMAT" Language="zh_Hans_CN"><Text>{1_Name}荒野保护区</Text></Replace>
         <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_EX" Language="zh_Hans_CN"><Text>在该城市的荒野保护区旁增加1个地块。项目完成后，通过“选择土地”按钮由你选择：开阔地、森林、山脉、湖泊、河流、海洋或自然奇观，只要归你所有即可。其上的乡村改良设施将被移除；资源仍被收集。每个地块在自身产出之外额外提供+3 [icon:YIELD_DIPLOMACY] 影响力；当该荒野保护区达到8、16和24个地块时，其每个地块依次提供+4、+5和+6。其上无法建造任何东西。最多24个地块。</Text></Replace>
-        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO" Language="zh_Hans_CN"><Text>在该城市的荒野保护区旁增加3个地块。项目完成后，通过“选择土地”按钮由你选择：开阔地、森林、山脉、湖泊、河流、海洋或自然奇观，只要归你所有即可。其上的乡村改良设施将被移除；资源仍被收集。每个地块在自身产出之外额外提供+3 [icon:YIELD_DIPLOMACY] 影响力；当该荒野保护区达到8、16和24个地块时，其每个地块依次提供+4、+5和+6。其上无法建造任何东西。最多24个地块。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO" Language="zh_Hans_CN"><Text>在该城市的荒野保护区旁增加1个地块。项目完成后，通过“选择土地”按钮由你选择：开阔地、森林、山脉、湖泊、河流、海洋或自然奇观，只要归你所有即可。其上的乡村改良设施将被移除；资源仍被收集。每个地块在自身产出之外额外提供+3 [icon:YIELD_DIPLOMACY] 影响力；当该荒野保护区达到8、16和24个地块时，其每个地块依次提供+4、+5和+6。其上无法建造任何东西。最多24个地块。</Text></Replace>
         <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME" Language="zh_Hans_CN"><Text>扩建国家公园</Text></Replace>
         <Replace Tag="LOC_NP_MULTIPLAYER" Language="zh_Hans_CN"><Text>在网络游戏中，国家公园和荒野保护区无法扩建。</Text></Replace>
         <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_EX" Language="zh_Hans_CN"><Text>在该城市的国家公园旁增加1个地块。项目完成后，通过“选择土地”按钮由你选择：开阔地、森林、山脉、湖泊、河流、海洋或自然奇观，只要归你所有即可。其上的乡村改良设施将被移除；资源仍被收集。每个地块在自身产出之外额外提供+1 [icon:YIELD_CULTURE] 文化值和+1 [icon:YIELD_HAPPINESS] 幸福值；当该国家公园达到8、16和24个地块时，其每个地块都会提供更多产出，最多可达+3 [icon:YIELD_CULTURE] 文化值和+2 [icon:YIELD_HAPPINESS] 幸福值。其上无法建造任何东西。最多24个地块。</Text></Replace>
-        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" Language="zh_Hans_CN"><Text>在该城市的国家公园旁增加3个地块。项目完成后，通过“选择土地”按钮由你选择：开阔地、森林、山脉、湖泊、河流、海洋或自然奇观，只要归你所有即可。其上的乡村改良设施将被移除；资源仍被收集。每个地块在自身产出之外额外提供+1 [icon:YIELD_CULTURE] 文化值和+1 [icon:YIELD_HAPPINESS] 幸福值；当该国家公园达到8、16和24个地块时，其每个地块都会提供更多产出，最多可达+3 [icon:YIELD_CULTURE] 文化值和+2 [icon:YIELD_HAPPINESS] 幸福值。其上无法建造任何东西。最多24个地块。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" Language="zh_Hans_CN"><Text>在该城市的国家公园旁增加1个地块。项目完成后，通过“选择土地”按钮由你选择：开阔地、森林、山脉、湖泊、河流、海洋或自然奇观，只要归你所有即可。其上的乡村改良设施将被移除；资源仍被收集。每个地块在自身产出之外额外提供+1 [icon:YIELD_CULTURE] 文化值和+1 [icon:YIELD_HAPPINESS] 幸福值；当该国家公园达到8、16和24个地块时，其每个地块都会提供更多产出，最多可达+3 [icon:YIELD_CULTURE] 文化值和+2 [icon:YIELD_HAPPINESS] 幸福值。其上无法建造任何东西。最多24个地块。</Text></Replace>
         <Replace Tag="LOC_NP_PARK_NAME_FORMAT" Language="zh_Hans_CN"><Text>{1_Name}国家公园</Text></Replace>
         <Replace Tag="LOC_NP_PARK_NAME_ORDINAL" Language="zh_Hans_CN"><Text>{1_Name} {2_Ordinal}</Text></Replace>
         <Replace Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK" Language="zh_Hans_CN"><Text>国家公园</Text></Replace>
@@ -62,14 +62,14 @@
         <Replace Tag="LOC_NP_PICKER_RENAME_TIP" Language="zh_Hans_CN"><Text>更改名称</Text></Replace>
         <Replace Tag="LOC_NP_TILE_IS_PARKLAND" Language="zh_Hans_CN"><Text>此地块属于国家公园或荒野保护区，无法在其上建造。</Text></Replace>
         <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_NAME" Language="zh_Hans_CN"><Text>建立国家公园</Text></Replace>
-        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION" Language="zh_Hans_CN"><Text>在该定居点建立1座国家公园。项目完成后，点击“选择土地”，选择该定居点拥有的一个迷人的平坦或崎岖空地块：其上不能有区块、改良设施或建筑。其上的资源仍被收集。+4 [icon:YIELD_HAPPINESS] 幸福值，与自然奇观相邻时更多。每个定居点限1座。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION" Language="zh_Hans_CN"><Text>在该定居点建立1座拥有4个地块的国家公园。项目完成后，点击“选择土地”，选择建立公园的地块：该定居点拥有的一个空地块，可以是迷人的平坦或崎岖土地，也可以是任意水域（水岸、湖泊或海洋），其上不能有区块、改良设施或建筑。然后在其旁边再选择3个地块。该地块上的资源仍被收集。+5 [icon:YIELD_HAPPINESS] 幸福值和+1文化值，与自然奇观相邻时更多。每个定居点限1座。</Text></Replace>
         <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_NAME" Language="zh_Hans_CN"><Text>建立荒野保护区</Text></Replace>
-        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION" Language="zh_Hans_CN"><Text>在该定居点建立1座荒野保护区。项目完成后，点击“选择土地”，选择该定居点拥有的一个迷人的平坦或崎岖空地块：其上不能有区块、改良设施或建筑。其上的资源仍被收集。+4 [icon:YIELD_DIPLOMACY] 影响力，与自然奇观相邻时更多。每个定居点限1座。</Text></Replace>
-        <Replace Tag="LOC_NP_FOUND_NO_LAND" Language="zh_Hans_CN"><Text>该定居点没有迷人的平坦或崎岖空地块。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION" Language="zh_Hans_CN"><Text>在该定居点建立1座拥有4个地块的荒野保护区。项目完成后，点击“选择土地”，选择建立保护区的地块：该定居点拥有的一个空地块，可以是迷人的平坦或崎岖土地，也可以是任意水域（水岸、湖泊或海洋），其上不能有区块、改良设施或建筑。然后在其旁边再选择3个地块。该地块上的资源仍被收集。+7 [icon:YIELD_DIPLOMACY] 影响力，与自然奇观相邻时更多。每个定居点限1座。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NO_LAND" Language="zh_Hans_CN"><Text>该定居点没有空的水域地块，也没有迷人的平坦或崎岖空地块。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_TITLE" Language="zh_Hans_CN"><Text>{1_Settlement}：新国家公园</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="zh_Hans_CN"><Text>{1_Settlement}：新荒野保护区</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="zh_Hans_CN"><Text>点击一个亮起的地块，然后点击“确认”。</Text></Replace>
-        <Replace Tag="LOC_NP_FOUND_NONE" Language="zh_Hans_CN"><Text>该定居点目前没有迷人的平坦或崎岖空地块。新公园将保留，直到有地块空出。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NONE" Language="zh_Hans_CN"><Text>该定居点目前没有空的水域地块，也没有迷人的平坦或崎岖空地块。新公园将保留，直到有地块空出。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_CANCEL" Language="zh_Hans_CN"><Text>取消并取回{1_Gold}金币</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_TITLE" Language="zh_Hans_CN"><Text>金币已退还</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="zh_Hans_CN"><Text>该定居点已有一座同类公园，或有一座正在等待土地，因此完成的项目无可建立。其花费已退还：{1_Gold} [icon:YIELD_GOLD] 金币。</Text></Replace>
@@ -79,8 +79,8 @@
         <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="zh_Hans_CN"><Text>该定居点已没有可扩建的公园，因此完成的扩建没有增加任何地块。其花费已退还：{1_Gold} [icon:YIELD_GOLD] 金币。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="zh_Hans_CN"><Text>{1_Settlement}：选择国家公园的建立地点</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="zh_Hans_CN"><Text>{1_Settlement}：选择荒野保护区的建立地点</Text></Replace>
-        <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="zh_Hans_CN"><Text>国家公园已获批准。请选择该定居点拥有的一块迷人空地块作为建立地点；之后它可以扩展到周围的土地。</Text></Replace>
-        <Replace Tag="LOC_WA_FOUND_OFFER_BODY" Language="zh_Hans_CN"><Text>荒野保护区已获批准。请选择该定居点拥有的一块迷人空地块作为建立地点；之后它可以扩展到周围的荒野。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="zh_Hans_CN"><Text>国家公园已获批准。请选择该定居点拥有的一块空地块作为建立地点（迷人的土地或水域），然后在其旁边再选择3个地块；之后它可以扩展到周围的土地。</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_OFFER_BODY" Language="zh_Hans_CN"><Text>荒野保护区已获批准。请选择该定居点拥有的一块空地块作为建立地点（迷人的土地或水域），然后在其旁边再选择3个地块；之后它可以扩展到周围的荒野。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT_BUTTON_TIP" Language="zh_Hans_CN"><Text>选择建立公园的地块</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_LATER_TIP" Language="zh_Hans_CN"><Text>将建立推迟到之后的回合；它会继续等待</Text></Replace>
         <Replace Tag="LOC_NP_PROMPT_BODY" Language="zh_Hans_CN"><Text>还需为扩建选择{1_Count}个{1_Count: plural 1?地块; other?地块;}</Text></Replace>

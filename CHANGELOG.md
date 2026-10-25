@@ -3,6 +3,26 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
+## [1.3.0] - 2026-10-25
+
+- A new park starts with 4 tiles. Found National Park or Found Wilderness Area costs what it did, and after you pick
+  the founding tile the picker stays open for 3 more tiles beside it. An AI's new park takes its 3 once its founding
+  tile stands.
+- Expanding is cheaper and goes tile by tile: Expand National Park and Expand Wilderness Area cost 100 production
+  (400 Gold) for 1 tile in both ages. Before, an expansion cost 300 (1,200 Gold) for 1 tile in the Exploration Age
+  and 3 in the Modern Age.
+- A park can be founded on water: any empty coast, lake or ocean tile the settlement owns, Charming or not, and it
+  can stay all water. A National Park founded on water puts its lodge and paths on the first land it takes; until it
+  has some, it's drawn without buildings, like a Wilderness Area. A founding tile that's built over can move onto
+  the park's water too, when it has no land left to go to.
+- A park's founding tile pays what the rest of its land pays as well: +1 Culture and +1 Happiness in a National
+  Park, +3 Influence in a Wilderness Area, with its own +4 and the natural wonder bonus on top. It used to give only
+  the +4, so it never showed the park's icons.
+- Buoys mark how far a park reaches at sea: a few, on the far corners of its water, floating where you can see them.
+  A line of single tiles gets one at each end. Before, they were scattered along about half the edges, and over deep
+  ocean they sank out of sight.
+- The game text, the Civilopedia and the README describe the new rules, in every language the mod ships.
+
 ## [1.2.1] - 2026-10-17
 
 - License: from this version the mod is under the Tower Mod License 1.0, in LICENSE. You can still play it, read the

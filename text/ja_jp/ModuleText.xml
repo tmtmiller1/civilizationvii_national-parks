@@ -2,17 +2,17 @@
 <Database>
     <LocalizedText>
         <Replace Tag="LOC_MOD_NATIONAL_PARK_NAME" Language="ja_JP"><Text>国立公園</Text></Replace>
-        <Replace Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION" Language="ja_JP"><Text>探検の時代から国立公園と原生自然地域が登場します。都市や町が所有する空きの魅力的なタイルに設立し、山岳、森林、湖、河川、海、自然遺産など、周囲の土地へ1タイルずつ拡張していきます。国立公園は文化力と幸福度をもたらし、管理棟と山小屋があります。原生自然地域は影響力をもたらし、建造物はありません。各公園のタイルは、その公園が8、16、24タイルに達するたびに産出が増えます。各公園は土地に合わせて石垣、樹木、野生動物とともに描かれます。Geographic Labelsに対応。シングルプレイとホットシートに対応。</Text></Replace>
+        <Replace Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION" Language="ja_JP"><Text>探検の時代から国立公園と原生自然地域が登場します。都市や町が所有する空きタイル(魅力的な土地または水域)に設立して周囲のタイルをさらに3つ選び、その後、山岳、森林、湖、河川、海、自然遺産など、周囲の土地へ1タイルずつ拡張していきます。国立公園は文化力と幸福度をもたらし、管理棟と山小屋があります。原生自然地域は影響力をもたらし、建造物はありません。各公園のタイルは、その公園が8、16、24タイルに達するたびに産出が増えます。各公園は土地に合わせて石垣、樹木、野生動物とともに描かれます。Geographic Labelsに対応。シングルプレイとホットシートに対応。</Text></Replace>
         <Replace Tag="LOC_BUILDING_NATIONAL_PARK_NAME" Language="ja_JP"><Text>国立公園</Text></Replace>
-        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION" Language="ja_JP"><Text>国立公園の設立タイル。「国立公園の設立」の完了後に選んだ空きの魅力的なタイルに置かれる。[icon:YIELD_HAPPINESS] 幸福度+4。さらに隣接する自然遺産1つにつき [icon:YIELD_HAPPINESS] 幸福度+5、[icon:YIELD_CULTURE] 文化力+5。この公園が8、16、24タイルに達すると、その土地の産出が増える。都市でプロジェクト「国立公園の拡張」を実行するか、居住地の購入リストからゴールドで拡張を購入すると拡張できる。探検の時代は「社会」、近代は「博物学」でアンロック。居住地ごとに1つまで。</Text></Replace>
-        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP" Language="ja_JP"><Text>「国立公園の設立」で、居住地が所有する空きの魅力的なタイルに設立する。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION" Language="ja_JP"><Text>国立公園の設立タイル。「国立公園の設立」の完了後に選んだ空きタイル(魅力的な平地または丘陵の土地、あるいは水域)に置かれる。[icon:YIELD_HAPPINESS] 幸福度+5、文化力+1(公園の土地による文化力+1と幸福度+1、設立タイルによる幸福度+4)。さらに隣接する自然遺産1つにつき [icon:YIELD_HAPPINESS] 幸福度+5、[icon:YIELD_CULTURE] 文化力+5。この公園が8、16、24タイルに達すると、その土地の産出が増える。都市でプロジェクト「国立公園の拡張」を実行するか、居住地の購入リストからゴールドで拡張を購入すると拡張できる。探検の時代は「社会」、近代は「博物学」でアンロック。居住地ごとに1つまで。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP" Language="ja_JP"><Text>「国立公園の設立」で、居住地が所有する空きタイル(魅力的な平地または丘陵の土地、あるいは水域)に設立する。</Text></Replace>
         <Replace Tag="LOC_NP_LAND_NAME" Language="ja_JP"><Text>国立公園の土地</Text></Replace>
         <Replace Tag="LOC_NP_LAND_DESCRIPTION" Language="ja_JP"><Text>国立公園内の土地。タイル本来の産出に加えて [icon:YIELD_CULTURE] 文化力+1、[icon:YIELD_HAPPINESS] 幸福度+1をもたらし、その公園が大きくなるほど増える。8タイルで [icon:YIELD_CULTURE] 文化力+2、16タイルで [icon:YIELD_CULTURE] +2と [icon:YIELD_HAPPINESS] +2、24タイルで [icon:YIELD_CULTURE] +3と [icon:YIELD_HAPPINESS] +2。失った土地や上に建設された土地はその公園のタイル数から差し引かれる。資源は引き続き収集される。ここには何も建設できない。</Text></Replace>
         <Replace Tag="LOC_NP_WILD_NAME" Language="ja_JP"><Text>国立公園の奥地</Text></Replace>
         <Replace Tag="LOC_NP_WILD_DESCRIPTION" Language="ja_JP"><Text>国立公園内の自然遺産、山岳、水域、森林のタイル。タイル本来の産出に加えて [icon:YIELD_CULTURE] 文化力+2、[icon:YIELD_HAPPINESS] 幸福度+1をもたらす。資源は引き続き収集される。ここには何も建設できない。</Text></Replace>
         <Replace Tag="LOC_WILDERNESS_AREA_NAME" Language="ja_JP"><Text>原生自然地域</Text></Replace>
-        <Replace Tag="LOC_WILDERNESS_AREA_DESCRIPTION" Language="ja_JP"><Text>原生自然地域の設立タイル。「原生自然地域の設立」の完了後に選んだ空きの魅力的なタイルに置かれる。[icon:YIELD_DIPLOMACY] 影響力+4。さらに隣接する自然遺産1つにつき [icon:YIELD_DIPLOMACY] 影響力+10。この原生自然地域が8、16、24タイルに達すると、その土地の産出が増える。都市でプロジェクト「原生自然地域の拡張」を実行するか、居住地の購入リストからゴールドで拡張を購入すると拡張できる。建造物はない。探検の時代は「社会」、近代は「博物学」でアンロック。居住地ごとに1つまで。</Text></Replace>
-        <Replace Tag="LOC_WILDERNESS_AREA_TOOLTIP" Language="ja_JP"><Text>「原生自然地域の設立」で、居住地が所有する空きの魅力的なタイルに設立する。</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_DESCRIPTION" Language="ja_JP"><Text>原生自然地域の設立タイル。「原生自然地域の設立」の完了後に選んだ空きタイル(魅力的な平地または丘陵の土地、あるいは水域)に置かれる。[icon:YIELD_DIPLOMACY] 影響力+7(原生自然地域の土地による+3、設立タイルによる+4)。さらに隣接する自然遺産1つにつき [icon:YIELD_DIPLOMACY] 影響力+10。この原生自然地域が8、16、24タイルに達すると、その土地の産出が増える。都市でプロジェクト「原生自然地域の拡張」を実行するか、居住地の購入リストからゴールドで拡張を購入すると拡張できる。建造物はない。探検の時代は「社会」、近代は「博物学」でアンロック。居住地ごとに1つまで。</Text></Replace>
+        <Replace Tag="LOC_WILDERNESS_AREA_TOOLTIP" Language="ja_JP"><Text>「原生自然地域の設立」で、居住地が所有する空きタイル(魅力的な平地または丘陵の土地、あるいは水域)に設立する。</Text></Replace>
         <Replace Tag="LOC_WA_LAND_NAME" Language="ja_JP"><Text>原生自然地域の土地</Text></Replace>
         <Replace Tag="LOC_WA_LAND_DESCRIPTION" Language="ja_JP"><Text>原生自然地域内の土地。タイル本来の産出に加えて [icon:YIELD_DIPLOMACY] 影響力+3をもたらし、その原生自然地域が大きくなるほど増える。8タイルで+4、16タイルで+5、24タイルで+6。失った土地や上に建設された土地はその原生自然地域のタイル数から差し引かれる。資源は引き続き収集される。ここには何も建設できない。</Text></Replace>
         <Replace Tag="LOC_WA_WILD_NAME" Language="ja_JP"><Text>原生自然地域の奥地</Text></Replace>
@@ -20,11 +20,11 @@
         <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_NAME" Language="ja_JP"><Text>原生自然地域の拡張</Text></Replace>
         <Replace Tag="LOC_WA_NAME_FORMAT" Language="ja_JP"><Text>{1_Name}原生自然地域</Text></Replace>
         <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_EX" Language="ja_JP"><Text>この都市の原生自然地域に隣接するタイルを1つ追加する。追加するタイルはプロジェクト完了後に「土地を選ぶ」ボタンから選ぶ。自分が所有していれば、開けた土地、森林、山岳、湖、河川、海、自然遺産のいずれでもよい。そのタイルの郊外の施設は撤去されるが、資源は引き続き収集される。各タイルは本来の産出に加えて [icon:YIELD_DIPLOMACY] 影響力+3をもたらす。その原生自然地域が8、16、24タイルに達すると、そのすべてのタイルが+4、+5、+6をもたらすようになる。そのタイルには何も建設できない。最大24タイル。</Text></Replace>
-        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO" Language="ja_JP"><Text>この都市の原生自然地域に隣接するタイルを3つ追加する。追加するタイルはプロジェクト完了後に「土地を選ぶ」ボタンから選ぶ。自分が所有していれば、開けた土地、森林、山岳、湖、河川、海、自然遺産のいずれでもよい。それらのタイルの郊外の施設は撤去されるが、資源は引き続き収集される。各タイルは本来の産出に加えて [icon:YIELD_DIPLOMACY] 影響力+3をもたらす。その原生自然地域が8、16、24タイルに達すると、そのすべてのタイルが+4、+5、+6をもたらすようになる。それらのタイルには何も建設できない。最大24タイル。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO" Language="ja_JP"><Text>この都市の原生自然地域に隣接するタイルを1つ追加する。追加するタイルはプロジェクト完了後に「土地を選ぶ」ボタンから選ぶ。自分が所有していれば、開けた土地、森林、山岳、湖、河川、海、自然遺産のいずれでもよい。そのタイルの郊外の施設は撤去されるが、資源は引き続き収集される。各タイルは本来の産出に加えて [icon:YIELD_DIPLOMACY] 影響力+3をもたらす。その原生自然地域が8、16、24タイルに達すると、そのすべてのタイルが+4、+5、+6をもたらすようになる。そのタイルには何も建設できない。最大24タイル。</Text></Replace>
         <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_NAME" Language="ja_JP"><Text>国立公園の拡張</Text></Replace>
         <Replace Tag="LOC_NP_MULTIPLAYER" Language="ja_JP"><Text>ネットワークゲームでは国立公園と原生自然地域は拡張されない。</Text></Replace>
         <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_EX" Language="ja_JP"><Text>この都市の国立公園に隣接するタイルを1つ追加する。追加するタイルはプロジェクト完了後に「土地を選ぶ」ボタンから選ぶ。自分が所有していれば、開けた土地、森林、山岳、湖、河川、海、自然遺産のいずれでもよい。そのタイルの郊外の施設は撤去されるが、資源は引き続き収集される。各タイルは本来の産出に加えて [icon:YIELD_CULTURE] 文化力+1、[icon:YIELD_HAPPINESS] 幸福度+1をもたらす。その国立公園が8、16、24タイルに達するとそのすべてのタイルの産出が増え、最大で [icon:YIELD_CULTURE] 文化力+3、[icon:YIELD_HAPPINESS] 幸福度+2になる。そのタイルには何も建設できない。最大24タイル。</Text></Replace>
-        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" Language="ja_JP"><Text>この都市の国立公園に隣接するタイルを3つ追加する。追加するタイルはプロジェクト完了後に「土地を選ぶ」ボタンから選ぶ。自分が所有していれば、開けた土地、森林、山岳、湖、河川、海、自然遺産のいずれでもよい。それらのタイルの郊外の施設は撤去されるが、資源は引き続き収集される。各タイルは本来の産出に加えて [icon:YIELD_CULTURE] 文化力+1、[icon:YIELD_HAPPINESS] 幸福度+1をもたらす。その国立公園が8、16、24タイルに達するとそのすべてのタイルの産出が増え、最大で [icon:YIELD_CULTURE] 文化力+3、[icon:YIELD_HAPPINESS] 幸福度+2になる。それらのタイルには何も建設できない。最大24タイル。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO" Language="ja_JP"><Text>この都市の国立公園に隣接するタイルを1つ追加する。追加するタイルはプロジェクト完了後に「土地を選ぶ」ボタンから選ぶ。自分が所有していれば、開けた土地、森林、山岳、湖、河川、海、自然遺産のいずれでもよい。そのタイルの郊外の施設は撤去されるが、資源は引き続き収集される。各タイルは本来の産出に加えて [icon:YIELD_CULTURE] 文化力+1、[icon:YIELD_HAPPINESS] 幸福度+1をもたらす。その国立公園が8、16、24タイルに達するとそのすべてのタイルの産出が増え、最大で [icon:YIELD_CULTURE] 文化力+3、[icon:YIELD_HAPPINESS] 幸福度+2になる。そのタイルには何も建設できない。最大24タイル。</Text></Replace>
         <Replace Tag="LOC_NP_PARK_NAME_FORMAT" Language="ja_JP"><Text>{1_Name}国立公園</Text></Replace>
         <Replace Tag="LOC_NP_PARK_NAME_ORDINAL" Language="ja_JP"><Text>{1_Name} {2_Ordinal}</Text></Replace>
         <Replace Tag="LOC_OPTIONS_GROUP_NATIONAL_PARK" Language="ja_JP"><Text>国立公園</Text></Replace>
@@ -62,14 +62,14 @@
         <Replace Tag="LOC_NP_PICKER_RENAME_TIP" Language="ja_JP"><Text>名前を変更する</Text></Replace>
         <Replace Tag="LOC_NP_TILE_IS_PARKLAND" Language="ja_JP"><Text>このタイルは国立公園または原生自然地域に属しているため、建設できない。</Text></Replace>
         <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_NAME" Language="ja_JP"><Text>国立公園の設立</Text></Replace>
-        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION" Language="ja_JP"><Text>この居住地に国立公園を設立する。完了後に「土地を選ぶ」を押し、居住地が所有する空きの魅力的な平地または丘陵のタイルを選ぶ。区域、施設、建造物のないタイルに限る。そのタイルの資源は引き続き収集される。[icon:YIELD_HAPPINESS] 幸福度+4。自然遺産に隣接していればさらに増える。居住地ごとに1つまで。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION" Language="ja_JP"><Text>この居住地に4タイルの国立公園を設立する。完了後に「土地を選ぶ」を押し、設立するタイルを選ぶ。居住地が所有する空きタイルで、魅力的な平地または丘陵の土地か、任意の水域(沿岸、湖、外洋)であり、区域、施設、建造物のないタイルに限る。続いて、その隣のタイルをさらに3つ選ぶ。設立タイルの資源は引き続き収集される。[icon:YIELD_HAPPINESS] 幸福度+5、文化力+1。自然遺産に隣接していればさらに増える。居住地ごとに1つまで。</Text></Replace>
         <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_NAME" Language="ja_JP"><Text>原生自然地域の設立</Text></Replace>
-        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION" Language="ja_JP"><Text>この居住地に原生自然地域を設立する。完了後に「土地を選ぶ」を押し、居住地が所有する空きの魅力的な平地または丘陵のタイルを選ぶ。区域、施設、建造物のないタイルに限る。そのタイルの資源は引き続き収集される。[icon:YIELD_DIPLOMACY] 影響力+4。自然遺産に隣接していればさらに増える。居住地ごとに1つまで。</Text></Replace>
-        <Replace Tag="LOC_NP_FOUND_NO_LAND" Language="ja_JP"><Text>この居住地には、空きの魅力的な平地または丘陵のタイルがありません。</Text></Replace>
+        <Replace Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION" Language="ja_JP"><Text>この居住地に4タイルの原生自然地域を設立する。完了後に「土地を選ぶ」を押し、設立するタイルを選ぶ。居住地が所有する空きタイルで、魅力的な平地または丘陵の土地か、任意の水域(沿岸、湖、外洋)であり、区域、施設、建造物のないタイルに限る。続いて、その隣のタイルをさらに3つ選ぶ。設立タイルの資源は引き続き収集される。[icon:YIELD_DIPLOMACY] 影響力+7。自然遺産に隣接していればさらに増える。居住地ごとに1つまで。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NO_LAND" Language="ja_JP"><Text>この居住地には、空きの水域タイルも、空きの魅力的な平地または丘陵のタイルもありません。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_TITLE" Language="ja_JP"><Text>{1_Settlement}: 新しい国立公園</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PICKER_TITLE" Language="ja_JP"><Text>{1_Settlement}: 新しい原生自然地域</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PICKER_HINT" Language="ja_JP"><Text>光っているタイルをクリックし、「確定」を押してください。</Text></Replace>
-        <Replace Tag="LOC_NP_FOUND_NONE" Language="ja_JP"><Text>この居住地には現在、空きの魅力的な平地または丘陵のタイルがありません。新しい公園は、空きができるまで待機します。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_NONE" Language="ja_JP"><Text>この居住地には現在、空きの水域タイルも、空きの魅力的な平地または丘陵のタイルもありません。新しい公園は、空きができるまで待機します。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_CANCEL" Language="ja_JP"><Text>取りやめて{1_Gold}ゴールドを取り戻す</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_TITLE" Language="ja_JP"><Text>ゴールドの返還</Text></Replace>
         <Replace Tag="LOC_NP_REFUND_DUPLICATE" Language="ja_JP"><Text>この居住地にはすでに同じ種類の公園があるか、土地を待っている公園があるため、完了したプロジェクトでは何も設立されませんでした。費用として{1_Gold} [icon:YIELD_GOLD] ゴールドが返還されました。</Text></Replace>
@@ -79,8 +79,8 @@
         <Replace Tag="LOC_NP_REFUND_NO_PARK" Language="ja_JP"><Text>この居住地には拡張できる公園がなくなったため、完了した拡張では何も追加されませんでした。費用として{1_Gold} [icon:YIELD_GOLD] ゴールドが返還されました。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT" Language="ja_JP"><Text>{1_Settlement}: 国立公園の設立地を選んでください</Text></Replace>
         <Replace Tag="LOC_WA_FOUND_PROMPT" Language="ja_JP"><Text>{1_Settlement}: 原生自然地域の設立地を選んでください</Text></Replace>
-        <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="ja_JP"><Text>国立公園の設立が承認されました。この居住地が所有する空きの魅力的なタイルを選んで設立地を決めてください。後で周囲の土地へ広げられます。</Text></Replace>
-        <Replace Tag="LOC_WA_FOUND_OFFER_BODY" Language="ja_JP"><Text>原生自然地域の設立が承認されました。この居住地が所有する空きの魅力的なタイルを選んで設立地を決めてください。後で周囲の原生の土地へ広げられます。</Text></Replace>
+        <Replace Tag="LOC_NP_FOUND_OFFER_BODY" Language="ja_JP"><Text>国立公園の設立が承認されました。この居住地が所有する空きタイル(魅力的な土地または水域)を選んで設立地を決め、続いてその隣のタイルをさらに3つ選んでください。後で周囲の土地へ広げられます。</Text></Replace>
+        <Replace Tag="LOC_WA_FOUND_OFFER_BODY" Language="ja_JP"><Text>原生自然地域の設立が承認されました。この居住地が所有する空きタイル(魅力的な土地または水域)を選んで設立地を決め、続いてその隣のタイルをさらに3つ選んでください。後で周囲の原生の土地へ広げられます。</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_PROMPT_BUTTON_TIP" Language="ja_JP"><Text>設立するタイルを選ぶ</Text></Replace>
         <Replace Tag="LOC_NP_FOUND_LATER_TIP" Language="ja_JP"><Text>設立を後のターンに回します。保留されたままになります</Text></Replace>
         <Replace Tag="LOC_NP_PROMPT_BODY" Language="ja_JP"><Text>拡張のためにあと{1_Count}{1_Count: plural other?タイル;}を選んでください</Text></Replace>

@@ -14,7 +14,7 @@
 
 // The code is split by what it does; this file re-exports it under the names the rest of the mod imports.
 export { KINDS, kindOf, kindByImprovement, kindByProject, kindByFoundProject, PARK_TYPE, PARK_TYPES, PROJECT_TYPE,
-  PROJECT_TYPES, MARKER_TYPES, tilesPerExpansion, MAX_PARK_TILES, limits, isFull, room, RING, safe, log,
+  PROJECT_TYPES, MARKER_TYPES, tilesPerExpansion, FOUNDING_TILES, MAX_PARK_TILES, limits, isFull, room, RING, safe, log,
   isMarkerType, KEPT_IMPROVEMENTS, isParkCompatible, MILESTONES, milestoneLevel, landMarker, setReadOnly, isReadOnly,
   landPayout, isRuralImprovement, hash01, autoplaying } from "./np-core-base.js";
 export { idx, locOf, ringOf, terrainOf, biomeOf, featureOf, ownerOf, isWater, isMountain, isLake, isRiver,

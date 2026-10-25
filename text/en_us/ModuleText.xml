@@ -5,7 +5,7 @@
             <Text>National Parks</Text>
         </Row>
         <Row Tag="LOC_MOD_NATIONAL_PARK_DESCRIPTION">
-            <Text>Adds National Parks and Wilderness Areas, from the Exploration Age on. Found one on an empty, Charming tile a city or town owns, then expand it tile by tile over the land around it: mountains, forests, lakes, rivers, the sea and natural wonders. National Parks give Culture and Happiness and have a warden's lodge and cabins; Wilderness Areas give Influence and have no buildings. Each park's tiles give more as that park reaches 8, 16 and 24 tiles. Each park is drawn with walls, trees and wildlife to match its land. Works with Geographic Labels. Single-player and hotseat.</Text>
+            <Text>Adds National Parks and Wilderness Areas, from the Exploration Age on. Found one on an empty tile a city or town owns, Charming land or open water, with 3 more tiles around it to choose, then expand it tile by tile over the land around it: mountains, forests, lakes, rivers, the sea and natural wonders. National Parks give Culture and Happiness and have a warden's lodge and cabins; Wilderness Areas give Influence and have no buildings. Each park's tiles give more as that park reaches 8, 16 and 24 tiles. Each park is drawn with walls, trees and wildlife to match its land. Works with Geographic Labels. Single-player and hotseat.</Text>
         </Row>
 
         <!-- The founding improvement -->
@@ -13,10 +13,10 @@
             <Text>National Park</Text>
         </Row>
         <Row Tag="LOC_BUILDING_NATIONAL_PARK_DESCRIPTION">
-            <Text>The founding tile of a National Park, placed on the empty, Charming tile you choose after Found National Park. +4 [icon:YIELD_HAPPINESS] Happiness, plus +5 [icon:YIELD_HAPPINESS] Happiness and +5 [icon:YIELD_CULTURE] Culture for each adjacent natural wonder. Its land gives more as the park reaches 8, 16 and 24 tiles. Expand it with the Expand National Park project in a city, or buy an expansion with Gold from the settlement's purchase list. Unlocked by Society in the Exploration Age or Natural History in the Modern Age. One per settlement.</Text>
+            <Text>The founding tile of a National Park, placed on the empty tile you choose after Found National Park: Charming flat or hill land, or water. +5 [icon:YIELD_HAPPINESS] Happiness and +1 Culture (the park land's +1 Culture and +1 Happiness, and +4 Happiness for the founding tile), plus +5 [icon:YIELD_HAPPINESS] Happiness and +5 [icon:YIELD_CULTURE] Culture for each adjacent natural wonder. Its land gives more as the park reaches 8, 16 and 24 tiles. Expand it with the Expand National Park project in a city, or buy an expansion with Gold from the settlement's purchase list. Unlocked by Society in the Exploration Age or Natural History in the Modern Age. One per settlement.</Text>
         </Row>
         <Row Tag="LOC_BUILDING_NATIONAL_PARK_TOOLTIP">
-            <Text>Founded with Found National Park, on an empty, Charming tile the settlement owns.</Text>
+            <Text>Founded with Found National Park, on an empty tile the settlement owns: Charming flat or hill land, or water.</Text>
         </Row>
 
         <!-- Park land markers: one per tile a park has taken -->
@@ -38,10 +38,10 @@
             <Text>Wilderness Area</Text>
         </Row>
         <Row Tag="LOC_WILDERNESS_AREA_DESCRIPTION">
-            <Text>The founding tile of a Wilderness Area, placed on the empty, Charming tile you choose after Found Wilderness Area. +4 [icon:YIELD_DIPLOMACY] Influence, plus +10 [icon:YIELD_DIPLOMACY] Influence for each adjacent natural wonder. Its land gives more as the area reaches 8, 16 and 24 tiles. Expand it with the Expand Wilderness Area project in a city, or buy an expansion with Gold from the settlement's purchase list. Has no buildings. Unlocked by Society in the Exploration Age or Natural History in the Modern Age. One per settlement.</Text>
+            <Text>The founding tile of a Wilderness Area, placed on the empty tile you choose after Found Wilderness Area: Charming flat or hill land, or water. +7 [icon:YIELD_DIPLOMACY] Influence (the area's land +3, and +4 for the founding tile), plus +10 [icon:YIELD_DIPLOMACY] Influence for each adjacent natural wonder. Its land gives more as the area reaches 8, 16 and 24 tiles. Expand it with the Expand Wilderness Area project in a city, or buy an expansion with Gold from the settlement's purchase list. Has no buildings. Unlocked by Society in the Exploration Age or Natural History in the Modern Age. One per settlement.</Text>
         </Row>
         <Row Tag="LOC_WILDERNESS_AREA_TOOLTIP">
-            <Text>Founded with Found Wilderness Area, on an empty, Charming tile the settlement owns.</Text>
+            <Text>Founded with Found Wilderness Area, on an empty tile the settlement owns: Charming flat or hill land, or water.</Text>
         </Row>
         <Row Tag="LOC_WA_LAND_NAME">
             <Text>Wilderness Area land</Text>
@@ -65,7 +65,7 @@
             <Text>Adds 1 tile next to this city's Wilderness Area. You choose it with the Choose land button once the project finishes: open land, forest, mountains, lakes, rivers, the sea or a natural wonder, as long as you own it. Rural improvements on it are removed; resources stay collected. Each tile gives +3 [icon:YIELD_DIPLOMACY] Influence on top of its own yields; when the Wilderness Area reaches 8, 16 and 24 tiles, every tile of it gives +4, +5 and then +6. Nothing can be built on it. Up to 24 tiles.</Text>
         </Row>
         <Row Tag="LOC_PROJECT_EXPAND_WILDERNESS_AREA_DESCRIPTION_MO">
-            <Text>Adds 3 tiles next to this city's Wilderness Area. You choose them with the Choose land button once the project finishes: open land, forest, mountains, lakes, rivers, the sea or natural wonders, as long as you own them. Rural improvements on them are removed; resources stay collected. Each tile gives +3 [icon:YIELD_DIPLOMACY] Influence on top of its own yields; when the Wilderness Area reaches 8, 16 and 24 tiles, every tile of it gives +4, +5 and then +6. Nothing can be built on them. Up to 24 tiles.</Text>
+            <Text>Adds 1 tile next to this city's Wilderness Area. You choose it with the Choose land button once the project finishes: open land, forest, mountains, lakes, rivers, the sea or a natural wonder, as long as you own it. Rural improvements on it are removed; resources stay collected. Each tile gives +3 [icon:YIELD_DIPLOMACY] Influence on top of its own yields; when the Wilderness Area reaches 8, 16 and 24 tiles, every tile of it gives +4, +5 and then +6. Nothing can be built on it. Up to 24 tiles.</Text>
         </Row>
 
         <!-- The expansion project -->
@@ -79,7 +79,7 @@
             <Text>Adds 1 tile next to this city's National Park. You choose it with the Choose land button once the project finishes: open land, forest, mountains, lakes, rivers, the sea or a natural wonder, as long as you own it. Rural improvements on it are removed; resources stay collected. Each tile gives +1 [icon:YIELD_CULTURE] Culture and +1 [icon:YIELD_HAPPINESS] Happiness on top of its own yields; when the National Park reaches 8, 16 and 24 tiles, every tile of it gives more, up to +3 [icon:YIELD_CULTURE] Culture and +2 [icon:YIELD_HAPPINESS] Happiness. Nothing can be built on it. Up to 24 tiles.</Text>
         </Row>
         <Row Tag="LOC_PROJECT_EXPAND_NATIONAL_PARK_DESCRIPTION_MO">
-            <Text>Adds 3 tiles next to this city's National Park. You choose them with the Choose land button once the project finishes: open land, forest, mountains, lakes, rivers, the sea or natural wonders, as long as you own them. Rural improvements on them are removed; resources stay collected. Each tile gives +1 [icon:YIELD_CULTURE] Culture and +1 [icon:YIELD_HAPPINESS] Happiness on top of its own yields; when the National Park reaches 8, 16 and 24 tiles, every tile of it gives more, up to +3 [icon:YIELD_CULTURE] Culture and +2 [icon:YIELD_HAPPINESS] Happiness. Nothing can be built on them. Up to 24 tiles.</Text>
+            <Text>Adds 1 tile next to this city's National Park. You choose it with the Choose land button once the project finishes: open land, forest, mountains, lakes, rivers, the sea or a natural wonder, as long as you own it. Rural improvements on it are removed; resources stay collected. Each tile gives +1 [icon:YIELD_CULTURE] Culture and +1 [icon:YIELD_HAPPINESS] Happiness on top of its own yields; when the National Park reaches 8, 16 and 24 tiles, every tile of it gives more, up to +3 [icon:YIELD_CULTURE] Culture and +2 [icon:YIELD_HAPPINESS] Happiness. Nothing can be built on it. Up to 24 tiles.</Text>
         </Row>
 
         <!-- Park names. {1_Name} is a place name from Geographic Labels or the map. -->
@@ -203,16 +203,16 @@
             <Text>Found National Park</Text>
         </Row>
         <Row Tag="LOC_PROJECT_FOUND_NATIONAL_PARK_DESCRIPTION">
-            <Text>Founds a National Park in this settlement. When it is done, press Choose land and pick an empty, Charming flat or hill tile the settlement owns: no district, improvement or building on it. A resource on it stays collected. +4 [icon:YIELD_HAPPINESS] Happiness, and more next to a natural wonder. One per settlement.</Text>
+            <Text>Founds a National Park of 4 tiles in this settlement. When it is done, press Choose land and pick the tile to found it on: an empty tile the settlement owns, either Charming flat or hill land or any water (coast, lake or ocean), with no district, improvement or building on it. Then choose 3 more tiles beside it. A resource on it stays collected. +5 [icon:YIELD_HAPPINESS] Happiness and +1 Culture, and more next to a natural wonder. One per settlement.</Text>
         </Row>
         <Row Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_NAME">
             <Text>Found Wilderness Area</Text>
         </Row>
         <Row Tag="LOC_PROJECT_FOUND_WILDERNESS_AREA_DESCRIPTION">
-            <Text>Founds a Wilderness Area in this settlement. When it is done, press Choose land and pick an empty, Charming flat or hill tile the settlement owns: no district, improvement or building on it. A resource on it stays collected. +4 [icon:YIELD_DIPLOMACY] Influence, and more next to a natural wonder. One per settlement.</Text>
+            <Text>Founds a Wilderness Area of 4 tiles in this settlement. When it is done, press Choose land and pick the tile to found it on: an empty tile the settlement owns, either Charming flat or hill land or any water (coast, lake or ocean), with no district, improvement or building on it. Then choose 3 more tiles beside it. A resource on it stays collected. +7 [icon:YIELD_DIPLOMACY] Influence, and more next to a natural wonder. One per settlement.</Text>
         </Row>
         <Row Tag="LOC_NP_FOUND_NO_LAND">
-            <Text>This settlement owns no empty, Charming flat or hill tile.</Text>
+            <Text>This settlement doesn't have an empty water tile or an empty, Charming flat or hill tile.</Text>
         </Row>
         <Row Tag="LOC_NP_FOUND_PICKER_TITLE">
             <Text>{1_Settlement}: new National Park</Text>
@@ -224,7 +224,7 @@
             <Text>Click a lit tile, then Confirm.</Text>
         </Row>
         <Row Tag="LOC_NP_FOUND_NONE">
-            <Text>This settlement owns no empty, Charming flat or hill tile right now. The new park waits until one is free.</Text>
+            <Text>This settlement doesn't have an empty water tile or an empty, Charming flat or hill tile right now. The new park waits until one is free.</Text>
         </Row>
         <Row Tag="LOC_NP_FOUND_CANCEL">
             <Text>Cancel it and take back {1_Gold} Gold</Text>
@@ -254,10 +254,10 @@
             <Text>{1_Settlement}: choose where to found the Wilderness Area</Text>
         </Row>
         <Row Tag="LOC_NP_FOUND_OFFER_BODY">
-            <Text>The National Park has been approved. Choose an empty, Charming tile this settlement owns to found it on; it can grow over the land around it later.</Text>
+            <Text>The National Park has been approved. Choose an empty tile this settlement owns to found it on, Charming land or water, then 3 more tiles beside it; it can grow over the land around it later.</Text>
         </Row>
         <Row Tag="LOC_WA_FOUND_OFFER_BODY">
-            <Text>The Wilderness Area has been approved. Choose an empty, Charming tile this settlement owns to found it on; it can grow over the wild land around it later.</Text>
+            <Text>The Wilderness Area has been approved. Choose an empty tile this settlement owns to found it on, Charming land or water, then 3 more tiles beside it; it can grow over the wild land around it later.</Text>
         </Row>
         <Row Tag="LOC_NP_FOUND_PROMPT_BUTTON_TIP">
             <Text>Choose the tile to found it on</Text>

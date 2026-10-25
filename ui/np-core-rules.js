@@ -11,20 +11,22 @@ import { MAX_TRIES, failed, failures, inSequence, isSettling, markTile, stillPar
   stripImprovements } from "./np-core-writes.js";
 
 /**
- * The rule for a founding tile, on facts read from the map (pure): empty, Charming land the settlement itself holds.
- * Empty means nothing man-made on it: no district, no improvement, no building. A resource or a feature (forest, marsh)
- * is natural and does not bar it. The founding tile carries the park's buildings, so it is flat or hill land, not
- * water, a mountain or a natural wonder; those can join the park afterwards. Charming is the game's own appeal tier.
+ * The rule for a founding tile, on facts read from the map (pure): an empty tile the settlement itself holds, Charming
+ * land or any water. Empty means nothing man-made on it: no district, no improvement, no building. A resource or a
+ * feature (forest, marsh) is natural and does not bar it. Land is flat or hill, not a mountain or a natural wonder;
+ * those can join the park afterwards. Charming is the game's own appeal tier, which open water never reaches (it reads
+ * 0), so water is taken as it is: coast, lake or open ocean, not a navigable river. A park founded on water has its
+ * lodge on its first land (np-plan.js lodgeTile).
  */
 export function foundable(f) {
-  if (f.taken || f.stray || !f.ownCity || !f.charming) return false;
+  if (f.taken || f.stray || !f.ownCity || !(f.water || f.charming)) return false;
   return foundingGround(f) && !f.district && !f.items;
 }
 
-/** Flat or hill land, not water, a mountain or a natural wonder. */
+/** Water, or flat or hill land; not a mountain or a natural wonder. */
 function foundingGround(f) {
-  if (f.water || f.mountain || f.wonder) return false;
-  return f.terrain === "TERRAIN_FLAT" || f.terrain === "TERRAIN_HILL";
+  if (f.mountain || f.wonder) return false;
+  return f.water || f.terrain === "TERRAIN_FLAT" || f.terrain === "TERRAIN_HILL";
 }
 
 /** The facts `foundable` reads, for plot i and the settlement `city`. */
@@ -34,12 +36,13 @@ export function foundFacts(i, city, taken) {
   const refused = (failures.get(i) || 0) >= MAX_TRIES;
   return { taken: taken.has(i) || isSettling(i) || refused, stray: plot.stray > 0,
     ownCity: sameCity(tileCityOf(i), city),
-    water: isWater(i) || isLake(i) || isNavRiver(i), mountain: isMountain(i), wonder: isWonder(i),
+    water: isWater(i) || isLake(i), mountain: isMountain(i), wonder: isWonder(i),
     terrain: terrainOf(i),
     district: hasDistrict(i), items: plot.items.length, charming: charmingAt(i) };
 }
 
-/** Plots a settlement may found a park on now: every empty, Charming flat or hill tile it holds, in plot order. */
+/** Plots a settlement may found a park on now: every empty water tile or Charming flat or hill tile it holds, in plot
+ *  order. */
 export function foundingTiles(city) {
   if (!city) return [];
   const taken = allParkTiles();

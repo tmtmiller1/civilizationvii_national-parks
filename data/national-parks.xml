@@ -10,8 +10,10 @@
   IMPROVEMENT_WILDERNESS_AREA is its twin: the same founding and growth, paid in Influence (+4, and +10 for each
   adjacent natural wonder) instead of Happiness and Culture, and drawn without houses or shelters.
 
-  Reward on the founding tile: Happiness always, plus Happiness and Culture for every adjacent natural wonder
-  through AdjacentNaturalWonder on the mod's own Adjacency_YieldChanges rows.
+  Reward on the founding tile: the park land's own +1 Culture +1 Happiness (+3 Influence in a Wilderness Area), so it
+  shows the same icons as the rest of the park, and +4 Happiness (+4 Influence) on top, plus Happiness and Culture for
+  every adjacent natural wonder through AdjacentNaturalWonder on the mod's own Adjacency_YieldChanges rows. The land's
+  share is the base level's; the size levels step up the land markers only.
 
   The Constructibles rows are in the per-age files with their civic unlocks (which show the park in the civics tree
   and gate the Found projects); everything else here is shared by both ages. The improvement has no art of its own
@@ -36,11 +38,17 @@
         <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" TerrainType="TERRAIN_HILL"/>
         <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" TerrainType="TERRAIN_FLAT"/>
         <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" TerrainType="TERRAIN_HILL"/>
+        <!-- A park may be founded on water too: coast, lake (coast terrain) or open ocean. -->
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" TerrainType="TERRAIN_COAST"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" TerrainType="TERRAIN_OCEAN"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" TerrainType="TERRAIN_COAST"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" TerrainType="TERRAIN_OCEAN"/>
     </Constructible_ValidTerrains>
 
     <Constructible_YieldChanges>
-        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" YieldType="YIELD_HAPPINESS" YieldChange="4"/>
-        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" YieldType="YIELD_DIPLOMACY" YieldChange="4"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" YieldType="YIELD_HAPPINESS" YieldChange="5"/>
+        <Row ConstructibleType="IMPROVEMENT_NATIONAL_PARK" YieldType="YIELD_CULTURE" YieldChange="1"/>
+        <Row ConstructibleType="IMPROVEMENT_WILDERNESS_AREA" YieldType="YIELD_DIPLOMACY" YieldChange="7"/>
     </Constructible_YieldChanges>
 
     <Constructible_Maintenances>
