@@ -20,7 +20,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_TITLE" Language="zh_Hant_HK"><Text>為什麼我無法建造公園？</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_PARA_1" Language="zh_Hant_HK"><Text>你需要探索時代的「社會」市政或近代的「自然歷史」市政、一個尚未擁有該類型公園的聚落，以及一個該聚落擁有的空置格位，可以是魅力為迷人或壯麗的平坦或丘陵格位，也可以是任何水域格位：其上不能有區域、改良設施或建築。若該市政是在模組加入遊戲之前研究完成的，則不會提供公園。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_TITLE" Language="zh_Hant_HK"><Text>為什麼我的公園無法擴展？</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="zh_Hant_HK"><Text>公園只會納入其擁有者已擁有、且與公園相鄰的格位。若擴展完成時沒有這樣的格位，你會收到通知，這些格位會保留到有可用的土地為止。公園最多24個格位。在網路遊戲中公園無法擴展。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="zh_Hant_HK"><Text>公園會納入與其相鄰、你擁有的格位，以及距離其聚落不超過6個格位、無人擁有的格位；後者會歸你所有。若擴展完成時沒有這樣的格位，你會收到通知，這些格位會保留到有可用的土地為止。公園最多24個格位。在網路遊戲中公園無法擴展。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_TITLE" Language="zh_Hant_HK"><Text>國家公園還是荒野保護區？</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_PARA_1" Language="zh_Hant_HK"><Text>國家公園提供[icon:YIELD_CULTURE]文化值和[icon:YIELD_HAPPINESS]幸福感；荒野保護區提供[icon:YIELD_DIPLOMACY]影響力。兩者每個格位的價值大致相同。一個聚落可以兩者都建造。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_TITLE" Language="zh_Hant_HK"><Text>我會失去什麼？</Text></Replace>
@@ -56,7 +56,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_TITLE" Language="zh_Hant_HK"><Text>保留的格位</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_PARA_1" Language="zh_Hant_HK"><Text>有格位待放置時，畫面頂端的[B]選擇土地[/B]按鈕可重新開啟選擇器。保留的格位會帶入下一個時代。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_TITLE" Language="zh_Hant_HK"><Text>可加入的格位</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>任何你擁有且與公園相鄰的鄉村格位：空曠土地、森林、山地、湖泊、河流、海洋與自然奇觀。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>任何與公園相鄰的鄉村格位，只要是你擁有的，或無人擁有且距離其聚落不超過6個格位：空曠土地、森林、山地、湖泊、河流、海洋與自然奇觀。納入無人擁有的土地會使其歸你的聚落所有，因此公園可以把你的邊境擴展到通常的第三環以外。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_TITLE" Language="zh_Hant_HK"><Text>資源</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_PARA_1" Language="zh_Hant_HK"><Text>有資源的格位會直接加入，不會詢問，且資源仍會持續收集。公園會取代原本收集該資源的種植園、營地或漁船。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_IMPROVE_TITLE" Language="zh_Hant_HK"><Text>改良設施</Text></Replace>

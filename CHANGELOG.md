@@ -3,6 +3,16 @@
 All notable changes to National Parks are documented here. This project follows
 semantic versioning.
 
+## [1.3.1] - 2026-10-25
+
+- A park can claim land that nobody holds. When you choose its tiles, unclaimed land beside it lights up too, out to
+  ring 6 from its settlement, and taking a tile makes it the settlement's land as well as the park's. It costs the
+  same as any other tile. Another player's or an independent power's land stays theirs. An AI's park takes its own
+  land first and claims when the wilder land lies past its border.
+- The quotes on the park pop-ups rotate: each time the same kind of pop-up comes up, it shows the next quote in its
+  set, so you'll see them all. Before, the same moment always showed the same quote, and most never came up.
+- The Expand descriptions, the Civilopedia and the README say which land a park can take, in every language.
+
 ## [1.3.0] - 2026-10-25
 
 - A new park starts with 4 tiles. Found National Park or Found Wilderness Area costs what it did, and after you pick

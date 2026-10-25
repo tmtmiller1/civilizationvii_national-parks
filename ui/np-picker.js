@@ -22,7 +22,7 @@
 
 import ChoosePlotInterfaceMode from "/base-standard/ui/interface-modes/interface-mode-choose-plot.js";
 import { addTile, allParkTiles, canJoin, connectedSelection, displayName, eligibleTiles, foundPark, foundingById,
-  foundingTiles, idx, joinFacts, kindOf, limits, locOf, log, needsConfirm, parkById, ringOf, room, safe,
+  foundingTiles, idx, joinFacts, kindOf, limits, locOf, log, needsConfirm, parkById, reachFrom, ringOf, room, safe,
   save } from "./np-core.js";
 import { buttonRow, overlayFrame } from "./np-dialog.js";
 import { drawPark } from "./np-draw.js";
@@ -77,10 +77,10 @@ class NpAddTilesMode extends ChoosePlotInterfaceMode {
     const park = this.park;
     if (!park) { this.candidates = []; return; }
     if (this.selected.length >= this.allowance) { this.candidates = []; return; }
-    const taken = allParkTiles();
+    const taken = allParkTiles(), from = reachFrom(park);
     for (const t of this.selected) taken.add(t);
     const out = new Set(eligibleTiles(park));
-    for (const t of this.selected) for (const n of ringOf(t)) if (canJoin(n, park.owner, taken)) out.add(n);
+    for (const t of this.selected) for (const n of ringOf(t)) if (canJoin(n, park.owner, taken, from)) out.add(n);
     for (const t of this.selected) out.delete(t);
     this.candidates = [...out];
   }

@@ -2,19 +2,28 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { QUOTE_POOLS, seedIndex, quoteTag } from "../ui/np-quotes.js";
+import { QUOTE_POOLS, seedIndex, nextQuote } from "../ui/np-quotes.js";
 import { splitQuote, quoteRows, composeBody, eyebrowLine } from "../ui/np-dialog.js";
 
 const english = readFileSync(new URL("../text/en_us/ModuleText.xml", import.meta.url), "utf8");
 
-test("quotes: a moment always gets the same quote, and every pool's quotes have text", () => {
+test("quotes: every pool's quotes have text", () => {
   for (const [pool, n] of Object.entries(QUOTE_POOLS)) {
     assert.ok(n > 0, `${pool} is empty`);
-    assert.equal(quoteTag(pool, "found|7"), quoteTag(pool, "found|7"));
     for (let i = 1; i <= n; i++) assert.ok(english.includes(`Tag="LOC_NP_QUOTE_${pool}_${i}"`), `LOC_NP_QUOTE_${pool}_${i}`);
     assert.ok(!english.includes(`Tag="LOC_NP_QUOTE_${pool}_${n + 1}"`), `${pool} counts fewer quotes than it has`);
   }
-  assert.equal(quoteTag("NONE", "x"), "");
+  assert.equal(nextQuote("NONE", undefined, "x").tag, "");
+});
+
+test("quotes: the same kind of pop-up rotates through its whole pool before a quote comes back", () => {
+  for (const [pool, n] of Object.entries(QUOTE_POOLS)) {
+    let seen;
+    const tags = [];
+    for (let k = 0; k < n + 1; k++) { const r = nextQuote(pool, seen, "found|7|12"); tags.push(r.tag); seen = r.seen; }
+    assert.equal(new Set(tags.slice(0, n)).size, n, `${pool}: every quote once in ${n} showings`);
+    assert.equal(tags[n], tags[0], `${pool}: then round again`);
+  }
 });
 
 test("quotes: seeds spread over a pool", () => {

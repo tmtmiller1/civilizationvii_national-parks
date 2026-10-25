@@ -7,7 +7,7 @@
    ],
    [
     "log",
-    "v1.3.0 active: parks founded on empty land and grown with Expand National Park"
+    "v1.3.1 active: parks founded on empty land and grown with Expand National Park"
    ]
   ],
   "draws": {
@@ -268,7 +268,10 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
     "pending": 3,
     "autoName": "",
@@ -276,7 +279,10 @@
     "founded": 1,
     "districts": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ]
    }
   ],
@@ -301,7 +307,7 @@
   "trace": [
    [
     "log",
-    "AI park 7 took 1 tile(s)"
+    "AI park 7 took 3 tile(s)"
    ],
    [
     "grant",
@@ -316,6 +322,20 @@
    [
     "log",
     "AI park 1 took 1 tile(s)"
+   ],
+   [
+    "grant",
+    2,
+    "YIELD_GOLD",
+    -400
+   ],
+   [
+    "log",
+    "AI park 7: expansion bought for 400 Gold (gain 9/turn, pays back in 22 turns)"
+   ],
+   [
+    "log",
+    "AI park 7 took 1 tile(s)"
    ],
    [
     "grant",
@@ -352,6 +372,18 @@
     "sweep (turn): 5 park(s)"
    ],
    [
+    "buy",
+    37
+   ],
+   [
+    "buy",
+    25
+   ],
+   [
+    "buy",
+    12
+   ],
+   [
     "request",
     "CREATE_ELEMENT",
     "DISTRICT",
@@ -380,6 +412,14 @@
     39
    ],
    [
+    "log",
+    "park 7: plot 37 claimed for its settlement"
+   ],
+   [
+    "log",
+    "park 7: plot 25 claimed for its settlement"
+   ],
+   [
     "request",
     "CREATE_ELEMENT",
     "DISTRICT",
@@ -395,19 +435,65 @@
    ],
    [
     "log",
+    "park 7: plot 12 claimed for its settlement"
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    37
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    37
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    25
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    25
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "DISTRICT",
+    "DISTRICT_RURAL",
+    12
+   ],
+   [
+    "request",
+    "CREATE_ELEMENT",
+    "CONSTRUCTIBLE",
+    "IMPROVEMENT_NATIONAL_PARK_LAND",
+    12
+   ],
+   [
+    "log",
     "dialog: DialogBoxManager.createDialog_MultiOption unavailable"
    ]
   ],
   "draws": {
    "count": {
-    "clear": 16,
-    "setPlotGroups": 3,
-    "addModelAtPlot": 241,
-    "addVFXAtPlot": 19,
+    "clear": 20,
+    "setPlotGroups": 4,
+    "addModelAtPlot": 355,
+    "addVFXAtPlot": 20,
     "addBorderOverlay": 1,
     "clearAll": 1
    },
-   "digest": "600045b6332b4231"
+   "digest": "5dfa848c0331b845"
   },
   "parks": [
    {
@@ -467,16 +553,23 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
-    "pending": 2,
+    "pending": 0,
     "autoName": "",
     "customName": "",
     "founded": 1,
     "districts": [
      38,
-     39
-    ]
+     39,
+     37,
+     25,
+     12
+    ],
+    "aiFund": 0
    },
    {
     "id": 9,
@@ -608,16 +701,23 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
-    "pending": 2,
+    "pending": 0,
     "autoName": "",
     "customName": "",
     "founded": 1,
     "districts": [
      38,
-     39
-    ]
+     39,
+     37,
+     25,
+     12
+    ],
+    "aiFund": 0
    },
    {
     "id": 9,
@@ -725,16 +825,23 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
-    "pending": 2,
+    "pending": 0,
     "autoName": "",
     "customName": "",
     "founded": 1,
     "districts": [
      38,
-     39
-    ]
+     39,
+     37,
+     25,
+     12
+    ],
+    "aiFund": 0
    },
    {
     "id": 9,
@@ -842,16 +949,23 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
-    "pending": 2,
+    "pending": 0,
     "autoName": "",
     "customName": "",
     "founded": 1,
     "districts": [
      38,
-     39
-    ]
+     39,
+     37,
+     25,
+     12
+    ],
+    "aiFund": 0
    },
    {
     "id": 9,
@@ -968,16 +1082,23 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
-    "pending": 2,
+    "pending": 0,
     "autoName": "",
     "customName": "",
     "founded": 1,
     "districts": [
      38,
-     39
-    ]
+     39,
+     37,
+     25,
+     12
+    ],
+    "aiFund": 0
    },
    {
     "id": 9,
@@ -1110,16 +1231,23 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
-    "pending": 2,
+    "pending": 0,
     "autoName": "",
     "customName": "",
     "founded": 1,
     "districts": [
      38,
-     39
-    ]
+     39,
+     37,
+     25,
+     12
+    ],
+    "aiFund": 0
    },
    {
     "id": 9,
@@ -1250,16 +1378,23 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
-    "pending": 2,
+    "pending": 0,
     "autoName": "",
     "customName": "",
     "founded": 1,
     "districts": [
      38,
-     39
-    ]
+     39,
+     37,
+     25,
+     12
+    ],
+    "aiFund": 0
    },
    {
     "id": 9,
@@ -1343,6 +1478,26 @@
     "plot 77: marker belongs to no park; removed"
    ],
    [
+    "grant",
+    1,
+    "YIELD_GOLD",
+    -8
+   ],
+   [
+    "log",
+    "AI park 1: 8 Gold set aside for an expansion (8 of 400)"
+   ],
+   [
+    "grant",
+    2,
+    "YIELD_GOLD",
+    -8
+   ],
+   [
+    "log",
+    "AI park 7: 8 Gold set aside for an expansion (8 of 400)"
+   ],
+   [
     "CityOperations",
     "BUILD",
     {
@@ -1362,7 +1517,7 @@
     "request",
     "DESTROY_ELEMENT",
     "CONSTRUCTIBLE",
-    24,
+    30,
     -1
    ]
   ],
@@ -1391,7 +1546,7 @@
      28,
      29
     ],
-    "aiFund": 0
+    "aiFund": 8
    },
    {
     "id": 5,
@@ -1428,16 +1583,23 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
-    "pending": 2,
+    "pending": 0,
     "autoName": "",
     "customName": "",
     "founded": 1,
     "districts": [
      38,
-     39
-    ]
+     39,
+     37,
+     25,
+     12
+    ],
+    "aiFund": 8
    },
    {
     "id": 9,
@@ -1493,6 +1655,26 @@
  "a turn at war": {
   "trace": [
    [
+    "grant",
+    1,
+    "YIELD_GOLD",
+    8
+   ],
+   [
+    "log",
+    "AI park 1: 8 Gold set aside returned (at war)"
+   ],
+   [
+    "grant",
+    2,
+    "YIELD_GOLD",
+    8
+   ],
+   [
+    "log",
+    "AI park 7: 8 Gold set aside returned (at war)"
+   ],
+   [
     "CityOperations",
     "BUILD",
     {
@@ -1571,16 +1753,23 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
-    "pending": 2,
+    "pending": 0,
     "autoName": "",
     "customName": "",
     "founded": 1,
     "districts": [
      38,
-     39
-    ]
+     39,
+     37,
+     25,
+     12
+    ],
+    "aiFund": 0
    },
    {
     "id": 9,
@@ -1706,16 +1895,23 @@
     "anchor": 38,
     "tiles": [
      38,
-     39
+     39,
+     37,
+     25,
+     12
     ],
-    "pending": 2,
+    "pending": 0,
     "autoName": "",
     "customName": "",
     "founded": 1,
     "districts": [
      38,
-     39
-    ]
+     39,
+     37,
+     25,
+     12
+    ],
+    "aiFund": 0
    },
    {
     "id": 9,

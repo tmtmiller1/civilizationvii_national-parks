@@ -30,7 +30,7 @@
         <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_TITLE"><Text>Why can't I build a park?</Text></Row>
         <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_PARA_1"><Text>You need the Society civic in the Exploration Age or Natural History in the Modern Age, a settlement that doesn't already have a park of that kind, and an empty tile it owns, either Charming flat or hill land or any water: no district, improvement or building on it. If the civic was researched before the mod was added to the game, the park is not offered.</Text></Row>
         <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_TITLE"><Text>Why won't my park grow?</Text></Row>
-        <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1"><Text>A park only takes tiles its owner already owns, next to the park. If there are none when an expansion finishes, you're told, and the tiles wait until land is available. Parks stop at 24 tiles. Parks don't grow in network games.</Text></Row>
+        <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1"><Text>A park takes tiles next to it that you own, or that nobody owns within 6 tiles of its settlement; those become yours. If there are none when an expansion finishes, you're told, and the tiles wait until land is available. Parks stop at 24 tiles. Parks don't grow in network games.</Text></Row>
         <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_TITLE"><Text>National Park or Wilderness Area?</Text></Row>
         <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_PARA_1"><Text>A National Park gives [icon:YIELD_CULTURE] Culture and [icon:YIELD_HAPPINESS] Happiness; a Wilderness Area gives [icon:YIELD_DIPLOMACY] Influence. A tile of either is worth about the same. A settlement can build both.</Text></Row>
         <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_TITLE"><Text>What do I give up?</Text></Row>
@@ -76,7 +76,7 @@
 
         <!-- Which Tiles Can Join -->
         <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_TITLE"><Text>Which Tiles Can Join</Text></Row>
-        <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1"><Text>Any rural tile you own next to the park: open land, forest, mountains, lakes, rivers, ocean and natural wonders.</Text></Row>
+        <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1"><Text>Any rural tile next to the park that you own, or that nobody owns within 6 tiles of its settlement: open land, forest, mountains, lakes, rivers, ocean and natural wonders. Taking land nobody owns makes it your settlement's, so a park can carry your borders past their usual third ring.</Text></Row>
         <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_TITLE"><Text>Resources</Text></Row>
         <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_PARA_1"><Text>A tile with a resource joins without a prompt, and the resource stays collected. The park replaces the plantation, camp or fishing boat that was collecting it.</Text></Row>
         <Row Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_IMPROVE_TITLE"><Text>Improvements</Text></Row>

@@ -20,7 +20,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_TITLE" Language="ko_KR"><Text>공원을 건설할 수 없는 이유는?</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_PARA_1" Language="ko_KR"><Text>대항해시대에는 사회 제도 '사회', 근대 시대에는 '자연사'가 필요하며, 해당 종류의 공원이 아직 없는 정착지와, 그 정착지가 소유한 빈 타일이 필요합니다. 그 타일은 멋진 매력도 평지나 언덕 땅 또는 모든 물 타일이어야 하며, 특수지구, 시설, 건물이 없어야 합니다. 모드를 게임에 추가하기 전에 사회 제도를 연구했다면 공원이 제공되지 않습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_TITLE" Language="ko_KR"><Text>공원이 확장되지 않는 이유는?</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="ko_KR"><Text>공원은 소유자가 이미 소유한, 공원 옆 타일만 편입합니다. 확장이 끝났을 때 그런 타일이 없으면 알림이 표시되며, 땅이 생길 때까지 타일이 대기합니다. 공원은 최대 24타일입니다. 네트워크 게임에서는 공원이 확장되지 않습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="ko_KR"><Text>공원은 공원 옆 타일 중 당신이 소유한 타일이나, 정착지에서 6타일 이내에 있는 주인 없는 타일을 편입합니다. 주인 없는 타일은 편입되면 당신의 땅이 됩니다. 확장이 끝났을 때 그런 타일이 없으면 알림이 표시되며, 땅이 생길 때까지 타일이 대기합니다. 공원은 최대 24타일입니다. 네트워크 게임에서는 공원이 확장되지 않습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_TITLE" Language="ko_KR"><Text>국립공원과 원생지역 중 무엇을?</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_PARA_1" Language="ko_KR"><Text>국립공원은 [icon:YIELD_CULTURE] 문화와 [icon:YIELD_HAPPINESS] 행복도를, 원생지역은 [icon:YIELD_DIPLOMACY] 영향력을 제공합니다. 타일 하나의 가치는 둘 다 비슷합니다. 정착지 하나에 둘 다 건설할 수 있습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_TITLE" Language="ko_KR"><Text>무엇을 포기하나요?</Text></Replace>
@@ -56,7 +56,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_TITLE" Language="ko_KR"><Text>보존된 타일</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_PARA_1" Language="ko_KR"><Text>대기 중인 타일이 있으면 화면 상단의 [B]땅 고르기[/B] 버튼으로 선택 화면을 다시 열 수 있습니다. 보존된 타일은 다음 시대로 이어집니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_TITLE" Language="ko_KR"><Text>편입 가능한 타일</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>공원 옆에 있는, 당신이 소유한 모든 교외 타일: 개활지, 숲, 산, 호수, 강, 대양, 자연경관.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>공원 옆에 있는 교외 타일 중 당신이 소유한 타일과, 정착지에서 6타일 이내에 있는 주인 없는 타일 모두: 개활지, 숲, 산, 호수, 강, 대양, 자연경관. 주인 없는 땅을 편입하면 당신의 정착지 땅이 되므로, 공원으로 국경을 평소의 세 번째 고리 너머까지 넓힐 수 있습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_TITLE" Language="ko_KR"><Text>자원</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_PARA_1" Language="ko_KR"><Text>자원이 있는 타일은 확인 없이 편입되며, 자원은 계속 수집됩니다. 자원을 수집하던 플랜테이션, 야영지, 어선은 공원으로 대체됩니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_IMPROVE_TITLE" Language="ko_KR"><Text>시설</Text></Replace>

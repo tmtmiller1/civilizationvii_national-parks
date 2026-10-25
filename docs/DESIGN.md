@@ -225,6 +225,26 @@ every row the shared files reference exists.
   no swap (`nai5-mod-noswap`, the parks started one crossing short): the game's own, not the swap. Until 2026-10-04 a
   player's parks of a kind counted together (`npmw2`: 8 tiles split 5 + 3 across two parks levelled both); an earlier
   design paid the bonus on the oldest park's founding tile instead (`npmw1`).
+- **Claiming land.** A park may also take land nobody holds (`ownerOf` -1) beside it, out to `CLAIM_RING` (6) from
+  its settlement's center, with nothing standing on it (`joinFacts` `claimable`, `reachFrom`). Settlements stop
+  growing at ring 3, so this is how a park reaches past them without Cultural Diffusion, and the land beyond feeds the
+  settlement like any park tile (watched: a ring-4 marker removed took 1 Culture and 1 Happiness off Roma). `addTile`
+  buys the plot for the park's settlement first (`claimPlot`, `Cities.purchasePlot`, the call the buy-back already
+  uses), then marks it; if the plot isn't handed over, the tile leaves the park and its place in the expansion comes
+  back. No extra cost (the owner's call, 2026-10-25), ring 6 rather than Cultural Diffusion's 8 (also the owner's).
+  An AI takes its own land first at equal `aiScore` and claims otherwise (`bestFirst`). Watched 2026-10-25 (usual set,
+  Modern 9001): founded on 26,34 at Roma's edge, the picker reopened offering 25,33, 26,33 and 25,34 (nobody's, ring
+  4) with Roma's own; all three were bought for Roma and marked. Claiming outward by script reached ring 5, then
+  ring 6 nine times; nothing past ring 6 was offered with 18 unheld tiles beside the park there, and all 14 tiles
+  were Roma's. Captures in `working_screenshots/national-parks-claim/`. Second pass the same day, Modern 9001: with
+  every other mod off the picker offered and claimed the same three tiles. An AI park (player 1) given more tiles than
+  its own land held took its 8 own tiles first, then claimed out to ring 6 ("park 4: plot N claimed for its
+  settlement"), every tile its own; over four AI turns with 6,000 Gold it bought an expansion itself (400 Gold, payback
+  29 turns) and took its own land. Usual set, with Cultural Diffusion: a park claimed out to ring 6 (10 tiles), then 10
+  turns with Cultural Diffusion idle and 6 with its thresholds lowered at run time (`cultureThreshold` 5,
+  `minimumOwner` 20, no decay, `injectBase` 400, Modern `ownerBar` 0.1), in which it claimed 24 plots for Roma, three
+  beside the park; the park claimed again among them (5 of the tiles offered were Cultural Diffusion's new claims) and
+  held all its tiles, all Roma's, every turn, with no tile let go and no failed claim.
 - **Past the third ring.** A settlement can hold land beyond ring 3 (bought, or claimed by a border-spreading mod such
   as Cultural Diffusion) where the game builds nothing. A park still takes it: the rural district the mod creates
   first makes the tile workable, and the marker lands and pays there (watched 2026-09-30 on a town's ring-4 and ring-5
@@ -745,8 +765,13 @@ End this expansion? on Done with three tiles left, and the no-land notice.
 
 The quotes (`ui/np-quotes.js`) are 33 lines by naturalists in five pools: founding or growing a National Park, a
 Wilderness Area, no land, taking worked land, and ending an expansion. Each is one text row, `LOC_NP_QUOTE_<POOL>_<n>`,
-the same in every language (English originals); one is chosen by a hash of the park and the moment, so a moment always
-shows the same line. Sources, the rules they were checked by and the lines rejected are in `docs/quote-sources.md`.
+the same in every language (English originals). They rotate: each showing of a pool's pop-up takes the next quote in
+the pool, so the same kind of pop-up says something new until the pool comes round; where a pool starts is a hash of
+the first moment that uses it and the turn, and each pool's place is kept in the save's record (`quotes`). Until
+2026-10-25 a hash of the park and the moment picked the line, so one moment always repeated it and most of the 33
+never showed (the owner's call). Watched 2026-10-25 (Modern 9001, every other mod off): the no-land pop-up three
+times showed quotes 1, 2 and 3; after a save and a load from the game's own save list the record read
+`{ start: 0, shown: 3 }` and the next pop-up showed quote 4 (`working_screenshots/national-parks-claim/03-quote-after-reload.png`). Sources, the rules they were checked by and the lines rejected are in `docs/quote-sources.md`.
 
 ## Names
 

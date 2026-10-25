@@ -46,7 +46,7 @@ import { setPurchaseHandler } from "./np-purchase.js";
 
 const G = globalThis;
 const KEY = "__towerNationalPark";
-const VERSION = "1.3.0";
+const VERSION = "1.3.1";
 const SETTLE_MS = 600;
 const EVENT_SETTLE_MS = 1500;
 // A park piece landing is drawn sooner, so new park land is not left bare while the dressing waits (about 2 s before).

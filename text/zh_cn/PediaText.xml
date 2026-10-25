@@ -20,7 +20,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_TITLE" Language="zh_Hans_CN"><Text>为什么我无法建造公园？</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_PARA_1" Language="zh_Hans_CN"><Text>你需要在探索时代研究“社会”市政，或在近世时代研究“自然历史”市政；该定居点尚未拥有同类公园；且该定居点拥有1个空地块，可以是吸引力为迷人或惊艳的平坦或崎岖地块，也可以是任意水域地块：其上不能有区块、改良设施或建筑。如果在加入本模组之前就已研究该市政，则不会提供公园。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_TITLE" Language="zh_Hans_CN"><Text>为什么我的公园无法扩建？</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="zh_Hans_CN"><Text>公园只会纳入其所有者已拥有且与公园相邻的地块。如果扩建完成时没有这样的地块，你会收到提示，这些地块将等待至有土地可用。公园最多24个地块。在网络游戏中公园无法扩建。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="zh_Hans_CN"><Text>公园会纳入与其相邻、归你所有的地块，以及距其定居点不超过6个地块、无人拥有的地块；后者会归你所有。如果扩建完成时没有这样的地块，你会收到提示，这些地块将等待至有土地可用。公园最多24个地块。在网络游戏中公园无法扩建。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_TITLE" Language="zh_Hans_CN"><Text>国家公园还是荒野保护区？</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_PARA_1" Language="zh_Hans_CN"><Text>国家公园提供[icon:YIELD_CULTURE] 文化值和[icon:YIELD_HAPPINESS] 幸福值；荒野保护区提供[icon:YIELD_DIPLOMACY] 影响力。两者每个地块的价值大致相当。一个定居点可以同时建造两者。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_TITLE" Language="zh_Hans_CN"><Text>我要付出什么？</Text></Replace>
@@ -56,7 +56,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_TITLE" Language="zh_Hans_CN"><Text>保留的地块</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_PARA_1" Language="zh_Hans_CN"><Text>有地块等待放置时，屏幕顶部的[B]选择土地[/B]按钮可重新打开选择器。保留的地块会延续到下一个时代。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_TITLE" Language="zh_Hans_CN"><Text>可纳入的地块</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>公园旁任何归你所有的乡村地块：开阔地、森林、山脉、湖泊、河流、海洋和自然奇观。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>公园旁任何乡村地块，只要归你所有，或无人拥有且距其定居点不超过6个地块：开阔地、森林、山脉、湖泊、河流、海洋和自然奇观。纳入无人拥有的土地会使其归你的定居点所有，因此公园可以把你的边界扩展到通常的第三环以外。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_TITLE" Language="zh_Hans_CN"><Text>资源</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_PARA_1" Language="zh_Hans_CN"><Text>带有资源的地块会直接并入，无需确认，资源仍被收集。公园将取代原本收集该资源的种植园、营地或渔船。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_IMPROVE_TITLE" Language="zh_Hans_CN"><Text>改良设施</Text></Replace>

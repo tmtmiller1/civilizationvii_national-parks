@@ -48,7 +48,7 @@ PAGES = [
             "You need the Society civic in the Exploration Age or Natural History in the Modern Age, a settlement that doesn't already have a park of that kind, and an empty tile it owns, either Charming flat or hill land or any water: no district, improvement or building on it. If the civic was researched before the mod was added to the game, the park is not offered.",
         ]),
         ("NOGROW", "Why won't my park grow?", [
-            "A park only takes tiles its owner already owns, next to the park. If there are none when an expansion finishes, you're told, and the tiles wait until land is available. Parks stop at 24 tiles. Parks don't grow in network games.",
+            "A park takes tiles next to it that you own, or that nobody owns within 6 tiles of its settlement; those become yours. If there are none when an expansion finishes, you're told, and the tiles wait until land is available. Parks stop at 24 tiles. Parks don't grow in network games.",
         ]),
         ("WHICH", "National Park or Wilderness Area?", [
             "A National Park gives [icon:YIELD_CULTURE] Culture and [icon:YIELD_HAPPINESS] Happiness; a Wilderness Area gives [icon:YIELD_DIPLOMACY] Influence. A tile of either is worth about the same. A settlement can build both.",
@@ -116,7 +116,7 @@ PAGES = [
 
     (SECTION, "NP_TAKE", "NP_LAND", "Which Tiles Can Join", [
         ("CONTENT", None, [
-            "Any rural tile you own next to the park: open land, forest, mountains, lakes, rivers, ocean and natural wonders.",
+            "Any rural tile next to the park that you own, or that nobody owns within 6 tiles of its settlement: open land, forest, mountains, lakes, rivers, ocean and natural wonders. Taking land nobody owns makes it your settlement's, so a park can carry your borders past their usual third ring.",
         ]),
         ("RESOURCES", "Resources", [
             "A tile with a resource joins without a prompt, and the resource stays collected. The park replaces the plantation, camp or fishing boat that was collecting it.",

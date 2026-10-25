@@ -29,8 +29,8 @@ export { load, save, resetCache, parks, parkById, parkAtAnchor, parkOfTile, disp
 export { dissolvePark, until, inSequence, isSettling, parkDistrictKind, placeMarker, releaseTile,
   ensureMarkers } from "./np-core-writes.js";
 export { foundable, foundFacts, foundingTiles, joinable, needsConfirm, joinFacts, canJoin, connectedSelection,
-  eligibleTiles, addTile, aiTakes, GOLD_PER_PRODUCTION, expansionPrice, aiScore, AI_GOLD_PER_POINT, AI_PAYBACK_TURNS,
-  AI_PAYBACK_TURNS_RICH, AI_RICH_MULTIPLE, AI_SAVE_SHARE, AI_RESERVE_SHARE, AI_RESERVE_TURNS, aiExpansionWorth,
-  aiSavingStep, tileGain } from "./np-core-rules.js";
+  CLAIM_RING, reachFrom, eligibleTiles, addTile, aiTakes, GOLD_PER_PRODUCTION, expansionPrice, aiScore,
+  AI_GOLD_PER_POINT, AI_PAYBACK_TURNS, AI_PAYBACK_TURNS_RICH, AI_RICH_MULTIPLE, AI_SAVE_SHARE, AI_RESERVE_SHARE,
+  AI_RESERVE_TURNS, aiExpansionWorth, aiSavingStep, tileGain } from "./np-core-rules.js";
 export { newFoundingTile, foundPark, returnFounding, takeLateLanding, reconcile, scanMap, removeOrphanWilds,
   scanForParkImprovements, orphanMarkerPlots, removeOrphanMarkers } from "./np-core-sweep.js";

@@ -30,7 +30,8 @@ choosing which wild land to protect: mountains, forests, lakes, rivers, the sea,
   turn, and Choose land brings the picker back. If no land is free when an expansion completes, you are told, and the
   tiles wait until land is free. Tiles you have not placed carry over into the next age. A park grows to 24 tiles; the
   picker tells you when your choice fills it, and the project is then grayed out in that city. Land past the third
-  ring (bought, or claimed by a mod such as Cultural Diffusion) can join and pays like any other.
+  ring, whether the park claims it or a mod such as Cultural Diffusion spreads your borders over it, joins and pays
+  like any other.
 - **Park yields.** A tile that joins a park keeps its own yields (Food, Production and so on) and gives the park's on
   top: +1 Culture and +1 Happiness in a National Park, +3 Influence in a Wilderness Area. Park tiles don't need a
   citizen to work them, and the yields layer shows their yields on the map.
@@ -41,13 +42,14 @@ choosing which wild land to protect: mountains, forests, lakes, rivers, the sea,
 - **Charming land.** A park is founded where the game's own appeal, as the appeal lens and tile tooltip show it, is
   Charming (3 or more): neighbouring mountains, coast, navigable rivers, woods and natural wonders raise it. The land a
   park grows over can be any it may take, and a tile whose appeal later falls stays in the park.
-- **What a park can take.** Any rural land you own beside the park: open land, forest, mountains, lakes, rivers, the
-  open sea and natural wonders. Resources come with the land: a tile with a resource joins without a question and its
-  resource stays collected: the tile keeps its plantation, camp or fishing boat and pays its own yields, not the
-  park's, so that it looks exactly as the game draws it. A tile
-  with a farm or other improvement and no resource joins after you confirm; the improvement is removed, and the
-  citizen who worked it comes back as new population for you to place. An Expedition Base stays where it is and keeps
-  working its mountain or wonder. Urban districts and buildings are never taken.
+- **What a park can take.** Any rural land beside the park that you own, or that nobody owns within 6 tiles of its
+  settlement: open land, forest, mountains, lakes, rivers, the open sea and natural wonders. Land nobody owns becomes
+  the settlement's when the park takes it, so a park carries your borders past their usual third ring. Resources come
+  with the land: a tile with a resource joins without a question and its resource stays collected: the tile keeps its
+  plantation, camp or fishing boat and pays its own yields, not the park's, so that it looks exactly as the game draws
+  it. A tile with a farm or other improvement and no resource joins after you confirm; the improvement is removed, and
+  the citizen who worked it comes back as new population for you to place. An Expedition Base stays where it is and
+  keeps working its mountain or wonder. Urban districts and buildings are never taken.
 - **Protected land.** Park land cannot be developed. No settlement, yours or the AI's, can build on it or grow into
   it: the game offers park land to no building and no farm. Urban development is never removed: if a building ever
   lands on park land anyway, that tile leaves the park, and if it is the founding tile, the park moves its founding
@@ -159,9 +161,9 @@ the equivalent Mods folder on your platform, then enable it in-game.
   mods that change placement keep working.
 - Park land keeps its own yields and adds the park's on top, so yields another mod gives a park tile stay with it, and
   so do yields a mod adds to a settlement as a whole.
-- Suggested with [Cultural Diffusion](https://github.com/tmtmiller1/civilizationvii-cultural-diffusion): a park grows
-  only into
-  land its settlement owns, and Cultural Diffusion's spreading borders give it more land to grow into.
+- Suggested with [Cultural Diffusion](https://github.com/tmtmiller1/civilizationvii-cultural-diffusion): a park
+  claims land nobody owns out to 6 tiles from its settlement, and Cultural Diffusion's spreading borders give it more
+  land to grow into beyond that.
 - Works with [Canals](https://github.com/tmtmiller1/civilizationvii_canals): a Canal is never dug through park land, and a
   canal tile cannot join a park.
 - Single-player and hotseat games; in a network game parks do not grow (see Multiplayer).

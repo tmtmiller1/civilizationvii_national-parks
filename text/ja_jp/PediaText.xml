@@ -20,7 +20,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_TITLE" Language="ja_JP"><Text>公園を建設できないのはなぜ?</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOFOUND_PARA_1" Language="ja_JP"><Text>探検の時代なら社会制度「社会」、近代なら「博物学」が必要です。さらに、その種類の公園をまだ持っていない居住地と、その居住地が所有する空きタイル(魅力的な平地または丘陵の土地、または任意の水域)が必要です。空きタイルとは、区域、施設、建造物のないタイルです。MODをゲームに追加する前にその社会制度を研究していた場合、公園は選択肢に表示されません。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_TITLE" Language="ja_JP"><Text>公園が拡張されないのはなぜ?</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="ja_JP"><Text>公園に加えられるのは、所有者がすでに所有している、公園に隣接するタイルだけです。拡張の完了時に該当するタイルがなければ通知が届き、土地が得られるまでタイルは保留されます。公園は24タイルが上限です。ネットワークゲームでは公園は拡張されません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_NOGROW_PARA_1" Language="ja_JP"><Text>公園に加えられるのは、公園に隣接するタイルのうち、自分が所有しているタイルか、その居住地から6タイル以内で誰も所有していないタイルです。誰も所有していないタイルは自分のものになります。拡張の完了時に該当するタイルがなければ通知が届き、土地が得られるまでタイルは保留されます。公園は24タイルが上限です。ネットワークゲームでは公園は拡張されません。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_TITLE" Language="ja_JP"><Text>国立公園と原生自然地域、どちらがよい?</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_WHICH_PARA_1" Language="ja_JP"><Text>国立公園は [icon:YIELD_CULTURE] 文化力と [icon:YIELD_HAPPINESS] 幸福度を、原生自然地域は [icon:YIELD_DIPLOMACY] 影響力をもたらします。1タイルあたりの価値はほぼ同じです。1つの居住地で両方を建設できます。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_FAQ_CHAPTER_LOSE_TITLE" Language="ja_JP"><Text>何を失う?</Text></Replace>
@@ -56,7 +56,7 @@
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_TITLE" Language="ja_JP"><Text>保留中のタイル</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_PICKER_CHAPTER_LATER_PARA_1" Language="ja_JP"><Text>保留中のタイルがある間は、画面上部の[B]土地を選ぶ[/B]ボタンで選択画面を再び開けます。保留中のタイルは次の時代へ引き継がれます。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_TITLE" Language="ja_JP"><Text>追加できるタイル</Text></Replace>
-        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>公園に隣接する、自分が所有する郊外のタイルすべて。開けた土地、森林、山岳、湖、河川、外洋、自然遺産が含まれます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>公園に隣接する郊外のタイルのうち、自分が所有するタイルと、その居住地から6タイル以内で誰も所有していないタイルすべて。開けた土地、森林、山岳、湖、河川、外洋、自然遺産が含まれます。誰も所有していない土地を加えると自分の居住地のものになるため、公園によって国境を通常の3つ目の環より外側まで広げられます。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_TITLE" Language="ja_JP"><Text>資源</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_RESOURCES_PARA_1" Language="ja_JP"><Text>資源のあるタイルは確認なしで追加され、資源は引き続き収集されます。資源を収集していたプランテーション、キャンプ、漁船は公園に置き換わります。</Text></Replace>
         <Replace Tag="LOC_PEDIA_NATIONAL_PARK_PAGE_NP_TAKE_CHAPTER_IMPROVE_TITLE" Language="ja_JP"><Text>施設</Text></Replace>

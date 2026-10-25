@@ -1,5 +1,5 @@
 [h1]National Parks[/h1]
-[b]Version 1.3.0, for Civilization VII 1.5.0[/b]
+[b]Version 1.3.1, for Civilization VII 1.5.0[/b]
 National Parks lets you found a park or a wilderness area on an empty tile a city or town owns, Charming land or open water, and grow it, tile by tile, over the wild land around it: mountains, forests, lakes, rivers, the sea, natural wonders and open country. Every tile of park land pays, the land is protected, and the park is drawn on the map with walls, trees, a warden's station and animated wildlife.
 [h2]The Mod Includes[/h2]
 [list]
@@ -7,6 +7,7 @@ National Parks lets you found a park or a wilderness area on an empty tile a cit
 [*]The Wilderness Area, the park's twin: founded and grown the same way, paid in Influence (+7 on the founding tile, plus +10 for each adjacent natural wonder), with no lodge, cabins or lookout, only the land and its wildlife inside an ocher border. A settlement can have one of each.
 [*]Expand National Park and Expand Wilderness Area, repeatable city projects at a flat 100 Production. Any settlement with a park, town or city, can also buy an expansion for 400 Gold from its purchase list. Each expansion adds 1 tile, up to 24 tiles.
 [*]A tile picker, opened from a Choose land button: the land the park can take is lit on the map. Click to select, then Confirm, Done or Later.
+[*]Claiming land: a park can take land nobody owns beside it, out to 6 tiles from its settlement, and that land becomes the settlement's. Parks carry your borders past the third ring.
 [*]A park tile keeps its own yields and gives the park's on top: +1 Culture and +1 Happiness in a National Park, +3 Influence in a Wilderness Area. The yields layer shows them on the tiles.
 [*]Size bonuses: as a park reaches 8, 16 and 24 tiles of its own, every tile of it pays more, up to +3 Culture and +2 Happiness, or +6 Influence. Land lost steps it back down.
 [*]Resources come with the land: a resource tile joins without a question, keeps its own improvement and yields, and looks exactly as the game draws it. A tile with a farm or other improvement joins after you confirm, and the citizen who worked it comes back as new population to place.
@@ -25,7 +26,7 @@ National Parks works on its own. With [url=https://steamcommunity.com/sharedfile
 [list]
 [*]Adds new content only. It doesn't replace base-game files or change base-game rows.
 [*]Start a new game with the mod enabled. In a game already in progress, the park is not available if its civic was researched before the mod was added.
-[*]Suggested with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3757509212]Cultural Diffusion[/url]: a park grows only into land its settlement owns, and Cultural Diffusion's spreading borders give it more land to grow into, past the third ring too.
+[*]Suggested with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3757509212]Cultural Diffusion[/url]: a park claims land nobody owns out to 6 tiles from its settlement, and Cultural Diffusion's spreading borders give it more land to grow into beyond that.
 [*]Works with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3808170627]Canals[/url]: a Canal is never dug through park land, and a canal tile cannot join a park.
 [*]Single-player and hotseat games. In a network game the parks already on the map are drawn and named for every player, but new parks are not founded and parks do not grow.
 [/list]

@@ -5,10 +5,10 @@
 import { KINDS, isFull, isParkCompatible, isRuralImprovement, kindOf, landPayout, log, milestoneLevel, readOnly,
   safe } from "./np-core-base.js";
 import { charmingAt, districtKind, featureOf, hasDistrict, isLake, isMountain, isNavRiver, isWater, isWonder, locOf,
-  ownerOf, readPlot, resourceAt, ringOf, sameCity, strippableAt, terrainOf, tileCityOf } from "./np-core-map.js";
+  ownerOf, readPlot, resourceAt, ringOf, sameCity, settlementOf, strippableAt, terrainOf, tileCityOf } from "./np-core-map.js";
 import { allParkTiles, save } from "./np-core-registry.js";
 import { MAX_TRIES, failed, failures, inSequence, isSettling, markTile, stillParkLand,
-  stripImprovements } from "./np-core-writes.js";
+  stripImprovements, until } from "./np-core-writes.js";
 
 /**
  * The rule for a founding tile, on facts read from the map (pure): an empty tile the settlement itself holds, Charming
@@ -53,13 +53,22 @@ export function foundingTiles(city) {
 // rules
 
 /**
+ * How far from its settlement's center a park may claim land that nobody holds. Settlements stop growing at ring 3, so
+ * this is how a park reaches past them; the owner set it at ring 6 (2026-10-25).
+ */
+export const CLAIM_RING = 6;
+
+/**
  * The rule for joining, on facts read from the map (pure). A park takes its owner's land that no other park holds: open
- * land, forest, mountains, lakes, rivers, open sea and natural wonders. A rural improvement or a resource does not bar
- * a tile (a resource stays collected; the player is asked before an improvement goes; see needsConfirm), but a
- * building, an urban or other non-rural district, another park's founding tile, or a plot that cannot be read does.
+ * land, forest, mountains, lakes, rivers, open sea and natural wonders. It may also claim land nobody holds within
+ * CLAIM_RING of its settlement (`claimable`), as long as nothing stands on it; another player's or an independent
+ * power's land stays theirs. A rural improvement or a resource does not bar a tile (a resource stays collected; the
+ * player is asked before an improvement goes; see needsConfirm), but a building, an urban or other non-rural district,
+ * another park's founding tile, or a plot that cannot be read does.
  */
 export function joinable(f) {
-  if (f.taken || f.owner !== f.parkOwner || f.stray) return false;
+  if (f.taken || f.stray) return false;
+  if (f.owner !== f.parkOwner && !(f.owner === -1 && f.claimable)) return false;
   if (f.district === "other") return false;
   return !f.built;
 }
@@ -71,18 +80,29 @@ export function joinable(f) {
  */
 export function needsConfirm(f) { return !!f.improvement && !f.resource; }
 
-/** The facts `joinable` and `needsConfirm` read, for plot i and a park owned by `owner`. */
-export function joinFacts(i, owner, taken) {
+/** The facts `joinable` and `needsConfirm` read, for plot i and a park owned by `owner`. `from`: the park's
+ *  settlement center, from which unheld land within CLAIM_RING may be claimed; without it none is. */
+export function joinFacts(i, owner, taken, from = null) {
   const plot = readPlot(i);
   const strip = plot.items.filter((c) => isRuralImprovement(c.type));
-  return { taken: taken.has(i), owner: ownerOf(i), parkOwner: owner, stray: plot.stray > 0, district: districtKind(i),
+  const held = ownerOf(i);
+  return { taken: taken.has(i), owner: held, parkOwner: owner, stray: plot.stray > 0, district: districtKind(i),
     built: plot.items.some((c) => !isParkCompatible(c.type) && !strip.includes(c)), improvement: strip.length ? strip[0].type : "",
-    resource: resourceAt(i) };
+    resource: resourceAt(i), claimable: held === -1 && !plot.items.length && inReach(from, i) };
 }
 
-/** Whether a plot may join a park owned by `owner` (see joinable). */
-export function canJoin(i, owner, taken) {
-  return i >= 0 && joinable(joinFacts(i, owner, taken));
+function inReach(from, i) {
+  if (!from) return false;
+  const l = locOf(i);
+  return safe(() => GameplayMap.getPlotDistance(from.x, from.y, l.x, l.y), 99) <= CLAIM_RING;
+}
+
+/** Where a park claims land from: its settlement's center, or null. */
+export function reachFrom(park) { return safe(() => Cities.get(settlementOf(park)).location, null); }
+
+/** Whether a plot may join a park owned by `owner` (see joinable); `from` as joinFacts. */
+export function canJoin(i, owner, taken, from = null) {
+  return i >= 0 && joinable(joinFacts(i, owner, taken, from));
 }
 
 /** Which selected tiles still connect to the park through each other; the rest are dropped. */
@@ -103,18 +123,20 @@ export function connectedSelection(parkTiles, selected, ringFn = ringOf) {
 /** Plots that may be added to `park` now, in plot order. */
 export function eligibleTiles(park) {
   if (!park || isFull(park)) return [];
-  const taken = allParkTiles();
+  const taken = allParkTiles(), from = reachFrom(park);
   const out = new Set();
-  for (const t of park.tiles) for (const n of ringOf(t)) if (canJoin(n, park.owner, taken)) out.add(n);
+  for (const t of park.tiles) for (const n of ringOf(t)) if (canJoin(n, park.owner, taken, from)) out.add(n);
   return [...out].sort((a, b) => a - b);
 }
 
 /**
- * Add a tile to a park. An improvement on it is taken off first (the player confirmed that in the picker); the rural
- * district under it stays and carries the marker, and is not the park's to destroy later.
+ * Add a tile to a park. Land nobody holds is claimed for the park's settlement first. An improvement on it is taken
+ * off first (the player confirmed that in the picker); the rural district under it stays and carries the marker, and
+ * is not the park's to destroy later.
  */
 export function addTile(park, i) {
   if (!park || !eligibleTiles(park).includes(i)) return false;
+  const home = ownerOf(i) === -1 ? settlementOf(park) : null;
   const strip = strippableAt(i);
   park.tiles.push(i);
   park.pending = isFull(park) ? 0 : Math.max(0, (park.pending || 0) - 1);
@@ -122,11 +144,27 @@ export function addTile(park, i) {
   if (readOnly) return true;
   if (strip.length) log(`park ${park.id}: stripping ${strip.map((c) => c.type).join(", ")} from plot ${i}`);
   inSequence(i, async () => {
+    if (home && !(await claimPlot(park, i, home))) return false;
     const city = tileCityOf(i);
     if (strip.length && !(await stripImprovements(i, strip, city))) return failed(park, i, "strip");
     if (city && stillParkLand(park, i)) await markTile(park, i, city);
   });
   return true;
+}
+
+/**
+ * Buy plot i, which nobody holds, for the park's settlement `city`, as the game's own plot purchase does. If the game
+ * doesn't hand it over, the tile leaves the park and its place in the expansion comes back to be chosen again.
+ */
+async function claimPlot(park, i, city) {
+  safe(() => Cities.get(city).purchasePlot({ ...locOf(i) }));
+  if (await until(() => ownerOf(i) === park.owner)) { log(`park ${park.id}: plot ${i} claimed for its settlement`); return true; }
+  failed(park, i, "claim");
+  park.tiles = park.tiles.filter((t) => t !== i);
+  if (!isFull(park)) park.pending = (park.pending || 0) + 1;
+  save();
+  log(`park ${park.id}: plot ${i} couldn't be claimed; its tile can be chosen again`);
+  return false;
 }
 
 /** Whether an AI's park takes a tile on its own: never one that would cost it an improvement. */

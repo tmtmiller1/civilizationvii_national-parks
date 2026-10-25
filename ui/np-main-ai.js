@@ -2,7 +2,7 @@
 "use strict";
 
 import { KINDS, addTile, aiSavingStep, aiScore, aiTakes, eligibleTiles, expansionPrice, foundingTiles, isFull,
-  isIndependent, kindOf, log, parks, room, safe, save, settlementOf, tileGain, tilesPerExpansion } from "./np-core.js";
+  isIndependent, kindOf, log, ownerOf, parks, room, safe, save, settlementOf, tileGain, tilesPerExpansion } from "./np-core.js";
 import { drawPark } from "./np-draw.js";
 import { foundPrice, foundingRefusal, startFounding, wonderAdjacent } from "./np-main-founding.js";
 import { isHuman, state } from "./np-main-state.js";
@@ -43,6 +43,9 @@ function aiFounds(pid, player, city, kind) {
 // and none queued it in 35 turns. So each turn an AI's park weighs buying one with the AI's own Gold, at the
 // price a player pays, saving for it when it is worth it (aiSavingStep in np-core.js).
 
+/** The order an AI's park takes land in: the wildest first (aiScore), its own land before land it would claim. */
+function bestFirst(a, b) { return aiScore(b) - aiScore(a) || (ownerOf(a) === -1) - (ownerOf(b) === -1) || a - b; }
+
 /** An AI's park takes its best land at once: wonders, then mountains, then wild cover, then open ground. */
 export function autoPick(park) {
   if (state.multiplayer) return;
@@ -50,7 +53,7 @@ export function autoPick(park) {
   while (park.pending > 0) {
     const options = eligibleTiles(park).filter((t) => aiTakes(t, park.owner));
     if (!options.length) break;
-    options.sort((a, b) => aiScore(b) - aiScore(a) || a - b);
+    options.sort(bestFirst);
     if (!addTile(park, options[0])) break;
     added.push(options[0]);
   }
@@ -70,7 +73,7 @@ function atWarWithMajor(pid) {
 export function aiFacts(park) {
   const kind = kindOf(park);
   const owner = park.owner;
-  const best = eligibleTiles(park).filter((t) => aiTakes(t, owner)).sort((a, b) => aiScore(b) - aiScore(a) || a - b)
+  const best = eligibleTiles(park).filter((t) => aiTakes(t, owner)).sort(bestFirst)
     .slice(0, Math.min(tilesPerExpansion(), room(park)));
   const gains = best.map((t) => tileGain(t, park));
   const city = safe(() => Cities.get(settlementOf(park)), null);
